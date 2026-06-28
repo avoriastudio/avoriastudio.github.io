@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!--
+  ════════════════════════════════════════════════════════════════
+  AVORIA STUDIO — sito vetrina / link-in-bio
+  Studio creativo AI-native B2B · "Produzioni impossibili. Budget possibili."
+  Single file, statico, deployabile su Netlify / Vercel / GitHub Pages.
+
+  ▶ DA MODIFICARE PRIMA DI PUBBLICARE (cerca "EDIT-ME"):
+     1. Indirizzo email di contatto
+     2. (opzionale) numero WhatsApp
+     3. Dominio reale in <link rel="canonical"> e og:url
+     4. (opzionale) immagini reali: vedi cartella /assets e i blocchi ".frame"
+  ════════════════════════════════════════════════════════════════
+-->
+
+<title>Avoria Studio — Studio creativo AI per brand</title>
+<meta name="description" content="Avoria è uno studio creativo AI-native per brand: immagini e video cinematografici, campagne, visual, contenuti e siti. Immaginario impossibile, reso reale. Produzioni impossibili, budget possibili." />
+<meta name="theme-color" content="#1C1813" />
+<meta name="author" content="Avoria Studio" />
+<link rel="canonical" href="https://simoneferriol01.github.io/avoria-studio/" /> <!-- EDIT-ME: dominio reale -->
+
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Avoria Studio" />
+<meta property="og:title" content="Avoria Studio — Immaginario impossibile, reso reale" />
+<meta property="og:description" content="Studio creativo AI per brand: immagini e video cinematografici, campagne, visual, contenuti e siti. Produzioni impossibili. Budget possibili." />
+<meta property="og:url" content="https://simoneferriol01.github.io/avoria-studio/" /> <!-- EDIT-ME -->
+<meta property="og:image" content="assets/og.jpg" /> <!-- EDIT-ME: 1200×630, vedi README -->
+<meta property="og:locale" content="it_IT" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Avoria Studio — Immaginario impossibile, reso reale" />
+<meta name="twitter:description" content="Studio creativo AI per brand. Produzioni impossibili. Budget possibili." />
+<meta name="twitter:image" content="assets/og.jpg" />
+
+<!-- Favicon: marchio Arco in SVG -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Crect width='100' height='120' fill='%231C1813'/%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M20 108 L30 52 A20 20 0 0 1 70 52 L80 108' stroke='%23F4ECDE' stroke-width='9'/%3E%3Cline x1='27' y1='86' x2='73' y2='86' stroke='%23B8935E' stroke-width='8'/%3E%3C/g%3E%3C/svg%3E" />
+
+<!-- Fonts: Playfair Display (display, Didone) + Inter (testo) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+/* ══════════════════ TOKEN BRAND AVORIA ══════════════════ */
+:root{
+  --avorio:      #F4ECDE;
+  --avorio-soft: #EAE0CE;   /* alternanza chiara */
+  --inchiostro:  #1C1813;
+  --inchiostro-2:#211C16;   /* superfici scure */
+  --oro:         #B8935E;
+  --oro-chiaro:  #CBA877;   /* oro per testo su scuro */
+  --tortora:     #C9BCA8;
+
+  /* testi */
+  --t-su-chiaro:    #1C1813;
+  --t-su-chiaro-2:  #5A5044;  /* secondario, AA su avorio */
+  --t-su-scuro:     #F4ECDE;
+  --t-su-scuro-2:   #C9BCA8;  /* secondario su scuro */
+
+  /* linee */
+  --linea-scura:  rgba(28,24,19,0.16);
+  --linea-chiara: rgba(244,236,222,0.16);
+
+  --misura: 64rem;          /* max larghezza contenuto */
+  --gutter: clamp(1.4rem, 5vw, 3rem);
+
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+/* ══════════════════ RESET ══════════════════ */
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+img{ display:block; max-width:100%; height:auto; }
+a{ color:inherit; text-decoration:none; }
+::selection{ background:var(--oro); color:var(--inchiostro); }
+
+body{
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-weight:400;
+  background:var(--avorio);
+  color:var(--t-su-chiaro);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+
+/* ══════════════════ GRANA 35mm (overlay globale) ══════════════════ */
+.grain{
+  position:fixed; inset:0; z-index:60; pointer-events:none;
+  opacity:.05; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ══════════════════ TIPOGRAFIA ══════════════════ */
+.display{ font-family:'Playfair Display',Georgia,serif; font-weight:500; line-height:1.04; letter-spacing:-.01em; }
+.eyebrow{
+  font-size:.72rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase;
+  color:var(--oro); display:inline-flex; align-items:center; gap:.7em;
+}
+.eyebrow::before{ content:""; width:1.8rem; height:1px; background:var(--oro); opacity:.7; }
+.lead{ font-size:clamp(1.05rem,1.4vw,1.2rem); color:var(--t-su-chiaro-2); max-width:52ch; }
+
+/* ══════════════════ LAYOUT ══════════════════ */
+section{ padding-block:clamp(4.5rem,11vw,8.5rem); position:relative; }
+.wrap{ width:100%; max-width:var(--misura); margin-inline:auto; padding-inline:var(--gutter); }
+.dark{ background:var(--inchiostro); color:var(--t-su-scuro); }
+.dark .lead{ color:var(--t-su-scuro-2); }
+.light-soft{ background:var(--avorio-soft); }
+
+/* ══════════════════ HEADER (sticky minimale) ══════════════════ */
+.topbar{
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1rem var(--gutter);
+  transition:background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.topbar.scrolled{
+  background:rgba(28,24,19,.82);
+  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  border-bottom-color:var(--linea-chiara);
+  padding-block:.7rem;
+}
+.brand{ display:flex; align-items:center; gap:.6rem; color:var(--avorio); }
+.brand svg{ width:22px; height:26px; }
+.brand .wordmark{ font-family:'Playfair Display',serif; font-weight:600; font-size:1.15rem; letter-spacing:.18em; }
+.brand .dot{ color:var(--oro); }
+
+/* ══════════════════ BOTTONI ══════════════════ */
+.btn{
+  --bg:var(--avorio); --fg:var(--inchiostro); --bd:var(--avorio);
+  display:inline-flex; align-items:center; justify-content:center; gap:.55em;
+  min-height:48px; padding:.85rem 1.6rem;
+  font-family:'Inter',sans-serif; font-size:.95rem; font-weight:500; letter-spacing:.02em;
+  background:var(--bg); color:var(--fg); border:1px solid var(--bd); border-radius:999px;
+  cursor:pointer; transition:transform .2s var(--ease), background .25s var(--ease), color .25s var(--ease), box-shadow .25s var(--ease);
+  white-space:nowrap;
+}
+.btn svg{ width:1.05em; height:1.05em; }
+.btn:hover{ transform:translateY(-2px); box-shadow:0 10px 30px -12px rgba(0,0,0,.5); }
+.btn:active{ transform:translateY(0); }
+.btn.ghost{ --bg:transparent; --fg:var(--avorio); --bd:var(--linea-chiara); }
+.btn.ghost:hover{ --bd:var(--oro); color:var(--oro-chiaro); }
+.btn.dark-fill{ --bg:var(--inchiostro); --fg:var(--avorio); --bd:var(--inchiostro); }
+.btn.ghost-dark{ --bg:transparent; --fg:var(--inchiostro); --bd:var(--linea-scura); }
+.btn.ghost-dark:hover{ --bd:var(--oro); color:#8a6a3f; }
+.topbar .btn{ min-height:40px; padding:.5rem 1.15rem; font-size:.85rem; }
+
+/* focus visibile (accessibilità) */
+a:focus-visible,.btn:focus-visible,button:focus-visible{
+  outline:2px solid var(--oro); outline-offset:3px; border-radius:999px;
+}
+
+/* ══════════════════ HERO ══════════════════ */
+.hero{
+  min-height:100svh; display:flex; align-items:center;
+  background:var(--inchiostro); color:var(--avorio);
+  position:relative; overflow:hidden; padding-top:6rem;
+}
+/* bagliore golden hour dietro l'arco */
+.hero::before{
+  content:""; position:absolute; z-index:0;
+  width:120vw; height:120vw; max-width:1100px; max-height:1100px;
+  top:50%; left:50%; transform:translate(-50%,-58%);
+  background:radial-gradient(circle at 50% 50%, rgba(184,147,94,.42) 0%, rgba(184,147,94,.12) 34%, transparent 64%);
+  filter:blur(8px);
+  animation:breathe 9s var(--ease) infinite alternate;
+}
+@keyframes breathe{ from{ opacity:.75; } to{ opacity:1; } }
+@media (prefers-reduced-motion: reduce){ .hero::before{ animation:none; } }
+
+.hero .wrap{ position:relative; z-index:1; text-align:center; }
+.hero-arco{ width:clamp(64px,11vw,104px); height:auto; margin:0 auto 2rem; display:block; }
+.hero h1{
+  font-size:clamp(2.6rem,8.5vw,5.6rem);
+  max-width:14ch; margin-inline:auto;
+}
+.hero h1 em{ font-style:italic; color:var(--oro-chiaro); }
+.hero .sub{
+  margin:1.6rem auto 0; max-width:48ch;
+  font-size:clamp(1rem,1.6vw,1.18rem); color:var(--t-su-scuro-2); font-weight:300;
+}
+.claim{
+  display:inline-block; margin-top:2.2rem;
+  font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.05rem,2vw,1.4rem);
+  color:var(--avorio); padding-bottom:.35rem;
+  border-bottom:1px solid var(--oro);
+}
+.hero-cta{ margin-top:2.6rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.scroll-hint{
+  position:absolute; bottom:1.8rem; left:50%; transform:translateX(-50%); z-index:1;
+  font-size:.68rem; letter-spacing:.25em; text-transform:uppercase; color:var(--t-su-scuro-2);
+  display:flex; flex-direction:column; align-items:center; gap:.6rem;
+}
+.scroll-hint span{ width:1px; height:2.4rem; background:linear-gradient(var(--oro),transparent); animation:drop 2.4s var(--ease) infinite; }
+@keyframes drop{ 0%{ transform:scaleY(0); transform-origin:top; } 45%{ transform:scaleY(1); transform-origin:top; } 55%{ transform:scaleY(1); transform-origin:bottom; } 100%{ transform:scaleY(0); transform-origin:bottom; } }
+@media (prefers-reduced-motion: reduce){ .scroll-hint span{ animation:none; } }
+
+/* ══════════════════ MANIFESTO ══════════════════ */
+.manifesto h2{ font-size:clamp(1.9rem,5vw,3.4rem); max-width:18ch; }
+.manifesto h2 em{ font-style:italic; color:var(--oro); }
+.manifesto p{ margin-top:1.6rem; }
+
+/* ══════════════════ SERVIZI ══════════════════ */
+.svc-head{ display:flex; flex-direction:column; gap:1.1rem; margin-bottom:3.2rem; }
+.svc-head h2{ font-size:clamp(1.9rem,5vw,3.2rem); max-width:16ch; }
+.svc-list{ border-top:1px solid var(--linea-chiara); }
+.svc{
+  display:grid; grid-template-columns:auto 1fr; gap:1rem 1.4rem; align-items:baseline;
+  padding:1.7rem 0; border-bottom:1px solid var(--linea-chiara);
+  transition:padding-left .4s var(--ease);
+}
+.svc:hover{ padding-left:.6rem; }
+.svc .num{ font-family:'Playfair Display',serif; font-size:1rem; color:var(--oro); font-style:italic; }
+.svc .body h3{ font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(1.4rem,3.2vw,2rem); }
+.svc .body p{ color:var(--t-su-scuro-2); margin-top:.4rem; max-width:46ch; font-size:.98rem; }
+
+/* ══════════════════ MODO AVORIA (stat) ══════════════════ */
+.modo h2{ font-size:clamp(1.9rem,5vw,3.2rem); max-width:16ch; }
+.stats{
+  margin-top:3.4rem; display:grid; gap:1px; background:var(--linea-scura);
+  border:1px solid var(--linea-scura); grid-template-columns:1fr;
+}
+.stat{ background:var(--avorio); padding:2rem clamp(1.4rem,4vw,2.4rem); }
+.light-soft .stat{ background:var(--avorio-soft); }
+.stat .n{ font-family:'Playfair Display',serif; font-size:clamp(2.6rem,7vw,4rem); font-weight:500; line-height:1; font-variant-numeric:tabular-nums; }
+.stat .n small{ font-size:.42em; color:var(--oro); vertical-align:.4em; margin-right:.1em; }
+.stat .k{ margin-top:.7rem; color:var(--t-su-chiaro-2); font-size:.96rem; max-width:30ch; }
+.modo .closing{ margin-top:2.2rem; color:var(--t-su-chiaro-2); font-style:italic; font-family:'Playfair Display',serif; }
+
+/* ══════════════════ MONDI / VISUAL STRIP ══════════════════ */
+.mondi h2{ font-size:clamp(1.9rem,5vw,3rem); max-width:18ch; }
+.frames{ margin-top:3rem; display:grid; gap:1.1rem; grid-template-columns:repeat(2,1fr); }
+.frame{
+  position:relative; aspect-ratio:4/5; border-radius:2px; overflow:hidden;
+  border:1px solid var(--linea-chiara);
+  display:flex; align-items:flex-end; padding:1.1rem;
+}
+/* portale: arco superiore sfumato + tinta golden hour come placeholder.
+   Per sostituire con foto reale: aggiungi <img class="frame-img" src="assets/01.jpg" alt="…"> dentro il .frame */
+.frame::before{
+  content:""; position:absolute; inset:0; z-index:0;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(203,168,119,.5), transparent 60%),
+    linear-gradient(180deg, #2a231b 0%, #1a1611 100%);
+}
+.frame::after{ /* motivo arco */
+  content:""; position:absolute; left:50%; top:14%; width:62%; aspect-ratio:1/1.3; z-index:0;
+  transform:translateX(-50%);
+  border:1px solid rgba(244,236,222,.18); border-bottom:none;
+  border-radius:50% 50% 0 0 / 60% 60% 0 0;
+}
+.frame .cap{ position:relative; z-index:2; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--avorio); text-shadow:0 1px 6px rgba(0,0,0,.55); }
+.frame-img{ position:absolute; inset:0; z-index:0; width:100%; height:100%; object-fit:cover; }
+.frame .scrim{ position:absolute; left:0; right:0; bottom:0; height:50%; z-index:1; background:linear-gradient(transparent, rgba(20,17,13,.72)); pointer-events:none; }
+.frame:has(.frame-img)::before,.frame:has(.frame-img)::after{ display:none; }
+.mondi .note{ margin-top:1.6rem; color:var(--t-su-scuro-2); font-size:.9rem; }
+
+/* ══════════════════ IDENTITÀ / ARCO ══════════════════ */
+.identita{ text-align:center; }
+.identita .arco-big{ width:clamp(72px,12vw,120px); height:auto; margin:0 auto 2.2rem; }
+.identita .lines{ font-family:'Playfair Display',serif; font-size:clamp(1.4rem,3.6vw,2.3rem); line-height:1.3; max-width:20ch; margin-inline:auto; }
+.identita .lines em{ font-style:italic; color:var(--oro); }
+.identita .ia{ margin-top:1.8rem; color:var(--t-su-chiaro-2); letter-spacing:.02em; }
+.identita .ia b{ color:var(--inchiostro); font-weight:500; }
+.identita .ia .gold{ color:var(--oro); }
+/* swatch palette */
+.swatches{ margin-top:2.6rem; display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap; }
+.sw{ display:flex; flex-direction:column; align-items:center; gap:.5rem; font-size:.66rem; letter-spacing:.08em; color:var(--t-su-chiaro-2); }
+.sw i{ width:2.6rem; height:2.6rem; border-radius:50%; border:1px solid var(--linea-scura); }
+
+/* ══════════════════ FAQ ══════════════════ */
+.faq h2{ font-size:clamp(1.7rem,4.5vw,2.6rem); margin-bottom:2.4rem; }
+.qa{ border-top:1px solid var(--linea-scura); }
+.qa details{ border-bottom:1px solid var(--linea-scura); }
+.qa summary{
+  list-style:none; cursor:pointer; padding:1.4rem 0; display:flex; justify-content:space-between; gap:1.5rem; align-items:center;
+  font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.6vw,1.4rem); font-weight:500;
+}
+.qa summary::-webkit-details-marker{ display:none; }
+.qa summary .plus{ position:relative; width:18px; height:18px; flex:none; transition:transform .3s var(--ease); }
+.qa summary .plus::before,.qa summary .plus::after{ content:""; position:absolute; background:var(--oro); }
+.qa summary .plus::before{ top:8px; left:0; width:18px; height:2px; }
+.qa summary .plus::after{ left:8px; top:0; width:2px; height:18px; transition:transform .3s var(--ease); }
+.qa details[open] summary .plus::after{ transform:scaleY(0); }
+.qa details[open] summary .plus{ transform:rotate(180deg); }
+.qa .ans{ padding:0 0 1.5rem; color:var(--t-su-chiaro-2); max-width:62ch; }
+
+/* ══════════════════ CONTATTO ══════════════════ */
+.cta-final{ text-align:center; position:relative; overflow:hidden; }
+.cta-final::before{
+  content:""; position:absolute; z-index:0; width:90vw; height:90vw; max-width:760px; max-height:760px;
+  bottom:-40%; left:50%; transform:translateX(-50%);
+  background:radial-gradient(circle, rgba(184,147,94,.3), transparent 62%);
+}
+.cta-final .wrap{ position:relative; z-index:1; }
+.cta-final h2{ font-size:clamp(2.1rem,6vw,3.8rem); max-width:16ch; margin-inline:auto; }
+.cta-final h2 em{ font-style:italic; color:var(--oro-chiaro); }
+.cta-final p{ margin:1.5rem auto 0; max-width:42ch; color:var(--t-su-scuro-2); }
+.cta-final .actions{ margin-top:2.4rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.cta-final .handle{ margin-top:2rem; font-size:.85rem; letter-spacing:.18em; text-transform:uppercase; color:var(--t-su-scuro-2); }
+.cta-final .handle b{ color:var(--avorio); font-weight:500; }
+.cta-final .handle .dot{ color:var(--oro); }
+
+/* ══════════════════ FOOTER ══════════════════ */
+.foot{ background:#15110d; color:var(--t-su-scuro-2); padding-block:3.4rem; border-top:1px solid var(--linea-chiara); }
+.foot .wrap{ display:flex; flex-direction:column; gap:1.6rem; align-items:center; text-align:center; }
+.foot .fbrand{ display:flex; align-items:center; gap:.6rem; color:var(--avorio); }
+.foot .fbrand svg{ width:20px; height:24px; }
+.foot .fbrand .wordmark{ font-family:'Playfair Display',serif; font-weight:600; letter-spacing:.2em; font-size:1.05rem; }
+.foot .fclaim{ font-family:'Playfair Display',serif; font-style:italic; color:var(--tortora); }
+.foot .flinks{ display:flex; gap:1.6rem; flex-wrap:wrap; justify-content:center; font-size:.9rem; }
+.foot .flinks a{ transition:color .2s var(--ease); }
+.foot .flinks a:hover{ color:var(--oro-chiaro); }
+.foot .meta{ font-size:.76rem; letter-spacing:.04em; color:#6b6052; }
+.foot .meta .dot{ color:var(--oro); }
+
+/* ══════════════════ REVEAL (solo con JS + motion ok) ══════════════════ */
+.js .reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
+.js .reveal.in{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){ .js .reveal{ opacity:1; transform:none; } }
+
+/* ══════════════════ BREAKPOINT ══════════════════ */
+@media (min-width:680px){
+  .stats{ grid-template-columns:repeat(3,1fr); }
+  .frames{ grid-template-columns:repeat(4,1fr); }
+  .svc{ grid-template-columns:auto 1fr; }
+}
+@media (max-width:520px){
+  .brand .wordmark{ font-size:1rem; letter-spacing:.14em; }
+  .hero-cta{ flex-direction:column; align-items:stretch; }
+  .hero-cta .btn{ width:100%; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- marchio Arco riusabile -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arco" viewBox="0 0 100 120">
+    <g fill="none" stroke-linecap="round">
+      <path d="M20 110 L30 52 A20 20 0 0 1 70 52 L80 110" stroke="currentColor" stroke-width="8.5"/>
+      <line x1="27" y1="86" x2="73" y2="86" stroke="#B8935E" stroke-width="7.5"/>
+    </g>
+  </symbol>
+</svg>
+
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ░░░ HEADER ░░░ -->
+<header class="topbar" id="topbar">
+  <a class="brand" href="#top" aria-label="Avoria Studio — inizio pagina">
+    <svg aria-hidden="true"><use href="#arco"/></svg>
+    <span class="wordmark">AVOR<span class="dot">·</span>IA</span>
+  </a>
+  <a class="btn" href="https://instagram.com/avor.iastudio" target="_blank" rel="noopener" aria-label="Scrivici in DM su Instagram">
+    Scrivici in DM
+  </a>
+</header>
+
+<main id="top">
+
+  <!-- ░░░ HERO ░░░ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <svg class="hero-arco" viewBox="0 0 100 120" aria-hidden="true"><use href="#arco"/></svg>
+      <h1 class="display" id="hero-title">Immaginario impossibile, <em>reso reale.</em></h1>
+      <p class="sub">Studio creativo AI per brand. Immagini e video cinematografici, campagne e visual che prima richiedevano set, troupe e budget da major.</p>
+      <span class="claim">Produzioni impossibili. Budget possibili.</span>
+      <div class="hero-cta">
+        <a class="btn" href="https://instagram.com/avor.iastudio" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+          Scrivici in DM
+        </a>
+        <a class="btn ghost" href="#studio">Scopri lo studio</a>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">Scorri<span></span></div>
+  </section>
+
+  <!-- ░░░ MANIFESTO ░░░ -->
+  <section class="manifesto" id="studio">
+    <div class="wrap">
+      <p class="eyebrow reveal">Lo studio</p>
+      <h2 class="display reveal" style="margin-top:1.2rem">Nessuna di queste scene è mai esistita. <em>Adesso sì.</em></h2>
+      <p class="lead reveal">Avoria è uno studio creativo AI-native. Diamo forma all'immaginario dei brand — scene che prima richiedevano set, troupe e budget da major — con la velocità e i costi resi possibili dall'intelligenza artificiale. Serve una visione. E lo studio giusto per realizzarla.</p>
+    </div>
+  </section>
+
+  <!-- ░░░ SERVIZI ░░░ -->
+  <section class="dark" aria-labelledby="svc-title">
+    <div class="wrap">
+      <div class="svc-head">
+        <p class="eyebrow reveal">Cosa facciamo</p>
+        <h2 class="display reveal" id="svc-title">Un'unica casa, l'immaginario completo del tuo brand.</h2>
+      </div>
+      <div class="svc-list">
+        <div class="svc reveal"><span class="num">01</span><div class="body"><h3>Campagne</h3><p>Campagne visive e UGC ultra-realistiche, costruite per fermare lo scroll e convertire.</p></div></div>
+        <div class="svc reveal"><span class="num">02</span><div class="body"><h3>Film</h3><p>Spot e cortometraggi cinematografici, dallo storyboard al montaggio finale.</p></div></div>
+        <div class="svc reveal"><span class="num">03</span><div class="body"><h3>Visual</h3><p>Immagini editoriali e di prodotto, su misura per l'estetica del tuo brand.</p></div></div>
+        <div class="svc reveal"><span class="num">04</span><div class="body"><h3>Contenuti</h3><p>Flussi di contenuti social ad alto volume, sempre coerenti, sempre on-brand.</p></div></div>
+        <div class="svc reveal"><span class="num">05</span><div class="body"><h3>Siti</h3><p>Siti e landing che mettono in scena il brand — come quello che stai leggendo.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ MODO AVORIA ░░░ -->
+  <section class="modo light-soft" aria-labelledby="modo-title">
+    <div class="wrap">
+      <p class="eyebrow reveal">Il modo Avoria</p>
+      <h2 class="display reveal" id="modo-title" style="margin-top:1.2rem">Stessa visione. Tempi e budget di un'altra epoca.</h2>
+      <div class="stats">
+        <div class="stat reveal"><div class="n"><small>~</small>72h</div><div class="k">Dalla visione alla consegna. Non settimane.</div></div>
+        <div class="stat reveal"><div class="n"><small>~</small>4×</div><div class="k">Più accessibile di una produzione tradizionale.</div></div>
+        <div class="stat reveal"><div class="n">5–10×</div><div class="k">Volume di contenuti, a parità di budget.</div></div>
+      </div>
+      <p class="closing reveal">La spesa va nella tecnologia, non nella troupe. Il risultato resta cinema.</p>
+    </div>
+  </section>
+
+  <!-- ░░░ MONDI / VISUAL ░░░ -->
+  <section class="mondi dark" aria-labelledby="mondi-title">
+    <div class="wrap">
+      <p class="eyebrow reveal">Mondi impossibili</p>
+      <h2 class="display reveal" id="mondi-title" style="margin-top:1.2rem">Ogni scena è costruita, non trovata.</h2>
+      <div class="frames">
+        <figure class="frame reveal"><img class="frame-img" src="assets/soglia.jpg" alt="Una soglia in travertino attraversata da un raggio di luce dorata" loading="lazy" width="1080" height="1350"/><span class="scrim"></span><figcaption class="cap">Soglia</figcaption></figure>
+        <figure class="frame reveal"><img class="frame-img" src="assets/dune.jpg" alt="Donna in abito avorio in un palazzo italiano invaso da un'onda di sabbia dorata" loading="lazy" width="1080" height="1350"/><span class="scrim"></span><figcaption class="cap">Dune</figcaption></figure>
+        <figure class="frame reveal"><img class="frame-img" src="assets/oro.jpg" alt="Donna in abito avorio sotto un fiore monumentale in oro, in una galleria di travertino" loading="lazy" width="1080" height="1350"/><span class="scrim"></span><figcaption class="cap">Oro</figcaption></figure>
+        <figure class="frame reveal"><img class="frame-img" src="assets/cielo.jpg" alt="Donna in abito avorio seduta su una poltrona sospesa tra le nuvole al tramonto" loading="lazy" width="1080" height="1350"/><span class="scrim"></span><figcaption class="cap">Cielo</figcaption></figure>
+      </div>
+      <p class="note reveal">Immagini e video generati su misura per ogni brand — coerenti, cinematografici, irripetibili.</p>
+    </div>
+  </section>
+
+  <!-- ░░░ IDENTITÀ / ARCO ░░░ -->
+  <section class="identita" aria-labelledby="id-title">
+    <div class="wrap">
+      <p class="eyebrow reveal" style="justify-content:center">L'identità</p>
+      <svg class="arco-big reveal" viewBox="0 0 100 120" aria-hidden="true" style="margin-top:1.6rem"><use href="#arco"/></svg>
+      <p class="lines display reveal" id="id-title">La A è una soglia. La barra d'oro è la linea dove <em>l'impossibile incontra il reale.</em></p>
+      <p class="ia reveal">avor<span class="gold">·</span>ia — l'<b>intelligenza artificiale</b>, nascosta nel nome.</p>
+      <div class="swatches reveal" aria-hidden="true">
+        <div class="sw"><i style="background:#F4ECDE"></i>Avorio</div>
+        <div class="sw"><i style="background:#1C1813"></i>Inchiostro</div>
+        <div class="sw"><i style="background:#B8935E"></i>Oro antico</div>
+        <div class="sw"><i style="background:#C9BCA8"></i>Tortora</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ FAQ ░░░ -->
+  <section class="faq light-soft" aria-labelledby="faq-title">
+    <div class="wrap">
+      <h2 class="display" id="faq-title">Domande frequenti</h2>
+      <div class="qa">
+        <details open>
+          <summary>Cosa fa Avoria Studio?<span class="plus" aria-hidden="true"></span></summary>
+          <p class="ans">Avoria è uno studio creativo AI-native per brand e aziende. Produciamo immagini e video cinematografici, campagne, contenuti social e siti, dando forma a un immaginario che prima richiedeva set, troupe e budget da major.</p>
+        </details>
+        <details>
+          <summary>Per chi lavorate?<span class="plus" aria-hidden="true"></span></summary>
+          <p class="ans">Per brand e aziende che vogliono dare forma alla propria visione con una qualità cinematografica, senza i tempi e i costi di una produzione tradizionale. Lavoriamo in registro lusso, ma ci adattiamo all'estetica di ogni cliente.</p>
+        </details>
+        <details>
+          <summary>Quanto tempo serve per un progetto?<span class="plus" aria-hidden="true"></span></summary>
+          <p class="ans">Molti deliverable arrivano in circa 72 ore, contro le settimane di una produzione classica. I tempi esatti dipendono dalla complessità: te li confermiamo prima di iniziare.</p>
+        </details>
+        <details>
+          <summary>Quanto costa?<span class="plus" aria-hidden="true"></span></summary>
+          <p class="ans">Ogni progetto è su misura. In media Avoria è circa 4× più accessibile di una produzione tradizionale, perché la spesa va nella tecnologia e non nella troupe. Scrivici la tua idea e ti diamo un preventivo chiaro.</p>
+        </details>
+        <details>
+          <summary>Come iniziamo a lavorare insieme?<span class="plus" aria-hidden="true"></span></summary>
+          <p class="ans">Scrivici in DM su Instagram <b>@avor.iastudio</b> o via email con una riga sul tuo brand e sull'immagine che hai in mente. Ti rispondiamo con una prima proposta visiva.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ CONTATTO ░░░ -->
+  <section class="cta-final dark" aria-labelledby="cta-title">
+    <div class="wrap">
+      <p class="eyebrow reveal" style="justify-content:center">Parliamo</p>
+      <h2 class="display reveal" id="cta-title" style="margin-top:1.2rem">Hai una visione per il tuo brand? <em>Diamole una scena.</em></h2>
+      <p class="reveal">I brand che vogliono dare forma alla propria visione ci scrivono in DM.</p>
+      <div class="actions reveal">
+        <a class="btn" href="https://instagram.com/avor.iastudio" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
+          Scrivici in DM
+        </a>
+        <!-- EDIT-ME: sostituisci l'email con quella reale di Avoria -->
+        <a class="btn ghost" href="mailto:avoriastudio@outlook.it?subject=Progetto%20con%20Avoria%20Studio">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          Scrivici un'email
+        </a>
+      </div>
+      <p class="handle reveal"><b>@avor<span class="dot">·</span>iastudio</b></p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ░░░ FOOTER ░░░ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="fbrand">
+      <svg aria-hidden="true"><use href="#arco"/></svg>
+      <span class="wordmark">AVORIA</span>
+    </div>
+    <p class="fclaim">Produzioni impossibili. Budget possibili.</p>
+    <nav class="flinks" aria-label="Contatti">
+      <a href="https://instagram.com/avor.iastudio" target="_blank" rel="noopener">Instagram</a>
+      <!-- EDIT-ME: email reale -->
+      <a href="mailto:avoriastudio@outlook.it">Email</a>
+    </nav>
+    <p class="meta">© 2026 Avoria Studio · Studio creativo AI per brand · Italia · avor<span class="dot">·</span>IA</p>
+  </div>
+</footer>
+
+<!-- ░░░ Structured data (GEO/AEO — citabilità sui motori AI) ░░░ -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Avoria Studio",
+  "alternateName":"Avoria · AI Creative Studio",
+  "description":"Studio creativo AI-native per brand: immagini e video cinematografici, campagne, visual, contenuti e siti. Immaginario impossibile, reso reale.",
+  "url":"https://simoneferriol01.github.io/avoria-studio/",
+  "slogan":"Produzioni impossibili. Budget possibili.",
+  "sameAs":["https://instagram.com/avor.iastudio"],
+  "areaServed":"Worldwide",
+  "knowsAbout":["AI creative production","Cinematic content","Brand campaigns","Visual content","Generative video"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"Cosa fa Avoria Studio?","acceptedAnswer":{"@type":"Answer","text":"Avoria è uno studio creativo AI-native per brand e aziende. Produce immagini e video cinematografici, campagne, contenuti social e siti, dando forma a un immaginario che prima richiedeva set, troupe e budget da major."}},
+    {"@type":"Question","name":"Per chi lavora Avoria Studio?","acceptedAnswer":{"@type":"Answer","text":"Per brand e aziende che vogliono una qualità cinematografica senza i tempi e i costi di una produzione tradizionale. Lavora in registro lusso ma si adatta all'estetica di ogni cliente."}},
+    {"@type":"Question","name":"Quanto tempo serve per un progetto con Avoria?","acceptedAnswer":{"@type":"Answer","text":"Molti deliverable arrivano in circa 72 ore, contro le settimane di una produzione classica; i tempi esatti dipendono dalla complessità."}},
+    {"@type":"Question","name":"Quanto costa lavorare con Avoria Studio?","acceptedAnswer":{"@type":"Answer","text":"Ogni progetto è su misura. In media Avoria è circa 4× più accessibile di una produzione tradizionale, perché la spesa va nella tecnologia e non nella troupe."}},
+    {"@type":"Question","name":"Come si inizia a lavorare con Avoria Studio?","acceptedAnswer":{"@type":"Answer","text":"Scrivendo in DM su Instagram @avor.iastudio o via email, con una riga sul brand e sull'immagine desiderata. Avoria risponde con una prima proposta visiva."}}
+  ]
+}
+</script>
+
+<!-- ░░░ JS: reveal + sticky header (progressive enhancement) ░░░ -->
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // sticky header state
+  var bar = document.getElementById('topbar'), ticking = false;
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        bar.classList.toggle('scrolled', window.scrollY > 40);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // scroll reveal (solo se motion consentito)
+  if(!reduce && 'IntersectionObserver' in window){
+    document.documentElement.classList.add('js');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:0.16, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
