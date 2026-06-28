@@ -4,7 +4,7 @@ Sito a pagina singola, statico, per la bio Instagram **@avor.iastudio**.
 Tema 100% on-brand: palette, font Playfair/Inter, logo "Arco", golden hour, grana 35mm.
 
 ## 🌐 LIVE
-**https://simoneferriol01.github.io/avoria-studio/** — pubblicato con **GitHub Pages** da questo repo.
+**https://avoriastudio.github.io/** — pubblicato con **GitHub Pages** da questo repo.
 Da incollare in: Instagram → Modifica profilo → **Sito web / Link**.
 
 ## Contenuto
