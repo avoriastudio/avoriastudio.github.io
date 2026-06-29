@@ -153,6 +153,16 @@ section{ padding-block:clamp(4.5rem,11vw,8.5rem); position:relative; }
 .btn.ghost-dark:hover{ --bd:var(--oro); color:#8a6a3f; }
 .topbar .btn{ min-height:40px; padding:.5rem 1.15rem; font-size:.85rem; }
 
+/* link "Listino" nell'header + nelle FAQ */
+.nav-actions{ display:flex; align-items:center; gap:1.1rem; }
+.navlink{ color:var(--avorio); font-size:.85rem; letter-spacing:.06em; font-weight:500; position:relative; padding:.3rem .1rem; transition:color .2s var(--ease); }
+.navlink::after{ content:""; position:absolute; left:0; right:100%; bottom:.05rem; height:1px; background:var(--oro); transition:right .25s var(--ease); }
+.navlink:hover{ color:var(--oro-chiaro); }
+.navlink:hover::after{ right:0; }
+@media (max-width:380px){ .navlink{ display:none; } }
+.ans-link{ display:inline-block; margin-top:.6rem; color:#8a6a3f; font-weight:500; border-bottom:1px solid var(--oro); padding-bottom:1px; }
+.ans-link:hover{ color:var(--oro); }
+
 /* focus visibile (accessibilità) */
 a:focus-visible,.btn:focus-visible,button:focus-visible{
   outline:2px solid var(--oro); outline-offset:3px; border-radius:999px;
@@ -361,9 +371,12 @@ a:focus-visible,.btn:focus-visible,button:focus-visible{
     <svg aria-hidden="true"><use href="#arco"/></svg>
     <span class="wordmark">AVOR<span class="dot">·</span>IA</span>
   </a>
-  <a class="btn" href="https://instagram.com/avor.iastudio" target="_blank" rel="noopener" aria-label="Scrivici in DM su Instagram">
-    Scrivici in DM
-  </a>
+  <div class="nav-actions">
+    <a class="navlink" href="/listino/">Listino</a>
+    <a class="btn" href="https://instagram.com/avor.iastudio" target="_blank" rel="noopener" aria-label="Scrivici in DM su Instagram">
+      Scrivici in DM
+    </a>
+  </div>
 </header>
 
 <main id="top">
@@ -476,7 +489,7 @@ a:focus-visible,.btn:focus-visible,button:focus-visible{
         </details>
         <details>
           <summary>Quanto costa?<span class="plus" aria-hidden="true"></span></summary>
-          <p class="ans">Ogni progetto è su misura. In media Avoria è circa 4× più accessibile di una produzione tradizionale, perché la spesa va nella tecnologia e non nella troupe. Scrivici la tua idea e ti diamo un preventivo chiaro.</p>
+          <p class="ans">Ogni progetto è su misura, ma i prezzi sono trasparenti. Abbiamo piani mensili a partire da €290 e progetti singoli — e in media Avoria è circa 4× più accessibile di una produzione tradizionale, perché la spesa va nella tecnologia e non nella troupe.<br><a class="ans-link" href="/listino/">Guarda il listino completo →</a></p>
         </details>
         <details>
           <summary>Come iniziamo a lavorare insieme?<span class="plus" aria-hidden="true"></span></summary>
@@ -517,9 +530,9 @@ a:focus-visible,.btn:focus-visible,button:focus-visible{
       <span class="wordmark">AVORIA</span>
     </div>
     <p class="fclaim">Produzioni impossibili. Budget possibili.</p>
-    <nav class="flinks" aria-label="Contatti">
+    <nav class="flinks" aria-label="Link e contatti">
       <a href="https://instagram.com/avor.iastudio" target="_blank" rel="noopener">Instagram</a>
-      <!-- EDIT-ME: email reale -->
+      <a href="/listino/">Listino</a>
       <a href="mailto:avoriastudio@outlook.it">Email</a>
     </nav>
     <p class="meta">© 2026 Avoria Studio · Studio creativo AI per brand · Italia · avor<span class="dot">·</span>IA</p>
