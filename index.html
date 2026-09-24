@@ -1,609 +1,2619 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-<!--
-  ════════════════════════════════════════════════════════════════
-  AVORIA STUDIO — sito vetrina / link-in-bio
-  Studio creativo AI-native B2B · "Produzioni impossibili. Budget possibili."
-  Single file, statico, deployabile su Netlify / Vercel / GitHub Pages.
-
-  ▶ DA MODIFICARE PRIMA DI PUBBLICARE (cerca "EDIT-ME"):
-     1. Indirizzo email di contatto
-     2. (opzionale) numero WhatsApp
-     3. Dominio reale in <link rel="canonical"> e og:url
-     4. (opzionale) immagini reali: vedi cartella /assets e i blocchi ".frame"
-  ════════════════════════════════════════════════════════════════
--->
-
-<title>Avoria Studio — Studio creativo AI per brand</title>
-<meta name="description" content="Avoria è uno studio creativo AI-native per brand: immagini e video cinematografici, campagne, visual, contenuti e siti. Immaginario impossibile, reso reale. Produzioni impossibili, budget possibili." />
-<meta name="theme-color" content="#1C1813" />
-<meta name="author" content="Avoria Studio" />
-<link rel="canonical" href="https://avoriastudio.github.io/" /> <!-- EDIT-ME: dominio reale -->
-
-<!-- Open Graph / social preview -->
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="Avoria Studio" />
-<meta property="og:title" content="Avoria Studio — Immaginario impossibile, reso reale" />
-<meta property="og:description" content="Studio creativo AI per brand: immagini e video cinematografici, campagne, visual, contenuti e siti. Produzioni impossibili. Budget possibili." />
-<meta property="og:url" content="https://avoriastudio.github.io/" /> <!-- EDIT-ME -->
-<meta property="og:image" content="assets/og.jpg" /> <!-- EDIT-ME: 1200×630, vedi README -->
-<meta property="og:locale" content="it_IT" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Avoria Studio — Immaginario impossibile, reso reale" />
-<meta name="twitter:description" content="Studio creativo AI per brand. Produzioni impossibili. Budget possibili." />
-<meta name="twitter:image" content="assets/og.jpg" />
-
-<!-- Favicon: marchio Arco in SVG -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- FILE: src/home.html — la home del sito (blocco 5B): i cinque bisogni del listino 2.1, i tre reel che avanzano con lo scroll, il caso Aura -->
+<title>Avoria Studio · Foto, video e social per il tuo negozio</title>
+<meta name="description" content="Ci mandi due foto dal telefono: ti tornano scatti e video pronti per il negozio e i social. Se vuoi li pubblichiamo noi, e quando dormi ai clienti risponde l'AI.">
+<link rel="canonical" href="https://avoriastudio.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Avoria Studio · Foto, video e social per il tuo negozio. Fatti con l'AI.">
+<meta property="og:description" content="Ci mandi due foto dal telefono: ti tornano scatti e video pronti per il negozio e i social. Se vuoi li pubblichiamo noi, e quando dormi ai clienti risponde l'AI.">
+<meta property="og:url" content="https://avoriastudio.github.io/">
+<meta property="og:image" content="https://avoriastudio.github.io/assets/og-avoria-2.jpg">
+<meta property="og:locale" content="it_IT">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='40 30 160 200'%3E%3Crect x='40' y='30' width='160' height='200' fill='%231C1813'/%3E%3Cg fill='none' stroke='%23F4ECDE' stroke-width='15' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M60 210 L108 60'/%3E%3Cpath d='M180 210 L132 60'/%3E%3Cpath d='M108 60 Q120 46 132 60'/%3E%3C/g%3E%3Cline x1='84' y1='140' x2='156' y2='140' stroke='%23B8935E' stroke-width='13' stroke-linecap='round'/%3E%3C/svg%3E" />
-
-<!-- Fonts: Playfair Display (display, Didone) + Inter (testo) -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-<style>
-/* ══════════════════ TOKEN BRAND AVORIA ══════════════════ */
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,600;1,500&display=swap">
+<style>/* FILE: src/tokens.css — i due stati dell'identità Avoria 2.0 */
 :root{
-  --avorio:      #F4ECDE;
-  --avorio-soft: #EAE0CE;   /* alternanza chiara */
-  --inchiostro:  #1C1813;
-  --inchiostro-2:#211C16;   /* superfici scure */
-  --oro:         #B8935E;
-  --oro-chiaro:  #CBA877;   /* oro per testo su scuro */
-  --tortora:     #C9BCA8;
-
-  /* testi */
-  --t-su-chiaro:    #1C1813;
-  --t-su-chiaro-2:  #5A5044;  /* secondario, AA su avorio */
-  --t-su-scuro:     #F4ECDE;
-  --t-su-scuro-2:   #C9BCA8;  /* secondario su scuro */
-
-  /* linee */
-  --linea-scura:  rgba(28,24,19,0.16);
-  --linea-chiara: rgba(244,236,222,0.16);
-
-  --misura: 64rem;          /* max larghezza contenuto */
-  --gutter: clamp(1.4rem, 5vw, 3rem);
-
-  --ease: cubic-bezier(.22,.61,.36,1);
+  --avorio:#F2EEE6; --posa:#FBFAF7; --inchiostro:#16140F; --grafite:#5E5A52;
+  --nero:#07080A; --avorio-luce:#F4ECDE; --acciaio:#8A94A3; --filo-notte:#1E2229;
+  --oro:#B8935E; --oro-scuro:#8F6F3E;
+  --f-titolo:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-firma:"Playfair Display",Georgia,"Times New Roman",serif;
+  --f-dati:"Geist Mono",ui-monospace,"SFMono-Regular",Consolas,monospace;
+  --passo:8px; --raggio:14px;
+  --ease-giorno:cubic-bezier(.65,0,.35,1);
+  --ease-notte:cubic-bezier(.8,0,.1,1);
 }
+.giorno{ --fondo:var(--avorio); --testo:var(--inchiostro); --secondario:var(--grafite); --filo:#DDD5C7; background:var(--fondo); color:var(--testo); }
+.notte { --fondo:var(--nero);   --testo:var(--avorio-luce); --secondario:var(--acciaio); --filo:var(--filo-notte); background:var(--fondo); color:var(--testo); }
+.firma{ font-family:var(--f-firma); font-style:italic; font-weight:500; letter-spacing:-.01em; }
+.dati { font-family:var(--f-dati); letter-spacing:.08em; text-transform:uppercase; }
+.largo{ font-family:var(--f-titolo); font-variation-settings:"wdth" 125; }
+.stretto{ font-family:var(--f-titolo); font-variation-settings:"wdth" 62; }
+@media (prefers-reduced-motion: reduce){ *,*::before,*::after{ animation:none!important; transition:none!important; } }
+</style>
+<style>/* FILE: src/voce.css — tabellone e parole che respirano */
+.solari{display:grid;grid-template-columns:repeat(var(--celle),minmax(0,1fr));gap:3px;padding:6px;border-radius:6px;
+  font-family:var(--f-dati);font-weight:500;background:var(--solari-telaio);
+  font-size:var(--solari-corpo,clamp(12px,1.7vw,22px));max-width:calc(var(--celle) * 1.9em + 12px)}
+.solari span{display:block;text-align:center;line-height:1.7;border-radius:2px;position:relative;overflow:hidden;
+  background:var(--solari-cella);color:var(--solari-testo);font-size:1em}
+.solari span::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--solari-telaio)}
+.solari span.gira{transform:scaleY(.82)}
+.giorno .solari,.solari{--solari-telaio:#D9D1C2;--solari-cella:#FBF9F4;--solari-testo:#16140F}
+.notte .solari{--solari-telaio:#15171c;--solari-cella:#0d0f13;--solari-testo:#F4ECDE}
+[data-respiro]{font-family:var(--f-titolo);font-variation-settings:"wdth" 62;font-weight:820;line-height:.92;
+  letter-spacing:-.01em;white-space:nowrap}
+</style>
+<style>/* FILE: src/soglia.css — il palco a due strati */
+[data-soglia]{position:relative;overflow:hidden;isolation:isolate}
+/* ogni strato è un contesto di sovrapposizione: uno z-index dentro il giorno non deve scavalcare la notte */
+[data-soglia] > .strato{position:absolute;inset:0;z-index:0}
+[data-soglia] > .strato-notte{visibility:hidden;z-index:1}
+</style>
+<style>/* FILE: src/scene/scene-giorno.css — scene della linea Immagine */
+.scena{position:relative;overflow:hidden;border-radius:var(--raggio);min-height:340px}
+.scena > svg{position:absolute;inset:0;margin:auto;width:28%;height:auto}
+.ha-3d > svg{display:none}
+.scena-hud{position:absolute;left:16px;right:16px;bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:.72rem;color:var(--grafite)}
+.scena-hud .pallini{display:flex;gap:6px}
+.scena-hud .pallini i{width:18px;height:2px;background:#cfc7b8;display:block}
+.scena-hud .pallini i.attivo{background:var(--oro)}
+.catalogo{background:#F7F4EE}
+.catalogo .tessera{position:absolute;left:0;top:0;border-radius:6px;overflow:hidden;transform-origin:center;box-shadow:0 1px 0 rgba(22,20,15,.06)}
+.catalogo .sorgente{background:linear-gradient(180deg,#e9e6e0,#d9d5cd);z-index:2}
+.catalogo .prod{position:absolute;inset:14% 22% 16%;display:block}
+.catalogo .prod svg{width:100%;height:100%;display:block}
+.catalogo .prod-a{opacity:calc(1 - var(--cambio, 0))}
+.catalogo .prod-b{opacity:var(--cambio, 0)}
+.catalogo .nome{position:absolute;left:6px;right:6px;bottom:5px;font-size:.58rem;color:#5E5A52;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.catalogo .scura .nome{color:#C9C2B4}
+.catalogo-riga{position:absolute;left:0;right:0;top:14px;text-align:center;font-size:.7rem;color:var(--grafite)}
+</style>
+<style>/* FILE: src/scene/scene-notte.css — scene della linea Sistemi */
+.notte .pannello{border:1px solid var(--filo-notte);border-radius:10px;padding:14px 16px;background:rgba(244,236,222,.02)}
+.notte .etichetta{display:block;font-size:.62rem;color:var(--acciaio);margin-bottom:8px}
+.contenitore-scena{container:scena / inline-size}
+.auto,.assist,.gest{display:grid;gap:14px;padding:clamp(16px,3vw,28px);align-content:center;min-height:340px;font-family:var(--f-titolo)}
+.gest table{color:inherit;font:inherit}
 
-/* ══════════════════ RESET ══════════════════ */
-*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
-html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
-@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
-img{ display:block; max-width:100%; height:auto; }
-a{ color:inherit; text-decoration:none; }
-::selection{ background:var(--oro); color:var(--inchiostro); }
+.auto{grid-template-columns:1fr 64px 1.2fr;align-items:center}
+.auto .bolla{margin:0;min-height:3.2em;background:#161a20;border-radius:12px 12px 12px 2px;padding:10px 12px;font-size:.95rem}
+.auto-filo{width:100%;height:10px;overflow:visible}
+.auto-filo path{stroke:var(--oro);stroke-width:2;fill:none;stroke-dasharray:1;stroke-dashoffset:1;vector-effect:non-scaling-stroke}
+.auto dl{margin:0;display:grid;gap:6px}
+.auto .riga{display:grid;grid-template-columns:7.5em 1fr;gap:10px;opacity:.12;font-size:.9rem}
+.auto .riga.vista{opacity:1}
+.auto dt{color:var(--acciaio)}
+.auto dd{margin:0;min-height:1.3em}
+.auto-stato{grid-column:1 / -1;list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.7rem}
+.auto-stato li{opacity:.15;color:var(--acciaio)}
+.auto-stato li::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;border:1px solid currentColor;margin-right:8px;vertical-align:-1px}
+.auto-stato li.vista{opacity:1;color:var(--avorio-luce)}
+.auto-stato li.vista::before{background:var(--oro);border-color:var(--oro)}
+@container scena (max-width: 720px){.auto{grid-template-columns:minmax(0,1fr)}.auto-filo{display:none}}
 
-body{
-  font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
-  font-weight:400;
-  background:var(--avorio);
-  color:var(--t-su-chiaro);
-  line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-  overflow-x:hidden;
-}
+.assist{grid-template-columns:1fr 1fr;align-items:start}
+.assist .campo{margin:0;min-height:1.4em;font-size:1rem;border-bottom:1px solid var(--filo-notte);padding-bottom:6px}
+.assist-docs{display:grid;gap:8px;grid-row:span 2}
+.assist .doc{border:1px solid var(--filo-notte);border-radius:8px;padding:12px;font-size:.72rem;color:var(--acciaio)}
+.assist .doc.letto{border-color:var(--acciaio);color:var(--avorio-luce)}
+.assist .doc.scelto{border-color:var(--oro);color:var(--avorio-luce)}
+.assist .testo{margin:0;min-height:4.2em;font-size:.98rem;line-height:1.5}
+.assist .fonte{display:inline-block;margin-top:10px;font-size:.62rem;color:var(--oro);border:1px solid var(--oro);border-radius:999px;padding:3px 10px;opacity:0}
+.assist .fonte.vista{opacity:1}
+@container scena (max-width: 720px){.assist{grid-template-columns:minmax(0,1fr)}.assist-docs{grid-row:auto}}
 
-/* ══════════════════ GRANA 35mm (overlay globale) ══════════════════ */
-.grain{
-  position:fixed; inset:0; z-index:60; pointer-events:none;
-  opacity:.05; mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+.gest{grid-template-columns:1.3fr 1fr;align-items:start}
+.gest table{width:100%;border-collapse:collapse;font-size:.86rem}
+.gest td{padding:7px 4px;border-bottom:1px solid var(--filo-notte)}
+.gest tr{opacity:.08}
+.gest tr.vista{opacity:1}
+.gest .stato{color:var(--acciaio);font-size:.62rem;text-align:right}
+.gest .scorta{display:grid;grid-template-columns:8.5em 1fr;align-items:center;gap:10px;font-size:.84rem;margin-bottom:9px}
+.gest .scorta i{display:block;height:6px;background:#161a20;border-radius:3px;overflow:hidden}
+.gest .scorta b{display:block;height:100%;background:var(--acciaio);transform-origin:left;transform:scaleX(0)}
+.gest .scorta.bassa b{background:var(--oro)}
+.gest .avviso,.gest .bottone{margin:10px 0 0;font-size:.66rem;opacity:0}
+.gest .avviso{color:var(--oro)}
+.gest .bottone{display:inline-block;border:1px solid var(--avorio-luce);border-radius:999px;padding:6px 12px}
+.gest .avviso.vista,.gest .bottone.vista{opacity:1}
+.gest .bottone.premuto{background:var(--avorio-luce);color:var(--nero)}
+@container scena (max-width: 720px){.gest{grid-template-columns:minmax(0,1fr)}}
+</style>
+<style>/* FILE: src/regia.css — il film da scroll: binari, palchi agganciati, entrate, indice dei capitoli */
 
-/* ══════════════════ TIPOGRAFIA ══════════════════ */
-.display{ font-family:'Playfair Display',Georgia,serif; font-weight:500; line-height:1.04; letter-spacing:-.01em; }
-.eyebrow{
-  font-size:.72rem; font-weight:500; letter-spacing:.28em; text-transform:uppercase;
-  color:var(--oro); display:inline-flex; align-items:center; gap:.7em;
-}
-.eyebrow::before{ content:""; width:1.8rem; height:1px; background:var(--oro); opacity:.7; }
-.lead{ font-size:clamp(1.05rem,1.4vw,1.2rem); color:var(--t-su-chiaro-2); max-width:52ch; }
+/* un binario è alto --binario schermi; il suo palco resta agganciato sotto la barra.
+   Nessun antenato di un palco può avere overflow: romperebbe lo sticky. */
+.film [data-binario].fermo{height:calc(var(--binario,200) * 1vh);height:calc(var(--binario,200) * 1svh)}
+.film [data-binario].fermo > .palco{position:sticky;top:var(--alto-nav,0px);display:flex;flex-direction:column;overflow:hidden;
+  height:calc(100vh - var(--alto-nav,0px));height:calc(100svh - var(--alto-nav,0px))}
+.film [data-binario].fermo > .palco > .quadro{flex:1 0 auto}
 
-/* ══════════════════ LAYOUT ══════════════════ */
-section{ padding-block:clamp(4.5rem,11vw,8.5rem); position:relative; }
-.wrap{ width:100%; max-width:var(--misura); margin-inline:auto; padding-inline:var(--gutter); }
-.dark{ background:var(--inchiostro); color:var(--t-su-scuro); }
-.dark .lead{ color:var(--t-su-scuro-2); }
-.light-soft{ background:var(--avorio-soft); }
+/* entrate: senza regista --e non esiste e il blocco resta pieno */
+.film [data-svela]{opacity:calc(.28 + .72 * var(--e,1));transform:translate3d(0,calc((1 - var(--e,1)) * 36px),0)}
 
-/* ══════════════════ HEADER (sticky minimale) ══════════════════ */
-.topbar{
-  position:fixed; top:0; left:0; right:0; z-index:50;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:1rem var(--gutter);
-  transition:background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease);
-  border-bottom:1px solid transparent;
-}
-.topbar.scrolled{
-  background:rgba(28,24,19,.82);
-  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
-  border-bottom-color:var(--linea-chiara);
-  padding-block:.7rem;
-}
-.brand{ display:flex; align-items:center; gap:.6rem; color:var(--avorio); }
-.brand svg{ width:21px; height:26px; } /* 160:200 dell'Arco canonico */
-.brand .wordmark{ font-family:'Playfair Display',serif; font-weight:600; font-size:1.15rem; letter-spacing:.18em; }
-.brand .dot{ color:var(--oro); }
+/* indice: tacche a destra; i nomi compaiono passando sopra, e per un attimo quando cambia capitolo */
+.indice{position:fixed;right:clamp(4px,1vw,16px);top:50%;transform:translateY(-50%);z-index:30;pointer-events:none;
+  --tacca:#5E5A52;--nome:#16140F;--nome-fondo:rgba(251,250,247,.95);--nome-filo:#DDD5C7}
+.indice[data-tono="notte"]{--tacca:#8A94A3;--nome:#F4ECDE;--nome-fondo:rgba(13,15,19,.92);--nome-filo:#262b33}
+.indice ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.indice button{pointer-events:none;display:flex;align-items:center;justify-content:flex-end;gap:6px;width:100%;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer}
+.indice .tacca{pointer-events:auto;position:relative;display:block;width:36px;height:20px}
+.indice .tacca::before{content:"";position:absolute;right:0;top:9px;width:12px;height:2px;border-radius:1px;background:var(--tacca);opacity:.6;
+  transition:width .3s var(--ease-giorno),opacity .3s,background-color .3s}
+.indice .nome{font-family:var(--f-dati);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;color:var(--nome);
+  background:var(--nome-fondo);border:1px solid var(--nome-filo);border-radius:999px;padding:3px 9px;opacity:0;transform:translateX(6px);
+  transition:opacity .2s,transform .2s,color .3s,background-color .3s;pointer-events:none}
+.indice button:hover .tacca::before{opacity:1;width:20px}
+.indice:hover .nome,.indice:focus-within .nome{opacity:1;transform:none;pointer-events:auto}
+.indice button[aria-current="step"] .tacca::before{width:30px;background:var(--oro);opacity:1}
+.indice button.annuncia .nome{opacity:1;transform:none}
+.indice button:focus-visible{outline:none}
+.indice button:focus-visible .nome{outline:2px solid var(--oro);outline-offset:2px}
 
-/* ══════════════════ BOTTONI ══════════════════ */
-.btn{
-  --bg:var(--avorio); --fg:var(--inchiostro); --bd:var(--avorio);
-  display:inline-flex; align-items:center; justify-content:center; gap:.55em;
-  min-height:48px; padding:.85rem 1.6rem;
-  font-family:'Inter',sans-serif; font-size:.95rem; font-weight:500; letter-spacing:.02em;
-  background:var(--bg); color:var(--fg); border:1px solid var(--bd); border-radius:999px;
-  cursor:pointer; transition:transform .2s var(--ease), background .25s var(--ease), color .25s var(--ease), box-shadow .25s var(--ease);
-  white-space:nowrap;
-}
-.btn svg{ width:1.05em; height:1.05em; }
-.btn:hover{ transform:translateY(-2px); box-shadow:0 10px 30px -12px rgba(0,0,0,.5); }
-.btn:active{ transform:translateY(0); }
-.btn.ghost{ --bg:transparent; --fg:var(--avorio); --bd:var(--linea-chiara); }
-.btn.ghost:hover{ --bd:var(--oro); color:var(--oro-chiaro); }
-.btn.dark-fill{ --bg:var(--inchiostro); --fg:var(--avorio); --bd:var(--inchiostro); }
-.btn.ghost-dark{ --bg:transparent; --fg:var(--inchiostro); --bd:var(--linea-scura); }
-.btn.ghost-dark:hover{ --bd:var(--oro); color:#8a6a3f; }
-.topbar .btn{ min-height:40px; padding:.5rem 1.15rem; font-size:.85rem; }
-
-/* link "Listino" nell'header + nelle FAQ */
-.nav-actions{ display:flex; align-items:center; gap:1.1rem; }
-.navlink{ color:var(--avorio); font-size:.85rem; letter-spacing:.06em; font-weight:500; position:relative; padding:.3rem .1rem; transition:color .2s var(--ease); }
-.navlink::after{ content:""; position:absolute; left:0; right:100%; bottom:.05rem; height:1px; background:var(--oro); transition:right .25s var(--ease); }
-.navlink:hover{ color:var(--oro-chiaro); }
-.navlink:hover::after{ right:0; }
-@media (max-width:380px){ .navlink{ display:none; } }
-.ans-link{ display:inline-block; margin-top:.6rem; color:#8a6a3f; font-weight:500; border-bottom:1px solid var(--oro); padding-bottom:1px; }
-.ans-link:hover{ color:var(--oro); }
-
-/* focus visibile (accessibilità) */
-a:focus-visible,.btn:focus-visible,button:focus-visible{
-  outline:2px solid var(--oro); outline-offset:3px; border-radius:999px;
-}
-
-/* ══════════════════ HERO ══════════════════ */
-.hero{
-  min-height:100svh; display:flex; align-items:center;
-  background:var(--inchiostro); color:var(--avorio);
-  position:relative; overflow:hidden; padding-top:6rem;
-}
-/* bagliore golden hour dietro l'arco */
-.hero::before{
-  content:""; position:absolute; z-index:0;
-  width:120vw; height:120vw; max-width:1100px; max-height:1100px;
-  top:50%; left:50%; transform:translate(-50%,-58%);
-  background:radial-gradient(circle at 50% 50%, rgba(184,147,94,.42) 0%, rgba(184,147,94,.12) 34%, transparent 64%);
-  filter:blur(8px);
-  animation:breathe 9s var(--ease) infinite alternate;
-}
-@keyframes breathe{ from{ opacity:.75; } to{ opacity:1; } }
-@media (prefers-reduced-motion: reduce){ .hero::before{ animation:none; } }
-
-.hero .wrap{ position:relative; z-index:1; text-align:center; }
-.hero-arco{ width:clamp(64px,11vw,104px); height:auto; margin:0 auto 2rem; display:block; }
-.hero h1{
-  font-size:clamp(2.6rem,8.5vw,5.6rem);
-  max-width:14ch; margin-inline:auto;
-}
-.hero h1 em{ font-style:italic; color:var(--oro-chiaro); }
-.hero .sub{
-  margin:1.6rem auto 0; max-width:48ch;
-  font-size:clamp(1rem,1.6vw,1.18rem); color:var(--t-su-scuro-2); font-weight:300;
-}
-.claim{
-  display:inline-block; margin-top:2.2rem;
-  font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1.05rem,2vw,1.4rem);
-  color:var(--avorio); padding-bottom:.35rem;
-  border-bottom:1px solid var(--oro);
-}
-.hero-cta{ margin-top:2.6rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
-.scroll-hint{
-  position:absolute; bottom:1.8rem; left:50%; transform:translateX(-50%); z-index:1;
-  font-size:.68rem; letter-spacing:.25em; text-transform:uppercase; color:var(--t-su-scuro-2);
-  display:flex; flex-direction:column; align-items:center; gap:.6rem;
-}
-.scroll-hint span{ width:1px; height:2.4rem; background:linear-gradient(var(--oro),transparent); animation:drop 2.4s var(--ease) infinite; }
-@keyframes drop{ 0%{ transform:scaleY(0); transform-origin:top; } 45%{ transform:scaleY(1); transform-origin:top; } 55%{ transform:scaleY(1); transform-origin:bottom; } 100%{ transform:scaleY(0); transform-origin:bottom; } }
-@media (prefers-reduced-motion: reduce){ .scroll-hint span{ animation:none; } }
-
-/* ══════════════════ MANIFESTO ══════════════════ */
-.manifesto h2{ font-size:clamp(1.9rem,5vw,3.4rem); max-width:18ch; }
-.manifesto h2 em{ font-style:italic; color:var(--oro); }
-.manifesto p{ margin-top:1.6rem; }
-
-/* ══════════════════ SERVIZI ══════════════════ */
-.svc-head{ display:flex; flex-direction:column; gap:1.1rem; margin-bottom:3.2rem; }
-.svc-head h2{ font-size:clamp(1.9rem,5vw,3.2rem); max-width:16ch; }
-.svc-list{ border-top:1px solid var(--linea-chiara); }
-.svc{
-  display:grid; grid-template-columns:auto 1fr; gap:1rem 1.4rem; align-items:baseline;
-  padding:1.7rem 0; border-bottom:1px solid var(--linea-chiara);
-  transition:padding-left .4s var(--ease);
-}
-.svc:hover{ padding-left:.6rem; }
-.svc .num{ font-family:'Playfair Display',serif; font-size:1rem; color:var(--oro); font-style:italic; }
-.svc .body h3{ font-family:'Playfair Display',serif; font-weight:500; font-size:clamp(1.4rem,3.2vw,2rem); }
-.svc .body p{ color:var(--t-su-scuro-2); margin-top:.4rem; max-width:46ch; font-size:.98rem; }
-
-/* ══════════════════ MODO AVORIA (stat) ══════════════════ */
-.modo h2{ font-size:clamp(1.9rem,5vw,3.2rem); max-width:16ch; }
-.stats{
-  margin-top:3.4rem; display:grid; gap:1px; background:var(--linea-scura);
-  border:1px solid var(--linea-scura); grid-template-columns:1fr;
-}
-.stat{ background:var(--avorio); padding:2rem clamp(1.4rem,4vw,2.4rem); }
-.light-soft .stat{ background:var(--avorio-soft); }
-.stat .n{ font-family:'Playfair Display',serif; font-size:clamp(2.6rem,7vw,4rem); font-weight:500; line-height:1; font-variant-numeric:tabular-nums; }
-.stat .n small{ font-size:.42em; color:var(--oro); vertical-align:.4em; margin-right:.1em; }
-.stat .k{ margin-top:.7rem; color:var(--t-su-chiaro-2); font-size:.96rem; max-width:30ch; }
-.modo .closing{ margin-top:2.2rem; color:var(--t-su-chiaro-2); font-style:italic; font-family:'Playfair Display',serif; }
-
-/* ══════════════════ MONDI / VISUAL STRIP ══════════════════ */
-.mondi h2{ font-size:clamp(1.9rem,5vw,3rem); max-width:18ch; }
-.frames{ margin-top:3rem; display:grid; gap:1.1rem; grid-template-columns:repeat(2,1fr); }
-.frame{
-  position:relative; aspect-ratio:4/5; border-radius:2px; overflow:hidden;
-  border:1px solid var(--linea-chiara);
-  display:flex; align-items:flex-end; padding:1.1rem;
-}
-/* portale: arco superiore sfumato + tinta golden hour come placeholder.
-   Per sostituire con foto reale: aggiungi <img class="frame-img" src="assets/01.jpg" alt="…"> dentro il .frame */
-.frame::before{
-  content:""; position:absolute; inset:0; z-index:0;
-  background:
-    radial-gradient(120% 80% at 50% 0%, rgba(203,168,119,.5), transparent 60%),
-    linear-gradient(180deg, #2a231b 0%, #1a1611 100%);
-}
-.frame::after{ /* motivo arco */
-  content:""; position:absolute; left:50%; top:14%; width:62%; aspect-ratio:1/1.3; z-index:0;
-  transform:translateX(-50%);
-  border:1px solid rgba(244,236,222,.18); border-bottom:none;
-  border-radius:50% 50% 0 0 / 60% 60% 0 0;
-}
-.frame .cap{ position:relative; z-index:2; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--avorio); text-shadow:0 1px 6px rgba(0,0,0,.55); }
-.frame-img{ position:absolute; inset:0; z-index:0; width:100%; height:100%; object-fit:cover; }
-.frame .scrim{ position:absolute; left:0; right:0; bottom:0; height:50%; z-index:1; background:linear-gradient(transparent, rgba(20,17,13,.72)); pointer-events:none; }
-.frame:has(.frame-img)::before,.frame:has(.frame-img)::after{ display:none; }
-.mondi .note{ margin-top:1.6rem; color:var(--t-su-scuro-2); font-size:.9rem; }
-
-/* ══════════════════ IDENTITÀ / ARCO ══════════════════ */
-.identita{ text-align:center; }
-.identita .arco-big{ width:clamp(72px,12vw,120px); height:auto; margin:0 auto 2.2rem; }
-.identita .lines{ font-family:'Playfair Display',serif; font-size:clamp(1.4rem,3.6vw,2.3rem); line-height:1.3; max-width:20ch; margin-inline:auto; }
-.identita .lines em{ font-style:italic; color:var(--oro); }
-.identita .ia{ margin-top:1.8rem; color:var(--t-su-chiaro-2); letter-spacing:.02em; }
-.identita .ia b{ color:var(--inchiostro); font-weight:500; }
-.identita .ia .gold{ color:var(--oro); }
-/* swatch palette */
-.swatches{ margin-top:2.6rem; display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap; }
-.sw{ display:flex; flex-direction:column; align-items:center; gap:.5rem; font-size:.66rem; letter-spacing:.08em; color:var(--t-su-chiaro-2); }
-.sw i{ width:2.6rem; height:2.6rem; border-radius:50%; border:1px solid var(--linea-scura); }
-
-/* ══════════════════ FAQ ══════════════════ */
-.faq h2{ font-size:clamp(1.7rem,4.5vw,2.6rem); margin-bottom:2.4rem; }
-.qa{ border-top:1px solid var(--linea-scura); }
-.qa details{ border-bottom:1px solid var(--linea-scura); }
-.qa summary{
-  list-style:none; cursor:pointer; padding:1.4rem 0; display:flex; justify-content:space-between; gap:1.5rem; align-items:center;
-  font-family:'Playfair Display',serif; font-size:clamp(1.1rem,2.6vw,1.4rem); font-weight:500;
-}
-.qa summary::-webkit-details-marker{ display:none; }
-.qa summary .plus{ position:relative; width:18px; height:18px; flex:none; transition:transform .3s var(--ease); }
-.qa summary .plus::before,.qa summary .plus::after{ content:""; position:absolute; background:var(--oro); }
-.qa summary .plus::before{ top:8px; left:0; width:18px; height:2px; }
-.qa summary .plus::after{ left:8px; top:0; width:2px; height:18px; transition:transform .3s var(--ease); }
-.qa details[open] summary .plus::after{ transform:scaleY(0); }
-.qa details[open] summary .plus{ transform:rotate(180deg); }
-.qa .ans{ padding:0 0 1.5rem; color:var(--t-su-chiaro-2); max-width:62ch; }
-
-/* ══════════════════ CONTATTO ══════════════════ */
-.cta-final{ text-align:center; position:relative; overflow:hidden; }
-.cta-final::before{
-  content:""; position:absolute; z-index:0; width:90vw; height:90vw; max-width:760px; max-height:760px;
-  bottom:-40%; left:50%; transform:translateX(-50%);
-  background:radial-gradient(circle, rgba(184,147,94,.3), transparent 62%);
-}
-.cta-final .wrap{ position:relative; z-index:1; }
-.cta-final h2{ font-size:clamp(2.1rem,6vw,3.8rem); max-width:16ch; margin-inline:auto; }
-.cta-final h2 em{ font-style:italic; color:var(--oro-chiaro); }
-.cta-final p{ margin:1.5rem auto 0; max-width:42ch; color:var(--t-su-scuro-2); }
-.cta-final .actions{ margin-top:2.4rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
-.cta-final .handle{ margin-top:2rem; font-size:.85rem; letter-spacing:.18em; text-transform:uppercase; color:var(--t-su-scuro-2); }
-.cta-final .handle b{ color:var(--avorio); font-weight:500; }
-.cta-final .handle .dot{ color:var(--oro); }
-
-/* ══════════════════ FOOTER ══════════════════ */
-.foot{ background:#15110d; color:var(--t-su-scuro-2); padding-block:3.4rem; border-top:1px solid var(--linea-chiara); }
-.foot .wrap{ display:flex; flex-direction:column; gap:1.6rem; align-items:center; text-align:center; }
-.foot .fbrand{ display:flex; align-items:center; gap:.6rem; color:var(--avorio); }
-.foot .fbrand svg{ width:19px; height:24px; } /* 160:200 dell'Arco canonico */
-.foot .fbrand .wordmark{ font-family:'Playfair Display',serif; font-weight:600; letter-spacing:.2em; font-size:1.05rem; }
-.foot .fclaim{ font-family:'Playfair Display',serif; font-style:italic; color:var(--tortora); }
-.foot .flinks{ display:flex; gap:1.6rem; flex-wrap:wrap; justify-content:center; font-size:.9rem; }
-.foot .flinks a{ transition:color .2s var(--ease); }
-.foot .flinks a:hover{ color:var(--oro-chiaro); }
-.foot .meta{ font-size:.76rem; letter-spacing:.04em; color:#6b6052; }
-.foot .meta .dot{ color:var(--oro); }
-
-/* ══════════════════ REVEAL (solo con JS + motion ok) ══════════════════ */
-.js .reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
-.js .reveal.in{ opacity:1; transform:none; }
-@media (prefers-reduced-motion: reduce){ .js .reveal{ opacity:1; transform:none; } }
-
-/* ══════════════════ BREAKPOINT ══════════════════ */
-@media (min-width:680px){
-  .stats{ grid-template-columns:repeat(3,1fr); }
-  .frames{ grid-template-columns:repeat(4,1fr); }
-  .svc{ grid-template-columns:auto 1fr; }
-}
-@media (max-width:520px){
-  .brand .wordmark{ font-size:1rem; letter-spacing:.14em; }
-  .hero-cta{ flex-direction:column; align-items:stretch; }
-  .hero-cta .btn{ width:100%; }
+/* telefono: una barra in basso con capitolo, avanti e indietro */
+.indice-corto{display:none}
+@media (max-width:760px){
+  .indice{display:none}
+  .indice-corto{position:fixed;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:30;
+    display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;height:48px;padding:0 2px;border-radius:999px;overflow:hidden;
+    background:rgba(251,250,247,.93);color:#16140F;border:1px solid #DDD5C7;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    transition:background-color .3s,color .3s,border-color .3s}
+  .indice-corto[data-tono="notte"]{background:rgba(13,15,19,.9);color:#F4ECDE;border-color:#262b33}
+  .indice-corto button{width:44px;height:44px;border:0;border-radius:50%;background:none;color:inherit;font:inherit;font-size:1.05rem;cursor:pointer}
+  .indice-corto .dove{margin:0;display:flex;align-items:baseline;justify-content:center;gap:10px;min-width:0;
+    font-family:var(--f-dati);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase}
+  .indice-corto .dove b{font-weight:500;color:var(--oro);flex:none}
+  .indice-corto .dove span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .indice-corto .avanza{position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--oro);transform-origin:left;transform:scaleX(var(--avanza,0))}
 }
 </style>
-</head>
+<style>/* FILE: src/pagina.css — la pagina-manuale dell'identità */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--avorio)}
+body{margin:0;background:var(--avorio);color:var(--inchiostro);font-family:var(--f-titolo);font-size:17px;line-height:1.55}
+a{color:inherit}
+svg,canvas{max-width:100%}
+:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.fascia{padding-inline:clamp(16px,5vw,72px);padding-block:clamp(56px,9vw,120px)}
+.dentro{max-width:1180px;margin-inline:auto;display:flex;flex-direction:column;gap:clamp(28px,4vw,56px)}
+h1,h2,h3{margin:0;font-weight:720;letter-spacing:-.025em;line-height:1.02;text-wrap:balance}
+h2{font-size:clamp(2.2rem,5.2vw,4.2rem)}
+h3{font-size:clamp(1.3rem,2.2vw,1.75rem);letter-spacing:-.015em}
+p{margin:0;max-width:62ch}
+ul{margin:0;padding-left:1.1em}
+.occhiello{font-family:var(--f-dati);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--secondario);display:block;margin-bottom:16px}
+.occhiello::before{content:"";display:inline-block;width:22px;height:2px;background:var(--oro);vertical-align:middle;margin-right:10px}
+.lead{font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--secondario)}
+.fila{display:grid;gap:clamp(20px,3vw,40px)}
+.due{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tre{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:860px){.due,.tre{grid-template-columns:minmax(0,1fr)}}
 
-<body>
+/* barra */
+.barra-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(16px,5vw,72px);background:rgba(242,238,230,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #DDD5C7}
+.marchio{display:flex;align-items:center;gap:10px;text-decoration:none}
+.marchio svg{width:18px;height:23px}
+.parola{font-family:var(--f-firma);font-weight:600;letter-spacing:.16em;font-size:.95rem}
+.barra-nav nav{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--f-dati);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase}
+.barra-nav nav a{color:var(--grafite);text-decoration:none}
+.barra-nav nav a:hover{color:var(--inchiostro)}
+@media (max-width:760px){.barra-nav nav{display:none}}
 
-<!-- marchio Arco riusabile -->
+/* apertura */
+.hero{height:clamp(580px,84vh,840px)}
+.hero .strato{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:center;gap:clamp(16px,4vw,48px);padding:clamp(24px,5vw,72px)}
+.hero .colonna{display:flex;flex-direction:column;gap:24px;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.6rem,6vw,5.2rem)}
+.hero .solari{max-width:540px}
+.hero .palco3d{position:relative;height:100%;min-height:300px}
+.hero .palco3d > svg{position:absolute;inset:0;margin:auto;width:30%;height:auto}
+.titolo-notte{font-size:clamp(3rem,8vw,7rem);word-spacing:.18em}
+.titolo-notte.oro{color:var(--oro)}
+.hud{font-family:var(--f-dati);font-size:.7rem;letter-spacing:.06em;color:var(--acciaio);display:grid;gap:5px;max-width:36ch}
+.hud div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--filo-notte);padding-bottom:4px}
+.hud b{color:var(--avorio-luce);font-weight:500}
+.hud .fatto{color:var(--oro)}
+.didascalia{display:flex;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;padding:14px clamp(16px,5vw,72px);font-family:var(--f-dati);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grafite);border-bottom:1px solid #DDD5C7}
+@media (max-width:860px){
+  .hero{height:880px}
+  .hero .strato{grid-template-columns:minmax(0,1fr);align-content:center}
+  .hero .palco3d{height:300px;min-height:0}
+  .hero .strato-notte{align-content:start;padding-top:clamp(72px,14vh,120px)}
+}
+
+/* racconto */
+.claim{font-size:clamp(2.8rem,7.4vw,6.4rem);font-weight:760;letter-spacing:-.035em;line-height:.98}
+.linea{border-top:2px solid var(--inchiostro);padding-top:18px;display:flex;flex-direction:column;gap:12px}
+.linea.di-notte{border-color:var(--oro)}
+.linea h3 small{display:block;font-family:var(--f-dati);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grafite);font-weight:500;margin-bottom:8px}
+.linea ul{display:grid;gap:6px}
+.principio{display:grid;grid-template-columns:auto 1fr;gap:14px 20px;align-items:baseline;border-top:1px solid #DDD5C7;padding-top:18px}
+.principio b{font-family:var(--f-dati);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--grafite)}
+
+/* due stati */
+.due-stati{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.due-stati > div{padding:clamp(40px,6vw,88px) clamp(16px,5vw,72px);display:flex;flex-direction:column;gap:24px}
+@media (max-width:860px){.due-stati{grid-template-columns:minmax(0,1fr)}}
+.campioni{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.campione{display:flex;flex-direction:column;gap:8px;font-family:var(--f-dati);font-size:.66rem;letter-spacing:.06em}
+.campione i{display:block;height:84px;border-radius:10px;border:1px solid rgba(128,120,108,.35)}
+.campione b{font-family:var(--f-titolo);font-size:.9rem;letter-spacing:0;font-weight:600}
+.campione span{color:var(--secondario)}
+
+/* caratteri */
+.provino{display:flex;flex-direction:column;gap:14px;border-top:1px solid #DDD5C7;padding-top:22px}
+.provino .campo-prova{font-size:clamp(3rem,10vw,8.6rem);font-weight:700;line-height:.95;letter-spacing:-.03em;overflow-wrap:anywhere}
+.controllo{display:flex;align-items:center;gap:14px;font-family:var(--f-dati);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--grafite)}
+.controllo input{flex:1;max-width:360px;accent-color:#B8935E}
+.scala-caratteri{display:grid;gap:10px}
+.scala-caratteri div{display:grid;grid-template-columns:9em 1fr;gap:16px;align-items:baseline;border-bottom:1px solid #E6DFD2;padding-bottom:10px}
+.scala-caratteri small{font-family:var(--f-dati);font-size:.64rem;letter-spacing:.08em;color:var(--grafite);text-transform:uppercase}
+.firma-grande{font-size:clamp(2.4rem,5vw,4rem);line-height:1}
+.wordmark-grande{font-family:var(--f-firma);font-weight:600;letter-spacing:.2em;font-size:clamp(2rem,5vw,3.6rem)}
+
+/* arco */
+.arco-palchi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.palco-arco{position:relative;height:clamp(340px,44vw,520px);display:grid;place-items:center}
+.palco-arco > svg{width:24%;max-width:150px;height:auto}
+.palco-arco .etichetta-palco{position:absolute;left:18px;bottom:16px;font-family:var(--f-dati);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--secondario)}
+@media (max-width:760px){.arco-palchi{grid-template-columns:minmax(0,1fr)}}
+.schema{background:var(--posa);border:1px solid #DDD5C7;border-radius:var(--raggio);padding:16px;overflow-x:auto}
+.schema svg{display:block;width:100%;min-width:520px;height:auto}
+.regola-numero{display:flex;flex-direction:column;gap:8px;border-top:2px solid var(--oro);padding-top:14px}
+
+/* movimento */
+.confronto{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;background:var(--filo-notte);border-radius:var(--raggio);overflow:hidden}
+.confronto > div{background:var(--nero);padding:26px;display:flex;flex-direction:column;gap:12px}
+.confronto > div.chiaro{background:var(--avorio);color:var(--inchiostro)}
+@media (max-width:760px){.confronto{grid-template-columns:minmax(0,1fr)}}
+.linea-tempo{overflow-x:auto}
+.linea-tempo svg{display:block;width:100%;min-width:620px;height:auto}
+
+/* servizi */
+.ingresso{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px 48px;align-items:end;border:1px solid var(--oro);border-radius:var(--raggio);padding:clamp(22px,4vw,40px);background:var(--posa)}
+@media (max-width:860px){.ingresso{grid-template-columns:minmax(0,1fr)}}
+.servizio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:center}
+.servizio.rovescio .testo{order:2}
+@media (max-width:960px){.servizio{grid-template-columns:minmax(0,1fr)}.servizio.rovescio .testo{order:0}}
+.servizio .testo{display:flex;flex-direction:column;gap:18px}
+.servizio .scena{height:clamp(360px,38vw,480px)}
+.notte .servizio .scena{border:1px solid var(--filo-notte)}
+.servizio .contenitore-scena .scena{height:auto;min-height:360px}
+.giorno .servizio .scena{border:1px solid #DDD5C7}
+.stato-linea{font-family:var(--f-dati);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--secondario)}
+.stato-linea b{color:var(--oro);font-weight:500}
+.prima-dopo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.prima-dopo div{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--filo, #DDD5C7);padding-top:10px;font-size:.95rem}
+.prima-dopo small{font-family:var(--f-dati);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--secondario)}
+.prima-dopo .dopo small{color:var(--oro)}
+@media (max-width:520px){.prima-dopo{grid-template-columns:minmax(0,1fr)}}
+.ricevete{display:grid;gap:6px;font-size:.95rem}
+.come{font-family:var(--f-dati);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;border-radius:999px;padding:6px 12px;align-self:flex-start}
+.separatore{height:1px;background:var(--filo, #DDD5C7)}
+
+/* regole */
+.regole{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+@media (max-width:760px){.regole{grid-template-columns:minmax(0,1fr)}}
+.regole ul{list-style:none;padding:0;display:grid;gap:10px}
+.regole li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:baseline;border-bottom:1px solid #E6DFD2;padding-bottom:10px}
+.regole .si li::before{content:"";width:14px;height:2px;background:var(--oro);display:block;transform:translateY(-4px)}
+.regole .no li::before{content:"×";font-family:var(--f-dati);color:var(--grafite)}
+
+/* cosa cambia */
+.tabella{overflow-x:auto;border:1px solid var(--filo-notte);border-radius:var(--raggio)}
+.tabella table{width:100%;min-width:640px;border-collapse:collapse;font-size:.95rem}
+.tabella th,.tabella td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--filo-notte);vertical-align:top}
+.tabella tr:last-child td{border-bottom:none}
+.tabella th{font-family:var(--f-dati);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acciaio);font-weight:500}
+.tabella td:first-child{color:var(--acciaio);font-family:var(--f-dati);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+.tabella td:last-child{color:var(--avorio-luce)}
+.tabella td:nth-child(2){color:#8f8a80}
+
+/* chiusura */
+.chiusura{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.chiusura svg{width:56px;height:70px}
+.piede{padding:22px clamp(16px,5vw,72px);font-family:var(--f-dati);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grafite);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid #DDD5C7}
+
+/* film da scroll: la pagina a regista acceso (html.film) */
+.barra-nav::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--oro);transform-origin:left;transform:scaleX(var(--avanza,0));pointer-events:none}
+@media (max-width:760px){.barra-nav::after{display:none}}
+
+.hero-regia{display:none}
+.film .hero-regia{display:flex;position:absolute;left:0;right:0;bottom:0;z-index:2;align-items:center;justify-content:space-between;gap:16px;
+  padding:0 clamp(24px,5vw,72px) 20px;font-family:var(--f-dati);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#5E5A52;pointer-events:none}
+.hero[data-fase="notte"] .hero-regia{color:#8A94A3}
+.hero[data-fase="soglia"] .hero-regia{color:var(--oro)}
+.hero-regia .scorri{display:flex;align-items:center;gap:10px;opacity:clamp(0,calc(1 - var(--p,0) * 30),1)}
+.hero-regia .scorri::after{content:"";width:1px;height:22px;background:currentColor;transform-origin:top;animation:scorri 1.8s var(--ease-giorno) infinite}
+@keyframes scorri{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+.hero-regia .fasi{display:flex;gap:18px;margin-left:auto}
+.hero-regia .fasi span{opacity:.4;transition:opacity .3s}
+.hero[data-fase="giorno"] .fasi [data-per="giorno"],.hero[data-fase="soglia"] .fasi [data-per="soglia"],.hero[data-fase="notte"] .fasi [data-per="notte"]{opacity:1}
+.hero-regia .corsa{position:absolute;left:clamp(24px,5vw,72px);right:clamp(24px,5vw,72px);bottom:10px;height:1px;background:color-mix(in srgb,currentColor 28%,transparent)}
+.hero-regia .corsa::after{content:"";position:absolute;inset:0;background:var(--oro);transform-origin:left;transform:scaleX(var(--p,0))}
+
+/* palchi agganciati */
+.film .fermo .due-stati > div{justify-content:center}
+.film .fermo .arco-palchi{grid-auto-rows:minmax(0,1fr)}
+.film .fermo .palco-arco{height:auto;min-height:0}
+.film .fermo .servizio .scena::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;z-index:3;background:var(--oro);
+  transform-origin:left;transform:scaleX(var(--p,0));pointer-events:none}
+@media (max-width:860px){
+  .film .fermo .hero .strato.giorno{gap:10px;padding-block:16px 44px}
+  .film .fermo .hero .palco3d{height:30vh;height:30svh}
+  .film .fermo .hero .strato-notte{padding-top:clamp(40px,9svh,96px)}
+}
+@media (max-width:760px){
+  .film .piede{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  /* la barra dell'indice occupa il fondo dello schermo: la regia dell'apertura sale sopra di lei */
+  .film .hero-regia{padding-bottom:calc(78px + env(safe-area-inset-bottom,0px))}
+  .film .hero-regia .corsa{bottom:calc(68px + env(safe-area-inset-bottom,0px))}
+  .film .fermo .hero .strato.giorno{padding-bottom:104px}
+}
+@media (max-width:760px){.film .fermo .hero .palco3d{height:26vh;height:26svh}}
+/* telefoni bassi: l'apertura agganciata deve stare tutta nel palco, sopra la barra dell'indice */
+@media (max-width:760px) and (max-height:760px){
+  .film .fermo .hero .colonna{gap:14px}
+  .film .fermo .hero h1{font-size:2.25rem}
+  .film .fermo .hero .lead{font-size:.95rem}
+  .film .fermo .hero .palco3d{height:22vh;height:22svh}
+  .film .fermo .hero .strato.giorno{padding-top:10px;padding-bottom:92px}
+}
+@media (max-width:760px) and (max-height:600px){
+  .film .fermo .hero .palco3d{display:none}
+}
+</style>
+<style>/* FILE: src/listino.css — il listino 2.0: prezzi, canoni, sistemi. Si appoggia a tokens, pagina e regia */
+
+.prezzo{font-family:var(--f-titolo);font-weight:720;font-size:clamp(1.5rem,2.4vw,2rem);letter-spacing:-.02em;line-height:1;
+  font-variant-numeric:tabular-nums;white-space:nowrap;margin:0}
+.prezzo small{font-size:.5em;font-weight:500;letter-spacing:0;margin-left:3px;color:var(--secondario)}
+.prezzo-grande{font-size:clamp(2.4rem,5vw,3.8rem)}
+.punti{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.punti li{display:grid;grid-template-columns:16px 1fr;gap:10px;align-items:baseline}
+.punti li::before{content:"";width:12px;height:2px;background:var(--oro);transform:translateY(-4px)}
+.fascia-stretta{padding-block:clamp(40px,6vw,88px)}
+/* un capitolo senza margine proprio: il salto lo porta un po' sotto la barra, senza cambiare l'impaginato */
+.capitolo{padding-top:28px;margin-top:-28px}
+
+/* apertura: titolo, Arco in 3D e il percorso che si accende con lo scroll */
+.apertura-listino{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-content:center;
+  gap:clamp(18px,3vw,36px) clamp(24px,4vw,56px);padding:clamp(24px,4vw,56px) clamp(16px,5vw,72px) clamp(24px,3vw,40px)}
+.apertura-listino .colonna{display:flex;flex-direction:column;gap:18px;align-self:center}
+.apertura-listino h1{font-size:clamp(2.4rem,5.4vw,4.7rem)}
+.apertura-listino .solari{max-width:440px}
+.arco-mini{position:relative;min-height:240px}
+.arco-mini > svg{position:absolute;inset:0;margin:auto;width:28%;height:auto}
+.arco-mini.ha-3d > svg{display:none}
+
+.percorso{grid-column:1 / -1;list-style:none;margin:0;padding:18px 0 0;position:relative;
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.percorso::before,.percorso::after{content:"";position:absolute;left:0;right:0;top:0;height:2px}
+.percorso::before{background:#DDD5C7}
+.percorso::after{background:var(--oro);transform-origin:left;transform:scaleX(var(--p,1))}
+/* ogni tappa si accende quando il film la raggiunge, ma solo a palco agganciato:
+   se l'apertura scorre libera (telefono) le tappe restano accese, come senza regista */
+.film .fermo .tappa{--acceso:clamp(0,calc((var(--p,1) * 5 - var(--k) + .4) * 2.5),1);
+  opacity:calc(.32 + .68 * var(--acceso));transform:translate3d(0,calc((1 - var(--acceso)) * 10px),0)}
+.tappa a{display:flex;flex-direction:column;gap:6px;height:100%;padding:16px 18px;border-radius:var(--raggio);text-decoration:none;
+  background:var(--posa);border:1px solid #DDD5C7;color:var(--inchiostro)}
+.tappa small{font-family:var(--f-dati);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grafite)}
+.tappa b{font-size:1.05rem;font-weight:680}
+.tappa .prezzo{font-size:clamp(1.15rem,1.8vw,1.5rem);margin-top:2px}
+.tappa .nota{font-size:.8rem;color:var(--grafite);line-height:1.35}
+.tappa.soglia a{border-color:var(--oro)}
+.tappa.notte a{background:var(--nero);border-color:var(--filo-notte);color:var(--avorio-luce)}
+.tappa.notte small,.tappa.notte .nota,.tappa.notte .prezzo small{color:var(--acciaio)}
+.tappa.insieme a{background:linear-gradient(135deg,var(--nero) 52%,#2b2519)}
+.tappa a:hover{border-color:var(--oro)}
+@media (max-width:860px){
+  .apertura-listino{grid-template-columns:minmax(0,1fr)}
+  .arco-mini{min-height:0;height:150px;order:-1}
+  .percorso{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tappa.insieme{grid-column:1 / -1}
+  .tappa .nota{display:none}
+}
+
+/* canoni dell'Immagine */
+.canoni{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+@media (max-width:960px){.canoni{grid-template-columns:minmax(0,1fr)}}
+.canone{display:flex;flex-direction:column;gap:18px;padding:clamp(22px,3vw,32px);border:1px solid #DDD5C7;border-radius:var(--raggio);background:var(--posa)}
+.canone header{display:flex;flex-direction:column;gap:6px}
+.canone .ruolo{font-size:.9rem;color:var(--grafite)}
+.canone .punti{flex:1}
+.canone .condizioni{font-family:var(--f-dati);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grafite);
+  border-top:1px solid #DDD5C7;padding-top:12px}
+.canone.consigliato{background:var(--inchiostro);border-color:var(--inchiostro);color:var(--avorio)}
+.canone.consigliato .prezzo small,.canone.consigliato .condizioni{color:#C9C2B4}
+.canone.consigliato .condizioni{border-color:#3a362e}
+.segno{align-self:flex-start;font-family:var(--f-dati);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);
+  border:1px solid var(--oro);border-radius:999px;padding:3px 10px}
+
+/* progetti: righe con il prezzo a destra */
+.voci{display:grid;border-top:2px solid var(--testo)}
+.voce{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 28px;align-items:center;padding:18px 0;border-bottom:1px solid var(--filo)}
+.voce h3{font-size:clamp(1.1rem,1.7vw,1.3rem);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.voce p{grid-column:1;font-size:.95rem;color:var(--secondario)}
+.voce .prezzo{grid-column:2;grid-row:1 / span 2;text-align:right}
+.nuovo{font-style:normal;font-family:var(--f-dati);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);font-weight:500}
+@media (max-width:520px){
+  .voce{grid-template-columns:minmax(0,1fr)}
+  .voce .prezzo{grid-column:1;grid-row:auto;text-align:left;margin-top:6px}
+}
+.extra-riga{display:flex;flex-direction:column;gap:12px}
+.extra{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.extra li{border:1px solid var(--filo);border-radius:999px;padding:6px 14px;font-size:.88rem}
+.extra b{font-weight:640;margin-left:4px;font-variant-numeric:tabular-nums}
+.modelli{font-size:.95rem;color:var(--secondario)}
+
+/* la porta: l'Analisi AI */
+.porta{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px clamp(28px,5vw,64px);align-items:start;
+  border:1px solid var(--oro);border-radius:var(--raggio);padding:clamp(22px,4vw,44px);background:rgba(244,236,222,.02)}
+@media (max-width:860px){.porta{grid-template-columns:minmax(0,1fr)}}
+.porta-testo{display:flex;flex-direction:column;gap:18px}
+.porta h2{font-size:clamp(2rem,4.4vw,3.4rem)}
+.coppia{display:flex;flex-wrap:wrap;gap:12px 28px}
+.coppia > div{display:flex;flex-direction:column;gap:6px}
+.coppia small{font-family:var(--f-dati);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--secondario)}
+.coppia.verticale{flex-direction:column}
+.scala{font-size:.92rem;color:var(--oro)}
+.giorni{list-style:none;margin:0;padding:0;display:grid;gap:0;border-left:1px solid var(--filo-notte)}
+.giorni li{display:grid;gap:4px;padding:0 0 18px 20px;position:relative}
+.giorni li::before{content:"";position:absolute;left:-4px;top:5px;width:7px;height:7px;border-radius:50%;background:var(--nero);border:1px solid var(--oro)}
+.giorni li:last-child::before{background:var(--oro)}
+.giorni b{font-family:var(--f-dati);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--oro)}
+.giorni span{font-size:.95rem}
+
+/* i sistemi a pacchetto */
+.sistemi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:960px){.sistemi{grid-template-columns:minmax(0,1fr)}}
+.sistema{display:flex;flex-direction:column;gap:16px;padding:clamp(20px,3vw,28px);border:1px solid var(--filo-notte);border-radius:var(--raggio);background:#0b0d10}
+.sistema h3{font-size:clamp(1.2rem,1.8vw,1.45rem)}
+.sistema .coppia{border-top:1px solid var(--filo-notte);border-bottom:1px solid var(--filo-notte);padding:14px 0}
+.sistema dl{margin:0;display:grid;gap:4px}
+.sistema dt{font-family:var(--f-dati);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acciaio);margin-top:8px}
+.sistema dd{margin:0;font-size:.93rem}
+
+/* app e gestionali, con le particelle dietro */
+.gestionali{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:24px 48px;align-items:center;
+  border:1px solid var(--filo-notte);border-radius:var(--raggio);padding:clamp(24px,4vw,48px);min-height:320px}
+.gestionali > :not(canvas){position:relative;z-index:1}
+.gestionali-testo{display:flex;flex-direction:column;gap:16px;max-width:52ch}
+.gestionali-testo h3{font-size:clamp(1.5rem,2.8vw,2.2rem)}
+@media (max-width:860px){.gestionali{grid-template-columns:minmax(0,1fr)}}
+
+/* reparto AI: le due metà */
+.reparto h2{font-size:clamp(2.6rem,6vw,4.8rem)}
+.reparto .punti{max-width:44ch}
+
+/* come funziona */
+.passi{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+@media (max-width:960px){.passi{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.passi{grid-template-columns:minmax(0,1fr)}}
+.passi li{display:flex;flex-direction:column;gap:10px;border-top:2px solid var(--inchiostro);padding-top:14px}
+.passi li:first-child{border-color:var(--oro)}
+.passi b{font-family:var(--f-dati);font-size:.7rem;letter-spacing:.12em;font-weight:500;color:var(--grafite)}
+.passi h3{font-size:1.25rem}
+.passi p{font-size:.95rem;color:var(--grafite)}
+
+/* cosa resta vostro */
+.garanzie{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+@media (max-width:760px){.garanzie{grid-template-columns:minmax(0,1fr)}}
+.garanzie li{display:flex;flex-direction:column;gap:6px;padding:16px 0;border-bottom:1px solid #DDD5C7}
+.garanzie h3{font-size:1.15rem}
+.garanzie p{font-size:.95rem;color:var(--grafite)}
+
+/* mercato */
+#mercato .tabella td:nth-child(4){font-size:.8rem;color:var(--acciaio)}
+.fonti{font-size:.82rem;color:var(--acciaio);max-width:78ch}
+/* telefono: la colonna «Avoria» è quella che conta, quindi ogni riga diventa una scheda invece di scorrere di lato */
+@media (max-width:640px){
+  #mercato .tabella{overflow:visible}
+  #mercato .tabella table{min-width:0}
+  #mercato .tabella thead{display:none}
+  #mercato .tabella tr{display:grid;gap:4px;padding:14px 16px;border-bottom:1px solid var(--filo-notte)}
+  #mercato .tabella tr:last-child{border-bottom:none}
+  #mercato .tabella td{display:block;padding:0;border:none}
+  #mercato .tabella td:first-child{white-space:normal}
+  #mercato .tabella td:nth-child(2)::before{content:"Sul mercato · ";color:var(--acciaio)}
+  #mercato .tabella td:nth-child(3)::before{content:"Avoria · ";color:var(--oro)}
+  #mercato .tabella td:nth-child(4)::before{content:"Fonte · "}
+}
+
+/* domande */
+.domande{display:grid;border-top:2px solid var(--inchiostro);max-width:820px}
+.domande details{border-bottom:1px solid #DDD5C7}
+.domande summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:16px 0;font-weight:620;font-size:1.05rem}
+.domande summary::-webkit-details-marker{display:none}
+.domande summary::after{content:"+";font-family:var(--f-dati);color:var(--oro);flex:none;transition:transform .2s}
+.domande details[open] summary::after{transform:rotate(45deg)}
+.domande details p{padding:0 0 18px;color:var(--grafite)}
+
+/* chiusura */
+.azioni{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.bottone-pieno{display:inline-block;background:var(--inchiostro);color:var(--avorio);text-decoration:none;border-radius:999px;padding:14px 24px;
+  font-family:var(--f-dati);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.bottone-pieno:hover{background:#2a2720}
+.azioni .dati{font-size:.66rem;color:var(--grafite)}
+
+/* telefono: la barra dell'indice occupa il fondo */
+@media (max-width:760px){
+  .film .apertura-listino{padding-bottom:84px}
+}
+
+/* listino 2.1 (blocco 3B): due schede per riga, le schede di giorno, il tempo dei progetti, le combinazioni */
+.sistemi.due{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:960px){.sistemi.due{grid-template-columns:minmax(0,1fr)}}
+.giorno .sistema{background:var(--posa);border-color:#DDD5C7}
+.giorno .sistema .coppia{border-color:#DDD5C7}
+.giorno .sistema dt{color:var(--grafite)}
+.compreso{font-size:.9rem;color:var(--oro-scuro)}
+.canone.consigliato .ruolo{color:#C9C2B4}
+.voce .tempo{display:block;margin-top:6px;font-family:var(--f-dati);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grafite)}
+.porta .porta-titolo{font-size:clamp(1.6rem,3.2vw,2.4rem)}
+.nota-muove{font-size:.95rem;color:var(--grafite);max-width:70ch}
+.combinazioni{display:flex;flex-direction:column;gap:12px}
+.reparto .spiega{max-width:44ch;font-size:1rem}
+</style>
+<style>/* FILE: src/sito.css — solo ciò che serve alla home del sito, sopra lo stile del kit */
+.bottone-vuoto{display:inline-block;border:1px solid var(--inchiostro);color:var(--inchiostro);text-decoration:none;border-radius:999px;padding:13px 23px;font-family:var(--f-dati);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.bottone-piccolo{padding:9px 14px;font-size:.62rem}
+.barra-nav nav a.bottone-pieno{color:var(--avorio)}
+.motto{font-family:var(--f-firma);font-style:italic;font-weight:500;font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--grafite)}
+.hero .azioni{margin-top:22px}
+
+/* le prove nel film */
+.prova-palco{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
+@media (max-width:900px){.prova-palco{grid-template-columns:minmax(0,1fr)}}
+.prova-palco .testo{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.anteprima{position:relative;aspect-ratio:4/5;width:100%;max-width:520px;max-height:72svh;justify-self:center;border-radius:6px;overflow:hidden;background:#E7E0D3}
+.anteprima.verticale{aspect-ratio:9/16;max-width:320px}
+.anteprima>img,.anteprima .tessere{position:absolute;inset:0;width:100%;height:100%}
+.anteprima img{object-fit:cover;display:block}
+.anteprima .tessere{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:4px;padding:4px}
+.anteprima .tessere img{width:100%;height:100%;border-radius:3px}
+[data-entra]{opacity:1}
+.didascalia-anteprima{position:absolute;left:10px;bottom:10px;background:rgba(22,20,15,.72);color:#F4ECDE;font-family:var(--f-dati);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;border-radius:3px}
+.anteprima.griglia{aspect-ratio:6/5;max-width:620px}   /* 3×2 tessere da 4:5 esatti */
+
+/* i prezzi, di notte */
+.prezzi h3 small{display:block;font-family:var(--f-dati);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);font-weight:500;margin-bottom:8px}
+.prezzi>div{border-top:1px solid var(--filo);padding-top:18px;display:flex;flex-direction:column;gap:10px}
+.prezzi p{font-size:1.15rem;color:var(--testo)}
+.nota-prezzi{font-size:.66rem;color:var(--secondario)}
+.bottone-pieno.chiaro{background:var(--avorio-luce);color:var(--nero)}
+/* sul telefono il palco si aggancia solo se testo e anteprima stanno in uno schermo: l'anteprima si misura sull'altezza */
+@media (max-width:900px){
+  .prova-palco{gap:18px}
+  .anteprima{height:40svh;height:40vh;height:40svh;width:auto;max-width:100%;max-height:none}
+  .anteprima.verticale{height:46svh}
+  .anteprima.griglia{height:32svh}
+}
+
+/* ——— blocco 5B (24/09): la home che si capisce ——— */
+/* cosa facciamo: il percorso del listino senza prezzi, con la sua frase sempre leggibile */
+.percorso.cinque .tappa .nota{display:block}
+@media (max-width:860px){.percorso.cinque{grid-template-columns:minmax(0,1fr)}.percorso.cinque .tappa.insieme{grid-column:auto}}
+
+/* i reel nel film: le quattro righe a sinistra, il telefono a destra */
+.reel-palco{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,5vw,80px);align-items:center;padding-block:clamp(12px,2vw,28px)}
+.reel-palco .testo{display:flex;flex-direction:column;gap:16px;max-width:560px}
+.telefono{position:relative;margin:0;justify-self:center;height:min(74svh,700px);aspect-ratio:9/16;max-width:100%;border-radius:32px;padding:9px;background:#16140F;box-shadow:0 30px 60px -32px rgba(22,20,15,.5)}
+.notte .telefono{background:#050608;box-shadow:0 0 0 1px var(--filo-notte)}
+.telefono video,.telefono img{display:block;width:100%;height:100%;object-fit:cover;border-radius:24px;background:#E7E0D3}
+.telefono.piccolo{height:min(62svh,560px)}
+.telefono.alto{aspect-ratio:390/844}
+.righe{margin:0;display:grid;gap:10px}
+.righe .riga{border-top:1px solid #DDD5C7;padding-top:10px;opacity:.36;transition:opacity .4s var(--ease-giorno)}
+.notte .righe .riga{border-color:var(--filo-notte)}
+.righe .riga.accesa{opacity:1}
+.righe dt{font-family:var(--f-dati);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro)}
+.righe dd{margin:4px 0 0;font-size:1rem;line-height:1.42}
+.righe dd a{color:inherit;font-family:var(--f-dati);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;margin-left:6px}
+.con-audio{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;border:0;border-radius:999px;padding:8px 14px;background:rgba(22,20,15,.72);color:#F4ECDE;
+  font-family:var(--f-dati);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.con-audio:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.azienda{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;border-top:1px solid var(--filo-notte);padding-top:16px;margin:0}
+@media (max-width:900px){
+  .reel-palco{grid-template-columns:minmax(0,1fr);gap:12px;align-content:start;padding-bottom:64px}
+  .reel-palco .telefono{order:-1;height:50svh;border-radius:22px;padding:6px}
+  .reel-palco .telefono video{border-radius:17px}
+  .reel-palco .con-audio{left:auto;right:12px;bottom:12px;transform:none;padding:6px 10px;font-size:.54rem}
+  .reel-palco h2{display:none}
+  .righe .riga{padding-top:6px}
+  .righe dd{font-size:.84rem;line-height:1.35}
+  /* guidate dal reel, le quattro righe diventano quattro etichette e una frase sola, quella del momento: le quattro frasi insieme
+     facevano il palco più alto dello schermo (759–850 px contro 739–771, misurato il 24/09) e il palco non si agganciava */
+  .reel-palco .righe.a-tempo{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:8px;row-gap:8px;border-top:1px solid #DDD5C7;padding-top:8px}
+  .notte .reel-palco .righe.a-tempo{border-color:var(--filo-notte)}
+  .reel-palco .righe.a-tempo .riga{display:contents}
+  .reel-palco .righe.a-tempo dt{grid-row:1;opacity:.4;transition:opacity .3s}
+  .reel-palco .righe.a-tempo .accesa dt{opacity:1}
+  .reel-palco .righe.a-tempo .corrente dt{text-decoration:underline;text-underline-offset:4px}
+  .reel-palco .righe.a-tempo dd{grid-row:2;grid-column:1 / -1;margin:0;opacity:0;visibility:hidden;transition:opacity .3s}
+  .reel-palco .righe.a-tempo .corrente dd{opacity:1;visibility:visible}
+  .reel-palco .righe.a-tempo .corrente:not(.accesa) dd{opacity:.45}
+}
+
+/* il lettore «Con l'audio» */
+.lettore{border:0;padding:0;background:transparent;width:min(92vw,420px);max-width:none;overflow:visible}
+.lettore::backdrop{background:rgba(13,15,19,.88)}
+.lettore video{display:block;width:100%;max-height:88svh;aspect-ratio:9/16;border-radius:18px;background:#000}
+.lettore .chiudi{position:absolute;top:10px;right:10px;z-index:1;width:40px;height:40px;border-radius:50%;border:1px solid rgba(244,236,222,.45);background:rgba(13,15,19,.6);color:#F4ECDE;font-size:1.3rem;line-height:1;cursor:pointer}
+
+/* il caso Aura nella home: quattro strati nella stessa cornice */
+.anteprima>figure{position:absolute;inset:0;margin:0}
+.anteprima>figure img,.anteprima>figure video{width:100%;height:100%;object-fit:cover;display:block}
+.passaggi{margin:0;padding-left:1.2em;display:grid;gap:4px;color:var(--grafite)}
+.altri{display:flex;flex-direction:column;gap:18px}
+.scheda-lavoro{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.scheda-lavoro .anteprima{justify-self:start;max-height:none}
+@media (max-width:900px){.scheda-lavoro .anteprima{height:auto;width:100%}}
+
+/* ——— la pagina di Aura (blocco 5B) ——— */
+.apertura-aura .dentro{gap:22px}
+.indice-aura{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--f-dati);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase}
+.indice-aura a{color:var(--grafite)}
+.film-due,.prima-dopo-sito{display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,56px);justify-content:center}
+.film-due figure,.prima-dopo-sito figure,.pagina-prodotto figure{margin:0;display:flex;flex-direction:column;gap:10px;align-items:center}
+.film-due figcaption,.prima-dopo-sito figcaption,.pagina-prodotto figcaption,.finestra figcaption{font-family:var(--f-dati);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grafite)}
+.in-arrivo{color:var(--oro);font-weight:500}
+.griglia-luglio{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.griglia-luglio figure{margin:0;position:relative}
+.griglia-luglio img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:4px;background:#E7E0D3}
+.griglia-luglio figcaption{position:absolute;left:6px;bottom:6px;font-family:var(--f-dati);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:#F4ECDE;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+@media (max-width:900px){.griglia-luglio{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.isola-palco{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);gap:clamp(24px,4vw,56px);align-items:center}
+.isola-palco .testo{display:flex;flex-direction:column;gap:12px}
+.finestra{margin:0;display:flex;flex-direction:column;gap:10px;align-items:center;width:100%;max-width:880px;justify-self:center}
+.finestra .schermo{width:100%;border-radius:12px;overflow:hidden;background:#111;border:1px solid #2a2722;box-shadow:0 30px 60px -32px rgba(22,20,15,.5)}
+.finestra .barra-finestra{display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;background:#1c1a16;color:#8A94A3;font-family:var(--f-dati);font-size:.58rem;letter-spacing:.08em}
+.finestra .barra-finestra i{width:8px;height:8px;border-radius:50%;background:#3a362f}
+.finestra .barra-finestra span{margin-left:10px}
+.finestra video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#111}
+@media (max-width:900px){
+  .isola-palco{grid-template-columns:minmax(0,1fr)}
+  .finestra .schermo{width:auto;height:52svh;aspect-ratio:404/720;border-radius:22px;padding:6px;background:#16140F;border:0}
+  .finestra .barra-finestra{display:none}
+  .finestra video{height:100%;aspect-ratio:auto;border-radius:17px}
+}
+.pagina-prodotto{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:center}
+.pagina-prodotto .testo{display:flex;flex-direction:column;gap:14px}
+@media (max-width:900px){.pagina-prodotto{grid-template-columns:minmax(0,1fr)}}
+.numeri{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.numero{margin:0;display:flex;flex-direction:column;gap:6px;border-top:2px solid var(--inchiostro);padding-top:14px}
+.numero b{font-size:clamp(2.4rem,5vw,3.6rem);font-weight:760;line-height:1}
+.numero span{font-size:.9rem;color:var(--grafite)}
+@media (max-width:760px){.numeri{grid-template-columns:minmax(0,1fr)}}
+.passi.tre{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:960px){.passi.tre{grid-template-columns:minmax(0,1fr)}}
+
+/* ——— 24/09, dalle schermate della sonda (blocco 5B, task 8) ——— */
+.apertura-aura h1{font-size:clamp(2rem,4.6vw,4rem);max-width:24ch}   /* al computer il titolo della pagina di Aura sembrava un sottotitolo */
+@media (max-width:760px){
+  .hero .titolo-notte{font-size:10vw}   /* «QUANDO DORMI,» usciva dallo schermo col corpo minimo del kit (48 px), pensato per «SISTEMI» */
+  .hero-regia .fasi{display:none}       /* le tre fasi, più lunghe di Giorno/Soglia/Notte, si accavallavano a «Scorri · il film parte» */
+  .principio{grid-template-columns:minmax(0,1fr);gap:6px}   /* l'etichetta a sinistra schiacciava la frase in una colonna stretta */
+}
+@media (max-width:900px){
+  .isola-palco{padding-bottom:64px}            /* la didascalia «in arrivo online» finiva sotto la barra dei capitoli del telefono */
+  .finestra .schermo{height:48svh}
+}
+</style>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <!-- Arco: la geometria canonica di loghi/avoria-marchio.svg e di /listino/, traslata di
-       (-40,-30) per portare l'origine a 0,0. Stessa forma, stesse proporzioni, stessi spessori:
-       serve perche' <use> posiziona il simbolo a 0,0 e con un viewBox che parte da 40,30 il
-       marchio esce dal riquadro (visto: hero e sezione identita' tagliate).
-       L'inchiostro e' currentColor perche' il marchio vive su fondo chiaro e su fondo scuro. -->
   <symbol id="arco" viewBox="0 0 160 200">
     <g fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M20 180 L68 30"/>
-      <path d="M140 180 L92 30"/>
-      <path d="M68 30 Q80 16 92 30"/>
+      <path d="M20 180 L68 30"/><path d="M140 180 L92 30"/><path d="M68 30 Q80 16 92 30"/>
     </g>
-    <line x1="44" y1="110" x2="116" y2="110" stroke="#B8935E" stroke-width="13" stroke-linecap="round"/>
+    <line x1="44" y1="110" x2="116" y2="110" stroke-width="13" stroke-linecap="round" style="stroke:var(--bar,#B8935E)"/>
   </symbol>
 </svg>
 
-<div class="grain" aria-hidden="true"></div>
-
-<!-- ░░░ HEADER ░░░ -->
-<header class="topbar" id="topbar">
-  <a class="brand" href="#top" aria-label="Avoria Studio — inizio pagina">
-    <svg aria-hidden="true"><use href="#arco"/></svg>
-    <span class="wordmark">AVOR<span class="dot">·</span>IA</span>
-  </a>
-  <div class="nav-actions">
-    <a class="navlink" href="/listino/">Listino</a>
-    <a class="btn" href="https://instagram.com/avor.iastudio" target="_blank" rel="noopener" aria-label="Scrivici in DM su Instagram">
-      Scrivici in DM
-    </a>
-  </div>
+<header class="barra-nav">
+  <a class="marchio" href="#apertura" aria-label="Avoria Studio, inizio pagina"><svg><use href="#arco"/></svg><span class="parola">AVORIA</span></a>
+  <nav aria-label="Sezioni">
+    <a href="#foto-video">Foto e video</a><a href="#social">Social</a><a href="#clienti">Assistente</a><a href="#aura">Aura</a><a href="listino/">Listino</a>
+    <a class="bottone-pieno bottone-piccolo" href="#call">Prenota una call</a>
+  </nav>
 </header>
 
-<main id="top">
-
-  <!-- ░░░ HERO ░░░ -->
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="wrap">
-      <svg class="hero-arco" viewBox="0 0 160 200" aria-hidden="true"><use href="#arco"/></svg>
-      <h1 class="display" id="hero-title">Immaginario impossibile, <em>reso reale.</em></h1>
-      <p class="sub">Studio creativo AI per brand. Immagini e video cinematografici, campagne e visual che prima richiedevano set, troupe e budget da major.</p>
-      <span class="claim">Produzioni impossibili. Budget possibili.</span>
-      <div class="hero-cta">
-        <a class="btn" href="https://instagram.com/avor.iastudio" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
-          Scrivici in DM
-        </a>
-        <a class="btn ghost" href="#studio">Scopri lo studio</a>
+<main>
+  <!-- l'apertura: un binario di quattro schermi; lo scroll apre l'Arco sull'assistente e riporta a foto e video (grafica del blocco 5) -->
+  <div class="binario" data-binario data-sempre style="--binario:400" data-capitoli="Apertura@0|Quando dormi@0.6">
+  <section id="apertura" class="hero palco" data-soglia data-componente="soglia-hero"
+    data-copione="0:2.2 0.1:4 0.34:5.8 0.74:12.2 0.92:13.8 1:13.9" aria-label="Foto, video e social; attraverso l'Arco, l'assistente che risponde quando dormi">
+    <div class="strato giorno">
+      <div class="colonna">
+        <span class="occhiello">Avoria Studio · per chi ha un negozio e fa quasi tutto da solo</span>
+        <div data-solari="AVORIA STUDIO|FOTO E VIDEO|I TUOI SOCIAL|ASSISTENTE AI" data-celle="13" data-componente="solari-hero"></div>
+        <h1>Foto, video e social per il tuo negozio. <span class="firma">Fatti</span> con l'AI.</h1>
+        <p class="lead">Ci mandi due foto dal telefono: ti tornano scatti e video pronti. Se vuoi, li pubblichiamo noi.</p>
+        <div class="azioni"><a class="bottone-pieno" href="#call">Prenota una call</a><a class="bottone-vuoto" href="listino/">Il listino</a></div>
+      </div>
+      <div class="palco3d" data-componente="hero-immagine" data-copione="0:1.4 0.3:7.4 0.36:7.8 0.74:7.8 1:9">
+        <svg viewBox="0 0 160 200" style="color:#16140F"><use href="#arco"/></svg>
       </div>
     </div>
-    <div class="scroll-hint" aria-hidden="true">Scorri<span></span></div>
-  </section>
-
-  <!-- ░░░ MANIFESTO ░░░ -->
-  <section class="manifesto" id="studio">
-    <div class="wrap">
-      <p class="eyebrow reveal">Lo studio</p>
-      <h2 class="display reveal" style="margin-top:1.2rem">Nessuna di queste scene è mai esistita. <em>Adesso sì.</em></h2>
-      <p class="lead reveal">Avoria è uno studio creativo AI-native. Diamo forma all'immaginario dei brand — scene che prima richiedevano set, troupe e budget da major — con la velocità e i costi resi possibili dall'intelligenza artificiale. Serve una visione. E lo studio giusto per realizzarla.</p>
-    </div>
-  </section>
-
-  <!-- ░░░ SERVIZI ░░░ -->
-  <section class="dark" aria-labelledby="svc-title">
-    <div class="wrap">
-      <div class="svc-head">
-        <p class="eyebrow reveal">Cosa facciamo</p>
-        <h2 class="display reveal" id="svc-title">Un'unica casa, l'immaginario completo del tuo brand.</h2>
-      </div>
-      <div class="svc-list">
-        <div class="svc reveal"><span class="num">01</span><div class="body"><h3>Campagne</h3><p>Campagne visive e UGC ultra-realistiche, costruite per fermare lo scroll e convertire.</p></div></div>
-        <div class="svc reveal"><span class="num">02</span><div class="body"><h3>Film</h3><p>Spot e cortometraggi cinematografici, dallo storyboard al montaggio finale.</p></div></div>
-        <div class="svc reveal"><span class="num">03</span><div class="body"><h3>Visual</h3><p>Immagini editoriali e di prodotto, su misura per l'estetica del tuo brand.</p></div></div>
-        <div class="svc reveal"><span class="num">04</span><div class="body"><h3>Contenuti</h3><p>Flussi di contenuti social ad alto volume, sempre coerenti, sempre on-brand.</p></div></div>
-        <div class="svc reveal"><span class="num">05</span><div class="body"><h3>Siti</h3><p>Siti e landing che mettono in scena il brand — come quello che stai leggendo.</p></div></div>
+    <div class="strato strato-notte notte" data-particelle="arco" data-durata="14" data-centro-x="0.72" data-componente="particelle-hero"
+      data-copione="0:1 0.3:3.8 0.5:6.4 0.72:10.8 0.9:12.8 1:13">
+      <div class="colonna">
+        <span class="occhiello">02:14 · una cliente scrive</span>
+        <div>
+          <div class="titolo-notte" data-respiro="0" data-componente="respiro-hero-1">QUANDO DORMI,</div>
+          <div class="titolo-notte oro" data-respiro="3" data-componente="respiro-hero-2">RISPONDE L'AI.</div>
+        </div>
+        <p class="lead">E quando dormi, ai clienti <span class="firma">risponde</span> l'AI, con le pagine vere del tuo negozio. Quello che non sa lo lascia a te.</p>
+        <div class="hud" aria-label="Pannello d'esempio">
+          <div><span>02:14 · Una cliente scrive</span><b>«È anallergica?»</b></div>
+          <div><span>Risposta</span><b>dalla scheda del prodotto</b></div>
+          <div><span>07:30 · Una domanda</span><b>lasciata a te</b></div>
+          <div><span>Conversazione</span><b class="fatto">esempio</b></div>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- ░░░ MODO AVORIA ░░░ -->
-  <section class="modo light-soft" aria-labelledby="modo-title">
-    <div class="wrap">
-      <p class="eyebrow reveal">Il modo Avoria</p>
-      <h2 class="display reveal" id="modo-title" style="margin-top:1.2rem">Stessa visione. Tempi e budget di un'altra epoca.</h2>
-      <div class="stats">
-        <div class="stat reveal"><div class="n"><small>~</small>72h</div><div class="k">Dalla visione alla consegna. Non settimane.</div></div>
-        <div class="stat reveal"><div class="n"><small>~</small>4×</div><div class="k">Più accessibile di una produzione tradizionale.</div></div>
-        <div class="stat reveal"><div class="n">5–10×</div><div class="k">Volume di contenuti, a parità di budget.</div></div>
-      </div>
-      <p class="closing reveal">La spesa va nella tecnologia, non nella troupe. Il risultato resta cinema.</p>
+    <div class="hero-regia" aria-hidden="true">
+      <span class="scorri">Scorri · il film parte</span>
+      <span class="fasi"><span data-per="giorno">Foto e video</span><span data-per="soglia">L'Arco</span><span data-per="notte">L'assistente</span></span>
+      <i class="corsa"></i>
     </div>
   </section>
+  </div>
+  <div class="didascalia" aria-hidden="true"><span>Foto, video e social</span><span>L'Arco</span><span>L'assistente, quando dormi</span></div>
 
-  <!-- ░░░ MONDI / VISUAL ░░░ -->
-  <section class="mondi dark" aria-labelledby="mondi-title">
-    <div class="wrap">
-      <p class="eyebrow reveal">Mondi impossibili</p>
-      <h2 class="display reveal" id="mondi-title" style="margin-top:1.2rem">Ogni scena è costruita, non trovata.</h2>
-      <div class="frames">
-        <figure class="frame reveal"><img class="frame-img" src="assets/soglia.jpg" alt="Una soglia in travertino attraversata da un raggio di luce dorata" loading="lazy" width="1080" height="1350"/><span class="scrim"></span><figcaption class="cap">Soglia</figcaption></figure>
-        <figure class="frame reveal"><img class="frame-img" src="assets/dune.jpg" alt="Donna in abito avorio in un palazzo italiano invaso da un'onda di sabbia dorata" loading="lazy" width="1080" height="1350"/><span class="scrim"></span><figcaption class="cap">Dune</figcaption></figure>
-        <figure class="frame reveal"><img class="frame-img" src="assets/oro.jpg" alt="Donna in abito avorio sotto un fiore monumentale in oro, in una galleria di travertino" loading="lazy" width="1080" height="1350"/><span class="scrim"></span><figcaption class="cap">Oro</figcaption></figure>
-        <figure class="frame reveal"><img class="frame-img" src="assets/cielo.jpg" alt="Donna in abito avorio seduta su una poltrona sospesa tra le nuvole al tramonto" loading="lazy" width="1080" height="1350"/><span class="scrim"></span><figcaption class="cap">Cielo</figcaption></figure>
+  <!-- cosa facciamo: le cinque aperture dei blocchi del listino 2.1, senza prezzi -->
+  <section id="cosa" class="fascia giorno" data-capitoli="Cosa facciamo">
+    <div class="dentro">
+      <div>
+        <span class="occhiello">Cosa facciamo</span>
+        <h2>Cosa possiamo <span class="firma">fare</span> per te.</h2>
       </div>
-      <p class="note reveal">Immagini e video generati su misura per ogni brand — coerenti, cinematografici, irripetibili.</p>
-    </div>
-  </section>
-
-  <!-- ░░░ IDENTITÀ / ARCO ░░░ -->
-  <section class="identita" aria-labelledby="id-title">
-    <div class="wrap">
-      <p class="eyebrow reveal" style="justify-content:center">L'identità</p>
-      <svg class="arco-big reveal" viewBox="0 0 160 200" aria-hidden="true" style="margin-top:1.6rem"><use href="#arco"/></svg>
-      <p class="lines display reveal" id="id-title">La A è una soglia. La barra d'oro è la linea dove <em>l'impossibile incontra il reale.</em></p>
-      <p class="ia reveal">avor<span class="gold">·</span>ia — l'<b>intelligenza artificiale</b>, nascosta nel nome.</p>
-      <div class="swatches reveal" aria-hidden="true">
-        <div class="sw"><i style="background:#F4ECDE"></i>Avorio</div>
-        <div class="sw"><i style="background:#1C1813"></i>Inchiostro</div>
-        <div class="sw"><i style="background:#B8935E"></i>Oro antico</div>
-        <div class="sw"><i style="background:#C9BCA8"></i>Tortora</div>
+      <ol class="percorso cinque" aria-label="I cinque servizi" data-svela>
+        <li class="tappa"><a href="#foto-video" data-salta><small>Ci mandi due foto</small><b>Foto e video</b><span class="nota">Ci mandi due foto dal telefono: ti tornano scatti e video pronti per il negozio e i social.</span></a></li>
+        <li class="tappa"><a href="#social" data-salta><small>Pubblichiamo noi</small><b>I tuoi social e il tuo negozio</b><span class="nota">Il piano del mese, le didascalie, il profilo in ordine. E il negozio online sempre aggiornato.</span></a></li>
+        <li class="tappa notte"><a href="#clienti" data-salta><small>Anche alle 02:14</small><b>I clienti che ti scrivono</b><span class="nota">Quando un cliente scrive, risponde l'AI con le pagine vere del tuo negozio. Quello che non sa lo passa a te.</span></a></li>
+        <li class="tappa notte"><a href="#lavoro" data-salta><small>Ogni giorno, a mano</small><b>Il lavoro che si ripete</b><span class="nota">Le cose che fai ogni giorno a mano, fatte da un sistema che controlli tu.</span></a></li>
+        <li class="tappa notte insieme"><a href="#reparto" data-salta><small>Tutto insieme</small><b>Reparto AI</b><span class="nota">Foto, video, social e un sistema, seguiti da una persona sola.</span></a></li>
+      </ol>
+      <div class="principio" data-svela>
+        <b>L'AI, dichiarata</b>
+        <p>Ogni contenuto dice che è fatto con l'AI. Il lavoro nostro è la regia: cosa si genera, cosa si scarta, cosa esce.</p>
       </div>
     </div>
   </section>
 
-  <!-- ░░░ FAQ ░░░ -->
-  <section class="faq light-soft" aria-labelledby="faq-title">
-    <div class="wrap">
-      <h2 class="display" id="faq-title">Domande frequenti</h2>
-      <div class="qa">
-        <details open>
-          <summary>Cosa fa Avoria Studio?<span class="plus" aria-hidden="true"></span></summary>
-          <p class="ans">Avoria è uno studio creativo AI-native per brand e aziende. Produciamo immagini e video cinematografici, campagne, contenuti social e siti, dando forma a un immaginario che prima richiedeva set, troupe e budget da major.</p>
-        </details>
-        <details>
-          <summary>Per chi lavorate?<span class="plus" aria-hidden="true"></span></summary>
-          <p class="ans">Per brand e aziende che vogliono dare forma alla propria visione con una qualità cinematografica, senza i tempi e i costi di una produzione tradizionale. Lavoriamo in registro lusso, ma ci adattiamo all'estetica di ogni cliente.</p>
-        </details>
-        <details>
-          <summary>Quanto tempo serve per un progetto?<span class="plus" aria-hidden="true"></span></summary>
-          <p class="ans">Molti deliverable arrivano in circa 72 ore, contro le settimane di una produzione classica. I tempi esatti dipendono dalla complessità: te li confermiamo prima di iniziare.</p>
-        </details>
-        <details>
-          <summary>Quanto costa?<span class="plus" aria-hidden="true"></span></summary>
-          <p class="ans">Ogni progetto è su misura, ma i prezzi sono trasparenti. Abbiamo piani mensili a partire da €290 e progetti singoli — e in media Avoria è circa 4× più accessibile di una produzione tradizionale, perché la spesa va nella tecnologia e non nella troupe.<br><a class="ans-link" href="/listino/">Guarda il listino completo →</a></p>
-        </details>
-        <details>
-          <summary>Come iniziamo a lavorare insieme?<span class="plus" aria-hidden="true"></span></summary>
-          <p class="ans">Scrivici in DM su Instagram <b>@avor.iastudio</b> o via email con una riga sul tuo brand e sull'immagine che hai in mente. Ti rispondiamo con una prima proposta visiva.</p>
-        </details>
+  <!-- foto, video e social: due palchi, ognuno col suo reel che avanza con lo scroll -->
+  <!-- i capitoli dei reel non hanno sosta: tappe, barra e indice portano al primo fotogramma, e lo scroll mostra tutto il reel (24/09) -->
+  <section class="fascia giorno" aria-label="Foto, video e social">
+    <div class="dentro">
+      <div class="binario" data-binario style="--binario:420" data-capitoli="Foto e video">
+      <div class="palco">
+      <article id="foto-video" class="reel-palco quadro" data-blocco="foto-video" aria-labelledby="t-foto">
+        <div class="testo">
+          <span class="occhiello">Foto e video</span>
+          <h2 id="t-foto">Ci mandi due foto. <span class="firma">Ti torna</span> il mese.</h2>
+          <dl class="righe">
+            <div class="riga" data-riga="mandi"><dt>Cosa mandi</dt><dd>Due o tre foto dal telefono per ogni prodotto, da angoli diversi.</dd></div>
+            <div class="riga" data-riga="ricevi"><dt>Cosa ricevi</dt><dd>Ogni mese scatti, reel e scatti che si muovono, nei formati del negozio e dei social, con le didascalie e il piano del mese.</dd></div>
+            <div class="riga" data-riga="tempo"><dt>In quanto tempo</dt><dd>La prima consegna entro 7 giorni lavorativi.</dd></div>
+            <div class="riga" data-riga="prezzo"><dt>Da quanto</dt><dd>Da €290 al mese. Oppure un progetto solo, da €249. <a href="listino/#foto-video">I canoni e i progetti, nel listino</a></dd></div>
+          </dl>
+        </div>
+        <figure class="telefono" data-scorre data-componente="reel-due-foto" data-durata="24.5" data-copione="0.04:0.4 0.94:24.5"
+          data-momenti="mandi@0.15 ricevi@8.9 tempo@18.7 prezzo@20.9">
+          <video muted playsinline preload="none" data-src="media/reel-due-foto.mp4" data-poster="media/reel-due-foto.jpg" width="720" height="1280"
+            aria-label="Il reel «Due foto»: due foto della Collana Sorrento dal telefono diventano scatti, un video e il feed di Aura Gioielli"></video>
+          <button type="button" class="con-audio" data-con-audio="media/reel-due-foto.mp4" aria-label="Guarda il reel «Due foto» con l'audio">▶ Con l'audio</button>
+        </figure>
+      </article>
+      </div>
+      </div>
+
+      <div class="separatore"></div>
+
+      <div class="binario" data-binario style="--binario:440" data-capitoli="Social e negozio">
+      <div class="palco">
+      <article id="social" class="reel-palco quadro" data-blocco="social-negozio" aria-labelledby="t-social">
+        <div class="testo">
+          <span class="occhiello">I tuoi social e il tuo negozio</span>
+          <h2 id="t-social">Pubblichiamo <span class="firma">noi</span>.</h2>
+          <dl class="righe">
+            <div class="riga" data-riga="mandi"><dt>Cosa mandi</dt><dd>I contenuti, o li facciamo noi con Foto e video. E l'accesso ai profili come collaboratore, senza darci la password.</dd></div>
+            <div class="riga" data-riga="ricevi"><dt>Cosa ricevi</dt><dd>Il piano del mese da approvare, fino a 12 pubblicazioni al mese su tre canali, le didascalie con la tua voce, il profilo in ordine. Con Il tuo negozio online, anche i prodotti e la home sempre aggiornati.</dd></div>
+            <div class="riga" data-riga="tempo"><dt>In quanto tempo</dt><dd>Si parte entro 7 giorni lavorativi dal primo piano approvato; i prodotti nuovi sono online in 3 giorni lavorativi.</dd></div>
+            <div class="riga" data-riga="prezzo"><dt>Da quanto</dt><dd>€290 al mese ciascuno. €190 se lo aggiungi a un altro canone: è l'unico sconto, uguale per tutti. <a href="listino/#social">Social e negozio, nel listino</a></dd></div>
+          </dl>
+        </div>
+        <figure class="telefono" data-scorre data-componente="reel-dei-tuoi-social" data-durata="26.7" data-copione="0.04:0.4 0.94:26.7"
+          data-momenti="mandi@2.39 ricevi@10.4 tempo@22.43 prezzo@24.63">
+          <video muted playsinline preload="none" data-src="media/reel-dei-tuoi-social.mp4" data-poster="media/reel-dei-tuoi-social.jpg" width="720" height="1280"
+            aria-label="Il reel «Dei tuoi social»: da due scatti del telefono, un post pronto, e il mese di luglio sul profilo di Aura Gioielli"></video>
+          <button type="button" class="con-audio" data-con-audio="media/reel-dei-tuoi-social.mp4" aria-label="Guarda il reel «Dei tuoi social» con l'audio">▶ Con l'audio</button>
+        </figure>
+      </article>
+      </div>
       </div>
     </div>
   </section>
 
-  <!-- ░░░ CONTATTO ░░░ -->
-  <section class="cta-final dark" aria-labelledby="cta-title">
-    <div class="wrap">
-      <p class="eyebrow reveal" style="justify-content:center">Parliamo</p>
-      <h2 class="display reveal" id="cta-title" style="margin-top:1.2rem">Hai una visione per il tuo brand? <em>Diamole una scena.</em></h2>
-      <p class="reveal">I brand che vogliono dare forma alla propria visione ci scrivono in DM.</p>
-      <div class="actions reveal">
-        <a class="btn" href="https://instagram.com/avor.iastudio" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
-          Scrivici in DM
-        </a>
-        <!-- EDIT-ME: sostituisci l'email con quella reale di Avoria -->
-        <a class="btn ghost" href="mailto:avoriastudio@outlook.it?subject=Progetto%20con%20Avoria%20Studio">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-          Scrivici un'email
-        </a>
+  <!-- l'assistente e i sistemi: la notte entra attraverso l'apertura dell'Arco -->
+  <section class="fascia notte" aria-label="L'assistente e i sistemi" data-soglia-ingresso>
+    <div class="dentro">
+      <div class="binario" data-binario style="--binario:400" data-capitoli="Assistente">
+      <div class="palco">
+      <article id="clienti" class="reel-palco quadro" data-blocco="clienti" aria-labelledby="t-clienti">
+        <div class="testo">
+          <span class="occhiello">I clienti che ti scrivono</span>
+          <h2 id="t-clienti">Alle 02:14 tu dormi. <span class="firma">Risponde</span> l'AI.</h2>
+          <dl class="righe">
+            <div class="riga" data-riga="mandi"><dt>Cosa mandi</dt><dd>L'indirizzo del negozio e un'ora di call per decidere cosa passare a te.</dd></div>
+            <div class="riga" data-riga="ricevi"><dt>Cosa ricevi</dt><dd>Una chat sul tuo sito che risponde su prodotti, spedizioni, resi e pagamenti leggendo le pagine del negozio. Si presenta come assistente AI; quello che non sa lo passa a te, e la mattina trovi il riepilogo della notte.</dd></div>
+            <div class="riga" data-riga="tempo"><dt>In quanto tempo</dt><dd>2 settimane. Prima di accenderlo lo proviamo con 30 domande vere.</dd></div>
+            <div class="riga" data-riga="prezzo"><dt>Da quanto</dt><dd>€990 di avvio, poi €90 al mese. <a href="listino/#clienti">L'assistente, nel listino</a></dd></div>
+          </dl>
+        </div>
+        <figure class="telefono" data-scorre data-componente="reel-alle-0214" data-durata="22" data-copione="0.04:0.4 0.94:22"
+          data-momenti="ricevi@2.6 mandi@7.9 tempo@16.4 prezzo@19.3">
+          <video muted playsinline preload="none" data-src="media/reel-alle-0214.mp4" data-poster="media/reel-alle-0214.jpg" width="720" height="1280"
+            aria-label="Il reel «Alle 02.14»: di notte una cliente scrive ad Aura Gioielli e risponde l'assistente AI, con le pagine vere del negozio. Conversazione di esempio"></video>
+          <button type="button" class="con-audio" data-con-audio="media/reel-alle-0214.mp4" aria-label="Guarda il reel «Alle 02.14» con l'audio">▶ Con l'audio</button>
+        </figure>
+      </article>
       </div>
-      <p class="handle reveal"><b>@avor<span class="dot">·</span>iastudio</b></p>
+      </div>
+      <p class="azienda" data-svela><span class="stato-linea">Assistente dell'azienda</span><span>Per clienti e personale, dai tuoi documenti: l'Assistente dell'azienda, €2.900 di avvio e €290 al mese.</span></p>
+
+      <div class="separatore"></div>
+
+      <div id="lavoro" class="capitolo" data-blocco="lavoro" data-capitoli="Sistemi">
+        <span class="occhiello">Il lavoro che si ripete</span>
+        <h2>Il lavoro di ogni giorno, <span class="firma">fatto</span> da un sistema.</h2>
+        <p class="lead">Le cose che fai ogni giorno a mano, fatte da un sistema che controlli tu. Se non sai da dove cominciare, c'è l'analisi: guardiamo come lavori e ti diciamo cosa conviene, in 10 giorni lavorativi, da €690.</p>
+      </div>
+
+      <div class="binario" data-binario style="--binario:210">
+      <div class="palco">
+      <article class="servizio quadro" data-servizio="foto-catalogo" aria-labelledby="s-catalogo">
+        <div class="testo">
+          <span class="stato-linea"><b>Le foto del catalogo, da sole</b></span>
+          <h3 id="s-catalogo">Aggiungi un prodotto: le sue foto si fanno da sole.</h3>
+          <dl class="righe ferme">
+            <div class="riga accesa"><dt>Cosa mandi</dt><dd data-mandi>L'accesso al negozio, Shopify o WooCommerce, e i primi 20 prodotti da cui partire.</dd></div>
+            <div class="riga accesa"><dt>Cosa ricevi</dt><dd data-ricevi>Quando aggiungi o cambi un prodotto, le sue foto ambientate si fanno da sole, nei formati di negozio, marketplace e pubblicità, e le controlliamo prima che escano.</dd></div>
+            <div class="riga accesa"><dt>In quanto tempo</dt><dd data-tempo>3 settimane.</dd></div>
+            <div class="riga accesa"><dt>Da quanto</dt><dd>€1.900 di avvio, poi €390 al mese.</dd></div>
+          </dl>
+        </div>
+        <div class="scena catalogo" data-componente="scena-catalogo" data-copione="-0.35:0.4 0.2:2.8 0.5:5.2 0.8:7.4 1:8.6"></div>
+      </article>
+      </div>
+      </div>
+
+      <div class="separatore"></div>
+
+      <div class="binario" data-binario style="--binario:210">
+      <div class="palco">
+      <article class="servizio rovescio quadro" data-servizio="preventivo" aria-labelledby="s-preventivo">
+        <div class="testo">
+          <span class="stato-linea"><b>Dal messaggio al preventivo</b> · per chi vende su misura o a quantità</span>
+          <h3 id="s-preventivo">Il messaggio del cliente diventa un preventivo.</h3>
+          <dl class="righe ferme">
+            <div class="riga accesa"><dt>Cosa mandi</dt><dd data-mandi>Il tuo listino e i canali da cui arrivano le richieste: DM, email, modulo del sito, fino a 3.</dd></div>
+            <div class="riga accesa"><dt>Cosa ricevi</dt><dd data-ricevi>Le richieste finiscono in un registro unico, il preventivo si scrive da solo dal tuo listino e tu lo approvi. I promemoria ai clienti partono da soli.</dd></div>
+            <div class="riga accesa"><dt>In quanto tempo</dt><dd data-tempo>3–4 settimane.</dd></div>
+            <div class="riga accesa"><dt>Da quanto</dt><dd>€2.400 di avvio, poi €290 al mese.</dd></div>
+          </dl>
+        </div>
+        <div class="contenitore-scena"><div class="scena notte" data-componente="scena-automazioni" data-copione="-0.35:0 0.75:8.8 1:9.6"></div></div>
+      </article>
+      </div>
+      </div>
+
+      <div class="separatore"></div>
+
+      <div class="binario" data-binario style="--binario:210">
+      <div class="palco">
+      <article class="servizio quadro" data-servizio="gestionale" aria-labelledby="s-gestionale">
+        <div class="testo">
+          <span class="stato-linea"><b>Il gestionale su misura</b> · dopo l'analisi</span>
+          <h3 id="s-gestionale">Ordini, magazzino o prenotazioni in un'app fatta sul tuo modo di lavorare.</h3>
+          <dl class="righe ferme">
+            <div class="riga accesa"><dt>Cosa mandi</dt><dd data-mandi>Mezz'ora di call per raccontarci come lavori, poi l'analisi, da €690.</dd></div>
+            <div class="riga accesa"><dt>Cosa ricevi</dt><dd data-ricevi>Un'app per ordini, magazzino, preventivi o prenotazioni, costruita sul tuo modo di lavorare. Il codice e i dati sono tuoi.</dd></div>
+            <div class="riga accesa"><dt>In quanto tempo</dt><dd data-tempo>Lo fissiamo dopo l'analisi, e lo scriviamo nel preventivo.</dd></div>
+            <div class="riga accesa"><dt>Da quanto</dt><dd>Da €6.900, poi la manutenzione da €240 al mese.</dd></div>
+          </dl>
+        </div>
+        <div class="contenitore-scena"><div class="scena notte" data-componente="scena-gestionali" data-copione="-0.35:0 0.75:8.6 1:9.6"></div></div>
+      </article>
+      </div>
+      </div>
     </div>
   </section>
 
+  <!-- tutto insieme: il Reparto AI, avorio a schermo e poi il nero che entra da destra -->
+  <div class="binario" data-binario style="--binario:190" data-capitoli="Reparto AI@0.62">
+  <div class="palco">
+  <section id="reparto" class="reparto due-stati quadro" aria-labelledby="reparto-titolo" data-blocco="insieme">
+    <div class="giorno">
+      <span class="occhiello">Tutto insieme</span>
+      <h2 id="reparto-titolo">Reparto AI</h2>
+      <p class="prezzo prezzo-grande">da €1.690<small>/mese</small></p>
+      <p class="spiega">Foto, video, social e un sistema, seguiti da una persona sola.</p>
+      <ul class="punti"><li>Il canone Firma: 30 scatti, 3 reel e 3 scatti che si muovono al mese</li><li>I tuoi social, compresi</li><li>Priorità su tutto</li></ul>
+    </div>
+    <div class="notte" data-tenda>
+      <span class="occhiello">… e un sistema</span>
+      <h2><span class="firma">Sempre</span> acceso.</h2>
+      <ul class="punti"><li>Il canone di un sistema a scelta; l'avvio si paga a parte</li><li>Un'evoluzione dei sistemi al mese</li><li>Una call di regia al mese</li></ul>
+      <p class="spiega" data-mandi data-tempo>Cosa ci mandi e in quanto tempo: come per ogni servizio qui sopra.</p>
+      <div class="azioni"><a class="bottone-pieno chiaro" href="listino/#reparto">Il Reparto AI, nel listino</a></div>
+    </div>
+  </section>
+  </div>
+  </div>
+
+  <!-- il caso Aura: quattro passaggi nella stessa cornice, poi la pagina sua; sotto, gli altri lavori -->
+  <section id="aura" class="fascia giorno" data-capitoli="Caso Aura">
+    <div class="dentro">
+      <div class="binario" data-binario style="--binario:260">
+      <div class="palco">
+      <article class="prova-palco quadro" aria-labelledby="t-aura">
+        <div class="testo">
+          <span class="stato-linea"><b>Aura Gioielli</b> · il nostro e-commerce, un progetto del fondatore</span>
+          <h2 id="t-aura">Lo facciamo già, <span class="firma">per noi</span>.</h2>
+          <p>Aura Gioielli è il nostro e-commerce. Ogni immagine del negozio nasce in studio, e adesso anche il negozio.</p>
+          <ol class="passaggi"><li>La foto vera del gioiello</li><li>Lo scatto che apre la sua pagina sul negozio</li><li>Uno scatto che si muove</li><li>Il sito nuovo, in arrivo online</li></ol>
+          <a class="bottone-pieno" href="prove/aura/">Guarda il caso Aura</a>
+        </div>
+        <div class="anteprima" data-anteprima data-componente="prova-aura" data-copione="-0.2:0 0.85:6 1:6">
+          <figure><img data-src="prove/aura/media/aura-bracciale-sorrento-prima.jpg" alt="La foto vera del Bracciale Sorrento" width="1280" height="1600"><figcaption class="didascalia-anteprima">1 · La foto vera</figcaption></figure>
+          <figure data-entra><img data-src="prove/aura/media/aura-bracciale-sorrento-dopo.jpg" alt="Lo scatto che apre la pagina del Bracciale Sorrento sul negozio" width="1280" height="1600"><figcaption class="didascalia-anteprima">2 · Lo scatto sul negozio</figcaption></figure>
+          <figure data-entra><video data-auto muted playsinline loop preload="none" data-src="media/aura-scatto-muove.mp4" data-poster="media/aura-scatto-muove.jpg" aria-label="Lo scatto della Collana Sorrento che si muove"></video><figcaption class="didascalia-anteprima">3 · Uno scatto che si muove</figcaption></figure>
+          <figure data-entra data-sito-nuovo><img data-src="prove/aura/media/aura-isola-computer.jpg" alt="Il primo fotogramma del film dell'isola, nella home del sito nuovo di Aura" width="1280" height="720"><figcaption class="didascalia-anteprima">4 · Il sito nuovo · in arrivo online</figcaption></figure>
+        </div>
+      </article>
+      </div>
+      </div>
+
+      <div class="separatore"></div>
+
+      <div class="altri" data-capitoli="Altri lavori">
+        <span class="occhiello">Altri lavori</span>
+        <div class="fila due">
+          <article class="scheda-lavoro">
+            <div class="anteprima griglia" data-anteprima data-componente="prova-catalogo" data-copione="0:0 1:6">
+              <img data-src="prove/catalogo/media/catalogo-corda-intera.jpg" alt="La Collana Corda nella foto vera" width="640" height="800">
+              <div class="tessere">
+                <img data-entra data-src="prove/catalogo/media/catalogo-corda.jpg" alt="Collana Corda, la prima immagine della sua pagina" width="800" height="1000">
+                <img data-entra data-src="prove/catalogo/media/catalogo-coppia-corda.jpg" alt="Collana e Bracciale Corda, la prima immagine della sua pagina" width="800" height="1000">
+                <img data-entra data-src="prove/catalogo/media/catalogo-bracciale-corda.jpg" alt="Bracciale Corda, la prima immagine della sua pagina" width="800" height="1000">
+                <img data-entra data-src="prove/catalogo/media/catalogo-cuore.jpg" alt="Collana Cuore, la prima immagine della sua pagina" width="800" height="1000">
+                <img data-entra data-src="prove/catalogo/media/catalogo-orsacchiotto.jpg" alt="Collana Orsacchiotto, la prima immagine della sua pagina" width="800" height="1000">
+                <img data-entra data-src="prove/catalogo/media/catalogo-croce.jpg" alt="Collana con Croce Zirconata, la prima immagine della sua pagina" width="800" height="1000">
+              </div>
+              <span class="didascalia-anteprima">Foto vera → sei pagine del negozio</span>
+            </div>
+            <h3>Le foto del catalogo, da sole</h3>
+            <p>Dalle foto vere di una collana, la prima immagine di sei pagine del negozio, tutte con lo stesso stile.</p>
+            <a class="bottone-vuoto" href="prove/catalogo/">Guarda la prova</a>
+          </article>
+          <article class="scheda-lavoro">
+            <div class="anteprima verticale" data-anteprima data-componente="prova-mondi" data-copione="0:0 1:6">
+              <img data-src="prove/mondi/media/mondi-manifesto.jpg" alt="Il manifesto di Avoria Studio" width="1080" height="1920">
+              <img data-entra data-src="prove/mondi/media/mondi-range.jpg" alt="La copertina di «Proof of Range»" width="1080" height="1920">
+              <img data-entra data-src="prove/mondi/media/mondi-v11.jpg" alt="La copertina di «Ventiquattrore»" width="1080" height="1920">
+              <img data-entra data-src="prove/mondi/media/mondi-v12.jpg" alt="La copertina di «Ciak Impossibile»" width="1080" height="1920">
+              <img data-entra data-src="prove/mondi/media/mondi-v13.jpg" alt="La copertina di «La Telefonata»" width="1080" height="1920">
+              <img data-entra data-src="prove/mondi/media/mondi-clessidra.jpg" alt="La copertina di «La Clessidra»" width="1080" height="1920">
+              <span class="didascalia-anteprima">Il manifesto e cinque film</span>
+            </div>
+            <h3>Un Mondo intorno al prodotto</h3>
+            <p>Una campagna con una storia: il manifesto di Avoria, girato in codice, e cinque film nati in studio.</p>
+            <a class="bottone-vuoto" href="prove/mondi/">Guarda i Mondi</a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="come" class="fascia giorno" data-capitoli="Come funziona">
+    <div class="dentro">
+      <div>
+        <span class="occhiello">Come funziona</span>
+        <h2>Quattro passi, nessuna sorpresa.</h2>
+      </div>
+      <ol class="passi" data-svela>
+        <li><b>01</b><h3>Call di 30 minuti</h3><p>Gratuita. Capiamo cosa ti serve e se possiamo esserti utili.</p></li>
+        <li><b>02</b><h3>Le tue foto, o l'analisi</h3><p>Per foto, video e social bastano le foto dal telefono. Per i sistemi grandi, prima l'analisi.</p></li>
+        <li><b>03</b><h3>L'avvio</h3><p>Metà alla firma, metà alla consegna. Cosa ricevi è scritto prima di cominciare.</p></li>
+        <li><b>04</b><h3>Il canone mensile</h3><p>Anticipato, con disdetta a 30 giorni.</p></li>
+      </ol>
+      <p class="dati nota-prezzi">Prezzi al netto dell'IVA, se dovuta.</p>
+      <div class="azioni"><a class="bottone-vuoto" href="listino/">Il listino completo</a></div>
+    </div>
+  </section>
+
+  <section id="call" class="fascia giorno" data-capitoli="Call">
+    <div class="dentro chiusura" data-svela>
+      <svg viewBox="0 0 160 200" style="color:#16140F" aria-hidden="true"><use href="#arco"/></svg>
+      <h2>Prenota una call.</h2>
+      <p class="lead">Trenta minuti, gratis, per capire cosa ti serve. Oppure scrivici in DM.</p>
+      <div class="azioni">
+        <a class="bottone-pieno" href="mailto:avoriastudio@outlook.it?subject=Call%20con%20Avoria">Scrivi per la call</a>
+        <span class="dati">avoriastudio@outlook.it · DM @avor.iastudio</span>
+      </div>
+    </div>
+  </section>
 </main>
 
-<!-- ░░░ FOOTER ░░░ -->
-<footer class="foot">
-  <div class="wrap">
-    <div class="fbrand">
-      <svg aria-hidden="true"><use href="#arco"/></svg>
-      <span class="wordmark">AVORIA</span>
-    </div>
-    <p class="fclaim">Produzioni impossibili. Budget possibili.</p>
-    <nav class="flinks" aria-label="Link e contatti">
-      <a href="https://instagram.com/avor.iastudio" target="_blank" rel="noopener">Instagram</a>
-      <a href="/listino/">Listino</a>
-      <a href="mailto:avoriastudio@outlook.it">Email</a>
-    </nav>
-    <p class="meta">© 2026 Avoria Studio · Studio creativo AI per brand · Italia · avor<span class="dot">·</span>IA</p>
-  </div>
-</footer>
+<footer class="piede"><span>Avoria Studio · <a href="mailto:avoriastudio@outlook.it">avoriastudio@outlook.it</a> · Instagram <a href="https://instagram.com/avor.iastudio">@avor.iastudio</a></span><span>Settembre 2026</span></footer>
 
-<!-- ░░░ Structured data (GEO/AEO — citabilità sui motori AI) ░░░ -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Organization",
-  "name":"Avoria Studio",
-  "alternateName":"Avoria · AI Creative Studio",
-  "description":"Studio creativo AI-native per brand: immagini e video cinematografici, campagne, visual, contenuti e siti. Immaginario impossibile, reso reale.",
-  "url":"https://avoriastudio.github.io/",
-  "slogan":"Produzioni impossibili. Budget possibili.",
-  "sameAs":["https://instagram.com/avor.iastudio"],
-  "areaServed":"Worldwide",
-  "knowsAbout":["AI creative production","Cinematic content","Brand campaigns","Visual content","Generative video"]
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>window.AV = window.AV || { componenti: [] };</script><script>(function(){
+// FILE: src/tempo.mjs — easing condiviso da tutti i componenti
+function morbido(x) {
+  const v = Math.min(Math.max(x, 0), 1);
+  return v < 0.5 ? 4 * v * v * v : 1 - Math.pow(-2 * v + 2, 3) / 2;
 }
-</script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"Cosa fa Avoria Studio?","acceptedAnswer":{"@type":"Answer","text":"Avoria è uno studio creativo AI-native per brand e aziende. Produce immagini e video cinematografici, campagne, contenuti social e siti, dando forma a un immaginario che prima richiedeva set, troupe e budget da major."}},
-    {"@type":"Question","name":"Per chi lavora Avoria Studio?","acceptedAnswer":{"@type":"Answer","text":"Per brand e aziende che vogliono una qualità cinematografica senza i tempi e i costi di una produzione tradizionale. Lavora in registro lusso ma si adatta all'estetica di ogni cliente."}},
-    {"@type":"Question","name":"Quanto tempo serve per un progetto con Avoria?","acceptedAnswer":{"@type":"Answer","text":"Molti deliverable arrivano in circa 72 ore, contro le settimane di una produzione classica; i tempi esatti dipendono dalla complessità."}},
-    {"@type":"Question","name":"Quanto costa lavorare con Avoria Studio?","acceptedAnswer":{"@type":"Answer","text":"Ogni progetto è su misura. In media Avoria è circa 4× più accessibile di una produzione tradizionale, perché la spesa va nella tecnologia e non nella troupe."}},
-    {"@type":"Question","name":"Come si inizia a lavorare con Avoria Studio?","acceptedAnswer":{"@type":"Answer","text":"Scrivendo in DM su Instagram @avor.iastudio o via email, con una riga sul brand e sull'immagine desiderata. Avoria risponde con una prima proposta visiva."}}
-  ]
+
+AV.morbido = morbido;
+})();</script>
+<script>(function(){
+// FILE: src/geometria-arco.mjs — contorni 2D dell'Arco, puri, senza Three.js
+const TRATTI = [
+  { tipo: 'linea', punti: [[20, 180], [68, 30]], spessore: 15, ruolo: 'arco' },
+  { tipo: 'linea', punti: [[140, 180], [92, 30]], spessore: 15, ruolo: 'arco' },
+  { tipo: 'quad', punti: [[68, 30], [80, 16], [92, 30]], spessore: 15, ruolo: 'arco' },
+  { tipo: 'linea', punti: [[44, 110], [116, 110]], spessore: 13, ruolo: 'barra' },
+];
+
+function campiona(tratto, passi = 24) {
+  if (tratto.tipo === 'linea') return tratto.punti.map((p) => [p[0], p[1]]);
+  const [a, c, b] = tratto.punti;
+  const out = [];
+  for (let i = 0; i <= passi; i++) {
+    const t = i / passi, u = 1 - t;
+    out.push([u * u * a[0] + 2 * u * t * c[0] + t * t * b[0], u * u * a[1] + 2 * u * t * c[1] + t * t * b[1]]);
+  }
+  return out;
 }
-</script>
 
-<!-- ░░░ JS: reveal + sticky header (progressive enhancement) ░░░ -->
-<script>
-(function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function normale(p, q) {
+  const dx = q[0] - p[0], dy = q[1] - p[1], l = Math.hypot(dx, dy) || 1;
+  return [-dy / l, dx / l];
+}
 
-  // sticky header state
-  var bar = document.getElementById('topbar'), ticking = false;
-  function onScroll(){
-    if(!ticking){
-      requestAnimationFrame(function(){
-        bar.classList.toggle('scrolled', window.scrollY > 40);
-        ticking = false;
-      });
-      ticking = true;
+function contornoCapsula(punti, raggio, segmentiCap = 12) {
+  const n = punti.length;
+  const norm = punti.map((p, i) => {
+    const a = punti[Math.max(i - 1, 0)], b = punti[Math.min(i + 1, n - 1)];
+    return normale(a, b);
+  });
+  const sinistra = punti.map((p, i) => [p[0] + norm[i][0] * raggio, p[1] + norm[i][1] * raggio]);
+  const destra = punti.map((p, i) => [p[0] - norm[i][0] * raggio, p[1] - norm[i][1] * raggio]);
+  const cap = (centro, nx, ny) => {
+    const base = Math.atan2(ny, nx), pts = [];
+    for (let k = 1; k < segmentiCap; k++) {
+      const ang = base - (Math.PI * k) / segmentiCap;
+      pts.push([centro[0] + Math.cos(ang) * raggio, centro[1] + Math.sin(ang) * raggio]);
+    }
+    return pts;
+  };
+  const fine = cap(punti[n - 1], norm[n - 1][0], norm[n - 1][1]);
+  const inizio = cap(punti[0], -norm[0][0], -norm[0][1]);
+  const poli = [...destra, ...fine.reverse(), ...sinistra.reverse(), ...inizio.reverse()];
+  const segno = poli.reduce((s, [x, y], i) => { const [x2, y2] = poli[(i + 1) % poli.length]; return s + x * y2 - x2 * y; }, 0);
+  return segno >= 0 ? poli : poli.reverse();
+}
+
+function centraEScala(poligono, { cx = 80, cy = 100, scala = 1 / 100 } = {}) {
+  return poligono.map(([x, y]) => [(x - cx) * scala, (cy - y) * scala]);
+}
+
+AV.TRATTI = TRATTI;
+AV.campiona = campiona;
+AV.contornoCapsula = contornoCapsula;
+AV.centraEScala = centraEScala;
+})();</script>
+<script>(function(){
+// FILE: src/solari-logica.mjs — il tabellone come funzione pura del tempo
+const ALFABETO = 'ABCDEFGHILMNOPQRSTUVZ0123456789';
+
+function centra(parola, n) {
+  const p = parola.slice(0, n);
+  const sx = Math.floor((n - p.length) / 2);
+  return (' '.repeat(sx) + p).padEnd(n, ' ');
+}
+
+function caso(a, b, c) {
+  let h = (a * 374761393 + b * 668265263 + c * 1274126177) >>> 0;
+  h = Math.imul(h ^ (h >>> 13), 1103515245) >>> 0;
+  h = Math.imul(h ^ (h >>> 16), 2654435761) >>> 0;
+  return ((h ^ (h >>> 15)) >>> 0) / 4294967296;
+}
+
+function statoCella({ t, i, parole, n, periodo = 2.8, passo = 0.06, ritardo = 0.03 }) {
+  const L = parole.length;
+  const ciclo = Math.floor(t / periodo);
+  const w = ((ciclo % L) + L) % L;
+  const prima = centra(parole[(w - 1 + L) % L], n)[i];
+  const dopo = centra(parole[w], n)[i];
+  const locale = t - ciclo * periodo - i * ritardo;
+  if (locale < 0) return { car: prima, gira: false };
+  const giri = 2 + Math.floor(caso(i, ciclo, 7) * 5);
+  if (locale < giri * passo) {
+    const k = Math.floor(locale / passo);
+    return { car: ALFABETO[Math.floor(caso(i, ciclo, k + 11) * ALFABETO.length)], gira: true };
+  }
+  return { car: dopo, gira: false };
+}
+
+AV.ALFABETO = ALFABETO;
+AV.centra = centra;
+AV.caso = caso;
+AV.statoCella = statoCella;
+})();</script>
+<script>(function(){
+// FILE: src/testo.mjs — testo che si scrive da solo, funzione pura del tempo
+function battuta(testo, t, inizio, cps = 30) {
+  const car = Array.from(testo);
+  const n = Math.floor((t - inizio) * cps + 1e-9);
+  if (n <= 0) return '';
+  return car.slice(0, Math.min(n, car.length)).join('');
+}
+
+AV.battuta = battuta;
+})();</script>
+<script>(function(){
+// FILE: src/regia-logica.mjs — la matematica del film da scroll, senza DOM
+function limita(x, a = 0, b = 1) {
+  return Math.min(Math.max(x, a), b);
+}
+
+// "p:t p:t …" → [[p, t], …] ordinati per p. p può essere negativo: il palco sta ancora entrando.
+function leggiCopione(testo) {
+  const punti = String(testo || '').trim().split(/\s+/).filter(Boolean).map((coppia) => {
+    const [p, t] = coppia.split(':').map(Number);
+    if (!Number.isFinite(p) || !Number.isFinite(t)) throw new Error(`copione illeggibile: «${coppia}»`);
+    return [p, t];
+  });
+  if (!punti.length) throw new Error('copione vuoto');
+  return punti.sort((a, b) => a[0] - b[0]);
+}
+
+// dal punto del film al tempo della scena: spezzata lineare, piatta prima del primo e dopo l'ultimo punto
+function tempoDa(p, punti) {
+  if (p <= punti[0][0]) return punti[0][1];
+  for (let i = 1; i < punti.length; i++) {
+    const [p1, t1] = punti[i];
+    if (p <= p1) {
+      const [p0, t0] = punti[i - 1];
+      return p1 === p0 ? t1 : t0 + (t1 - t0) * (p - p0) / (p1 - p0);
     }
   }
-  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  return punti[punti.length - 1][1];
+}
 
-  // scroll reveal (solo se motion consentito)
-  if(!reduce && 'IntersectionObserver' in window){
-    document.documentElement.classList.add('js');
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, {threshold:0.16, rootMargin:'0px 0px -8% 0px'});
-    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+// palco agganciato: 0 quando si aggancia sotto la barra, 1 quando si sgancia, negativo mentre entra
+function avanzamentoBinario({ top, altezza, palco, barra }) {
+  const corsa = altezza - palco;
+  if (corsa <= 0) return top <= barra ? 1 : 0;
+  return (barra - top) / corsa;
+}
+
+// elemento che scorre libero: 0 col bordo alto all'85% della vista, 1 col bordo basso al 45%
+function attraversamento({ top, altezza, vista }) {
+  return limita((0.85 * vista - top) / (0.4 * vista + altezza));
+}
+
+// entrata: 0 col bordo alto sul fondo della vista, 1 quando il bordo alto arriva a `fino` della vista
+function ingresso({ top, vista, fino = 0.55 }) {
+  return limita((vista - top) / (vista - fino * vista));   // (1 - fino) * vista arrotonda sotto l'1
+}
+
+// inseguimento morbido indipendente dal frame rate; al primo fotogramma salta sul bersaglio
+function insegui(attuale, bersaglio, dt, tau = 0.1) {
+  if (attuale === null || attuale === undefined || !(tau > 0)) return bersaglio;
+  const k = 1 - Math.exp(-Math.max(dt, 0) / tau);
+  const v = attuale + (bersaglio - attuale) * k;
+  return Math.abs(bersaglio - v) < 1e-4 ? bersaglio : v;
+}
+
+// "Nome@0.6 | Altro" → [{ nome, sosta }]; sosta null = l'inizio della sezione
+function leggiCapitoli(testo) {
+  return String(testo || '').split('|').map((s) => s.trim()).filter(Boolean).map((s) => {
+    const at = s.lastIndexOf('@');
+    if (at < 0) return { nome: s, sosta: null };
+    const sosta = Number(s.slice(at + 1));
+    if (s.slice(at + 1).trim() === '' || !Number.isFinite(sosta)) throw new Error(`capitolo illeggibile: «${s}»`);
+    return { nome: s.slice(0, at).trim(), sosta };
+  });
+}
+
+// dove portare lo scroll per fermarsi su un capitolo
+function scrollDiSosta({ inizio, altezza, palco, barra, sosta, fermo }) {
+  const base = inizio - barra;
+  if (!fermo || sosta === null || sosta === undefined) return Math.max(0, base);
+  return Math.max(0, base + sosta * (altezza - palco));
+}
+
+// l'ultimo capitolo iniziato, contando un anticipo di un terzo abbondante di vista
+function capitoloCorrente(posizioni, scroll, vista) {
+  let k = -1;
+  for (let i = 0; i < posizioni.length; i++) {
+    if (posizioni[i] <= scroll + vista * 0.35) k = i;
   }
+  return posizioni.length ? Math.max(k, 0) : -1;
+}
+
+// la sosta più vicina, se sta dentro il raggio e non ci siete già sopra
+function calamita(scroll, soste, raggio) {
+  let meglio = null, d = Infinity;
+  for (const s of soste) {
+    const x = Math.abs(s - scroll);
+    if (x < d) { d = x; meglio = s; }
+  }
+  return meglio !== null && d > 1 && d <= raggio ? meglio : null;
+}
+
+AV.limita = limita;
+AV.leggiCopione = leggiCopione;
+AV.tempoDa = tempoDa;
+AV.avanzamentoBinario = avanzamentoBinario;
+AV.attraversamento = attraversamento;
+AV.ingresso = ingresso;
+AV.insegui = insegui;
+AV.leggiCapitoli = leggiCapitoli;
+AV.scrollDiSosta = scrollDiSosta;
+AV.capitoloCorrente = capitoloCorrente;
+AV.calamita = calamita;
+})();</script>
+<script>(function(){
+// FILE: src/anteprime-logica.mjs — le immagini di un'anteprima entrano una dopo l'altra, e restano
+function ingressi(t, n, durata) {
+  const tratto = (durata * 0.9) / Math.max(n, 1), entrata = tratto * 0.6;
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    const x = (t - i * tratto) / entrata;
+    const v = Math.min(Math.max(x, 0), 1);
+    out.push(v * v * (3 - 2 * v));   // morbida all'inizio e alla fine
+  }
+  return out;
+}
+
+AV.ingressi = ingressi;
+})();</script>
+<script>(function(){
+// FILE: src/video-scorre-logica.mjs — la matematica del video che segue lo scroll, senza DOM (blocco 5B)
+const RIGHE = ['mandi', 'ricevi', 'tempo', 'prezzo'];
+
+// "mandi@0.15 ricevi@8.9 …" → [{ riga, da }] in ordine di tempo; una riga sconosciuta o un secondo illeggibile fermano tutto
+function leggiMomenti(testo) {
+  return String(testo || '').trim().split(/\s+/).filter(Boolean).map((pezzo) => {
+    const at = pezzo.indexOf('@');
+    const riga = at < 0 ? pezzo : pezzo.slice(0, at), da = at < 0 ? '' : pezzo.slice(at + 1);
+    const s = Number(da);
+    if (!RIGHE.includes(riga) || da.trim() === '' || !Number.isFinite(s)) throw new Error(`momento illeggibile: «${pezzo}»`);
+    return { riga, da: s };
+  }).sort((a, b) => a.da - b.da);
+}
+
+// al secondo t ogni riga è accesa dal suo momento in poi (con 0,05 s d'anticipo, perché la frase del reel sale in dissolvenza)
+function righeAccese(t, momenti) {
+  const out = {};
+  for (const m of momenti) out[m.riga] = t >= m.da - 0.05;
+  return out;
+}
+
+// il secondo da chiedere al video: dentro [0, durata − un fotogramma], mai NaN (un NaN in currentTime è una ricerca che non avviene)
+function bersaglio(t, durata) {
+  if (!Number.isFinite(t)) return 0;
+  const fine = Number.isFinite(durata) && durata > 0 ? durata - 1 / 30 : Infinity;
+  return Math.min(Math.max(t, 0), fine);
+}
+
+// oltre `massimo` video scaricati si liberano i più lontani dalla vista; uno in vista (distanza 0) non si libera mai
+function daLiberare(caricati, massimo = 2) {
+  if (caricati.length <= massimo) return [];
+  return caricati.filter((c) => c.distanza > 0).sort((a, b) => b.distanza - a.distanza)
+    .slice(0, caricati.length - massimo).map((c) => c.id);
+}
+
+// il risparmio dati del telefono, o una rete lenta: niente video che scorre, solo il fotogramma e il bottone
+function parsimonia({ saveData, effectiveType } = {}) {
+  return !!saveData || /^(slow-)?2g$|^3g$/.test(effectiveType || '');
+}
+
+AV.RIGHE = RIGHE;
+AV.leggiMomenti = leggiMomenti;
+AV.righeAccese = righeAccese;
+AV.bersaglio = bersaglio;
+AV.daLiberare = daLiberare;
+AV.parsimonia = parsimonia;
+})();</script>
+<script>// FILE: src/arco3d.js — l'Arco in ceramica 3D e lo studio di posa condiviso
+(function () {
+  var AV = window.AV;
+  var ORO = 0xB8935E;
+
+  var morbido = AV.morbido;
+
+  // r128 non gestisce il colore: un esadecimale va portato da sRGB a lineare a mano,
+  // altrimenti l'inchiostro esce grigio e l'oro esce crema (misurato il 17/09).
+  AV.lineare = function (THREE, hex) { return new THREE.Color(hex).convertSRGBToLinear(); };
+
+  AV.creaStudio = function (canvas, opzioni) {
+    var THREE = window.THREE;
+    if (!THREE) throw new Error('Three.js non caricato');
+    var notte = !!(opzioni && opzioni.notte);
+    var r = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+    r.setPixelRatio(Math.min(window.devicePixelRatio || 1, AV.dprMax || 2));   // il render del reel alza il tetto a 4
+    r.outputEncoding = THREE.sRGBEncoding;
+    r.toneMapping = THREE.ACESFilmicToneMapping;
+    r.toneMappingExposure = notte ? 1.1 : 1.0;
+    r.setClearColor(0x000000, 0);
+
+    var stanza = new THREE.Scene();
+    stanza.add(new THREE.Mesh(
+      new THREE.BoxGeometry(24, 24, 24),
+      new THREE.MeshBasicMaterial({ color: notte ? 0x08090c : 0xcfc8bb, side: THREE.BackSide })
+    ));
+    function softbox(x, y, z, w, h, i) {
+      var m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: new THREE.Color(i, i, i), side: THREE.DoubleSide }));
+      m.position.set(x, y, z); m.lookAt(0, 0, 0); stanza.add(m);
+    }
+    softbox(-6, 5, 7, 7, 5, notte ? 2.4 : 3.2);   // chiave, alta a sinistra
+    softbox(7, 1, 4, 3, 8, notte ? 1.0 : 1.6);    // riempimento a striscia
+    softbox(0, 9, -3, 10, 3, notte ? 1.6 : 1.2);  // controluce dall'alto
+
+    var scena = new THREE.Scene();
+    var pm = new THREE.PMREMGenerator(r);
+    scena.environment = pm.fromScene(stanza, 0.03).texture;
+    pm.dispose();
+    var chiave = new THREE.DirectionalLight(0xffffff, notte ? 0.6 : 0.9);
+    chiave.position.set(-3, 4, 5);
+    scena.add(chiave);
+
+    var camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
+    camera.position.set(0, 0, 6);
+
+    function adatta() {
+      var w = canvas.clientWidth || 300, h = canvas.clientHeight || 300;
+      var pr = r.getPixelRatio();
+      if (canvas.width !== Math.round(w * pr) || canvas.height !== Math.round(h * pr)) {
+        r.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+    }
+    return { THREE: THREE, renderer: r, scena: scena, camera: camera, adatta: adatta, disegna: function () { adatta(); r.render(scena, camera); } };
+  };
+
+  AV.creaArco = function (THREE, opzioni) {
+    var gruppo = new THREE.Group();
+    var ceramica = new THREE.MeshPhysicalMaterial({
+      color: AV.lineare(THREE, opzioni.colore), roughness: 0.4, metalness: 0,
+      clearcoat: 0.55, clearcoatRoughness: 0.3, transparent: true
+    });
+    // di notte un metallo pieno riflette solo il buio ed esce bronzo: meno metallo, più luce propria
+    var oro = new THREE.MeshStandardMaterial({
+      color: AV.lineare(THREE, ORO),
+      metalness: opzioni.notte ? 0.55 : 1,
+      roughness: opzioni.notte ? 0.42 : 0.36
+    });
+    var parti = { arco: [], barra: null, ceramica: ceramica };
+    AV.TRATTI.forEach(function (tratto, i) {
+      var barra = tratto.ruolo === 'barra';
+      var punti = AV.centraEScala(AV.contornoCapsula(AV.campiona(tratto, 32), tratto.spessore / 2, 16));
+      var forma = new THREE.Shape(punti.map(function (p) { return new THREE.Vector2(p[0], p[1]); }));
+      var geo = new THREE.ExtrudeGeometry(forma, {
+        depth: barra ? 0.16 : 0.14, curveSegments: 8,
+        bevelEnabled: true, bevelThickness: 0.025, bevelSize: 0.022, bevelSegments: 5
+      });
+      geo.translate(0, 0, barra ? 0.02 : -0.07 + i * 0.0005);
+      var mesh = new THREE.Mesh(geo, barra ? oro : ceramica);
+      gruppo.add(mesh);
+      if (barra) parti.barra = mesh; else parti.arco.push(mesh);
+    });
+    return { gruppo: gruppo, parti: parti };
+  };
+
+  function componenteArco(nome, notte) {
+    var studio = null, arco = null;
+    return {
+      nome: nome, durata: 8, riposo: 3.2,
+      monta: function (radice) {
+        var canvas = document.createElement('canvas');
+        canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block';
+        if (getComputedStyle(radice).position === 'static') radice.style.position = 'relative';
+        radice.appendChild(canvas);
+        try {
+          studio = AV.creaStudio(canvas, { notte: notte });
+        } catch (e) { canvas.remove(); throw e; }
+        arco = AV.creaArco(studio.THREE, { colore: notte ? 0xEFE7D8 : 0x1B1914, notte: notte });
+        studio.scena.add(arco.gruppo);
+        radice.classList.add('ha-3d');
+      },
+      seek: function (t) {
+        var entra = morbido(t / 0.9) * (1 - morbido((t - 7.4) / 0.6));
+        var barra = morbido((t - 0.9) / 0.6) * (1 - morbido((t - 7.0) / 0.4));
+        var g = arco.gruppo;
+        g.position.y = (1 - entra) * -0.3;
+        arco.parti.ceramica.opacity = entra;
+        arco.parti.barra.scale.x = Math.max(barra, 0.0001);
+        arco.parti.barra.visible = barra > 0.001;
+        g.rotation.y = Math.sin((t / 8) * Math.PI * 2) * 0.55;
+        g.rotation.x = -0.06 + Math.cos((t / 8) * Math.PI * 2) * 0.05;
+        studio.disegna();
+      }
+    };
+  }
+
+  AV.componenti.push(componenteArco('arco-giorno', false));
+  AV.componenti.push(componenteArco('arco-notte', true));
 })();
 </script>
-</body>
-</html>
+<script>// FILE: src/voce.js — la voce comune: tabellone e parole che respirano
+(function () {
+  var AV = window.AV;
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-solari]'), function (el, k) {
+    var parole = el.getAttribute('data-solari').split('|');
+    var lunghe = parole.map(function (p) { return p.length; });
+    var n = parseInt(el.getAttribute('data-celle'), 10) || Math.max.apply(null, lunghe);
+    var nome = el.getAttribute('data-componente') || ('solari-' + k);
+    el.setAttribute('data-componente', nome);
+    var celle = [];
+    AV.componenti.push({
+      nome: nome, durata: 2.8 * parole.length, riposo: 1.5,
+      monta: function (r) {
+        r.classList.add('solari');
+        r.setAttribute('role', 'img');
+        r.setAttribute('aria-label', parole.join(', '));
+        r.style.setProperty('--celle', n);
+        r.textContent = '';
+        for (var i = 0; i < n; i++) {
+          var c = document.createElement('span');
+          c.setAttribute('aria-hidden', 'true');
+          r.appendChild(c);
+          celle.push(c);
+        }
+      },
+      seek: function (t) {
+        for (var i = 0; i < n; i++) {
+          var s = AV.statoCella({ t: t, i: i, parole: parole, n: n });
+          var car = s.car === ' ' ? '\u00a0' : s.car;
+          if (celle[i].textContent !== car) celle[i].textContent = car;
+          celle[i].classList.toggle('gira', s.gira);
+        }
+      }
+    });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-respiro]'), function (el, k) {
+    var fase = parseFloat(el.getAttribute('data-respiro')) || 0;
+    var nome = el.getAttribute('data-componente') || ('respiro-' + k);
+    el.setAttribute('data-componente', nome);
+    AV.componenti.push({
+      nome: nome, durata: 6, riposo: 1.2,
+      monta: function () {},
+      seek: function (t) {
+        var x = 0.5 - 0.5 * Math.cos(((t + fase) / 6) * Math.PI * 2);
+        el.style.fontVariationSettings = '"wdth" ' + (62 + 63 * x).toFixed(1);
+        el.style.fontWeight = String(Math.round(820 - 300 * x));
+      }
+    });
+  });
+})();
+</script>
+<script>// FILE: src/particelle.js — particelle della notte; con data-particelle="arco" formano l'Arco
+(function () {
+  var AV = window.AV;
+
+  function bersagli() {
+    var out = [];
+    AV.TRATTI.forEach(function (tr) {
+      var pts;
+      if (tr.tipo === 'quad') pts = AV.campiona(tr, 60);
+      else {
+        var a = tr.punti[0], b = tr.punti[1];
+        pts = [];
+        for (var i = 0; i <= 90; i++) pts.push([a[0] + (b[0] - a[0]) * i / 90, a[1] + (b[1] - a[1]) * i / 90]);
+      }
+      pts.forEach(function (p) { out.push({ x: p[0], y: p[1], oro: tr.ruolo === 'barra', spess: tr.spessore }); });
+    });
+    return out;
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-particelle]'), function (el, k) {
+    var modo = el.getAttribute('data-particelle');
+    var nome = el.getAttribute('data-componente') || ('particelle-' + k);
+    el.setAttribute('data-componente', nome);
+    var canvas = null, ctx = null, W = 0, H = 0;
+    var N = modo === 'arco' ? 900 : 260;
+    var D = parseFloat(el.getAttribute('data-durata')) || 10;
+    var GRANA = parseFloat(el.getAttribute('data-grana')) || 1;          // il reel li vuole più grossi
+    var ALTEZZA = parseFloat(el.getAttribute('data-altezza')) || 0.3;    // altezza dell'Arco su schermo stretto
+    var P = [];
+    AV.componenti.push({
+      nome: nome, durata: D, riposo: modo === 'arco' ? 0.6 * D : 0.3 * D,
+      monta: function (r) {
+        canvas = document.createElement('canvas');
+        canvas.setAttribute('aria-hidden', 'true');
+        canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none';
+        if (getComputedStyle(r).position === 'static') r.style.position = 'relative';
+        r.insertBefore(canvas, r.firstChild);
+        ctx = canvas.getContext('2d');
+        if (!ctx) throw new Error('canvas 2D non disponibile');
+        var B = bersagli();
+        for (var i = 0; i < N; i++) {
+          P.push({
+            a: AV.caso(i, 1, 1) * Math.PI * 2,
+            r: 0.25 + 0.75 * AV.caso(i, 2, 2),
+            v: (0.08 + 0.32 * AV.caso(i, 3, 3)) * (AV.caso(i, 4, 4) < 0.5 ? -1 : 1),
+            z: AV.caso(i, 5, 5),
+            jx: AV.caso(i, 6, 6) - 0.5,
+            jy: AV.caso(i, 7, 7) - 0.5,
+            b: B[Math.floor(AV.caso(i, 8, 8) * B.length)]
+          });
+        }
+      },
+      seek: function (t) {
+        var dpr = Math.min(window.devicePixelRatio || 1, AV.dprMax || 2);
+        var w = canvas.clientWidth, h = canvas.clientHeight;
+        if (w !== W || h !== H) { W = w; H = h; canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr); }
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.clearRect(0, 0, W, H);
+        // su schermo stretto il testo sta in alto: l'Arco va al centro, sotto il testo, come il flacone di giorno
+        var stretto = W < 760;
+        var cx = stretto ? W * 0.5 : W * (parseFloat(el.getAttribute('data-centro-x')) || 0.5);
+        var cy = stretto ? H * (parseFloat(el.getAttribute('data-centro-y')) || 0.74) : H * 0.5;
+        var R = stretto ? W * 0.5 : Math.min(W, H) * 0.5;
+        var m = modo === 'arco'
+          ? AV.morbido((t - 0.3 * D) / (0.15 * D)) * (1 - AV.morbido((t - 0.8 * D) / (0.1 * D)))
+          : 0;
+        var scala = stretto ? (H * ALTEZZA) / 200 : (Math.min(W, H) * 0.7) / 200;
+        for (var i = 0; i < N; i++) {
+          var p = P[i];
+          var ang = p.a + p.v * t;
+          var ox = cx + Math.cos(ang) * p.r * R * 1.4;
+          var oy = cy + Math.sin(ang) * p.r * R * 0.55;
+          var tx = cx + (p.b.x - 80 + p.jx * p.b.spess) * scala;
+          var ty = cy + (p.b.y - 100 + p.jy * p.b.spess) * scala;
+          var x = ox + (tx - ox) * m, y = oy + (ty - oy) * m;
+          var oro = m > 0.5 ? p.b.oro : p.z > 0.78;
+          ctx.globalAlpha = Math.min(1, 0.25 + p.z * 0.55 + m * 0.2);
+          ctx.fillStyle = oro ? '#B8935E' : '#E9E2D4';
+          var s = (0.6 + p.z * 1.3) * GRANA;
+          ctx.fillRect(x - s / 2, y - s / 2, s, s);
+        }
+        ctx.globalAlpha = 1;
+      }
+    });
+  });
+})();
+</script>
+<script>// FILE: src/soglia.js — il passaggio dal giorno alla notte attraverso l'Arco
+(function () {
+  var AV = window.AV;
+
+  // l'apertura dell'Arco (fra le gambe, sotto la volta), coordinate del viewBox 160x200
+  function apertura() {
+    var pts = [[29, 186], [72.5, 40]];
+    AV.campiona({ tipo: 'quad', punti: [[72.5, 40], [80, 29], [87.5, 40]] }, 16)
+      .slice(1).forEach(function (p) { pts.push(p); });
+    pts.push([131, 186]);
+    return pts;
+  }
+  var copia = null;
+  AV.aperturaArco = function () { return copia || (copia = apertura()); };   // la usa anche il regista
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-soglia]'), function (el, k) {
+    var nome = el.getAttribute('data-componente') || ('soglia-' + k);
+    el.setAttribute('data-componente', nome);
+    var notte = null, base = apertura();
+    AV.componenti.push({
+      nome: nome, durata: 14, riposo: 2.2,
+      monta: function (r) {
+        notte = r.querySelector('.strato-notte');
+        if (!notte) throw new Error('manca .strato-notte dentro [data-soglia]');
+      },
+      seek: function (t) {
+        var W = el.clientWidth, H = el.clientHeight;
+        var x = AV.morbido((t - 4) / 1.8) * (1 - AV.morbido((t - 12.2) / 1.6));
+        el.setAttribute('data-fase', x < 0.02 ? 'giorno' : x > 0.98 ? 'notte' : 'soglia');
+        if (x <= 0.001) { notte.style.visibility = 'hidden'; notte.style.clipPath = ''; return; }
+        notte.style.visibility = 'visible';
+        if (x >= 0.999) { notte.style.clipPath = 'none'; return; }
+        var nasce = Math.min(1, x / 0.12);             // senza, la sagoma comparirebbe di colpo già alta il 42%
+        var s = (H * 0.42 / 157) * nasce * Math.pow(22, x);   // l'apertura (y 29..186) arriva al 42% del palco, poi cresce
+        var fx = W / 2, fy = H * 0.55;                 // il punto (80,120) resta fermo qui
+        var poli = base.map(function (p) {
+          return (fx + (p[0] - 80) * s).toFixed(1) + 'px ' + (fy + (p[1] - 120) * s).toFixed(1) + 'px';
+        });
+        notte.style.clipPath = 'polygon(' + poli.join(',') + ')';
+      }
+    });
+  });
+})();
+</script>
+<script>// FILE: src/scene/immagine.js — il prodotto da ogni angolo, in un solo movimento
+(function () {
+  var AV = window.AV;
+  var TAPPE = [
+    { t: 0,   dist: 5.4, elev: 8,  az: -40, ty: 0 },
+    { t: 3,   dist: 5.4, elev: 12, az: 80,  ty: 0 },
+    { t: 5.5, dist: 5.0, elev: 78, az: 120, ty: 0 },
+    { t: 7.5, dist: 1.9, elev: 22, az: 150, ty: 0.62 },
+    { t: 9,   dist: 5.4, elev: 8,  az: 320, ty: 0 }
+  ];
+  var ETICHETTE = ['FRONTALE', "DALL'ALTO", 'MACRO', 'UN SOLO MOVIMENTO'];
+
+  function tra(a, b, x) { return a + (b - a) * x; }
+
+  function posa(t) {
+    for (var k = 0; k < TAPPE.length - 1; k++) {
+      var A = TAPPE[k], B = TAPPE[k + 1];
+      if (t < B.t || k === TAPPE.length - 2) {
+        var x = AV.morbido((t - A.t) / (B.t - A.t));
+        return { k: k, dist: tra(A.dist, B.dist, x), elev: tra(A.elev, B.elev, x), az: tra(A.az, B.az, x), ty: tra(A.ty, B.ty, x) };
+      }
+    }
+  }
+
+  function prodotto(THREE) {
+    var g = new THREE.Group();
+    // pochi punti di controllo, poi una curva: con 9 punti diritti le spalle uscivano spigolose
+    var controllo = [[0, -1], [0.58, -1], [0.69, -0.95], [0.72, -0.62], [0.72, -0.2], [0.66, 0.2], [0.47, 0.44], [0.26, 0.55], [0.2, 0.6], [0.2, 0.64], [0, 0.64]]
+      .map(function (p) { return new THREE.Vector2(p[0], p[1]); });
+    var profilo = new THREE.SplineCurve(controllo).getPoints(120);
+    var corpo = new THREE.Mesh(new THREE.LatheGeometry(profilo, 96),
+      new THREE.MeshPhysicalMaterial({ color: AV.lineare(THREE, 0xF3EDE2), roughness: 0.34, clearcoat: 0.6, clearcoatRoughness: 0.25 }));
+    var oro = new THREE.MeshStandardMaterial({ color: AV.lineare(THREE, 0xB8935E), metalness: 1, roughness: 0.34 });
+    var collare = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.25, 0.1, 64), oro);
+    collare.position.y = 0.69;
+    var tappo = new THREE.Mesh(new THREE.CylinderGeometry(0.31, 0.31, 0.56, 64),
+      new THREE.MeshPhysicalMaterial({ color: AV.lineare(THREE, 0x1B1914), roughness: 0.42, clearcoat: 0.4 }));
+    tappo.position.y = 1.02;
+    // il filo d'oro è un tratto d'anello appena fuori dal corpo: una barra piatta veniva bucata dalla curva
+    var filo = new THREE.Mesh(new THREE.CylinderGeometry(0.736, 0.736, 0.028, 48, 1, true, -0.31, 0.62),
+      new THREE.MeshStandardMaterial({ color: AV.lineare(THREE, 0xB8935E), metalness: 1, roughness: 0.34, side: THREE.DoubleSide }));
+    filo.position.set(0, -0.32, 0);
+    g.add(corpo, collare, tappo, filo);
+
+    var c = document.createElement('canvas');
+    c.width = c.height = 128;
+    var x = c.getContext('2d');
+    var gr = x.createRadialGradient(64, 64, 4, 64, 64, 64);
+    gr.addColorStop(0, 'rgba(22,20,15,0.38)');
+    gr.addColorStop(1, 'rgba(22,20,15,0)');
+    x.fillStyle = gr;
+    x.fillRect(0, 0, 128, 128);
+    var ombra = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 2.6),
+      new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false }));
+    ombra.rotation.x = -Math.PI / 2;
+    ombra.position.y = -1.005;
+    g.add(ombra);
+    g.position.y = -0.1;
+    return g;
+  }
+
+  function componenteImmagine(nome) {
+    var studio = null, etichetta = null, trattini = [];
+    return {
+      nome: nome, durata: 9, riposo: 1.4,
+      monta: function (r) {
+        if (getComputedStyle(r).position === 'static') r.style.position = 'relative';
+        var canvas = document.createElement('canvas');
+        canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block';
+        r.appendChild(canvas);
+        try { studio = AV.creaStudio(canvas, { notte: false }); } catch (e) { canvas.remove(); throw e; }
+        studio.scena.add(prodotto(studio.THREE));
+        var hud = document.createElement('div');
+        hud.className = 'scena-hud';
+        etichetta = document.createElement('span');
+        etichetta.className = 'dati';
+        var fila = document.createElement('span');
+        fila.className = 'pallini';
+        for (var i = 0; i < ETICHETTE.length; i++) {
+          var p = document.createElement('i');
+          fila.appendChild(p);
+          trattini.push(p);
+        }
+        hud.appendChild(etichetta);
+        hud.appendChild(fila);
+        r.appendChild(hud);
+        r.classList.add('ha-3d');
+      },
+      seek: function (t) {
+        studio.adatta();
+        var p = posa(t), cam = studio.camera;
+        var dist = p.dist * Math.max(1, 0.95 / cam.aspect);   // in verticale la camera stringe: si allontana
+        var el = p.elev * Math.PI / 180, az = p.az * Math.PI / 180, cy = p.ty - 0.1;
+        cam.position.set(Math.sin(az) * Math.cos(el) * dist, cy + Math.sin(el) * dist, Math.cos(az) * Math.cos(el) * dist);
+        cam.lookAt(0, cy, 0);
+        if (etichetta.textContent !== ETICHETTE[p.k]) etichetta.textContent = ETICHETTE[p.k];
+        trattini.forEach(function (q, i) { q.classList.toggle('attivo', i === p.k); });
+        studio.disegna();
+      }
+    };
+  }
+
+  AV.componenti.push(componenteImmagine('scena-immagine'));
+  AV.componenti.push(componenteImmagine('hero-immagine'));
+})();
+</script>
+<script>// FILE: src/scene/catalogo.js — una foto diventa un catalogo, e si aggiorna da sola
+(function () {
+  var AV = window.AV;
+  var FLACONE = '<svg viewBox="0 0 60 100" aria-hidden="true"><rect x="22" y="4" width="16" height="16" rx="2" fill="#1B1914"/><rect x="25" y="20" width="10" height="4" fill="#B8935E"/><path d="M25 24 Q10 30 10 46 L10 92 Q10 96 14 96 L46 96 Q50 96 50 92 L50 46 Q50 30 35 24 Z" fill="#F3EDE2" stroke="rgba(22,20,15,.18)"/><rect x="21" y="68" width="18" height="1.6" fill="#B8935E"/></svg>';
+  var VASO = '<svg viewBox="0 0 60 100" aria-hidden="true"><path d="M20 8 L40 8 L38 16 Q54 30 52 60 Q50 90 30 96 Q10 90 8 60 Q6 30 22 16 Z" fill="#E9E1D2" stroke="rgba(22,20,15,.18)"/><path d="M14 58 L46 58" stroke="#B8935E" stroke-width="1.6"/></svg>';
+  var AMBIENTI = [
+    ['studio', 'linear-gradient(180deg,#FBFAF7,#EDE8DE)', false],
+    ['marmo', 'linear-gradient(135deg,#f4f1ec 0%,#e3ded6 40%,#f2eee8 41%,#dcd6cc 70%,#efebe5 100%)', false],
+    ['lino', 'repeating-linear-gradient(90deg,#e8e0d0 0 2px,#e2d9c7 2px 4px)', false],
+    ['sabbia', 'radial-gradient(120% 80% at 50% 100%,#d9c4a0,#efe3cc)', false],
+    ['notte', 'radial-gradient(80% 60% at 50% 40%,#23262d,#07080A)', true],
+    ['oliveto', 'linear-gradient(180deg,#dfe3cf,#a9b28c)', false],
+    ['vetro', 'linear-gradient(160deg,#e9eef0,#c9d4d8)', false],
+    ['cemento', 'linear-gradient(180deg,#cfccc6,#b5b1aa)', false],
+    ['velluto', 'radial-gradient(90% 70% at 30% 20%,#5a2a33,#2a1216)', true],
+    ['agrumi', 'linear-gradient(180deg,#f6e7b8,#e9c46a)', false],
+    ['noce', 'linear-gradient(180deg,#8a6446,#5b3f2b)', true],
+    ['travertino', 'repeating-linear-gradient(0deg,#e6dccb 0 6px,#dccfb9 6px 7px)', false]
+  ];
+  var N = AMBIENTI.length;
+  var radice = null, tessere = [], sorgente = null, riga = null;
+
+  function griglia(W, H) {
+    var fisse = radice && Number(radice.getAttribute('data-colonne'));   // una regia può chiedere le colonne (reel a un sistema solo: 4)
+    var cols = fisse || (W >= 560 ? 4 : 3), righe = Math.ceil(N / cols);
+    var alto = 44, gap = 8;
+    var cw = (W - gap * (cols - 1)) / cols, ch = cw * 1.25;
+    if (righe * ch + (righe - 1) * gap > H - alto - 8) {
+      ch = (H - alto - 8 - gap * (righe - 1)) / righe;
+      cw = ch / 1.25;
+    }
+    var ox = (W - (cols * cw + (cols - 1) * gap)) / 2;
+    return function (i) {
+      return { x: ox + (i % cols) * (cw + gap), y: alto + Math.floor(i / cols) * (ch + gap), w: cw, h: ch };
+    };
+  }
+
+  function mettici(el, b, opacita, scala) {
+    el.style.transform = 'translate(' + b.x.toFixed(1) + 'px,' + b.y.toFixed(1) + 'px) scale(' + scala.toFixed(3) + ')';
+    el.style.width = b.w.toFixed(1) + 'px';
+    el.style.height = b.h.toFixed(1) + 'px';
+    el.style.opacity = opacita.toFixed(3);
+  }
+
+  AV.componenti.push({
+    nome: 'scena-catalogo', durata: 11, riposo: 4.2,
+    monta: function (r) {
+      radice = r;
+      r.classList.add('catalogo');
+      if (getComputedStyle(r).position === 'static') r.style.position = 'relative';
+      riga = document.createElement('div');
+      riga.className = 'catalogo-riga dati';
+      r.appendChild(riga);
+      AMBIENTI.forEach(function (a) {
+        var d = document.createElement('div');
+        d.className = 'tessera' + (a[2] ? ' scura' : '');
+        d.style.background = a[1];
+        d.innerHTML = '<span class="prod prod-a">' + FLACONE + '</span><span class="prod prod-b">' + VASO + '</span><span class="nome dati">' + a[0] + '</span>';
+        r.appendChild(d);
+        tessere.push(d);
+      });
+      sorgente = document.createElement('div');
+      sorgente.className = 'tessera sorgente';
+      sorgente.innerHTML = '<span class="prod prod-a">' + FLACONE + '</span><span class="nome dati">foto di partenza</span>';
+      r.appendChild(sorgente);
+    },
+    seek: function (t) {
+      var W = radice.clientWidth, H = radice.clientHeight;
+      var pos = griglia(W, H), p0 = pos(0);
+      var bw = Math.min(W * 0.36, (H - 60) * 0.8);
+      var grande = { x: (W - bw) / 2, y: (H - bw * 1.25) / 2 + 16, w: bw, h: bw * 1.25 };
+      var va = AV.morbido((t - 0.9) / 0.8) * (1 - AV.morbido((t - 10.1) / 0.7));
+      mettici(sorgente, {
+        x: tra(grande.x, p0.x, va), y: tra(grande.y, p0.y, va),
+        w: tra(grande.w, p0.w, va), h: tra(grande.h, p0.h, va)
+      }, 1 - AV.morbido((t - 1.6) / 0.3) * (1 - AV.morbido((t - 9.9) / 0.3)), 1);
+      tessere.forEach(function (el, i) {
+        var entra = AV.morbido((t - 1.5 - i * 0.12) / 0.45) * (1 - AV.morbido((t - 9.4 - (N - i) * 0.04) / 0.4));
+        mettici(el, pos(i), entra, 0.7 + 0.3 * entra);
+        el.style.setProperty('--cambio', AV.morbido((t - 5.4 - i * 0.09) / 0.35).toFixed(3));
+      });
+      var testo = t < 1.5 ? 'UNA FOTO DI CATALOGO'
+        : t < 5.0 ? '12 AMBIENTAZIONI · STESSO PRODOTTO · ESEMPIO'
+        : 'CATALOGO AGGIORNATO · FOTO RIGENERATE · ESEMPIO';
+      if (riga.textContent !== testo) riga.textContent = testo;
+    }
+  });
+
+  function tra(a, b, x) { return a + (b - a) * x; }
+})();
+</script>
+<script>// FILE: src/scene/automazioni.js — un DM diventa un preventivo, e parte da solo
+(function () {
+  var AV = window.AV;
+  var DM = 'Buongiorno, fate 40 vasi incisi per un evento aziendale a novembre?';
+  var CAMPI = [
+    ['Cliente', 'Studio Rossi'],
+    ['Articolo', 'Vaso Arco, incisione logo'],
+    ['Quantità', '40'],
+    ['Consegna', 'entro il 15 novembre'],
+    ['Totale', 'calcolato dal vostro listino']
+  ];
+  var STATI = [['Inviato al cliente', 6.8], ['Follow-up fra 3 giorni', 7.6], ['CRM aggiornato', 8.4]];
+  var radice = null, bolla = null, filo = null, righe = [], valori = [], stati = [];
+
+  AV.componenti.push({
+    nome: 'scena-automazioni', durata: 12, riposo: 9,
+    monta: function (r) {
+      radice = r;
+      r.classList.add('auto');
+      r.innerHTML =
+        '<div class="pannello auto-dm"><span class="dati etichetta">DM · Instagram · esempio</span><p class="bolla"></p></div>' +
+        '<svg class="auto-filo" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path d="M0 5 H100" pathLength="1"/></svg>' +
+        '<div class="pannello auto-prev"><span class="dati etichetta">Preventivo · bozza automatica</span><dl></dl></div>' +
+        '<ul class="auto-stato dati"></ul>';
+      bolla = r.querySelector('.bolla');
+      filo = r.querySelector('.auto-filo path');
+      var dl = r.querySelector('dl');
+      CAMPI.forEach(function (c) {
+        var riga = document.createElement('div');
+        riga.className = 'riga';
+        riga.innerHTML = '<dt>' + c[0] + '</dt><dd></dd>';
+        dl.appendChild(riga);
+        righe.push(riga);
+        valori.push(riga.querySelector('dd'));
+      });
+      var ul = r.querySelector('ul');
+      STATI.forEach(function (s) {
+        var li = document.createElement('li');
+        li.textContent = s[0];
+        ul.appendChild(li);
+        stati.push(li);
+      });
+    },
+    seek: function (t) {
+      radice.style.opacity = (1 - AV.morbido((t - 11) / 0.8)).toFixed(3);
+      bolla.textContent = AV.battuta(DM, t, 0.4, 38);
+      filo.style.strokeDashoffset = (1 - AV.morbido((t - 2.4) / 0.6)).toFixed(3);
+      CAMPI.forEach(function (c, i) {
+        var t0 = 3.0 + i * 0.7;
+        righe[i].classList.toggle('vista', t >= t0);
+        valori[i].textContent = AV.battuta(c[1], t, t0 + 0.1, 40);
+      });
+      STATI.forEach(function (s, i) { stati[i].classList.toggle('vista', t >= s[1]); });
+    }
+  });
+})();
+</script>
+<script>// FILE: src/scene/gestionali.js — ordini e magazzino in un cruscotto che avvisa da solo
+(function () {
+  var AV = window.AV;
+  var ORDINI = [
+    ['1041', 'Vaso Arco ×2', 'Pronto'],
+    ['1042', 'Set piatti Soglia', 'In lavorazione'],
+    ['1043', 'Vaso Arco ×1', 'Pronto'],
+    ['1044', 'Brocca Levante', 'Da imballare'],
+    ['1045', 'Vaso Arco ×3', 'In attesa']
+  ];
+  var SCORTE = [['Vaso Arco', 0.72, 0.12], ['Set Soglia', 0.55, 0.52], ['Brocca Levante', 0.38, 0.34], ['Ciotola Duna', 0.8, 0.78]];
+  var radice = null, righe = [], barre = [], avviso = null, bottone = null;
+
+  AV.componenti.push({
+    nome: 'scena-gestionali', durata: 12, riposo: 9.5,
+    monta: function (r) {
+      radice = r;
+      r.classList.add('gest');
+      var html = '<div class="pannello gest-ordini"><span class="dati etichetta">Ordini di oggi · esempio</span><table><tbody>';
+      ORDINI.forEach(function (o) {
+        html += '<tr><td class="dati">#' + o[0] + '</td><td>' + o[1] + '</td><td class="dati stato">' + o[2] + '</td></tr>';
+      });
+      html += '</tbody></table></div><div class="pannello gest-scorte"><span class="dati etichetta">Magazzino · esempio</span>';
+      SCORTE.forEach(function (s) { html += '<div class="scorta"><span>' + s[0] + '</span><i><b></b></i></div>'; });
+      html += '<p class="avviso dati">Scorta bassa · Vaso Arco</p><p class="bottone dati">Riordino proposto · 60 pz</p></div>';
+      r.innerHTML = html;
+      righe = Array.prototype.slice.call(r.querySelectorAll('tr'));
+      barre = Array.prototype.slice.call(r.querySelectorAll('.scorta'));
+      avviso = r.querySelector('.avviso');
+      bottone = r.querySelector('.bottone');
+    },
+    seek: function (t) {
+      radice.style.opacity = (1 - AV.morbido((t - 11) / 0.8)).toFixed(3);
+      righe.forEach(function (tr, i) { tr.classList.toggle('vista', t >= 0.8 + i * 0.45); });
+      var cala = AV.morbido((t - 4.4) / 1.2);
+      barre.forEach(function (b, i) {
+        var s = SCORTE[i];
+        var v = s[1] + (s[2] - s[1]) * cala;
+        var entra = AV.morbido((t - 1.2 - i * 0.2) / 0.6);
+        b.querySelector('b').style.transform = 'scaleX(' + (v * entra).toFixed(3) + ')';
+        b.classList.toggle('bassa', v < 0.2 && entra > 0.99);
+      });
+      avviso.classList.toggle('vista', t >= 5.8);
+      bottone.classList.toggle('vista', t >= 6.6);
+      bottone.classList.toggle('premuto', t >= 8.0);
+      var scritta = t >= 8.0 ? 'Ordine al fornitore inviato' : 'Riordino proposto · 60 pz';
+      if (bottone.textContent !== scritta) bottone.textContent = scritta;
+    }
+  });
+})();
+</script>
+<script>// FILE: src/anteprime.js — le anteprime: immagini che entrano con lo scroll, caricate solo quando servono
+// Dal 24/09 (blocco 5B) ogni [data-anteprima] è un componente col nome del suo data-componente: le prove della home e i capitoli di Aura.
+// Le foto arrivano a tempo: la prima 600 px prima; ognuna delle altre quando comincia a entrare la precedente. Con tutto a 600 px la
+// pagina di Aura, sei foto subito sotto l'apertura, pesava 1.209 KB alla prima schermata (tetto 500, misurato il 24/09); al computer
+// l'anteprima è già in vista all'avvio, quindi nemmeno «quando si vede» bastava. Col movimento ridotto non c'è tempo: arrivano in vista.
+(function () {
+  var AV = window.AV;
+  var calmo = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  function prendi(el) {
+    var ims = el.tagName === 'IMG' ? [el] : el.querySelectorAll('img[data-src]');
+    Array.prototype.forEach.call(ims, function (im) {
+      if (!im.getAttribute('data-src')) return;
+      im.src = im.getAttribute('data-src'); im.removeAttribute('data-src');
+    });
+  }
+  function quando(radice, margine, fai) {
+    if (!('IntersectionObserver' in window)) return fai();
+    var io = new IntersectionObserver(function (v) { if (v.some(function (e) { return e.isIntersecting; })) { fai(); io.disconnect(); } }, { rootMargin: margine });
+    io.observe(radice);
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-anteprima]'), function (el) {
+    var strati = [], vicino = false;
+    AV.componenti.push({
+      nome: el.getAttribute('data-componente'), durata: 6, riposo: 6,
+      monta: function (radice) {
+        strati = Array.prototype.slice.call(radice.querySelectorAll('[data-entra]'));
+        quando(radice, '600px', function () {
+          vicino = true;
+          Array.prototype.forEach.call(radice.querySelectorAll('img[data-src]'), function (im) { if (!im.closest('[data-entra]')) prendi(im); });
+          if (strati.length) prendi(strati[0]);
+        });
+        if (calmo || !AV.regia) quando(radice, '0px', function () { strati.forEach(prendi); });
+      },
+      seek: function (t) {
+        var pesi = AV.ingressi(t, strati.length, 6);
+        for (var i = 0; i < strati.length; i++) {
+          strati[i].style.opacity = pesi[i].toFixed(3);
+          if (vicino && i > 0 && pesi[i - 1] > 0) prendi(strati[i]);
+        }
+      }
+    });
+  });
+})();
+</script>
+<script>// FILE: src/video-scorre.js — un video che segue lo scroll (blocco 5B): scaricato intero quando il suo palco si avvicina,
+// cercato senza accodare ricerche, con le righe del blocco che si accendono ai momenti del reel.
+// Le lezioni sono quelle del film dell'isola di Aura (film-scrub.js, 19–20/09): il file intero in memoria cerca subito;
+// scrivere currentTime mentre una ricerca è in volo la annulla, quindi si aspetta `seeked` e ci si riallinea.
+(function () {
+  var AV = window.AV;
+  var calmo = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var c = navigator.connection;
+  var risparmio = AV.parsimonia({ saveData: c && c.saveData, effectiveType: c && c.effectiveType });
+  var telefono = !!(window.matchMedia && matchMedia('(max-width: 900px)').matches);
+  var tutti = [];
+
+  function scegli(v, attr) {
+    return (telefono && v.getAttribute(attr + '-telefono')) || v.getAttribute(attr);
+  }
+  function segna(s, stato) { s.stato = stato; s.el.setAttribute('data-stato', stato); }
+  function distanza(s) {
+    var r = (s.el.closest('[data-binario]') || s.el).getBoundingClientRect();
+    return r.bottom < 0 ? -r.bottom : r.top > innerHeight ? r.top - innerHeight : 0;
+  }
+  function copertina(s) {
+    var p = scegli(s.video, 'data-poster');
+    if (p && s.video.getAttribute('poster') !== p) s.video.setAttribute('poster', p);
+  }
+  // accesa: dal suo momento in poi. corrente: l'ultima accesa, o la prima che verrà (sul telefono si legge solo quella, 24/09)
+  function accendi(s, t) {
+    var acc = AV.righeAccese(t, s.momenti), corrente = s.momenti.length ? s.momenti[0].riga : null;
+    s.momenti.forEach(function (m) { if (acc[m.riga]) corrente = m.riga; });
+    s.righe.forEach(function (r) {
+      var k = r.getAttribute('data-riga');
+      r.classList.toggle('accesa', !!acc[k]);
+      r.classList.toggle('corrente', k === corrente);
+    });
+  }
+  function cerca(s) {
+    var v = s.video;
+    if (s.stato !== 'pronto' || v.seeking || s.t === null) return;
+    var t = AV.bersaglio(s.t, v.duration || s.durata);
+    // se il browser ha agganciato un fotogramma vicino a quello chiesto, non si insiste: chiedi 10,00, ti dà 9,98…
+    if (Math.abs(v.currentTime - t) > 0.01 && t !== s.chiesto) { s.chiesto = t; v.currentTime = t; }
+  }
+  function libera(s) {
+    segna(s, 'fermo');
+    s.video.removeAttribute('src');
+    s.video.load();
+    if (s.blob) { URL.revokeObjectURL(s.blob); s.blob = null; }
+    s.chiesto = null;
+  }
+  function carica(s) {
+    if (s.stato !== 'fermo') return;
+    segna(s, 'carica');
+    copertina(s);
+    var url = scegli(s.video, 'data-src');
+    var scarica = window.fetch ? fetch(url).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.blob(); }) : Promise.reject(new Error('senza fetch'));
+    scarica.then(function (b) { s.blob = URL.createObjectURL(b); return s.blob; })
+      .catch(function () { return url; })   // dentro l'Artifact o senza fetch: il file diretto, cercato a pezzi
+      .then(function (u) {
+        if (s.stato !== 'carica') { if (s.blob) { URL.revokeObjectURL(s.blob); s.blob = null; } return; }
+        s.video.addEventListener('loadeddata', function () { segna(s, 'pronto'); cerca(s); }, { once: true });
+        s.video.src = u;
+        s.video.load();
+      });
+    var via = AV.daLiberare(tutti.filter(function (x) { return x.stato !== 'fermo' && x.stato !== 'riposo'; })
+      .map(function (x) { return { id: x.id, distanza: distanza(x) }; }), 2);
+    tutti.forEach(function (x) { if (via.indexOf(x.id) >= 0) libera(x); });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-scorre]'), function (el, k) {
+    var video = el.querySelector('video');
+    var quadro = el.closest('.quadro') || el.parentNode;
+    var s = {
+      id: k, el: el, video: video, durata: Number(el.getAttribute('data-durata')) || 1,
+      momenti: AV.leggiMomenti(el.getAttribute('data-momenti') || ''),
+      righe: Array.prototype.slice.call(quadro.querySelectorAll('[data-riga]')),
+      t: null, chiesto: null, blob: null, stato: 'fermo'
+    };
+    tutti.push(s);
+    video.addEventListener('seeked', function () { cerca(s); });
+    AV.componenti.push({
+      nome: el.getAttribute('data-componente'), durata: s.durata, riposo: s.durata,
+      monta: function () {
+        segna(s, 'fermo');
+        if (calmo || risparmio) { segna(s, 'riposo'); copertina(s); return; }
+        // guidate dal reel, le righe possono stringersi in una frase sola (sito.css, telefono); a riposo restano tutte leggibili
+        if (s.righe.length) s.righe[0].parentNode.classList.add('a-tempo');
+        if (!('IntersectionObserver' in window)) return carica(s);
+        var io = new IntersectionObserver(function (voci) {
+          voci.forEach(function (e) { if (e.isIntersecting) carica(s); });
+        }, { rootMargin: '150% 0px' });
+        io.observe(el.closest('[data-binario]') || el);
+      },
+      seek: function (t) {
+        s.t = t;
+        accendi(s, s.stato === 'riposo' ? s.durata : t);
+        cerca(s);
+      }
+    });
+  });
+})();
+</script>
+<script>// FILE: src/video-vista.js — i video che girano da soli quando si vedono (muti, in loop) e il lettore «Con l'audio» (blocco 5B)
+(function () {
+  var calmo = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  // sorgente e copertina solo quando il video si avvicina; play quando è in vista per un quarto, pausa quando esce
+  var auto = Array.prototype.slice.call(document.querySelectorAll('video[data-auto]'));
+  function prepara(v) {
+    if (v.getAttribute('data-poster')) { v.setAttribute('poster', v.getAttribute('data-poster')); v.removeAttribute('data-poster'); }
+    if (v.getAttribute('data-src')) { v.src = v.getAttribute('data-src'); v.removeAttribute('data-src'); }
+    if (calmo) v.controls = true;   // col movimento ridotto non parte da solo: lo fa partire chi guarda
+  }
+  if (!('IntersectionObserver' in window)) auto.forEach(prepara);
+  else {
+    var vicino = new IntersectionObserver(function (voci) {
+      voci.forEach(function (e) { if (e.isIntersecting) { prepara(e.target); vicino.unobserve(e.target); } });
+    }, { rootMargin: '100% 0px' });
+    var dentro = new IntersectionObserver(function (voci) {
+      voci.forEach(function (e) {
+        if (calmo) return;
+        if (e.isIntersecting) { var p = e.target.play(); if (p && p.catch) p.catch(function () {}); }
+        else e.target.pause();
+      });
+    }, { threshold: 0.25 });
+    auto.forEach(function (v) { vicino.observe(v); dentro.observe(v); });
+  }
+
+  // «▶ Con l'audio»: il video intero, col suono e i comandi, sopra la pagina; chiuso, si torna dov'eri
+  var lettore = null;
+  function apri(src, titolo) {
+    if (!lettore) {
+      lettore = document.createElement('dialog');
+      lettore.className = 'lettore';
+      lettore.innerHTML = '<button type="button" class="chiudi" aria-label="Chiudi il video">×</button><video controls playsinline></video>';
+      document.body.appendChild(lettore);
+      lettore.querySelector('.chiudi').addEventListener('click', function () { lettore.close(); });
+      lettore.addEventListener('click', function (e) { if (e.target === lettore) lettore.close(); });
+      lettore.addEventListener('close', function () { var v = lettore.querySelector('video'); v.pause(); v.removeAttribute('src'); v.load(); });
+    }
+    var v = lettore.querySelector('video');
+    v.setAttribute('aria-label', titolo);
+    v.src = src;
+    if (lettore.showModal) lettore.showModal(); else lettore.setAttribute('open', '');
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-con-audio]'), function (b) {
+    b.addEventListener('click', function () { apri(b.getAttribute('data-con-audio'), b.getAttribute('aria-label') || 'Video'); });
+  });
+})();
+</script>
+<script>// FILE: src/regia.js — il regista: lo scroll diventa il tempo delle scene
+// Binari ([data-binario]) con un .palco che si aggancia sotto la barra; copioni (data-copione) che
+// portano il punto del film al tempo di un componente; effetti di entrata guidati dallo scroll.
+(function () {
+  var AV = window.AV;
+  var q = new URLSearchParams(location.search);
+  var riduci = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  if (q.has('t') || riduci) return;   // congelato: la pagina resta quella del blocco 2, senza agganci
+
+  var TAU = 0.1;
+  var doc = document.documentElement;
+  var barraEl = document.querySelector('.barra-nav');
+  // 100svh non cambia quando la barra del telefono va e viene: è la misura giusta per i palchi
+  var sonda = document.createElement('div');
+  sonda.setAttribute('aria-hidden', 'true');
+  sonda.style.cssText = 'position:fixed;left:0;top:0;width:1px;height:100vh;height:100svh;visibility:hidden;pointer-events:none';
+  document.body.appendChild(sonda);
+  doc.classList.add('film');
+
+  var stato = { barra: 0, larghezza: -1, vista: 0, sy: null, versione: 0, firma: '', sporco: true, rimisura: false };
+
+  function fonte() { return { grezzo: 0, liscio: null }; }
+  function muovi(f, dt) {
+    var prima = f.liscio;
+    f.liscio = AV.insegui(f.liscio, f.grezzo, dt, TAU);
+    return f.liscio !== prima;
+  }
+
+  var binari = [];
+  Array.prototype.forEach.call(document.querySelectorAll('[data-binario]'), function (el) {
+    var palco = el.querySelector(':scope > .palco');
+    if (!palco) { console.error('[AV] binario senza .palco', el); return; }
+    binari.push({
+      el: el, palco: palco, quadro: palco.querySelector(':scope > .quadro'),
+      sempre: el.hasAttribute('data-sempre'), fermo: false, palcoH: 0, p: fonte(), scritto: null
+    });
+  });
+
+  function binarioDi(el) {
+    for (var i = 0; i < binari.length; i++) if (binari[i].el.contains(el)) return binari[i];
+    return null;
+  }
+
+  // un palco si aggancia solo se il suo quadro ci sta; agganciato, il quadro riempie il palco
+  // (flex: 1 0 auto), quindi «non ci sta più» vuol dire «è più alto del palco»
+  function misura() {
+    stato.barra = barraEl ? barraEl.offsetHeight : 0;
+    doc.style.setProperty('--alto-nav', stato.barra + 'px');
+    stato.larghezza = doc.clientWidth;
+    var disponibile = sonda.offsetHeight - stato.barra;
+    var basso = disponibile < 460;   // telefono in orizzontale: meglio scorrere libero
+    var scelte = binari.map(function (b) {
+      if (basso) return false;
+      if (b.sempre) return true;
+      if (!b.quadro) return false;
+      var alto = b.quadro.offsetHeight;
+      return b.fermo ? alto <= b.palco.clientHeight + 1 : alto <= disponibile - 24;
+    });
+    binari.forEach(function (b, i) { b.fermo = scelte[i]; b.el.classList.toggle('fermo', b.fermo); });
+    var firma = [stato.larghezza, disponibile];
+    binari.forEach(function (b) { b.palcoH = b.fermo ? b.palco.offsetHeight : 0; firma.push(b.palcoH); });
+    firma = firma.join(',');
+    if (firma !== stato.firma) { stato.firma = firma; stato.versione++; }   // il player ridisegna tutto
+    stato.sporco = true;
+  }
+
+  var guide = [];
+  function guida(radice) {
+    var testo = radice.getAttribute('data-copione');
+    if (!testo) return null;
+    var g = { radice: radice, punti: AV.leggiCopione(testo), bin: binarioDi(radice), f: fonte() };
+    guide.push(g);
+    stato.sporco = true;
+    return {
+      tempo: function () { return AV.tempoDa(g.f.liscio === null ? g.f.grezzo : g.f.liscio, g.punti); }
+    };
+  }
+
+  var effetti = [];
+  function effetto(selettore, misuraE, applica) {
+    Array.prototype.forEach.call(document.querySelectorAll(selettore), function (el) {
+      effetti.push({ el: el, f: fonte(), rect: null, misura: misuraE, applica: applica, bin: binarioDi(el), nuovo: true });
+    });
+  }
+  function attraversa(e, vista) {
+    return AV.attraversamento({ top: e.rect.top, altezza: e.rect.height, vista: vista });
+  }
+
+  // il blocco sale e prende corpo mentre entra; senza regista --e vale 1 e resta pieno
+  effetto('[data-svela]',
+    function (e, vista) { return AV.ingresso({ top: e.rect.top, vista: vista, fino: 0.72 }); },
+    function (e) { e.el.style.setProperty('--e', AV.limita(e.f.liscio).toFixed(4)); });
+
+  // la larghezza di Archivo segue lo scroll: "da a" arriva a metà strada, "da a poi" va e torna
+  effetto('[data-allarga]', attraversa, function (e) {
+    if (e.el.hasAttribute('data-manuale')) return;   // il cursore l'avete toccato voi
+    var v = e.el.getAttribute('data-allarga').split(/\s+/).map(Number);
+    var x = AV.limita(e.f.liscio), w;
+    if (v.length > 2) w = x < 0.5 ? v[0] + (v[1] - v[0]) * x * 2 : v[1] + (v[2] - v[1]) * (x - 0.5) * 2;
+    else w = v[0] + (v[1] - v[0]) * AV.limita(x / 0.55);
+    w = Math.round(w);
+    if (w === e.w) return;
+    e.w = w;
+    e.el.style.fontVariationSettings = '"wdth" ' + w;
+    var cursore = document.getElementById(e.el.getAttribute('data-cursore') || '');
+    var uscita = document.getElementById(e.el.getAttribute('data-uscita') || '');
+    if (cursore) cursore.value = String(w);
+    if (uscita) uscita.textContent = String(w);
+  });
+
+  // la notte entra da destra: dentro un palco agganciato nella prima metà della corsa; a palco libero
+  // (telefono, le due metà una sotto l'altra) finisce presto, come le entrate, o alla sosta il testo resta tagliato
+  effetto('[data-tenda]',
+    function (e, vista) {
+      if (e.bin && e.bin.fermo) return AV.limita(e.bin.p.grezzo / 0.45);
+      return AV.ingresso({ top: e.rect.top, vista: vista, fino: 0.72 });
+    },
+    function (e) {
+      var x = AV.limita(e.f.liscio);
+      var cp = x >= 0.999 ? 'none' : 'inset(0 0 0 ' + ((1 - x) * 100).toFixed(2) + '%)';
+      if (cp !== e.cp) { e.cp = cp; e.el.style.clipPath = cp; }
+    });
+
+  // la testina corre sulla linea del tempo della soglia (0–14 s, 48 px al secondo nel disegno)
+  var FASI = [[4, 'GIORNO'], [5.8, 'SOGLIA'], [12.2, 'NOTTE'], [13.8, 'RITORNO'], [Infinity, 'GIORNO']];
+  effetto('[data-testina]', attraversa, function (e) {
+    var g = e.el.querySelector('.testina');
+    var etichetta = g && g.querySelector('text');
+    if (!etichetta) return;
+    var s = 14 * AV.limita(e.f.liscio), x = 14 + 48 * s, fase = '';
+    for (var i = 0; i < FASI.length; i++) if (s < FASI[i][0]) { fase = FASI[i][1]; break; }
+    g.setAttribute('transform', 'translate(' + x.toFixed(1) + ' 0)');
+    etichetta.setAttribute('x', (AV.limita(x, 70, 630) - x).toFixed(1));
+    etichetta.textContent = s.toFixed(1).replace('.', ',') + ' s · ' + fase;
+  });
+
+  // una sezione della notte entra attraverso l'apertura dell'Arco, come la soglia dell'apertura
+  effetto('[data-soglia-ingresso]',
+    function (e, vista) { return AV.limita((vista - e.rect.top) / (0.85 * vista)); },
+    function (e) {
+      var x = AV.limita(e.f.liscio), cp;
+      if (x >= 0.999) cp = 'none';
+      else if (x <= 0.001) cp = 'polygon(0 0,0 0,0 0)';
+      else {
+        var vis = AV.limita(stato.vista - e.rect.top, 1, e.rect.height);
+        var s = (vis * 0.42 / 157) * Math.min(1, x / 0.12) * Math.pow(22, x);
+        var fx = e.rect.width / 2, fy = vis * 0.55;
+        cp = 'polygon(' + AV.aperturaArco().map(function (p) {
+          return (fx + (p[0] - 80) * s).toFixed(1) + 'px ' + (fy + (p[1] - 120) * s).toFixed(1) + 'px';
+        }).join(',') + ')';
+      }
+      if (cp !== e.cp) { e.cp = cp; e.el.style.clipPath = cp; }
+    });
+
+  function leggi(vista) {
+    binari.forEach(function (b) {
+      var r = b.el.getBoundingClientRect();
+      b.p.grezzo = b.fermo
+        ? AV.avanzamentoBinario({ top: r.top, altezza: r.height, palco: b.palcoH, barra: stato.barra })
+        : AV.attraversamento({ top: r.top, altezza: r.height, vista: vista });
+    });
+    guide.forEach(function (g) {
+      if (g.bin && g.bin.fermo) { g.f.grezzo = g.bin.p.grezzo; return; }
+      var r = g.radice.getBoundingClientRect();
+      g.f.grezzo = AV.attraversamento({ top: r.top, altezza: r.height, vista: vista });
+    });
+    effetti.forEach(function (e) {
+      e.rect = e.el.getBoundingClientRect();
+      e.f.grezzo = e.misura(e, vista);
+    });
+  }
+
+  function fotogramma(dt) {
+    if (stato.rimisura || doc.clientWidth !== stato.larghezza) { stato.rimisura = false; misura(); }
+    var vista = doc.clientHeight, sy = window.scrollY;
+    if (stato.sporco || sy !== stato.sy || vista !== stato.vista) {
+      stato.sporco = false; stato.sy = sy; stato.vista = vista;
+      leggi(vista);
+    }
+    binari.forEach(function (b) {
+      muovi(b.p, dt);
+      var p = AV.limita(b.p.liscio);
+      if (b.scritto === null || Math.abs(p - b.scritto) > 1e-4) { b.scritto = p; b.el.style.setProperty('--p', p.toFixed(4)); }
+    });
+    guide.forEach(function (g) { muovi(g.f, dt); });
+    effetti.forEach(function (e) {
+      if (muovi(e.f, dt) || e.nuovo) {
+        e.nuovo = false;
+        try { e.applica(e); } catch (err) { console.error('[AV] effetto', e.el, err); }
+      }
+    });
+  }
+
+  addEventListener('resize', function () { stato.rimisura = true; });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { stato.rimisura = true; });
+  // si misura al fotogramma dopo: misurare dentro l'osservatore farebbe un giro di notifiche a vuoto
+  if ('ResizeObserver' in window) {
+    var oss = new ResizeObserver(function () { stato.rimisura = true; });
+    binari.forEach(function (b) { if (b.quadro) oss.observe(b.quadro); });
+  }
+  misura();
+
+  AV.regia = {
+    guida: guida,
+    fotogramma: fotogramma,
+    versione: function () { return stato.versione; },
+    binari: binari
+  };
+})();
+</script>
+<script>// FILE: src/indice.js — i capitoli del film: tacche a destra, barra in basso sul telefono,
+// calamita leggera verso la sosta vicina. Funziona anche a regista spento (salti senza agganci).
+(function () {
+  var AV = window.AV;
+  var riduci = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var doc = document.documentElement;
+  var barraEl = document.querySelector('.barra-nav');
+  var capitoli = [];
+  Array.prototype.forEach.call(document.querySelectorAll('[data-capitoli]'), function (el) {
+    AV.leggiCapitoli(el.getAttribute('data-capitoli')).forEach(function (c, i) {
+      capitoli.push({ el: el, nome: c.nome, sosta: c.sosta, primo: i === 0 });
+    });
+  });
+  if (!capitoli.length) return;
+
+  function palcoDi(c) {
+    return c.el.hasAttribute('data-binario') && c.el.classList.contains('fermo')
+      ? c.el.querySelector(':scope > .palco') : null;
+  }
+  function posizione(c, sosta) {
+    var r = c.el.getBoundingClientRect(), palco = palcoDi(c);
+    return AV.scrollDiSosta({
+      inizio: r.top + window.scrollY, altezza: r.height,
+      palco: palco ? palco.offsetHeight : 0, barra: barraEl ? barraEl.offsetHeight : 0,
+      sosta: sosta, fermo: !!palco
+    });
+  }
+  function sostaDi(c) { return posizione(c, c.sosta); }
+  // un capitolo comincia all'aggancio del suo palco; il secondo capitolo di un palco, poco prima della sua sosta
+  function inizioDi(c) { return posizione(c, c.primo || c.sosta === null ? 0 : Math.max(0, c.sosta - 0.25)); }
+  function due(n) { return (n < 10 ? '0' : '') + n; }
+
+  var nav = document.createElement('nav');
+  nav.className = 'indice';
+  nav.setAttribute('aria-label', 'Capitoli della pagina');
+  var ol = document.createElement('ol');
+  capitoli.forEach(function (c, i) {
+    var li = document.createElement('li');
+    var b = document.createElement('button');
+    b.type = 'button';
+    var nome = document.createElement('span');
+    nome.className = 'nome';
+    nome.textContent = c.nome;
+    var tacca = document.createElement('span');
+    tacca.className = 'tacca';
+    tacca.setAttribute('aria-hidden', 'true');
+    b.appendChild(nome);
+    b.appendChild(tacca);
+    b.addEventListener('click', function () { vai(i); });
+    li.appendChild(b);
+    ol.appendChild(li);
+    c.bottone = b;
+  });
+  nav.appendChild(ol);
+
+  var corto = document.createElement('div');
+  corto.className = 'indice-corto';
+  corto.innerHTML =
+    '<button type="button" class="prec" aria-label="Capitolo precedente"><span aria-hidden="true">←</span></button>' +
+    '<p class="dove"><b></b><span></span></p>' +
+    '<button type="button" class="succ" aria-label="Capitolo successivo"><span aria-hidden="true">→</span></button>' +
+    '<i class="avanza" aria-hidden="true"></i>';
+  document.body.appendChild(nav);
+  document.body.appendChild(corto);
+  var doveNum = corto.querySelector('.dove b');
+  var doveNome = corto.querySelector('.dove span');
+
+  var ultimaCalamita = null;
+  function vai(i) {
+    var c = capitoli[i];
+    if (!c) return;
+    var y = sostaDi(c);
+    ultimaCalamita = y;
+    window.scrollTo({ top: y, behavior: riduci ? 'auto' : 'smooth' });
+  }
+  function salta(verso) {
+    var y = window.scrollY, soste = capitoli.map(sostaDi), k = -1, i;
+    if (verso > 0) { for (i = 0; i < soste.length; i++) if (soste[i] > y + 8) { k = i; break; } }
+    else { for (i = soste.length - 1; i >= 0; i--) if (soste[i] < y - 8) { k = i; break; } }
+    if (k >= 0) vai(k);
+  }
+  corto.querySelector('.prec').addEventListener('click', function () { salta(-1); });
+  corto.querySelector('.succ').addEventListener('click', function () { salta(1); });
+
+  // i link della barra (e quelli marcati data-salta) portano alla sosta del capitolo, non all'inizio del binario
+  Array.prototype.forEach.call(document.querySelectorAll('.barra-nav a[href^="#"], a[data-salta][href^="#"]'), function (a) {
+    a.addEventListener('click', function (ev) {
+      var dest = document.getElementById(a.getAttribute('href').slice(1));
+      if (!dest) return;
+      for (var i = 0; i < capitoli.length; i++) {
+        var el = capitoli[i].el;
+        if (el === dest || el.contains(dest) || dest.contains(el)) { ev.preventDefault(); vai(i); return; }
+      }
+    });
+  });
+
+  function tonoIn(x, y) {
+    var pila = document.elementsFromPoint(x, y);
+    for (var i = 0; i < pila.length; i++) {
+      var el = pila[i];
+      if (nav.contains(el) || corto.contains(el)) continue;
+      var z = el.closest('.notte, .giorno');
+      return z && z.classList.contains('notte') ? 'notte' : 'giorno';
+    }
+    return 'giorno';
+  }
+
+  var attivo = -1, tono = '', tonoCorto = '', inAttesa = false, annuncio = 0;
+  function aggiorna() {
+    inAttesa = false;
+    var vista = doc.clientHeight, y = window.scrollY;
+    var k = AV.capitoloCorrente(capitoli.map(inizioDi), y, vista);
+    if (k !== attivo && k >= 0) {
+      if (attivo >= 0) capitoli[attivo].bottone.removeAttribute('aria-current');
+      if (attivo >= 0) capitoli[attivo].bottone.classList.remove('annuncia');
+      attivo = k;
+      var b = capitoli[k].bottone;
+      b.setAttribute('aria-current', 'step');
+      // il nome del capitolo appare per un attimo e se ne va: fisso, coprirebbe il testo a destra
+      b.classList.add('annuncia');
+      clearTimeout(annuncio);
+      annuncio = setTimeout(function () { b.classList.remove('annuncia'); }, 1600);
+      doveNum.textContent = due(k + 1) + ' / ' + due(capitoli.length);
+      doveNome.textContent = capitoli[k].nome;
+    }
+    doc.style.setProperty('--avanza', AV.limita(y / Math.max(1, doc.scrollHeight - vista)).toFixed(4));
+    var W = doc.clientWidth;
+    var t1 = tonoIn(W - 90, vista / 2);
+    if (t1 !== tono) { tono = t1; nav.setAttribute('data-tono', t1); }
+    var t2 = tonoIn(W / 2, vista - 96);
+    if (t2 !== tonoCorto) { tonoCorto = t2; corto.setAttribute('data-tono', t2); }
+  }
+  function chiedi() {
+    if (inAttesa) return;
+    inAttesa = true;
+    requestAnimationFrame(aggiorna);
+  }
+
+  // calamita: fermi a un passo da una sosta di un palco agganciato, vi ci porta; mai col dito appoggiato,
+  // mai verso l'inizio della pagina, e non di nuovo finché restate vicino all'ultima sosta raggiunta
+  var film = doc.classList.contains('film');
+  var giu = false, timer = 0;
+  function fermo() {
+    chiedi();
+    setTimeout(chiedi, 450);   // il regista insegue ancora: il tono può cambiare dopo l'ultimo scroll
+    if (!film || riduci || giu) return;
+    var y = window.scrollY, raggio = doc.clientHeight * 0.1;
+    if (ultimaCalamita !== null) {
+      if (Math.abs(y - ultimaCalamita) <= raggio) return;
+      ultimaCalamita = null;
+    }
+    var soste = [];
+    capitoli.forEach(function (c) { if (c.sosta && palcoDi(c)) soste.push(sostaDi(c)); });
+    var dest = AV.calamita(y, soste, raggio);
+    if (dest !== null) {
+      ultimaCalamita = dest;
+      window.scrollTo({ top: dest, behavior: 'smooth' });
+    }
+  }
+  function programma() { clearTimeout(timer); timer = setTimeout(fermo, 240); }
+  function premuto() { giu = true; clearTimeout(timer); }
+  function lasciato() { giu = false; programma(); }
+
+  addEventListener('scroll', function () { chiedi(); programma(); }, { passive: true });
+  addEventListener('resize', chiedi);
+  addEventListener('pointerdown', premuto, { passive: true });
+  addEventListener('pointerup', lasciato, { passive: true });
+  addEventListener('pointercancel', lasciato, { passive: true });
+  addEventListener('touchstart', premuto, { passive: true });
+  addEventListener('touchend', lasciato, { passive: true });
+  addEventListener('touchcancel', lasciato, { passive: true });
+  aggiorna();
+
+  AV.indice = { capitoli: capitoli, vai: vai, sostaDi: sostaDi };
+})();
+</script>
+<script>// FILE: src/player.js — l'orologio unico: tempo reale, tempo dello scroll (regista), oppure ?t= congelato
+(function () {
+  var AV = window.AV;
+  var q = new URLSearchParams(location.search);
+  var fisso = q.has('t') ? Math.max(parseFloat(q.get('t')) || 0, 0) : null;
+  var riduci = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var regia = fisso === null && !riduci && AV.regia ? AV.regia : null;
+  var attivi = [];
+
+  function riposo(c) { return typeof c.riposo === 'number' ? c.riposo : c.durata * 0.6; }
+  function segnaErrore(radice, nome, e) {
+    radice.setAttribute('data-errore', String((e && e.message) || e));
+    console.error('[AV]', nome, e);
+  }
+  function seekSicuro(v, t) {
+    if (v.rotto) return;
+    try { v.c.seek(t); } catch (e) { v.rotto = true; segnaErrore(v.radice, v.c.nome, e); }
+  }
+
+  AV.componenti.forEach(function (c) {
+    var radice = document.querySelector('[data-componente="' + c.nome + '"]');
+    if (!radice) return;
+    try { c.monta(radice); attivi.push({ c: c, radice: radice, visibile: true, rotto: false, guida: null, t: null }); }
+    catch (e) { segnaErrore(radice, c.nome, e); }
+  });
+
+  // con il regista, un componente che ha un copione prende il tempo dallo scroll
+  if (regia) {
+    attivi.forEach(function (v) {
+      try { v.guida = regia.guida(v.radice); } catch (e) { segnaErrore(v.radice, v.c.nome, e); }
+    });
+  }
+
+  AV.seekTutti = function (t) { attivi.forEach(function (v) { seekSicuro(v, t % v.c.durata); }); };
+  AV.stato = {
+    attivi: attivi.map(function (v) { return v.c.nome; }),
+    congelato: fisso !== null || riduci,
+    film: !!regia,
+    guidati: attivi.filter(function (v) { return v.guida; }).map(function (v) { return v.c.nome; })
+  };
+
+  if (fisso !== null || riduci) {
+    attivi.forEach(function (v) { seekSicuro(v, fisso !== null ? fisso % v.c.durata : riposo(v.c)); });
+    document.documentElement.setAttribute('data-congelato', fisso !== null ? String(fisso) : 'riposo');
+    return;
+  }
+
+  attivi.forEach(function (v) { seekSicuro(v, riposo(v.c)); });
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (voci) {
+      voci.forEach(function (e) {
+        attivi.forEach(function (v) {
+          if (v.radice !== e.target) return;
+          if (e.isIntersecting && !v.visibile) v.t = null;   // torna in vista: ridisegna anche se il tempo è lo stesso
+          v.visibile = e.isIntersecting;
+        });
+      });
+    }, { rootMargin: '120px' });
+    attivi.forEach(function (v) { io.observe(v.radice); });
+  }
+
+  var inizio = performance.now(), prima = null, versione = null;
+  function giro(ora) {
+    var dt = prima === null ? 0 : Math.min((ora - prima) / 1000, 0.1);
+    prima = ora;
+    var t = (ora - inizio) / 1000;
+    if (regia) {
+      regia.fotogramma(dt);
+      if (regia.versione() !== versione) {   // i palchi hanno cambiato misura: le tele vanno ridisegnate
+        versione = regia.versione();
+        attivi.forEach(function (v) { v.t = null; });
+      }
+    }
+    for (var i = 0; i < attivi.length; i++) {
+      var v = attivi[i];
+      if (!v.visibile) continue;
+      if (v.guida) {
+        var tg = Math.min(Math.max(v.guida.tempo(), 0), v.c.durata - 0.001);
+        if (v.t === null || Math.abs(tg - v.t) > 0.0005) { v.t = tg; seekSicuro(v, tg); }
+      } else {
+        seekSicuro(v, (t + riposo(v.c)) % v.c.durata);
+      }
+    }
+    requestAnimationFrame(giro);
+  }
+  requestAnimationFrame(giro);
+})();
+</script>
