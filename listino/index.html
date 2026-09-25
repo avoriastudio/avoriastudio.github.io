@@ -499,10 +499,8 @@ ul{margin:0;padding-left:1.1em}
 .percorso::before,.percorso::after{content:"";position:absolute;left:0;right:0;top:0;height:2px}
 .percorso::before{background:#DDD5C7}
 .percorso::after{background:var(--oro);transform-origin:left;transform:scaleX(var(--p,1))}
-/* ogni tappa si accende quando il film la raggiunge, ma solo a palco agganciato:
-   se l'apertura scorre libera (telefono) le tappe restano accese, come senza regista */
-.film .fermo .tappa{--acceso:clamp(0,calc((var(--p,1) * 5 - var(--k) + .4) * 2.5),1);
-  opacity:calc(.32 + .68 * var(--acceso));transform:translate3d(0,calc((1 - var(--acceso)) * 10px),0)}
+/* le tappe sono accese da subito: fino al 25/09 si accendevano quando il film le raggiungeva, e al computer chi apriva il listino
+   vedeva quattro prezzi su cinque al 32 % finché non scorreva (revisione del sito, punto 2). La linea d'oro avanza con lo scroll */
 .tappa a{display:flex;flex-direction:column;gap:6px;height:100%;padding:16px 18px;border-radius:var(--raggio);text-decoration:none;
   background:var(--posa);border:1px solid #DDD5C7;color:var(--inchiostro)}
 .tappa small{font-family:var(--f-dati);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grafite)}
@@ -642,6 +640,10 @@ ul{margin:0;padding-left:1.1em}
 .bottone-pieno{display:inline-block;background:var(--inchiostro);color:var(--avorio);text-decoration:none;border-radius:999px;padding:14px 24px;
   font-family:var(--f-dati);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
 .bottone-pieno:hover{background:#2a2720}
+/* il bottone vuoto passa qui dal sito (25/09): ora serve anche al listino, per «Scrivici in DM» nella chiusura */
+.bottone-vuoto{display:inline-block;border:1px solid var(--inchiostro);color:var(--inchiostro);text-decoration:none;border-radius:999px;padding:13px 23px;font-family:var(--f-dati);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.bottone-vuoto:hover{border-color:var(--oro)}
+.azioni .dati a{color:inherit}
 .azioni .dati{font-size:.66rem;color:var(--grafite)}
 
 /* telefono: la barra dell'indice occupa il fondo */
@@ -662,6 +664,17 @@ ul{margin:0;padding-left:1.1em}
 .nota-muove{font-size:.95rem;color:var(--grafite);max-width:70ch}
 .combinazioni{display:flex;flex-direction:column;gap:12px}
 .reparto .spiega{max-width:44ch;font-size:1rem}
+
+/* le scritte piccole si leggono (revisione del sito, 25/09, punto 4): le etichette in maiuscolo arrivano a 12 px (erano fra 9,6 e
+   10,6), e sul fondo chiaro l'oro diventa quello scuro, #7A5C2E: 5,3 a 1 sull'avorio, dove l'oro chiaro stava a 2,5. Sul nero l'oro
+   resta com'è, a 7 a 1. Vale per il listino, la home e la pagina di Aura, che leggono tutti questo foglio */
+.giorno{--oro-etichetta:#7A5C2E}
+.notte{--oro-etichetta:var(--oro)}
+.occhiello,.stato-linea,.didascalia,.principio b,.tappa small,.voce .tempo,.coppia small,.sistema dt,.canone .condizioni,.azioni .dati{font-size:.75rem}
+.nuovo{font-size:.7rem}
+.stato-linea b,.nuovo,.giorni b{color:var(--oro-etichetta,var(--oro))}
+/* le tappe di notte: il nero sta nella scheda arrotondata, non nel riquadro quadrato dietro, che si vedeva agli angoli */
+.percorso .tappa.notte{background:none}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -729,7 +742,7 @@ ul{margin:0;padding-left:1.1em}
         <article class="canone consigliato" data-servizio="firma">
           <header><h3>Firma</h3><span class="segno">Consigliato</span><span class="ruolo" data-spiega>Per chi pubblica ogni settimana e ha una collezione intera da mostrare</span></header>
           <p class="prezzo">€690<small>/mese</small></p>
-          <ul class="punti" data-ricevi><li>30 scatti</li><li>3 reel, uno «ogni angolo»: il prodotto ripreso in un solo movimento</li><li>3 scatti che si muovono</li><li>Formati, didascalie e piano del mese</li><li>Priorità</li></ul>
+          <ul class="punti" data-ricevi><li>30 scatti</li><li>3 reel, uno «ogni angolo»: il prodotto ripreso in un solo movimento</li><li>3 scatti che si muovono</li><li>Formati, didascalie e piano del mese</li><li>Le tue richieste passano prima</li></ul>
           <p class="condizioni" data-tempo>In due consegne al mese · 2 revisioni</p>
         </article>
         <article class="canone" data-servizio="maison">
@@ -871,7 +884,7 @@ ul{margin:0;padding-left:1.1em}
           <div class="coppia"><div><small>Avvio</small><span class="prezzo">€1.900</span></div><div><small>Canone</small><span class="prezzo">€390<small>/mese</small></span></div></div>
           <dl>
             <dt>Cosa ci mandi</dt><dd data-mandi>L'accesso al negozio, Shopify o WooCommerce, e i primi 20 prodotti da cui partire.</dd>
-            <dt>Cosa ricevi</dt><dd data-ricevi>Colleghiamo il tuo negozio: quando aggiungi o cambi un prodotto, le sue foto ambientate si fanno da sole, nei formati di negozio, marketplace e pubblicità, e le controlliamo prima che escano. Nell'avvio: 12 ambientazioni nel tuo stile e i primi 20 prodotti.</dd>
+            <dt>Cosa ricevi</dt><dd data-ricevi>Colleghiamo il tuo negozio: quando aggiungi o cambi un prodotto, le sue foto ambientate si fanno da sole, nei formati del negozio, di Amazon, Etsy e simili e della pubblicità, e le controlliamo prima che escano. Nell'avvio: 12 ambientazioni nel tuo stile e i primi 20 prodotti.</dd>
             <dt>In quanto tempo</dt><dd data-tempo>3 settimane.</dd>
             <dt>Nel canone</dt><dd>Fino a 30 prodotti nuovi o cambiati al mese, in 4 formati.</dd>
           </dl>
@@ -882,7 +895,7 @@ ul{margin:0;padding-left:1.1em}
           <div class="coppia"><div><small>Avvio</small><span class="prezzo">€2.400</span></div><div><small>Canone</small><span class="prezzo">€290<small>/mese</small></span></div></div>
           <dl>
             <dt>Cosa ci mandi</dt><dd data-mandi>Il tuo listino e i canali da cui arrivano le richieste: DM, email, modulo del sito, fino a 3.</dd>
-            <dt>Cosa ricevi</dt><dd data-ricevi>Le richieste finiscono in un registro unico, il preventivo si scrive da solo dal tuo listino e tu lo approvi. I promemoria ai clienti partono da soli.</dd>
+            <dt>Cosa ricevi</dt><dd data-ricevi>Le richieste finiscono in un solo elenco, il preventivo si scrive da solo dal tuo listino e tu lo approvi. I promemoria ai clienti partono da soli.</dd>
             <dt>In quanto tempo</dt><dd data-tempo>3–4 settimane.</dd>
             <dt>Nel canone</dt><dd>Hosting, modelli AI, manutenzione e una piccola modifica al mese.</dd>
           </dl>
@@ -914,12 +927,12 @@ ul{margin:0;padding-left:1.1em}
       <h2 id="reparto-titolo">Reparto AI</h2>
       <p class="prezzo prezzo-grande">da €1.690<small>/mese</small></p>
       <p class="spiega" data-spiega>Foto, video, social e un sistema, seguiti da una persona sola.</p>
-      <ul class="punti" data-ricevi><li>Il canone Firma: 30 scatti, 3 reel e 3 scatti che si muovono al mese</li><li>I tuoi social, compresi</li><li>Priorità su tutto</li></ul>
+      <ul class="punti" data-ricevi><li>Il canone Firma: 30 scatti, 3 reel e 3 scatti che si muovono al mese</li><li>I tuoi social, compresi</li><li>Le tue richieste passano prima delle altre</li></ul>
     </div>
     <div class="notte" data-tenda>
       <span class="occhiello">… e di notte</span>
       <h2><span class="firma">Sempre</span> acceso.</h2>
-      <ul class="punti"><li>Il canone di un sistema a scelta; l'avvio si paga a parte</li><li>Un'evoluzione dei sistemi al mese: un modello di preventivo, un canale, un campo nuovo</li><li>Una call di regia al mese</li><li>Ogni sistema in più: il suo canone</li></ul>
+      <ul class="punti"><li>Il canone di un sistema a scelta; l'avvio si paga a parte</li><li>Ogni mese un miglioramento ai tuoi sistemi: un modello di preventivo, un canale, un campo nuovo</li><li>Una call al mese per decidere cosa fare</li><li>Ogni sistema in più: il suo canone</li></ul>
       <p class="spiega" data-mandi data-tempo>Cosa ci mandi e in quanto tempo: come per ogni servizio qui sopra. Foto e social partono coi tempi dei loro canoni, il sistema con quelli del suo avvio.</p>
     </div>
   </section>
@@ -953,7 +966,7 @@ ul{margin:0;padding-left:1.1em}
         <li><h3>Foto e video</h3><p>Tuoi al 100%, per ogni uso.</p></li>
         <li><h3>Sistemi e dati</h3><p>Se interrompi il canone ti consegniamo il sistema funzionante, con le istruzioni, e account, hosting e modelli passano a tuo nome.</p></li>
         <li><h3>I tuoi materiali</h3><p>Non addestriamo modelli su foto, documenti e dati tuoi. NDA se lo chiedi.</p></li>
-        <li><h3>L'AI, dichiarata</h3><p>Ti diciamo quali modelli usiamo e dove girano. La regia è nostra, e ogni consegna passa da un controllo di qualità.</p></li>
+        <li><h3>L'AI, dichiarata</h3><p>Ti diciamo quali modelli usiamo e dove girano. Cosa si crea e cosa esce lo scegliamo noi, e ogni consegna passa da un controllo di qualità.</p></li>
       </ul>
     </div>
   </section>
@@ -997,7 +1010,7 @@ ul{margin:0;padding-left:1.1em}
         <details><summary>Serve l'analisi prima di un sistema?</summary><p>Solo per il gestionale su misura, e per i preventivi automatici se dopo la call non è chiaro cosa costruire. L'assistente e le foto del catalogo partono direttamente.</p></details>
         <details><summary>Chi paga i modelli AI?</summary><p>Sono nel canone fino alla soglia scritta nel preventivo. Oltre la soglia li paghiamo al costo e te li giriamo senza ricarico.</p></details>
         <details><summary>E se smetto?</summary><p>Disdetta con 30 giorni di preavviso, senza penali. Il sistema ti resta, funzionante e con le istruzioni.</p></details>
-        <details><summary>Foto e video sono fatti con l'AI?</summary><p>Sì, e lo diciamo. La regia è umana: scegliamo luce, ambientazioni e movimento sul tuo stile, e ogni consegna passa da un controllo di qualità.</p></details>
+        <details><summary>Foto e video sono fatti con l'AI?</summary><p>Sì, e lo diciamo. A scegliere sono persone: luce, ambientazioni e movimento sul tuo stile, e ogni consegna passa da un controllo di qualità.</p></details>
       </div>
     </div>
   </section>
@@ -1010,7 +1023,8 @@ ul{margin:0;padding-left:1.1em}
       <p class="lead">Trenta minuti per capire cosa ti serve. Per foto, video e social puoi anche scriverci in DM.</p>
       <div class="azioni">
         <a class="bottone-pieno" href="mailto:avoriastudio@outlook.it?subject=Call%20con%20Avoria">Scrivici per la call</a>
-        <span class="dati">avoriastudio@outlook.it · DM @avor.iastudio</span>
+        <a class="bottone-vuoto" href="https://ig.me/m/avor.iastudio">Scrivici in DM</a>
+        <span class="dati"><a href="mailto:avoriastudio@outlook.it">avoriastudio@outlook.it</a> · <a href="https://instagram.com/avor.iastudio">@avor.iastudio</a></span>
       </div>
     </div>
   </section>
