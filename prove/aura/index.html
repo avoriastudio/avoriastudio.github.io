@@ -315,10 +315,8 @@ ul{margin:0;padding-left:1.1em}
 .percorso::before,.percorso::after{content:"";position:absolute;left:0;right:0;top:0;height:2px}
 .percorso::before{background:#DDD5C7}
 .percorso::after{background:var(--oro);transform-origin:left;transform:scaleX(var(--p,1))}
-/* ogni tappa si accende quando il film la raggiunge, ma solo a palco agganciato:
-   se l'apertura scorre libera (telefono) le tappe restano accese, come senza regista */
-.film .fermo .tappa{--acceso:clamp(0,calc((var(--p,1) * 5 - var(--k) + .4) * 2.5),1);
-  opacity:calc(.32 + .68 * var(--acceso));transform:translate3d(0,calc((1 - var(--acceso)) * 10px),0)}
+/* le tappe sono accese da subito: fino al 25/09 si accendevano quando il film le raggiungeva, e al computer chi apriva il listino
+   vedeva quattro prezzi su cinque al 32 % finché non scorreva (revisione del sito, punto 2). La linea d'oro avanza con lo scroll */
 .tappa a{display:flex;flex-direction:column;gap:6px;height:100%;padding:16px 18px;border-radius:var(--raggio);text-decoration:none;
   background:var(--posa);border:1px solid #DDD5C7;color:var(--inchiostro)}
 .tappa small{font-family:var(--f-dati);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grafite)}
@@ -458,6 +456,10 @@ ul{margin:0;padding-left:1.1em}
 .bottone-pieno{display:inline-block;background:var(--inchiostro);color:var(--avorio);text-decoration:none;border-radius:999px;padding:14px 24px;
   font-family:var(--f-dati);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
 .bottone-pieno:hover{background:#2a2720}
+/* il bottone vuoto passa qui dal sito (25/09): ora serve anche al listino, per «Scrivici in DM» nella chiusura */
+.bottone-vuoto{display:inline-block;border:1px solid var(--inchiostro);color:var(--inchiostro);text-decoration:none;border-radius:999px;padding:13px 23px;font-family:var(--f-dati);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.bottone-vuoto:hover{border-color:var(--oro)}
+.azioni .dati a{color:inherit}
 .azioni .dati{font-size:.66rem;color:var(--grafite)}
 
 /* telefono: la barra dell'indice occupa il fondo */
@@ -478,10 +480,20 @@ ul{margin:0;padding-left:1.1em}
 .nota-muove{font-size:.95rem;color:var(--grafite);max-width:70ch}
 .combinazioni{display:flex;flex-direction:column;gap:12px}
 .reparto .spiega{max-width:44ch;font-size:1rem}
+
+/* le scritte piccole si leggono (revisione del sito, 25/09, punto 4): le etichette in maiuscolo arrivano a 12 px (erano fra 9,6 e
+   10,6), e sul fondo chiaro l'oro diventa quello scuro, #7A5C2E: 5,3 a 1 sull'avorio, dove l'oro chiaro stava a 2,5. Sul nero l'oro
+   resta com'è, a 7 a 1. Vale per il listino, la home e la pagina di Aura, che leggono tutti questo foglio */
+.giorno{--oro-etichetta:#7A5C2E}
+.notte{--oro-etichetta:var(--oro)}
+.occhiello,.stato-linea,.didascalia,.principio b,.tappa small,.voce .tempo,.coppia small,.sistema dt,.canone .condizioni,.azioni .dati{font-size:.75rem}
+.nuovo{font-size:.7rem}
+.stato-linea b,.nuovo,.giorni b{color:var(--oro-etichetta,var(--oro))}
+/* le tappe di notte: il nero sta nella scheda arrotondata, non nel riquadro quadrato dietro, che si vedeva agli angoli */
+.percorso .tappa.notte{background:none}
 </style>
 <style>/* FILE: src/sito.css — solo ciò che serve alla home del sito, sopra lo stile del kit */
-.bottone-vuoto{display:inline-block;border:1px solid var(--inchiostro);color:var(--inchiostro);text-decoration:none;border-radius:999px;padding:13px 23px;font-family:var(--f-dati);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
-.bottone-piccolo{padding:9px 14px;font-size:.62rem}
+.bottone-piccolo{padding:9px 14px;font-size:.68rem}
 .barra-nav nav a.bottone-pieno{color:var(--avorio)}
 .motto{font-family:var(--f-firma);font-style:italic;font-weight:500;font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--grafite)}
 .hero .azioni{margin-top:22px}
@@ -497,14 +509,14 @@ ul{margin:0;padding-left:1.1em}
 .anteprima .tessere{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:4px;padding:4px}
 .anteprima .tessere img{width:100%;height:100%;border-radius:3px}
 [data-entra]{opacity:1}
-.didascalia-anteprima{position:absolute;left:10px;bottom:10px;background:rgba(22,20,15,.72);color:#F4ECDE;font-family:var(--f-dati);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;border-radius:3px}
+.didascalia-anteprima{position:absolute;left:10px;bottom:10px;background:rgba(22,20,15,.72);color:#F4ECDE;font-family:var(--f-dati);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;border-radius:3px}
 .anteprima.griglia{aspect-ratio:6/5;max-width:620px}   /* 3×2 tessere da 4:5 esatti */
 
 /* i prezzi, di notte */
 .prezzi h3 small{display:block;font-family:var(--f-dati);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);font-weight:500;margin-bottom:8px}
 .prezzi>div{border-top:1px solid var(--filo);padding-top:18px;display:flex;flex-direction:column;gap:10px}
 .prezzi p{font-size:1.15rem;color:var(--testo)}
-.nota-prezzi{font-size:.66rem;color:var(--secondario)}
+.nota-prezzi{font-size:.8rem;color:var(--secondario)}
 .bottone-pieno.chiaro{background:var(--avorio-luce);color:var(--nero)}
 /* sul telefono il palco si aggancia solo se testo e anteprima stanno in uno schermo: l'anteprima si misura sull'altezza */
 @media (max-width:900px){
@@ -528,42 +540,56 @@ ul{margin:0;padding-left:1.1em}
 .telefono.piccolo{height:min(62svh,560px)}
 .telefono.alto{aspect-ratio:390/844}
 .righe{margin:0;display:grid;gap:10px}
-.righe .riga{border-top:1px solid #DDD5C7;padding-top:10px;opacity:.36;transition:opacity .4s var(--ease-giorno)}
+/* le quattro righe sono accese da subito e non aspettano il reel (Simone, 25/09: «chi non vede il video… non vede tutte le scritte») */
+.righe .riga{border-top:1px solid #DDD5C7;padding-top:10px}
 .notte .righe .riga{border-color:var(--filo-notte)}
-.righe .riga.accesa{opacity:1}
-.righe dt{font-family:var(--f-dati);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro)}
+.righe dt{font-family:var(--f-dati);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--oro-etichetta,var(--oro))}
 .righe dd{margin:4px 0 0;font-size:1rem;line-height:1.42}
-.righe dd a{color:inherit;font-family:var(--f-dati);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;margin-left:6px}
-.con-audio{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;border:0;border-radius:999px;padding:8px 14px;background:rgba(22,20,15,.72);color:#F4ECDE;
-  font-family:var(--f-dati);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.con-audio:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
-.azienda{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;border-top:1px solid var(--filo-notte);padding-top:16px;margin:0}
+.righe dd a{color:inherit;font-family:var(--f-dati);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-left:6px}
+/* i reel partono da soli quando li vedi (25/09). Sul telefono disegnato: in basso il bottone dell'audio e sotto la barra d'oro
+   per tornare indietro; in alto a destra il tutto schermo. Muto, il bottone è d'oro e dice «Attiva l'audio»; col suono resta
+   l'icona; alla fine dice «Rivedi» (video-reel-logica.mjs) */
+.telefono[data-reel]{--bordo:9px;--raggio:24px}
+.telefono[data-reel] video{cursor:pointer}
+.telefono .audio{position:absolute;right:calc(var(--bordo) + 12px);bottom:calc(var(--bordo) + 32px);z-index:2;display:inline-flex;align-items:center;gap:8px;min-height:36px;
+  border:0;border-radius:999px;padding:8px 14px;background:rgba(22,20,15,.72);color:#F4ECDE;font-family:var(--f-dati);font-size:.62rem;letter-spacing:.12em;
+  text-transform:uppercase;white-space:nowrap;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background-color .3s,color .3s}
+.telefono .audio svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.telefono .audio[data-stato="muto"],.telefono .audio[data-stato="guarda"]{background:var(--oro);color:#16140F}
+.telefono .audio[data-stato="guarda"] svg{fill:currentColor}
+.telefono .audio[data-stato="suona"]{width:36px;padding:0;justify-content:center}
+.telefono .schermo{position:absolute;top:calc(var(--bordo) + 12px);right:calc(var(--bordo) + 12px);z-index:2;display:grid;place-items:center;width:36px;height:36px;
+  border:0;border-radius:50%;padding:0;background:rgba(22,20,15,.6);color:#F4ECDE;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.telefono .schermo svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.telefono .audio:focus-visible,.telefono .schermo:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+/* la barra: un filo d'oro su un filo grigio, col pallino da trascinare; tocchi dove vuoi e il reel va lì */
+.telefono .scorri{--fatto:0%;position:absolute;left:calc(var(--bordo) + 14px);right:calc(var(--bordo) + 14px);bottom:calc(var(--bordo) + 4px);z-index:2;height:24px;margin:0;padding:0;
+  background:none;-webkit-appearance:none;appearance:none;cursor:pointer;touch-action:none}
+.telefono .scorri::-webkit-slider-runnable-track{height:3px;border-radius:3px;background:linear-gradient(var(--oro),var(--oro)) no-repeat 0 0 / var(--fatto) 100%,rgba(120,112,98,.5)}
+.telefono .scorri::-moz-range-track{height:3px;border-radius:3px;background:rgba(120,112,98,.5)}
+.telefono .scorri::-moz-range-progress{height:3px;border-radius:3px;background:var(--oro)}
+.telefono .scorri::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:13px;height:13px;margin-top:-5px;border:0;border-radius:50%;background:var(--oro);box-shadow:0 0 0 3px rgba(22,20,15,.28)}
+.telefono .scorri::-moz-range-thumb{width:13px;height:13px;border:0;border-radius:50%;background:var(--oro);box-shadow:0 0 0 3px rgba(22,20,15,.28)}
+.telefono .scorri:focus-visible{outline:2px solid var(--oro);outline-offset:3px;border-radius:6px}
 @media (max-width:900px){
   .reel-palco{grid-template-columns:minmax(0,1fr);gap:12px;align-content:start;padding-bottom:64px}
   .reel-palco .telefono{order:-1;height:50svh;border-radius:22px;padding:6px}
   .reel-palco .telefono video{border-radius:17px}
-  .reel-palco .con-audio{left:auto;right:12px;bottom:12px;transform:none;padding:6px 10px;font-size:.54rem}
+  .reel-palco .telefono[data-reel]{--bordo:6px;--raggio:17px}
+  .reel-palco .telefono .audio{right:calc(var(--bordo) + 8px);bottom:calc(var(--bordo) + 28px);padding:8px 12px;font-size:.56rem;gap:6px}
+  .reel-palco .telefono .audio[data-stato="suona"]{padding:0}
+  .reel-palco .telefono .schermo{top:calc(var(--bordo) + 8px);right:calc(var(--bordo) + 8px)}
+  .reel-palco .telefono .scorri{left:calc(var(--bordo) + 10px);right:calc(var(--bordo) + 10px);bottom:calc(var(--bordo) + 2px)}
   .reel-palco h2{display:none}
   .righe .riga{padding-top:6px}
   .righe dd{font-size:.84rem;line-height:1.35}
-  /* guidate dal reel, le quattro righe diventano quattro etichette e una frase sola, quella del momento: le quattro frasi insieme
-     facevano il palco più alto dello schermo (759–850 px contro 739–771, misurato il 24/09) e il palco non si agganciava */
-  .reel-palco .righe.a-tempo{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:8px;row-gap:8px;border-top:1px solid #DDD5C7;padding-top:8px}
-  .notte .reel-palco .righe.a-tempo{border-color:var(--filo-notte)}
-  .reel-palco .righe.a-tempo .riga{display:contents}
-  .reel-palco .righe.a-tempo dt{grid-row:1;opacity:.4;transition:opacity .3s}
-  .reel-palco .righe.a-tempo .accesa dt{opacity:1}
-  .reel-palco .righe.a-tempo .corrente dt{text-decoration:underline;text-underline-offset:4px}
-  .reel-palco .righe.a-tempo dd{grid-row:2;grid-column:1 / -1;margin:0;opacity:0;visibility:hidden;transition:opacity .3s}
-  .reel-palco .righe.a-tempo .corrente dd{opacity:1;visibility:visible}
-  .reel-palco .righe.a-tempo .corrente:not(.accesa) dd{opacity:.45}
 }
+/* a tutto schermo il reel si vede intero: il video si portava dietro il «cover» e gli angoli del telefono disegnato, e sullo schermo
+   largo del computer ne restava un terzo, zoomato (Simone, 25/09). Due regole separate: un selettore che il browser non conosce
+   annulla tutta la riga */
+.telefono[data-reel] video:fullscreen{object-fit:contain;border-radius:0;background:#000;cursor:auto}
+.telefono[data-reel] video:-webkit-full-screen{object-fit:contain;border-radius:0;background:#000;cursor:auto}
 
-/* il lettore «Con l'audio» */
-.lettore{border:0;padding:0;background:transparent;width:min(92vw,420px);max-width:none;overflow:visible}
-.lettore::backdrop{background:rgba(13,15,19,.88)}
-.lettore video{display:block;width:100%;max-height:88svh;aspect-ratio:9/16;border-radius:18px;background:#000}
-.lettore .chiudi{position:absolute;top:10px;right:10px;z-index:1;width:40px;height:40px;border-radius:50%;border:1px solid rgba(244,236,222,.45);background:rgba(13,15,19,.6);color:#F4ECDE;font-size:1.3rem;line-height:1;cursor:pointer}
 
 /* il caso Aura nella home: quattro strati nella stessa cornice */
 .anteprima>figure{position:absolute;inset:0;margin:0}
@@ -576,12 +602,12 @@ ul{margin:0;padding-left:1.1em}
 
 /* ——— la pagina di Aura (blocco 5B) ——— */
 .apertura-aura .dentro{gap:22px}
-.indice-aura{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--f-dati);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase}
+.indice-aura{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--f-dati);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
 .indice-aura a{color:var(--grafite)}
 .film-due,.prima-dopo-sito{display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,56px);justify-content:center}
 .film-due figure,.prima-dopo-sito figure,.pagina-prodotto figure{margin:0;display:flex;flex-direction:column;gap:10px;align-items:center}
-.film-due figcaption,.prima-dopo-sito figcaption,.pagina-prodotto figcaption,.finestra figcaption{font-family:var(--f-dati);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grafite)}
-.in-arrivo{color:var(--oro);font-weight:500}
+.film-due figcaption,.prima-dopo-sito figcaption,.pagina-prodotto figcaption,.finestra figcaption{font-family:var(--f-dati);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grafite)}
+.in-arrivo{color:var(--oro-etichetta,var(--oro));font-weight:500}
 .griglia-luglio{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
 .griglia-luglio figure{margin:0;position:relative}
 .griglia-luglio img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:4px;background:#E7E0D3}
@@ -615,13 +641,275 @@ ul{margin:0;padding-left:1.1em}
 /* ——— 24/09, dalle schermate della sonda (blocco 5B, task 8) ——— */
 .apertura-aura h1{font-size:clamp(2rem,4.6vw,4rem);max-width:24ch}   /* al computer il titolo della pagina di Aura sembrava un sottotitolo */
 @media (max-width:760px){
-  .hero .titolo-notte{font-size:10vw}   /* «QUANDO DORMI,» usciva dallo schermo col corpo minimo del kit (48 px), pensato per «SISTEMI» */
+  /* «QUANDO DORMI,» usciva dallo schermo col corpo minimo del kit (48 px), pensato per «SISTEMI»; a 10vw usciva ancora quando il titolo
+     respira al più largo (wdth 125: 419 px su 342 a 390, misurato il 25/09). Il corpo si calcola sul respiro largo, colonna ÷ 11 */
+  .hero .titolo-notte{font-size:calc((100vw - 48px) / 11)}
   .hero-regia .fasi{display:none}       /* le tre fasi, più lunghe di Giorno/Soglia/Notte, si accavallavano a «Scorri · il film parte» */
   .principio{grid-template-columns:minmax(0,1fr);gap:6px}   /* l'etichetta a sinistra schiacciava la frase in una colonna stretta */
 }
 @media (max-width:900px){
   .isola-palco{padding-bottom:64px}            /* la didascalia «in arrivo online» finiva sotto la barra dei capitoli del telefono */
   .finestra .schermo{height:48svh}
+}
+
+/* ——— 25/09, le scene dei sistemi: le interfacce che il cliente conosce già, al posto dei pannelli scuri ———
+   Simone: «hanno dei pannelli molto AI slop… un'interfaccia di Instagram… una prova chiara». Un DM sul telefono disegnato dei reel,
+   il foglio della bozza nei colori di Avoria (il sistema che facciamo noi), il gestionale chiaro nella finestra del computer (sul
+   telefono, in un telefono). Le misure dentro gli schermi vanno in cqw: il telefono scala intero, come uno schermo vero */
+.scena-dm,.scena-app{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0}
+.scena-dm figcaption,.scena-app figcaption{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 14px;max-width:48ch;text-align:center;
+  font-family:var(--f-dati);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;line-height:1.6;color:var(--acciaio)}
+.rivedi{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border:1px solid var(--filo-notte);border-radius:999px;background:none;
+  color:var(--avorio-luce);font:inherit;letter-spacing:.12em;cursor:pointer}
+.rivedi[hidden]{display:none}
+.rivedi svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rivedi:hover{border-color:var(--oro)}
+.rivedi:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.ico{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+/* i pezzi entrano quando è il loro momento: le bolle occupano posto solo da lì (la chat sale come una vera), le righe del foglio
+   tengono il loro (il foglio non cresce mentre si scrive) */
+.in-scena [data-da]:not(.presente):not(.tieni):not(.scivola){display:none}
+.in-scena .tieni[data-da]{transition:opacity .25s,visibility .25s}
+.in-scena .tieni[data-da]:not(.presente){opacity:0;visibility:hidden}
+.anima [data-da].presente:not(.tieni):not(.scivola){animation:scena-entra .34s cubic-bezier(.2,.8,.2,1) both}
+@keyframes scena-entra{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+
+/* il DM: lo schermo scuro dell'app di messaggi, a grandezza di telefono vero (15 px su 375 = 4cqw) */
+.telefono.dm{height:min(80svh,740px);container-type:inline-size;border-radius:40px;padding:8px}
+.dm .ig{position:relative;display:flex;flex-direction:column;height:100%;overflow:hidden;border-radius:33px;background:#000;color:#F5F5F5;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:4.2cqw;line-height:1.3;text-align:left}
+.ig-stato{position:relative;display:flex;align-items:center;justify-content:space-between;padding:3.6cqw 7cqw 2cqw;font-size:3.9cqw;font-weight:600}
+.ig-stato svg{width:15cqw;height:auto}
+.ig-isola{position:absolute;left:50%;top:2.6cqw;width:27cqw;height:7.6cqw;border-radius:99px;background:#141414;transform:translateX(-50%)}
+.ig-testa{display:flex;align-items:center;gap:2.8cqw;padding:2cqw 4.4cqw 3cqw;border-bottom:1px solid #262626}
+.ig-testa .ico{width:6.6cqw;height:6.6cqw;flex:none}
+.ig-avatar{display:grid;place-items:center;flex:none;width:9cqw;height:9cqw;border-radius:50%;background:linear-gradient(135deg,#C9A27A,#6E5B48);
+  color:#fff;font-size:3cqw;font-weight:700;letter-spacing:.02em}
+.ig-chi{display:flex;flex-direction:column;flex:1;min-width:0;line-height:1.2}
+.ig-chi b{font-size:4cqw;font-weight:600}
+.ig-chi small{font-size:3.2cqw;color:#A8A8A8}
+.ig-azioni{display:flex;gap:5cqw}
+.ig-chat{display:flex;flex:1;flex-direction:column;justify-content:flex-end;gap:1.1cqw;min-height:0;overflow:hidden;padding:3cqw 3.8cqw 2cqw;transition:opacity .3s}
+.ig-profilo{display:flex;flex:none;flex-direction:column;align-items:center;gap:.8cqw;margin:0 0 auto;padding:5cqw 0 3cqw;text-align:center;line-height:1.2}
+.ig-profilo .ig-avatar{width:21cqw;height:21cqw;margin-bottom:1.6cqw;font-size:6cqw}
+.ig-profilo b{font-size:4.4cqw;font-weight:600}
+.ig-profilo small{font-size:3.3cqw;color:#A8A8A8}
+.ig-vedi{margin-top:2.4cqw;padding:1.8cqw 3.8cqw;border-radius:2.2cqw;background:#262626;font-size:3.3cqw;font-weight:600}
+.ig-ora{align-self:center;margin:2.6cqw 0 1.4cqw;font-size:3.1cqw;font-weight:600;color:#A8A8A8}
+.ig-bolla{position:relative;max-width:74%;margin:0;padding:2.5cqw 3.8cqw;border-radius:5.4cqw;font-size:4cqw;line-height:1.3}
+.ig-bolla.lui{align-self:flex-start;margin-left:10.4cqw;background:#262626}
+.ig-bolla.lui:not(.coda){border-bottom-left-radius:1.6cqw}
+.ig-bolla.lui.coda{border-top-left-radius:1.6cqw}
+.ig-ora+.ig-bolla.lui.coda{border-top-left-radius:5.4cqw}
+.ig-bolla.lui .ig-avatar{position:absolute;left:-9.6cqw;bottom:0;width:7.4cqw;height:7.4cqw;font-size:2.5cqw}
+.ig-bolla.io{align-self:flex-end;background:linear-gradient(160deg,#A43CF4 0%,#6A4BF3 52%,#3A7CF7 100%);color:#fff}
+.ig-bolla.io:not(.ig-allegato){border-bottom-right-radius:1.6cqw}
+.ig-allegato{display:flex;align-items:center;gap:3cqw;padding:2.4cqw 3.6cqw 2.4cqw 2.4cqw;border-top-right-radius:1.6cqw}
+.ig-foglio{display:flex;flex:none;flex-direction:column;gap:1.3cqw;width:11.5cqw;height:15cqw;padding:2.3cqw 1.9cqw;border-radius:1.2cqw;background:#FBFAF7}
+.ig-foglio i{display:block;height:.9cqw;border-radius:1px;background:#CFC8BB}
+.ig-foglio i:nth-child(2){width:70%}
+.ig-foglio i:last-child{width:55%;margin-top:auto;background:var(--oro)}
+.ig-allegato span{display:flex;flex-direction:column;gap:.4cqw;min-width:0}
+.ig-allegato b{font-size:3.8cqw;font-weight:600}
+.ig-allegato small{font-size:3.1cqw;opacity:.88}
+.ig-allegato .apri{text-decoration:underline;text-underline-offset:2px}
+.ig-scrivi{display:flex;align-items:center;gap:3.2cqw;margin:1.6cqw 3.4cqw 5cqw;padding:1.6cqw 4cqw 1.6cqw 1.6cqw;border-radius:99px;background:#262626;font-size:3.9cqw}
+.ig-scrivi>span:nth-child(2){flex:1;color:#A8A8A8}
+.ig-scrivi .ico{width:6cqw;height:6cqw;flex:none}
+.ig-camera{display:grid;place-items:center;flex:none;width:8.6cqw;height:8.6cqw;border-radius:50%;background:#3797F0}
+.ig-camera .ico{width:4.8cqw;height:4.8cqw}
+/* il foglio della bozza: il sistema nostro, sopra la chat; il cliente non lo vede */
+.bozza{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:2.6cqw 5.4cqw 6.4cqw;border-radius:6.4cqw 6.4cqw 0 0;background:var(--avorio-luce);
+  color:var(--inchiostro);font-family:var(--f-titolo);box-shadow:0 -14px 34px rgba(0,0,0,.5)}
+.in-scena .bozza:not(.presente){transform:translateY(104%);visibility:hidden}
+.anima .bozza{transition:transform .5s cubic-bezier(.2,.8,.2,1),visibility .5s}
+.ig:has(.bozza.presente) .ig-chat{opacity:.45}
+.maniglia{display:block;width:10cqw;height:1.2cqw;margin:0 auto 3.4cqw;border-radius:9px;background:#CFC6B6}
+.bozza-testa{display:flex;align-items:baseline;justify-content:space-between;gap:2cqw;margin:0 0 2.4cqw}
+.bozza-testa b{font-size:4.8cqw;font-weight:700;letter-spacing:-.01em}
+.bozza-testa span,.bozza dt{font-family:var(--f-dati);font-size:2.6cqw;letter-spacing:.1em;text-transform:uppercase;color:var(--grafite)}
+.bozza dl{display:grid;margin:0}
+.bozza dl>div{display:grid;grid-template-columns:22cqw minmax(0,1fr);gap:2cqw;align-items:center;padding:2cqw 0;border-top:1px solid #DDD5C7;font-size:3.8cqw}
+.bozza dd{min-height:1.3em;margin:0}
+.bozza em{margin-left:1cqw;padding:.5cqw 1.6cqw;border-radius:99px;background:rgba(184,147,94,.18);color:#7A5C2E;font-family:var(--f-dati);font-size:2.4cqw;
+  font-style:normal;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.bozza .totale dd{font-size:4.3cqw;font-weight:700}
+.bozza-bottoni{display:flex;gap:2.6cqw;margin:3.8cqw 0 0}
+.bozza-bottoni span{flex:1;padding:3.2cqw 0;border-radius:99px;font-size:3.8cqw;font-weight:600;text-align:center;border:1px solid #CFC6B6}
+.bozza-bottoni .approva{border-color:var(--oro);background:var(--oro);transition:transform .15s,box-shadow .25s}
+.bozza-bottoni .approva.toccato{transform:scale(.95);box-shadow:0 0 0 2.2cqw rgba(184,147,94,.35)}
+
+/* il gestionale: l'app chiara col nome del negozio, nella finestra del computer */
+.app-cornice{width:100%;max-width:640px;overflow:hidden;border:1px solid #2a2722;border-radius:12px;background:#FBFAF7;
+  box-shadow:0 30px 60px -30px rgba(0,0,0,.7);container-type:inline-size}
+.app-barra{display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;background:#1c1a16;color:#8A94A3;font-family:var(--f-dati);font-size:.58rem;letter-spacing:.08em}
+.app-barra i{width:8px;height:8px;border-radius:50%;background:#3a362f}
+.app-barra span{margin-left:10px}
+.app{display:grid;grid-template-columns:24cqw minmax(0,1fr);min-height:62cqw;color:var(--inchiostro);font-family:var(--f-titolo);font-size:2.15cqw;line-height:1.3;text-align:left}
+.app-menu{padding:2.4cqw 1.8cqw;border-right:1px solid #E4DDD0;background:#F2EEE6}
+.app-marchio{display:flex;align-items:center;gap:1.4cqw;margin:0 0 2.6cqw;font-size:1.05em;line-height:1.15}
+.app-logo{display:grid;place-items:center;flex:none;width:3.8cqw;height:3.8cqw;border-radius:50%;background:var(--inchiostro);color:var(--avorio-luce);
+  font-family:var(--f-dati);font-size:.62em;letter-spacing:.04em}
+.app-menu ul{display:grid;gap:.4cqw;margin:0;padding:0;list-style:none}
+.app-menu li{padding:1cqw 1.4cqw;border-radius:1cqw;color:var(--grafite)}
+.app-menu li.attivo{background:#fff;color:var(--inchiostro);font-weight:600;box-shadow:0 1px 2px rgba(22,20,15,.08)}
+.app-oggi{position:relative;display:flex;flex-direction:column;gap:1.8cqw;min-width:0;padding:2.4cqw 2.6cqw}
+.app-testa{display:flex;align-items:baseline;gap:1.6cqw}
+.app-testa b{font-size:1.5em;letter-spacing:-.01em}
+.app-testa span,.app-titoletto,.app-ordini .num,.app-ordini .stato{font-family:var(--f-dati);letter-spacing:.06em}
+.app-testa span{font-size:.8em;color:var(--grafite)}
+.app-avviso{position:absolute;top:1.8cqw;right:2.4cqw;z-index:2;display:flex;align-items:center;gap:1.2cqw;margin:0;padding:1.3cqw 1.8cqw;border-radius:1.4cqw;
+  background:var(--inchiostro);color:var(--avorio-luce);font-size:.92em;box-shadow:0 10px 24px -10px rgba(22,20,15,.6)}
+.app-avviso i{width:1.3cqw;height:1.3cqw;border-radius:50%;background:var(--oro)}
+.in-scena .app-avviso:not(.presente){opacity:0;transform:translateY(-1.4cqw);visibility:hidden}
+.anima .app-avviso{transition:opacity .3s,transform .3s,visibility .3s}
+.app-colonne{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:2.2cqw;align-items:start}
+.app-titoletto{margin:0 0 1cqw;font-size:.72em;text-transform:uppercase;color:var(--grafite)}
+.app-ordini ol,.app-magazzino ul{display:grid;gap:1cqw;margin:0;padding:0;list-style:none}
+.app-ordini li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"num nome stato" ". cosa cosa";gap:.2cqw 1.4cqw;align-items:baseline;padding:1.2cqw 1.4cqw;border:1px solid #ECE6DA;border-radius:1.4cqw;background:#fff}
+.app-ordini li b{grid-area:nome;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.app-ordini li small{grid-area:cosa;overflow:hidden;font-size:.82em;color:var(--grafite);white-space:nowrap;text-overflow:ellipsis}
+.app-ordini .num{grid-area:num;font-size:.78em;color:var(--grafite)}
+.app-ordini .stato{grid-area:stato;display:inline-flex;align-items:center;gap:.8cqw;font-size:.7em;text-transform:uppercase;color:var(--grafite);white-space:nowrap}
+.app-ordini .stato::before{content:"";width:1.1cqw;height:1.1cqw;border-radius:50%;background:#B9B2A5}
+.app-ordini .stato.pronto::before{background:#6F8B5E}
+.app-ordini li.arrivato{border-color:var(--oro);background:#FBF3E6}
+.app-ordini li.arrivato .stato{color:var(--oro-scuro)}
+.app-ordini li.arrivato .stato::before{background:var(--oro)}
+.app-ordini li.arrivato .stato.avviato{color:var(--grafite)}
+.scorta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.6cqw 1.4cqw;padding:.8cqw 0 1.2cqw;border-bottom:1px solid #ECE6DA}
+.scorta b{font-family:var(--f-dati);font-weight:500;font-variant-numeric:tabular-nums}
+.scorta i{grid-column:1 / -1;position:relative;height:.7cqw;overflow:hidden;border-radius:9px;background:#ECE6DA}
+.scorta i::before{content:"";position:absolute;inset:0 auto 0 0;width:calc(var(--q) * 100%);border-radius:inherit;background:var(--acciaio);transition:background-color .3s}
+.scorta small{grid-column:1 / -1;font-size:.84em;font-weight:600;color:var(--oro-scuro)}
+.scorta.manca b{color:var(--oro-scuro)}
+.scorta.manca i::before{background:var(--oro)}
+.app-proposta{margin-top:1.6cqw;padding:1.6cqw;border:1px solid var(--oro);border-radius:1.4cqw;background:#fff}
+.app-proposta p{margin:0}
+.app-proposta .app-bottoni{display:flex;gap:1cqw;margin-top:1.4cqw}
+.app-bottoni span{flex:1;padding:1.1cqw 0;border:1px solid #DDD5C7;border-radius:99px;font-size:.9em;font-weight:600;text-align:center}
+.app-bottoni .primo{border-color:var(--inchiostro);background:var(--inchiostro);color:var(--avorio-luce);transition:transform .15s,box-shadow .25s}
+.app-bottoni .primo.toccato{transform:scale(.95);box-shadow:0 0 0 1cqw rgba(184,147,94,.4)}
+.app-proposta .fatto{display:none;gap:1cqw;align-items:flex-start}
+.app-proposta .fatto .ico{flex:none;width:2.6cqw;height:2.6cqw;color:var(--oro-scuro);stroke-width:2.4}
+.app-proposta.inviata{border-color:#DDD5C7}
+.app-proposta.inviata .domanda,.app-proposta.inviata .app-bottoni{display:none}
+.app-proposta.inviata .fatto{display:flex}
+@media (max-width:900px){
+  /* sul telefono: il DM a larghezza di telefono vero, e il gestionale nel telefono, com'è la stessa app in tasca */
+  .telefono.dm{height:auto;width:min(80vw,320px);border-radius:34px;padding:7px}
+  .dm .ig{border-radius:28px}
+  .app-cornice{width:min(80vw,320px);aspect-ratio:390/844;padding:7px;border:0;border-radius:34px;background:#16140F}
+  .app-barra{display:none}
+  .app{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr;height:100%;min-height:0;overflow:hidden;border-radius:28px;background:#FBFAF7;font-size:3.9cqw}
+  .app-menu{padding:9cqw 4.4cqw 2.6cqw;border-right:0;border-bottom:1px solid #E4DDD0}
+  .app-menu ul{display:none}
+  .app-marchio{margin:0}
+  .app-logo{width:7cqw;height:7cqw}
+  .app-oggi{gap:3cqw;padding:3.6cqw 4.4cqw}
+  .app-avviso{top:2.6cqw;left:4.4cqw;right:4.4cqw;padding:2.4cqw 3cqw;border-radius:3cqw}
+  .app-avviso i{width:2.4cqw;height:2.4cqw}
+  .app-colonne{grid-template-columns:minmax(0,1fr);gap:3.6cqw}
+  .scorta:nth-child(n+3){display:none}
+  .app-ordini li{gap:2.4cqw;padding:2.2cqw 2.6cqw;border-radius:3cqw}
+  .app-ordini .stato::before{width:2cqw;height:2cqw}
+  .scorta i{height:1.3cqw}
+  .app-proposta{margin-top:2.4cqw;padding:3cqw;border-radius:3cqw}
+  .app-bottoni span{padding:2.2cqw 0}
+  .app-proposta .fatto .ico{width:4.6cqw;height:4.6cqw}
+}
+
+/* ——— 25/09, la revisione del sito: i dieci punti che Simone ha approvato («procedi con la correzione di tutti e 10 i punti») ——— */
+/* 1 · sul telefono il menu non c'è: nella barra in alto, accanto al logo, il bottone per scriverci in DM. Al computer resta la call */
+.scrivici{display:none}
+@media (max-width:760px){
+  /* 44 px da toccare, ma la barra non cresce: il margine negativo lo fa stare nei 12 px di bordo (una barra più alta copriva l'occhiello) */
+  .scrivici{display:inline-flex;align-items:center;gap:7px;min-height:44px;margin-block:-10px;padding:0 16px;border-radius:999px;background:var(--inchiostro);color:var(--avorio);
+    font-family:var(--f-dati);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+  .scrivici .ico{width:16px;height:16px;flex:none}
+  .scrivici:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+}
+
+/* 3 · l'apertura, di notte: le notifiche sul telefono bloccato del titolare, come nel reel delle 02:14 (le convenzioni che tutti
+   riconoscono, nessun glifo di sistema). Entrano quando la notte è tutta aperta; senza regia sono già lì */
+.notifiche{margin:0;display:grid;gap:8px;width:100%;max-width:390px}
+.notifica{display:flex;gap:11px;align-items:flex-start;padding:11px 13px;border-radius:20px;background:rgba(38,38,42,.8);color:#F4F4F6;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:.9rem;line-height:1.3;text-align:left}
+.notifica-icona{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:9px;background:var(--avorio);color:var(--inchiostro)}
+.notifica-icona .ico{width:20px;height:20px}
+.notifica-icona.ai{background:var(--oro);color:#16140F;font-family:var(--f-dati);font-size:.75rem;font-weight:500;letter-spacing:.04em}
+.notifica-testo{display:flex;flex:1;flex-direction:column;gap:2px;min-width:0}
+.notifica-testa{display:flex;justify-content:space-between;gap:10px}
+.notifica-testa b{font-weight:650}
+.notifica-testa small{font-size:.8rem;color:#A8A8AE}
+.notifiche figcaption{margin-top:2px;font-family:var(--f-dati);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acciaio)}
+.film .hero .notifica{opacity:0;transform:translateY(14px) scale(.97);transition:opacity .45s,transform .6s cubic-bezier(.2,.8,.2,1)}
+.film .hero[data-fase="notte"] .notifica{opacity:1;transform:none}
+.film .hero[data-fase="notte"] .notifica+.notifica{transition-delay:.8s}
+@media (max-width:760px){
+  .notifiche{gap:6px}
+  .notifica{padding:9px 11px;border-radius:17px;font-size:.84rem}
+  .notifica-icona{width:32px;height:32px;border-radius:8px}
+}
+
+/* 5 · il Reparto AI con le quattro righe, come ogni servizio, nella metà di notte */
+.reparto .righe{max-width:54ch}
+
+/* 8 · gli altri lavori, su progetto: il Mondo accanto alla sua anteprima, e il sito film in una riga, ognuno col suo prezzo */
+.scheda-lavoro.mondo{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.scheda-testo{display:flex;flex-direction:column;gap:12px;align-items:flex-start;max-width:52ch}
+.prezzo-riga{margin:0;font-weight:600}
+.prezzo-riga a,.riga-sito a{margin-left:6px;color:inherit;font-family:var(--f-dati);font-size:.72rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase}
+.riga-sito{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin:0;padding-top:18px;border-top:1px solid #DDD5C7}
+.riga-sito b{font-weight:680}
+@media (max-width:900px){.scheda-lavoro.mondo{grid-template-columns:minmax(0,1fr)}}
+
+/* 9 · le foto del catalogo: la pagina del negozio dove aggiungi un prodotto, con le foto vere della prova del catalogo (la foto dal
+   telefono, poi quella che apre la pagina). Stessa finestra del gestionale; sul telefono, in un telefono */
+.app-logo .ico{width:62%;height:62%}
+.app-testa .salva{margin-left:auto;padding:.9cqw 2.6cqw;border-radius:99px;background:var(--inchiostro);color:var(--avorio-luce);font-family:var(--f-titolo);
+  font-size:.9em;font-weight:600;letter-spacing:0;transition:transform .15s,box-shadow .25s}
+.app-testa .salva.salvato{background:#E9E3D8;color:var(--grafite)}
+.anima .app-testa .salva.salvato{animation:salva-premi .35s ease-out}
+@keyframes salva-premi{40%{transform:scale(.92);box-shadow:0 0 0 1cqw rgba(184,147,94,.4)}}
+.negozio .app-avviso{top:auto;bottom:2.4cqw}
+.in-scena .negozio .app-avviso:not(.presente){transform:translateY(1.4cqw)}
+.cat-altri{padding-top:1.8cqw;border-top:1px solid #ECE6DA}
+.cat-altri ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6cqw;margin:0;padding:0;list-style:none}
+.cat-altri li{display:flex;flex-direction:column;gap:.6cqw;font-size:.82em;color:var(--grafite)}
+.cat-altri img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:1cqw;background:#ECE6DA}
+.cat-scheda{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:2.6cqw;align-items:start}
+.cat-foto{position:relative;aspect-ratio:4/5;overflow:hidden;border:1px dashed #CFC6B6;border-radius:1.4cqw;background:#F2EEE6}
+.cat-vuoto{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1cqw;margin:0;color:var(--grafite);font-size:.9em}
+.cat-vuoto .ico{width:4cqw;height:4cqw}
+.cat-foto img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
+.anima .cat-foto img.tieni{transition:opacity .8s,visibility .8s}
+.cat-etichetta{position:absolute;left:1.2cqw;bottom:1.2cqw;padding:.6cqw 1.3cqw;border-radius:99px;background:rgba(22,20,15,.74);color:#F4ECDE;
+  font-family:var(--f-dati);font-size:.72em;letter-spacing:.06em;text-transform:uppercase}
+.cat-campi{display:grid;gap:1.6cqw;margin:0}
+.cat-campi>div{display:grid;gap:.6cqw}
+.cat-campi dt{font-family:var(--f-dati);font-size:.72em;letter-spacing:.06em;text-transform:uppercase;color:var(--grafite)}
+.cat-campi dd{display:flex;align-items:center;gap:1cqw;min-height:2.6em;margin:0;padding:0 1.4cqw;border:1px solid #DDD5C7;border-radius:1cqw;background:#fff}
+.cat-stato .attesa::before{content:"";display:inline-block;width:1.2cqw;height:1.2cqw;margin-right:1cqw;border-radius:50%;background:var(--oro);vertical-align:middle;
+  animation:cat-pulsa .8s ease-in-out infinite alternate}
+@keyframes cat-pulsa{from{opacity:.25}to{opacity:1}}
+.cat-campi .cat-fatto{border-color:var(--oro);background:#FBF3E6;font-weight:600}
+.cat-fatto .ico{flex:none;width:2.6cqw;height:2.6cqw;color:var(--oro-scuro);stroke-width:2.4}
+.scena-app figcaption a{color:var(--avorio-luce);text-underline-offset:3px}
+@media (max-width:900px){
+  .cat-scheda{grid-template-columns:minmax(0,1fr);gap:3cqw}
+  .cat-altri{display:none}
+  .scheda-lavoro.mondo .anteprima{width:min(100%,240px)}
+  .cat-foto{width:62%;justify-self:center}
+  .cat-vuoto .ico{width:7cqw;height:7cqw}
+  .cat-campi{gap:2.4cqw}
+  .cat-campi dd{padding:0 2.6cqw;border-radius:2cqw}
+  .cat-etichetta{left:2cqw;bottom:2cqw;padding:1cqw 2.2cqw}
+  .cat-stato .attesa::before{width:2cqw;height:2cqw}
+  .cat-fatto .ico{width:4.6cqw;height:4.6cqw}
+  .app-testa .salva{padding:1.6cqw 4cqw}
 }
 </style>
 
@@ -820,6 +1108,7 @@ ul{margin:0;padding-left:1.1em}
       <p class="lead">Trenta minuti, gratis, per capire cosa ti serve. Oppure scrivici in DM.</p>
       <div class="azioni">
         <a class="bottone-pieno" href="mailto:avoriastudio@outlook.it?subject=Call%20con%20Avoria">Scrivi per la call</a>
+        <a class="bottone-vuoto" href="https://ig.me/m/avor.iastudio">Scrivici in DM</a>
         <a class="bottone-vuoto" href="../../">Torna al sito</a>
       </div>
     </div>
@@ -1239,7 +1528,8 @@ AV.parsimonia = parsimonia;
   });
 })();
 </script>
-<script>// FILE: src/video-vista.js — i video che girano da soli quando si vedono (muti, in loop) e il lettore «Con l'audio» (blocco 5B)
+<script>// FILE: src/video-vista.js — i video che girano da soli quando si vedono, muti e in loop (blocco 5B). Il lettore «Con l'audio»
+// se n'è andato il 25/09: i reel della home partono da soli col loro bottone dell'audio (video-reel.js)
 (function () {
   var calmo = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
 
@@ -1264,28 +1554,6 @@ AV.parsimonia = parsimonia;
     }, { threshold: 0.25 });
     auto.forEach(function (v) { vicino.observe(v); dentro.observe(v); });
   }
-
-  // «▶ Con l'audio»: il video intero, col suono e i comandi, sopra la pagina; chiuso, si torna dov'eri
-  var lettore = null;
-  function apri(src, titolo) {
-    if (!lettore) {
-      lettore = document.createElement('dialog');
-      lettore.className = 'lettore';
-      lettore.innerHTML = '<button type="button" class="chiudi" aria-label="Chiudi il video">×</button><video controls playsinline></video>';
-      document.body.appendChild(lettore);
-      lettore.querySelector('.chiudi').addEventListener('click', function () { lettore.close(); });
-      lettore.addEventListener('click', function (e) { if (e.target === lettore) lettore.close(); });
-      lettore.addEventListener('close', function () { var v = lettore.querySelector('video'); v.pause(); v.removeAttribute('src'); v.load(); });
-    }
-    var v = lettore.querySelector('video');
-    v.setAttribute('aria-label', titolo);
-    v.src = src;
-    if (lettore.showModal) lettore.showModal(); else lettore.setAttribute('open', '');
-    var p = v.play(); if (p && p.catch) p.catch(function () {});
-  }
-  Array.prototype.forEach.call(document.querySelectorAll('[data-con-audio]'), function (b) {
-    b.addEventListener('click', function () { apri(b.getAttribute('data-con-audio'), b.getAttribute('aria-label') || 'Video'); });
-  });
 })();
 </script>
 <script>// FILE: src/regia.js — il regista: lo scroll diventa il tempo delle scene
