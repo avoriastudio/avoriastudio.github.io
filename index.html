@@ -397,10 +397,8 @@ ul{margin:0;padding-left:1.1em}
 .percorso::before,.percorso::after{content:"";position:absolute;left:0;right:0;top:0;height:2px}
 .percorso::before{background:#DDD5C7}
 .percorso::after{background:var(--oro);transform-origin:left;transform:scaleX(var(--p,1))}
-/* ogni tappa si accende quando il film la raggiunge, ma solo a palco agganciato:
-   se l'apertura scorre libera (telefono) le tappe restano accese, come senza regista */
-.film .fermo .tappa{--acceso:clamp(0,calc((var(--p,1) * 5 - var(--k) + .4) * 2.5),1);
-  opacity:calc(.32 + .68 * var(--acceso));transform:translate3d(0,calc((1 - var(--acceso)) * 10px),0)}
+/* le tappe sono accese da subito: fino al 25/09 si accendevano quando il film le raggiungeva, e al computer chi apriva il listino
+   vedeva quattro prezzi su cinque al 32 % finché non scorreva (revisione del sito, punto 2). La linea d'oro avanza con lo scroll */
 .tappa a{display:flex;flex-direction:column;gap:6px;height:100%;padding:16px 18px;border-radius:var(--raggio);text-decoration:none;
   background:var(--posa);border:1px solid #DDD5C7;color:var(--inchiostro)}
 .tappa small{font-family:var(--f-dati);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grafite)}
@@ -540,6 +538,10 @@ ul{margin:0;padding-left:1.1em}
 .bottone-pieno{display:inline-block;background:var(--inchiostro);color:var(--avorio);text-decoration:none;border-radius:999px;padding:14px 24px;
   font-family:var(--f-dati);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
 .bottone-pieno:hover{background:#2a2720}
+/* il bottone vuoto passa qui dal sito (25/09): ora serve anche al listino, per «Scrivici in DM» nella chiusura */
+.bottone-vuoto{display:inline-block;border:1px solid var(--inchiostro);color:var(--inchiostro);text-decoration:none;border-radius:999px;padding:13px 23px;font-family:var(--f-dati);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.bottone-vuoto:hover{border-color:var(--oro)}
+.azioni .dati a{color:inherit}
 .azioni .dati{font-size:.66rem;color:var(--grafite)}
 
 /* telefono: la barra dell'indice occupa il fondo */
@@ -560,10 +562,20 @@ ul{margin:0;padding-left:1.1em}
 .nota-muove{font-size:.95rem;color:var(--grafite);max-width:70ch}
 .combinazioni{display:flex;flex-direction:column;gap:12px}
 .reparto .spiega{max-width:44ch;font-size:1rem}
+
+/* le scritte piccole si leggono (revisione del sito, 25/09, punto 4): le etichette in maiuscolo arrivano a 12 px (erano fra 9,6 e
+   10,6), e sul fondo chiaro l'oro diventa quello scuro, #7A5C2E: 5,3 a 1 sull'avorio, dove l'oro chiaro stava a 2,5. Sul nero l'oro
+   resta com'è, a 7 a 1. Vale per il listino, la home e la pagina di Aura, che leggono tutti questo foglio */
+.giorno{--oro-etichetta:#7A5C2E}
+.notte{--oro-etichetta:var(--oro)}
+.occhiello,.stato-linea,.didascalia,.principio b,.tappa small,.voce .tempo,.coppia small,.sistema dt,.canone .condizioni,.azioni .dati{font-size:.75rem}
+.nuovo{font-size:.7rem}
+.stato-linea b,.nuovo,.giorni b{color:var(--oro-etichetta,var(--oro))}
+/* le tappe di notte: il nero sta nella scheda arrotondata, non nel riquadro quadrato dietro, che si vedeva agli angoli */
+.percorso .tappa.notte{background:none}
 </style>
 <style>/* FILE: src/sito.css — solo ciò che serve alla home del sito, sopra lo stile del kit */
-.bottone-vuoto{display:inline-block;border:1px solid var(--inchiostro);color:var(--inchiostro);text-decoration:none;border-radius:999px;padding:13px 23px;font-family:var(--f-dati);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
-.bottone-piccolo{padding:9px 14px;font-size:.62rem}
+.bottone-piccolo{padding:9px 14px;font-size:.68rem}
 .barra-nav nav a.bottone-pieno{color:var(--avorio)}
 .motto{font-family:var(--f-firma);font-style:italic;font-weight:500;font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--grafite)}
 .hero .azioni{margin-top:22px}
@@ -579,14 +591,14 @@ ul{margin:0;padding-left:1.1em}
 .anteprima .tessere{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:4px;padding:4px}
 .anteprima .tessere img{width:100%;height:100%;border-radius:3px}
 [data-entra]{opacity:1}
-.didascalia-anteprima{position:absolute;left:10px;bottom:10px;background:rgba(22,20,15,.72);color:#F4ECDE;font-family:var(--f-dati);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;border-radius:3px}
+.didascalia-anteprima{position:absolute;left:10px;bottom:10px;background:rgba(22,20,15,.72);color:#F4ECDE;font-family:var(--f-dati);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;border-radius:3px}
 .anteprima.griglia{aspect-ratio:6/5;max-width:620px}   /* 3×2 tessere da 4:5 esatti */
 
 /* i prezzi, di notte */
 .prezzi h3 small{display:block;font-family:var(--f-dati);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);font-weight:500;margin-bottom:8px}
 .prezzi>div{border-top:1px solid var(--filo);padding-top:18px;display:flex;flex-direction:column;gap:10px}
 .prezzi p{font-size:1.15rem;color:var(--testo)}
-.nota-prezzi{font-size:.66rem;color:var(--secondario)}
+.nota-prezzi{font-size:.8rem;color:var(--secondario)}
 .bottone-pieno.chiaro{background:var(--avorio-luce);color:var(--nero)}
 /* sul telefono il palco si aggancia solo se testo e anteprima stanno in uno schermo: l'anteprima si misura sull'altezza */
 @media (max-width:900px){
@@ -610,42 +622,56 @@ ul{margin:0;padding-left:1.1em}
 .telefono.piccolo{height:min(62svh,560px)}
 .telefono.alto{aspect-ratio:390/844}
 .righe{margin:0;display:grid;gap:10px}
-.righe .riga{border-top:1px solid #DDD5C7;padding-top:10px;opacity:.36;transition:opacity .4s var(--ease-giorno)}
+/* le quattro righe sono accese da subito e non aspettano il reel (Simone, 25/09: «chi non vede il video… non vede tutte le scritte») */
+.righe .riga{border-top:1px solid #DDD5C7;padding-top:10px}
 .notte .righe .riga{border-color:var(--filo-notte)}
-.righe .riga.accesa{opacity:1}
-.righe dt{font-family:var(--f-dati);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro)}
+.righe dt{font-family:var(--f-dati);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--oro-etichetta,var(--oro))}
 .righe dd{margin:4px 0 0;font-size:1rem;line-height:1.42}
-.righe dd a{color:inherit;font-family:var(--f-dati);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;margin-left:6px}
-.con-audio{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;border:0;border-radius:999px;padding:8px 14px;background:rgba(22,20,15,.72);color:#F4ECDE;
-  font-family:var(--f-dati);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.con-audio:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
-.azienda{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;border-top:1px solid var(--filo-notte);padding-top:16px;margin:0}
+.righe dd a{color:inherit;font-family:var(--f-dati);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-left:6px}
+/* i reel partono da soli quando li vedi (25/09). Sul telefono disegnato: in basso il bottone dell'audio e sotto la barra d'oro
+   per tornare indietro; in alto a destra il tutto schermo. Muto, il bottone è d'oro e dice «Attiva l'audio»; col suono resta
+   l'icona; alla fine dice «Rivedi» (video-reel-logica.mjs) */
+.telefono[data-reel]{--bordo:9px;--raggio:24px}
+.telefono[data-reel] video{cursor:pointer}
+.telefono .audio{position:absolute;right:calc(var(--bordo) + 12px);bottom:calc(var(--bordo) + 32px);z-index:2;display:inline-flex;align-items:center;gap:8px;min-height:36px;
+  border:0;border-radius:999px;padding:8px 14px;background:rgba(22,20,15,.72);color:#F4ECDE;font-family:var(--f-dati);font-size:.62rem;letter-spacing:.12em;
+  text-transform:uppercase;white-space:nowrap;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background-color .3s,color .3s}
+.telefono .audio svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.telefono .audio[data-stato="muto"],.telefono .audio[data-stato="guarda"]{background:var(--oro);color:#16140F}
+.telefono .audio[data-stato="guarda"] svg{fill:currentColor}
+.telefono .audio[data-stato="suona"]{width:36px;padding:0;justify-content:center}
+.telefono .schermo{position:absolute;top:calc(var(--bordo) + 12px);right:calc(var(--bordo) + 12px);z-index:2;display:grid;place-items:center;width:36px;height:36px;
+  border:0;border-radius:50%;padding:0;background:rgba(22,20,15,.6);color:#F4ECDE;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.telefono .schermo svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.telefono .audio:focus-visible,.telefono .schermo:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+/* la barra: un filo d'oro su un filo grigio, col pallino da trascinare; tocchi dove vuoi e il reel va lì */
+.telefono .scorri{--fatto:0%;position:absolute;left:calc(var(--bordo) + 14px);right:calc(var(--bordo) + 14px);bottom:calc(var(--bordo) + 4px);z-index:2;height:24px;margin:0;padding:0;
+  background:none;-webkit-appearance:none;appearance:none;cursor:pointer;touch-action:none}
+.telefono .scorri::-webkit-slider-runnable-track{height:3px;border-radius:3px;background:linear-gradient(var(--oro),var(--oro)) no-repeat 0 0 / var(--fatto) 100%,rgba(120,112,98,.5)}
+.telefono .scorri::-moz-range-track{height:3px;border-radius:3px;background:rgba(120,112,98,.5)}
+.telefono .scorri::-moz-range-progress{height:3px;border-radius:3px;background:var(--oro)}
+.telefono .scorri::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:13px;height:13px;margin-top:-5px;border:0;border-radius:50%;background:var(--oro);box-shadow:0 0 0 3px rgba(22,20,15,.28)}
+.telefono .scorri::-moz-range-thumb{width:13px;height:13px;border:0;border-radius:50%;background:var(--oro);box-shadow:0 0 0 3px rgba(22,20,15,.28)}
+.telefono .scorri:focus-visible{outline:2px solid var(--oro);outline-offset:3px;border-radius:6px}
 @media (max-width:900px){
   .reel-palco{grid-template-columns:minmax(0,1fr);gap:12px;align-content:start;padding-bottom:64px}
   .reel-palco .telefono{order:-1;height:50svh;border-radius:22px;padding:6px}
   .reel-palco .telefono video{border-radius:17px}
-  .reel-palco .con-audio{left:auto;right:12px;bottom:12px;transform:none;padding:6px 10px;font-size:.54rem}
+  .reel-palco .telefono[data-reel]{--bordo:6px;--raggio:17px}
+  .reel-palco .telefono .audio{right:calc(var(--bordo) + 8px);bottom:calc(var(--bordo) + 28px);padding:8px 12px;font-size:.56rem;gap:6px}
+  .reel-palco .telefono .audio[data-stato="suona"]{padding:0}
+  .reel-palco .telefono .schermo{top:calc(var(--bordo) + 8px);right:calc(var(--bordo) + 8px)}
+  .reel-palco .telefono .scorri{left:calc(var(--bordo) + 10px);right:calc(var(--bordo) + 10px);bottom:calc(var(--bordo) + 2px)}
   .reel-palco h2{display:none}
   .righe .riga{padding-top:6px}
   .righe dd{font-size:.84rem;line-height:1.35}
-  /* guidate dal reel, le quattro righe diventano quattro etichette e una frase sola, quella del momento: le quattro frasi insieme
-     facevano il palco più alto dello schermo (759–850 px contro 739–771, misurato il 24/09) e il palco non si agganciava */
-  .reel-palco .righe.a-tempo{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:8px;row-gap:8px;border-top:1px solid #DDD5C7;padding-top:8px}
-  .notte .reel-palco .righe.a-tempo{border-color:var(--filo-notte)}
-  .reel-palco .righe.a-tempo .riga{display:contents}
-  .reel-palco .righe.a-tempo dt{grid-row:1;opacity:.4;transition:opacity .3s}
-  .reel-palco .righe.a-tempo .accesa dt{opacity:1}
-  .reel-palco .righe.a-tempo .corrente dt{text-decoration:underline;text-underline-offset:4px}
-  .reel-palco .righe.a-tempo dd{grid-row:2;grid-column:1 / -1;margin:0;opacity:0;visibility:hidden;transition:opacity .3s}
-  .reel-palco .righe.a-tempo .corrente dd{opacity:1;visibility:visible}
-  .reel-palco .righe.a-tempo .corrente:not(.accesa) dd{opacity:.45}
 }
+/* a tutto schermo il reel si vede intero: il video si portava dietro il «cover» e gli angoli del telefono disegnato, e sullo schermo
+   largo del computer ne restava un terzo, zoomato (Simone, 25/09). Due regole separate: un selettore che il browser non conosce
+   annulla tutta la riga */
+.telefono[data-reel] video:fullscreen{object-fit:contain;border-radius:0;background:#000;cursor:auto}
+.telefono[data-reel] video:-webkit-full-screen{object-fit:contain;border-radius:0;background:#000;cursor:auto}
 
-/* il lettore «Con l'audio» */
-.lettore{border:0;padding:0;background:transparent;width:min(92vw,420px);max-width:none;overflow:visible}
-.lettore::backdrop{background:rgba(13,15,19,.88)}
-.lettore video{display:block;width:100%;max-height:88svh;aspect-ratio:9/16;border-radius:18px;background:#000}
-.lettore .chiudi{position:absolute;top:10px;right:10px;z-index:1;width:40px;height:40px;border-radius:50%;border:1px solid rgba(244,236,222,.45);background:rgba(13,15,19,.6);color:#F4ECDE;font-size:1.3rem;line-height:1;cursor:pointer}
 
 /* il caso Aura nella home: quattro strati nella stessa cornice */
 .anteprima>figure{position:absolute;inset:0;margin:0}
@@ -658,12 +684,12 @@ ul{margin:0;padding-left:1.1em}
 
 /* ——— la pagina di Aura (blocco 5B) ——— */
 .apertura-aura .dentro{gap:22px}
-.indice-aura{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--f-dati);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase}
+.indice-aura{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--f-dati);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
 .indice-aura a{color:var(--grafite)}
 .film-due,.prima-dopo-sito{display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,56px);justify-content:center}
 .film-due figure,.prima-dopo-sito figure,.pagina-prodotto figure{margin:0;display:flex;flex-direction:column;gap:10px;align-items:center}
-.film-due figcaption,.prima-dopo-sito figcaption,.pagina-prodotto figcaption,.finestra figcaption{font-family:var(--f-dati);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grafite)}
-.in-arrivo{color:var(--oro);font-weight:500}
+.film-due figcaption,.prima-dopo-sito figcaption,.pagina-prodotto figcaption,.finestra figcaption{font-family:var(--f-dati);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grafite)}
+.in-arrivo{color:var(--oro-etichetta,var(--oro));font-weight:500}
 .griglia-luglio{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
 .griglia-luglio figure{margin:0;position:relative}
 .griglia-luglio img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:4px;background:#E7E0D3}
@@ -697,13 +723,275 @@ ul{margin:0;padding-left:1.1em}
 /* ——— 24/09, dalle schermate della sonda (blocco 5B, task 8) ——— */
 .apertura-aura h1{font-size:clamp(2rem,4.6vw,4rem);max-width:24ch}   /* al computer il titolo della pagina di Aura sembrava un sottotitolo */
 @media (max-width:760px){
-  .hero .titolo-notte{font-size:10vw}   /* «QUANDO DORMI,» usciva dallo schermo col corpo minimo del kit (48 px), pensato per «SISTEMI» */
+  /* «QUANDO DORMI,» usciva dallo schermo col corpo minimo del kit (48 px), pensato per «SISTEMI»; a 10vw usciva ancora quando il titolo
+     respira al più largo (wdth 125: 419 px su 342 a 390, misurato il 25/09). Il corpo si calcola sul respiro largo, colonna ÷ 11 */
+  .hero .titolo-notte{font-size:calc((100vw - 48px) / 11)}
   .hero-regia .fasi{display:none}       /* le tre fasi, più lunghe di Giorno/Soglia/Notte, si accavallavano a «Scorri · il film parte» */
   .principio{grid-template-columns:minmax(0,1fr);gap:6px}   /* l'etichetta a sinistra schiacciava la frase in una colonna stretta */
 }
 @media (max-width:900px){
   .isola-palco{padding-bottom:64px}            /* la didascalia «in arrivo online» finiva sotto la barra dei capitoli del telefono */
   .finestra .schermo{height:48svh}
+}
+
+/* ——— 25/09, le scene dei sistemi: le interfacce che il cliente conosce già, al posto dei pannelli scuri ———
+   Simone: «hanno dei pannelli molto AI slop… un'interfaccia di Instagram… una prova chiara». Un DM sul telefono disegnato dei reel,
+   il foglio della bozza nei colori di Avoria (il sistema che facciamo noi), il gestionale chiaro nella finestra del computer (sul
+   telefono, in un telefono). Le misure dentro gli schermi vanno in cqw: il telefono scala intero, come uno schermo vero */
+.scena-dm,.scena-app{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0}
+.scena-dm figcaption,.scena-app figcaption{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 14px;max-width:48ch;text-align:center;
+  font-family:var(--f-dati);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;line-height:1.6;color:var(--acciaio)}
+.rivedi{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border:1px solid var(--filo-notte);border-radius:999px;background:none;
+  color:var(--avorio-luce);font:inherit;letter-spacing:.12em;cursor:pointer}
+.rivedi[hidden]{display:none}
+.rivedi svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rivedi:hover{border-color:var(--oro)}
+.rivedi:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.ico{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+/* i pezzi entrano quando è il loro momento: le bolle occupano posto solo da lì (la chat sale come una vera), le righe del foglio
+   tengono il loro (il foglio non cresce mentre si scrive) */
+.in-scena [data-da]:not(.presente):not(.tieni):not(.scivola){display:none}
+.in-scena .tieni[data-da]{transition:opacity .25s,visibility .25s}
+.in-scena .tieni[data-da]:not(.presente){opacity:0;visibility:hidden}
+.anima [data-da].presente:not(.tieni):not(.scivola){animation:scena-entra .34s cubic-bezier(.2,.8,.2,1) both}
+@keyframes scena-entra{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
+
+/* il DM: lo schermo scuro dell'app di messaggi, a grandezza di telefono vero (15 px su 375 = 4cqw) */
+.telefono.dm{height:min(80svh,740px);container-type:inline-size;border-radius:40px;padding:8px}
+.dm .ig{position:relative;display:flex;flex-direction:column;height:100%;overflow:hidden;border-radius:33px;background:#000;color:#F5F5F5;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:4.2cqw;line-height:1.3;text-align:left}
+.ig-stato{position:relative;display:flex;align-items:center;justify-content:space-between;padding:3.6cqw 7cqw 2cqw;font-size:3.9cqw;font-weight:600}
+.ig-stato svg{width:15cqw;height:auto}
+.ig-isola{position:absolute;left:50%;top:2.6cqw;width:27cqw;height:7.6cqw;border-radius:99px;background:#141414;transform:translateX(-50%)}
+.ig-testa{display:flex;align-items:center;gap:2.8cqw;padding:2cqw 4.4cqw 3cqw;border-bottom:1px solid #262626}
+.ig-testa .ico{width:6.6cqw;height:6.6cqw;flex:none}
+.ig-avatar{display:grid;place-items:center;flex:none;width:9cqw;height:9cqw;border-radius:50%;background:linear-gradient(135deg,#C9A27A,#6E5B48);
+  color:#fff;font-size:3cqw;font-weight:700;letter-spacing:.02em}
+.ig-chi{display:flex;flex-direction:column;flex:1;min-width:0;line-height:1.2}
+.ig-chi b{font-size:4cqw;font-weight:600}
+.ig-chi small{font-size:3.2cqw;color:#A8A8A8}
+.ig-azioni{display:flex;gap:5cqw}
+.ig-chat{display:flex;flex:1;flex-direction:column;justify-content:flex-end;gap:1.1cqw;min-height:0;overflow:hidden;padding:3cqw 3.8cqw 2cqw;transition:opacity .3s}
+.ig-profilo{display:flex;flex:none;flex-direction:column;align-items:center;gap:.8cqw;margin:0 0 auto;padding:5cqw 0 3cqw;text-align:center;line-height:1.2}
+.ig-profilo .ig-avatar{width:21cqw;height:21cqw;margin-bottom:1.6cqw;font-size:6cqw}
+.ig-profilo b{font-size:4.4cqw;font-weight:600}
+.ig-profilo small{font-size:3.3cqw;color:#A8A8A8}
+.ig-vedi{margin-top:2.4cqw;padding:1.8cqw 3.8cqw;border-radius:2.2cqw;background:#262626;font-size:3.3cqw;font-weight:600}
+.ig-ora{align-self:center;margin:2.6cqw 0 1.4cqw;font-size:3.1cqw;font-weight:600;color:#A8A8A8}
+.ig-bolla{position:relative;max-width:74%;margin:0;padding:2.5cqw 3.8cqw;border-radius:5.4cqw;font-size:4cqw;line-height:1.3}
+.ig-bolla.lui{align-self:flex-start;margin-left:10.4cqw;background:#262626}
+.ig-bolla.lui:not(.coda){border-bottom-left-radius:1.6cqw}
+.ig-bolla.lui.coda{border-top-left-radius:1.6cqw}
+.ig-ora+.ig-bolla.lui.coda{border-top-left-radius:5.4cqw}
+.ig-bolla.lui .ig-avatar{position:absolute;left:-9.6cqw;bottom:0;width:7.4cqw;height:7.4cqw;font-size:2.5cqw}
+.ig-bolla.io{align-self:flex-end;background:linear-gradient(160deg,#A43CF4 0%,#6A4BF3 52%,#3A7CF7 100%);color:#fff}
+.ig-bolla.io:not(.ig-allegato){border-bottom-right-radius:1.6cqw}
+.ig-allegato{display:flex;align-items:center;gap:3cqw;padding:2.4cqw 3.6cqw 2.4cqw 2.4cqw;border-top-right-radius:1.6cqw}
+.ig-foglio{display:flex;flex:none;flex-direction:column;gap:1.3cqw;width:11.5cqw;height:15cqw;padding:2.3cqw 1.9cqw;border-radius:1.2cqw;background:#FBFAF7}
+.ig-foglio i{display:block;height:.9cqw;border-radius:1px;background:#CFC8BB}
+.ig-foglio i:nth-child(2){width:70%}
+.ig-foglio i:last-child{width:55%;margin-top:auto;background:var(--oro)}
+.ig-allegato span{display:flex;flex-direction:column;gap:.4cqw;min-width:0}
+.ig-allegato b{font-size:3.8cqw;font-weight:600}
+.ig-allegato small{font-size:3.1cqw;opacity:.88}
+.ig-allegato .apri{text-decoration:underline;text-underline-offset:2px}
+.ig-scrivi{display:flex;align-items:center;gap:3.2cqw;margin:1.6cqw 3.4cqw 5cqw;padding:1.6cqw 4cqw 1.6cqw 1.6cqw;border-radius:99px;background:#262626;font-size:3.9cqw}
+.ig-scrivi>span:nth-child(2){flex:1;color:#A8A8A8}
+.ig-scrivi .ico{width:6cqw;height:6cqw;flex:none}
+.ig-camera{display:grid;place-items:center;flex:none;width:8.6cqw;height:8.6cqw;border-radius:50%;background:#3797F0}
+.ig-camera .ico{width:4.8cqw;height:4.8cqw}
+/* il foglio della bozza: il sistema nostro, sopra la chat; il cliente non lo vede */
+.bozza{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:2.6cqw 5.4cqw 6.4cqw;border-radius:6.4cqw 6.4cqw 0 0;background:var(--avorio-luce);
+  color:var(--inchiostro);font-family:var(--f-titolo);box-shadow:0 -14px 34px rgba(0,0,0,.5)}
+.in-scena .bozza:not(.presente){transform:translateY(104%);visibility:hidden}
+.anima .bozza{transition:transform .5s cubic-bezier(.2,.8,.2,1),visibility .5s}
+.ig:has(.bozza.presente) .ig-chat{opacity:.45}
+.maniglia{display:block;width:10cqw;height:1.2cqw;margin:0 auto 3.4cqw;border-radius:9px;background:#CFC6B6}
+.bozza-testa{display:flex;align-items:baseline;justify-content:space-between;gap:2cqw;margin:0 0 2.4cqw}
+.bozza-testa b{font-size:4.8cqw;font-weight:700;letter-spacing:-.01em}
+.bozza-testa span,.bozza dt{font-family:var(--f-dati);font-size:2.6cqw;letter-spacing:.1em;text-transform:uppercase;color:var(--grafite)}
+.bozza dl{display:grid;margin:0}
+.bozza dl>div{display:grid;grid-template-columns:22cqw minmax(0,1fr);gap:2cqw;align-items:center;padding:2cqw 0;border-top:1px solid #DDD5C7;font-size:3.8cqw}
+.bozza dd{min-height:1.3em;margin:0}
+.bozza em{margin-left:1cqw;padding:.5cqw 1.6cqw;border-radius:99px;background:rgba(184,147,94,.18);color:#7A5C2E;font-family:var(--f-dati);font-size:2.4cqw;
+  font-style:normal;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.bozza .totale dd{font-size:4.3cqw;font-weight:700}
+.bozza-bottoni{display:flex;gap:2.6cqw;margin:3.8cqw 0 0}
+.bozza-bottoni span{flex:1;padding:3.2cqw 0;border-radius:99px;font-size:3.8cqw;font-weight:600;text-align:center;border:1px solid #CFC6B6}
+.bozza-bottoni .approva{border-color:var(--oro);background:var(--oro);transition:transform .15s,box-shadow .25s}
+.bozza-bottoni .approva.toccato{transform:scale(.95);box-shadow:0 0 0 2.2cqw rgba(184,147,94,.35)}
+
+/* il gestionale: l'app chiara col nome del negozio, nella finestra del computer */
+.app-cornice{width:100%;max-width:640px;overflow:hidden;border:1px solid #2a2722;border-radius:12px;background:#FBFAF7;
+  box-shadow:0 30px 60px -30px rgba(0,0,0,.7);container-type:inline-size}
+.app-barra{display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;background:#1c1a16;color:#8A94A3;font-family:var(--f-dati);font-size:.58rem;letter-spacing:.08em}
+.app-barra i{width:8px;height:8px;border-radius:50%;background:#3a362f}
+.app-barra span{margin-left:10px}
+.app{display:grid;grid-template-columns:24cqw minmax(0,1fr);min-height:62cqw;color:var(--inchiostro);font-family:var(--f-titolo);font-size:2.15cqw;line-height:1.3;text-align:left}
+.app-menu{padding:2.4cqw 1.8cqw;border-right:1px solid #E4DDD0;background:#F2EEE6}
+.app-marchio{display:flex;align-items:center;gap:1.4cqw;margin:0 0 2.6cqw;font-size:1.05em;line-height:1.15}
+.app-logo{display:grid;place-items:center;flex:none;width:3.8cqw;height:3.8cqw;border-radius:50%;background:var(--inchiostro);color:var(--avorio-luce);
+  font-family:var(--f-dati);font-size:.62em;letter-spacing:.04em}
+.app-menu ul{display:grid;gap:.4cqw;margin:0;padding:0;list-style:none}
+.app-menu li{padding:1cqw 1.4cqw;border-radius:1cqw;color:var(--grafite)}
+.app-menu li.attivo{background:#fff;color:var(--inchiostro);font-weight:600;box-shadow:0 1px 2px rgba(22,20,15,.08)}
+.app-oggi{position:relative;display:flex;flex-direction:column;gap:1.8cqw;min-width:0;padding:2.4cqw 2.6cqw}
+.app-testa{display:flex;align-items:baseline;gap:1.6cqw}
+.app-testa b{font-size:1.5em;letter-spacing:-.01em}
+.app-testa span,.app-titoletto,.app-ordini .num,.app-ordini .stato{font-family:var(--f-dati);letter-spacing:.06em}
+.app-testa span{font-size:.8em;color:var(--grafite)}
+.app-avviso{position:absolute;top:1.8cqw;right:2.4cqw;z-index:2;display:flex;align-items:center;gap:1.2cqw;margin:0;padding:1.3cqw 1.8cqw;border-radius:1.4cqw;
+  background:var(--inchiostro);color:var(--avorio-luce);font-size:.92em;box-shadow:0 10px 24px -10px rgba(22,20,15,.6)}
+.app-avviso i{width:1.3cqw;height:1.3cqw;border-radius:50%;background:var(--oro)}
+.in-scena .app-avviso:not(.presente){opacity:0;transform:translateY(-1.4cqw);visibility:hidden}
+.anima .app-avviso{transition:opacity .3s,transform .3s,visibility .3s}
+.app-colonne{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:2.2cqw;align-items:start}
+.app-titoletto{margin:0 0 1cqw;font-size:.72em;text-transform:uppercase;color:var(--grafite)}
+.app-ordini ol,.app-magazzino ul{display:grid;gap:1cqw;margin:0;padding:0;list-style:none}
+.app-ordini li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"num nome stato" ". cosa cosa";gap:.2cqw 1.4cqw;align-items:baseline;padding:1.2cqw 1.4cqw;border:1px solid #ECE6DA;border-radius:1.4cqw;background:#fff}
+.app-ordini li b{grid-area:nome;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.app-ordini li small{grid-area:cosa;overflow:hidden;font-size:.82em;color:var(--grafite);white-space:nowrap;text-overflow:ellipsis}
+.app-ordini .num{grid-area:num;font-size:.78em;color:var(--grafite)}
+.app-ordini .stato{grid-area:stato;display:inline-flex;align-items:center;gap:.8cqw;font-size:.7em;text-transform:uppercase;color:var(--grafite);white-space:nowrap}
+.app-ordini .stato::before{content:"";width:1.1cqw;height:1.1cqw;border-radius:50%;background:#B9B2A5}
+.app-ordini .stato.pronto::before{background:#6F8B5E}
+.app-ordini li.arrivato{border-color:var(--oro);background:#FBF3E6}
+.app-ordini li.arrivato .stato{color:var(--oro-scuro)}
+.app-ordini li.arrivato .stato::before{background:var(--oro)}
+.app-ordini li.arrivato .stato.avviato{color:var(--grafite)}
+.scorta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.6cqw 1.4cqw;padding:.8cqw 0 1.2cqw;border-bottom:1px solid #ECE6DA}
+.scorta b{font-family:var(--f-dati);font-weight:500;font-variant-numeric:tabular-nums}
+.scorta i{grid-column:1 / -1;position:relative;height:.7cqw;overflow:hidden;border-radius:9px;background:#ECE6DA}
+.scorta i::before{content:"";position:absolute;inset:0 auto 0 0;width:calc(var(--q) * 100%);border-radius:inherit;background:var(--acciaio);transition:background-color .3s}
+.scorta small{grid-column:1 / -1;font-size:.84em;font-weight:600;color:var(--oro-scuro)}
+.scorta.manca b{color:var(--oro-scuro)}
+.scorta.manca i::before{background:var(--oro)}
+.app-proposta{margin-top:1.6cqw;padding:1.6cqw;border:1px solid var(--oro);border-radius:1.4cqw;background:#fff}
+.app-proposta p{margin:0}
+.app-proposta .app-bottoni{display:flex;gap:1cqw;margin-top:1.4cqw}
+.app-bottoni span{flex:1;padding:1.1cqw 0;border:1px solid #DDD5C7;border-radius:99px;font-size:.9em;font-weight:600;text-align:center}
+.app-bottoni .primo{border-color:var(--inchiostro);background:var(--inchiostro);color:var(--avorio-luce);transition:transform .15s,box-shadow .25s}
+.app-bottoni .primo.toccato{transform:scale(.95);box-shadow:0 0 0 1cqw rgba(184,147,94,.4)}
+.app-proposta .fatto{display:none;gap:1cqw;align-items:flex-start}
+.app-proposta .fatto .ico{flex:none;width:2.6cqw;height:2.6cqw;color:var(--oro-scuro);stroke-width:2.4}
+.app-proposta.inviata{border-color:#DDD5C7}
+.app-proposta.inviata .domanda,.app-proposta.inviata .app-bottoni{display:none}
+.app-proposta.inviata .fatto{display:flex}
+@media (max-width:900px){
+  /* sul telefono: il DM a larghezza di telefono vero, e il gestionale nel telefono, com'è la stessa app in tasca */
+  .telefono.dm{height:auto;width:min(80vw,320px);border-radius:34px;padding:7px}
+  .dm .ig{border-radius:28px}
+  .app-cornice{width:min(80vw,320px);aspect-ratio:390/844;padding:7px;border:0;border-radius:34px;background:#16140F}
+  .app-barra{display:none}
+  .app{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr;height:100%;min-height:0;overflow:hidden;border-radius:28px;background:#FBFAF7;font-size:3.9cqw}
+  .app-menu{padding:9cqw 4.4cqw 2.6cqw;border-right:0;border-bottom:1px solid #E4DDD0}
+  .app-menu ul{display:none}
+  .app-marchio{margin:0}
+  .app-logo{width:7cqw;height:7cqw}
+  .app-oggi{gap:3cqw;padding:3.6cqw 4.4cqw}
+  .app-avviso{top:2.6cqw;left:4.4cqw;right:4.4cqw;padding:2.4cqw 3cqw;border-radius:3cqw}
+  .app-avviso i{width:2.4cqw;height:2.4cqw}
+  .app-colonne{grid-template-columns:minmax(0,1fr);gap:3.6cqw}
+  .scorta:nth-child(n+3){display:none}
+  .app-ordini li{gap:2.4cqw;padding:2.2cqw 2.6cqw;border-radius:3cqw}
+  .app-ordini .stato::before{width:2cqw;height:2cqw}
+  .scorta i{height:1.3cqw}
+  .app-proposta{margin-top:2.4cqw;padding:3cqw;border-radius:3cqw}
+  .app-bottoni span{padding:2.2cqw 0}
+  .app-proposta .fatto .ico{width:4.6cqw;height:4.6cqw}
+}
+
+/* ——— 25/09, la revisione del sito: i dieci punti che Simone ha approvato («procedi con la correzione di tutti e 10 i punti») ——— */
+/* 1 · sul telefono il menu non c'è: nella barra in alto, accanto al logo, il bottone per scriverci in DM. Al computer resta la call */
+.scrivici{display:none}
+@media (max-width:760px){
+  /* 44 px da toccare, ma la barra non cresce: il margine negativo lo fa stare nei 12 px di bordo (una barra più alta copriva l'occhiello) */
+  .scrivici{display:inline-flex;align-items:center;gap:7px;min-height:44px;margin-block:-10px;padding:0 16px;border-radius:999px;background:var(--inchiostro);color:var(--avorio);
+    font-family:var(--f-dati);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+  .scrivici .ico{width:16px;height:16px;flex:none}
+  .scrivici:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+}
+
+/* 3 · l'apertura, di notte: le notifiche sul telefono bloccato del titolare, come nel reel delle 02:14 (le convenzioni che tutti
+   riconoscono, nessun glifo di sistema). Entrano quando la notte è tutta aperta; senza regia sono già lì */
+.notifiche{margin:0;display:grid;gap:8px;width:100%;max-width:390px}
+.notifica{display:flex;gap:11px;align-items:flex-start;padding:11px 13px;border-radius:20px;background:rgba(38,38,42,.8);color:#F4F4F6;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:.9rem;line-height:1.3;text-align:left}
+.notifica-icona{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:9px;background:var(--avorio);color:var(--inchiostro)}
+.notifica-icona .ico{width:20px;height:20px}
+.notifica-icona.ai{background:var(--oro);color:#16140F;font-family:var(--f-dati);font-size:.75rem;font-weight:500;letter-spacing:.04em}
+.notifica-testo{display:flex;flex:1;flex-direction:column;gap:2px;min-width:0}
+.notifica-testa{display:flex;justify-content:space-between;gap:10px}
+.notifica-testa b{font-weight:650}
+.notifica-testa small{font-size:.8rem;color:#A8A8AE}
+.notifiche figcaption{margin-top:2px;font-family:var(--f-dati);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acciaio)}
+.film .hero .notifica{opacity:0;transform:translateY(14px) scale(.97);transition:opacity .45s,transform .6s cubic-bezier(.2,.8,.2,1)}
+.film .hero[data-fase="notte"] .notifica{opacity:1;transform:none}
+.film .hero[data-fase="notte"] .notifica+.notifica{transition-delay:.8s}
+@media (max-width:760px){
+  .notifiche{gap:6px}
+  .notifica{padding:9px 11px;border-radius:17px;font-size:.84rem}
+  .notifica-icona{width:32px;height:32px;border-radius:8px}
+}
+
+/* 5 · il Reparto AI con le quattro righe, come ogni servizio, nella metà di notte */
+.reparto .righe{max-width:54ch}
+
+/* 8 · gli altri lavori, su progetto: il Mondo accanto alla sua anteprima, e il sito film in una riga, ognuno col suo prezzo */
+.scheda-lavoro.mondo{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+.scheda-testo{display:flex;flex-direction:column;gap:12px;align-items:flex-start;max-width:52ch}
+.prezzo-riga{margin:0;font-weight:600}
+.prezzo-riga a,.riga-sito a{margin-left:6px;color:inherit;font-family:var(--f-dati);font-size:.72rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase}
+.riga-sito{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin:0;padding-top:18px;border-top:1px solid #DDD5C7}
+.riga-sito b{font-weight:680}
+@media (max-width:900px){.scheda-lavoro.mondo{grid-template-columns:minmax(0,1fr)}}
+
+/* 9 · le foto del catalogo: la pagina del negozio dove aggiungi un prodotto, con le foto vere della prova del catalogo (la foto dal
+   telefono, poi quella che apre la pagina). Stessa finestra del gestionale; sul telefono, in un telefono */
+.app-logo .ico{width:62%;height:62%}
+.app-testa .salva{margin-left:auto;padding:.9cqw 2.6cqw;border-radius:99px;background:var(--inchiostro);color:var(--avorio-luce);font-family:var(--f-titolo);
+  font-size:.9em;font-weight:600;letter-spacing:0;transition:transform .15s,box-shadow .25s}
+.app-testa .salva.salvato{background:#E9E3D8;color:var(--grafite)}
+.anima .app-testa .salva.salvato{animation:salva-premi .35s ease-out}
+@keyframes salva-premi{40%{transform:scale(.92);box-shadow:0 0 0 1cqw rgba(184,147,94,.4)}}
+.negozio .app-avviso{top:auto;bottom:2.4cqw}
+.in-scena .negozio .app-avviso:not(.presente){transform:translateY(1.4cqw)}
+.cat-altri{padding-top:1.8cqw;border-top:1px solid #ECE6DA}
+.cat-altri ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.6cqw;margin:0;padding:0;list-style:none}
+.cat-altri li{display:flex;flex-direction:column;gap:.6cqw;font-size:.82em;color:var(--grafite)}
+.cat-altri img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:1cqw;background:#ECE6DA}
+.cat-scheda{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:2.6cqw;align-items:start}
+.cat-foto{position:relative;aspect-ratio:4/5;overflow:hidden;border:1px dashed #CFC6B6;border-radius:1.4cqw;background:#F2EEE6}
+.cat-vuoto{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1cqw;margin:0;color:var(--grafite);font-size:.9em}
+.cat-vuoto .ico{width:4cqw;height:4cqw}
+.cat-foto img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
+.anima .cat-foto img.tieni{transition:opacity .8s,visibility .8s}
+.cat-etichetta{position:absolute;left:1.2cqw;bottom:1.2cqw;padding:.6cqw 1.3cqw;border-radius:99px;background:rgba(22,20,15,.74);color:#F4ECDE;
+  font-family:var(--f-dati);font-size:.72em;letter-spacing:.06em;text-transform:uppercase}
+.cat-campi{display:grid;gap:1.6cqw;margin:0}
+.cat-campi>div{display:grid;gap:.6cqw}
+.cat-campi dt{font-family:var(--f-dati);font-size:.72em;letter-spacing:.06em;text-transform:uppercase;color:var(--grafite)}
+.cat-campi dd{display:flex;align-items:center;gap:1cqw;min-height:2.6em;margin:0;padding:0 1.4cqw;border:1px solid #DDD5C7;border-radius:1cqw;background:#fff}
+.cat-stato .attesa::before{content:"";display:inline-block;width:1.2cqw;height:1.2cqw;margin-right:1cqw;border-radius:50%;background:var(--oro);vertical-align:middle;
+  animation:cat-pulsa .8s ease-in-out infinite alternate}
+@keyframes cat-pulsa{from{opacity:.25}to{opacity:1}}
+.cat-campi .cat-fatto{border-color:var(--oro);background:#FBF3E6;font-weight:600}
+.cat-fatto .ico{flex:none;width:2.6cqw;height:2.6cqw;color:var(--oro-scuro);stroke-width:2.4}
+.scena-app figcaption a{color:var(--avorio-luce);text-underline-offset:3px}
+@media (max-width:900px){
+  .cat-scheda{grid-template-columns:minmax(0,1fr);gap:3cqw}
+  .cat-altri{display:none}
+  .scheda-lavoro.mondo .anteprima{width:min(100%,240px)}
+  .cat-foto{width:62%;justify-self:center}
+  .cat-vuoto .ico{width:7cqw;height:7cqw}
+  .cat-campi{gap:2.4cqw}
+  .cat-campi dd{padding:0 2.6cqw;border-radius:2cqw}
+  .cat-etichetta{left:2cqw;bottom:2cqw;padding:1cqw 2.2cqw}
+  .cat-stato .attesa::before{width:2cqw;height:2cqw}
+  .cat-fatto .ico{width:4.6cqw;height:4.6cqw}
+  .app-testa .salva{padding:1.6cqw 4cqw}
 }
 </style>
 
@@ -714,21 +1002,36 @@ ul{margin:0;padding-left:1.1em}
     </g>
     <line x1="44" y1="110" x2="116" y2="110" stroke-width="13" stroke-linecap="round" style="stroke:var(--bar,#B8935E)"/>
   </symbol>
+  <!-- le icone del DM d'esempio (scene dei sistemi, 25/09): tratto semplice, come quelle di un'app di messaggi -->
+  <symbol id="ico-indietro" viewBox="0 0 24 24"><path d="M15 4 7 12l8 8"/></symbol>
+  <symbol id="ico-chiama" viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="ico-video" viewBox="0 0 24 24"><rect x="2.5" y="6" width="13" height="12" rx="3"/><path d="m15.5 10.5 6-3.5v10l-6-3.5"/></symbol>
+  <symbol id="ico-foto" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+  <symbol id="ico-voce" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></symbol>
+  <symbol id="ico-immagine" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="1.8"/><path d="m21 15-5-5-9 11"/></symbol>
+  <symbol id="ico-adesivo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0M9 9.5h.01M15 9.5h.01"/></symbol>
+  <symbol id="ico-fatto" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <!-- revisione del 25/09: il negozio della notifica, la chat del bottone «Scrivici», la freccia del caricamento -->
+  <symbol id="ico-negozio" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8a3 3 0 0 1 6 0"/></symbol>
+  <symbol id="ico-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+  <symbol id="ico-su" viewBox="0 0 24 24"><path d="M12 19V6M6 11l6-6 6 6"/></symbol>
 </svg>
 
 <header class="barra-nav">
   <a class="marchio" href="#apertura" aria-label="Avoria Studio, inizio pagina"><svg><use href="#arco"/></svg><span class="parola">AVORIA</span></a>
   <nav aria-label="Sezioni">
-    <a href="#foto-video">Foto e video</a><a href="#social">Social</a><a href="#clienti">Assistente</a><a href="#aura">Aura</a><a href="listino/">Listino</a>
+    <a href="#foto-video">Foto e video</a><a href="#social">Social</a><a href="#aura">Aura</a><a href="#clienti">Assistente</a><a href="listino/">Listino</a>
     <a class="bottone-pieno bottone-piccolo" href="#call">Prenota una call</a>
   </nav>
+  <!-- revisione del 25/09, punto 1: sul telefono il menu non c'è, e fino alla chiusura non c'era un modo per scriverci -->
+  <a class="scrivici" href="https://ig.me/m/avor.iastudio"><svg class="ico" aria-hidden="true"><use href="#ico-chat"/></svg>Scrivici</a>
 </header>
 
 <main>
   <!-- l'apertura: un binario di quattro schermi; lo scroll apre l'Arco sull'assistente e riporta a foto e video (grafica del blocco 5) -->
   <div class="binario" data-binario data-sempre style="--binario:400" data-capitoli="Apertura@0|Quando dormi@0.6">
   <section id="apertura" class="hero palco" data-soglia data-componente="soglia-hero"
-    data-copione="0:2.2 0.1:4 0.34:5.8 0.74:12.2 0.92:13.8 1:13.9" aria-label="Foto, video e social; attraverso l'Arco, l'assistente che risponde quando dormi">
+    data-copione="0:2.2 0.1:4 0.34:5.8 0.74:12.2 0.92:13.8 1:13.9" aria-label="Foto, video e social; poi, di notte, l'assistente che risponde quando dormi">
     <div class="strato giorno">
       <div class="colonna">
         <span class="occhiello">Avoria Studio · per chi ha un negozio e fa quasi tutto da solo</span>
@@ -737,7 +1040,8 @@ ul{margin:0;padding-left:1.1em}
         <p class="lead">Ci mandi due foto dal telefono: ti tornano scatti e video pronti. Se vuoi, li pubblichiamo noi.</p>
         <div class="azioni"><a class="bottone-pieno" href="#call">Prenota una call</a><a class="bottone-vuoto" href="listino/">Il listino</a></div>
       </div>
-      <div class="palco3d" data-componente="hero-immagine" data-copione="0:1.4 0.3:7.4 0.36:7.8 0.74:7.8 1:9">
+      <!-- la boccetta di Avoria: vetro, profumo e il marchio al centro (25/09, flacone.js); quella in ceramica resta ai reel -->
+      <div class="palco3d" data-componente="hero-flacone" data-copione="0:1.4 0.2:7.4 0.3:7.8 0.74:7.8 1:9">
         <svg viewBox="0 0 160 200" style="color:#16140F"><use href="#arco"/></svg>
       </div>
     </div>
@@ -749,23 +1053,25 @@ ul{margin:0;padding-left:1.1em}
           <div class="titolo-notte" data-respiro="0" data-componente="respiro-hero-1">QUANDO DORMI,</div>
           <div class="titolo-notte oro" data-respiro="3" data-componente="respiro-hero-2">RISPONDE L'AI.</div>
         </div>
-        <p class="lead">E quando dormi, ai clienti <span class="firma">risponde</span> l'AI, con le pagine vere del tuo negozio. Quello che non sa lo lascia a te.</p>
-        <div class="hud" aria-label="Pannello d'esempio">
-          <div><span>02:14 · Una cliente scrive</span><b>«È anallergica?»</b></div>
-          <div><span>Risposta</span><b>dalla scheda del prodotto</b></div>
-          <div><span>07:30 · Una domanda</span><b>lasciata a te</b></div>
-          <div><span>Conversazione</span><b class="fatto">esempio</b></div>
-        </div>
+        <p class="lead">Con le pagine <span class="firma">vere</span> del tuo negozio. Quello che non sa lo lascia a te.</p>
+        <!-- revisione del 25/09, punto 3: al posto del pannellino a colonne, le notifiche sul telefono bloccato, come nel reel delle 02:14 -->
+        <figure class="notifiche">
+          <div class="notifica"><span class="notifica-icona" aria-hidden="true"><svg class="ico"><use href="#ico-negozio"/></svg></span>
+            <span class="notifica-testo"><span class="notifica-testa"><b>Il tuo negozio</b><small>02:14</small></span>Giulia: Ciao! La collana è anallergica?</span></div>
+          <div class="notifica"><span class="notifica-icona ai" aria-hidden="true">AI</span>
+            <span class="notifica-testo"><span class="notifica-testa"><b>Assistente AI</b><small>02:14</small></span>Ho risposto a Giulia con la scheda del prodotto.</span></div>
+          <figcaption>Esempio · il tuo telefono, di notte</figcaption>
+        </figure>
       </div>
     </div>
     <div class="hero-regia" aria-hidden="true">
       <span class="scorri">Scorri · il film parte</span>
-      <span class="fasi"><span data-per="giorno">Foto e video</span><span data-per="soglia">L'Arco</span><span data-per="notte">L'assistente</span></span>
+      <span class="fasi"><span data-per="giorno">Foto e video</span><span data-per="notte">L'assistente</span></span>
       <i class="corsa"></i>
     </div>
   </section>
   </div>
-  <div class="didascalia" aria-hidden="true"><span>Foto, video e social</span><span>L'Arco</span><span>L'assistente, quando dormi</span></div>
+  <div class="didascalia" aria-hidden="true"><span>Foto, video e social</span><span>L'assistente, quando dormi</span></div>
 
   <!-- cosa facciamo: le cinque aperture dei blocchi del listino 2.1, senza prezzi -->
   <section id="cosa" class="fascia giorno" data-capitoli="Cosa facciamo">
@@ -783,16 +1089,17 @@ ul{margin:0;padding-left:1.1em}
       </ol>
       <div class="principio" data-svela>
         <b>L'AI, dichiarata</b>
-        <p>Ogni contenuto dice che è fatto con l'AI. Il lavoro nostro è la regia: cosa si genera, cosa si scarta, cosa esce.</p>
+        <p>Ogni contenuto dice che è fatto con l'AI. Il lavoro nostro è scegliere: cosa si crea, cosa si scarta, cosa esce.</p>
       </div>
     </div>
   </section>
 
-  <!-- foto, video e social: due palchi, ognuno col suo reel che avanza con lo scroll -->
-  <!-- i capitoli dei reel non hanno sosta: tappe, barra e indice portano al primo fotogramma, e lo scroll mostra tutto il reel (24/09) -->
+  <!-- foto, video e social: due palchi, ognuno col suo reel che parte da solo quando lo vedi, uno alla volta (video-reel.js, 25/09).
+       Fino al 24/09 il reel avanzava con lo scroll su tre schermi e mezzo; Simone: «si perde troppo tempo… e la musica tiene l'attenzione».
+       Il palco resta agganciato per poco più di mezzo schermo: un filo di scroll non porta via il reel mentre parte -->
   <section class="fascia giorno" aria-label="Foto, video e social">
     <div class="dentro">
-      <div class="binario" data-binario style="--binario:420" data-capitoli="Foto e video">
+      <div class="binario" data-binario style="--binario:160" data-capitoli="Foto e video">
       <div class="palco">
       <article id="foto-video" class="reel-palco quadro" data-blocco="foto-video" aria-labelledby="t-foto">
         <div class="testo">
@@ -800,16 +1107,14 @@ ul{margin:0;padding-left:1.1em}
           <h2 id="t-foto">Ci mandi due foto. <span class="firma">Ti torna</span> il mese.</h2>
           <dl class="righe">
             <div class="riga" data-riga="mandi"><dt>Cosa mandi</dt><dd>Due o tre foto dal telefono per ogni prodotto, da angoli diversi.</dd></div>
-            <div class="riga" data-riga="ricevi"><dt>Cosa ricevi</dt><dd>Ogni mese scatti, reel e scatti che si muovono, nei formati del negozio e dei social, con le didascalie e il piano del mese.</dd></div>
+            <div class="riga" data-riga="ricevi"><dt>Cosa ricevi</dt><dd>Ogni mese scatti, reel e brevi video nati dagli scatti, nei formati del negozio e dei social, con le didascalie e il piano del mese.</dd></div>
             <div class="riga" data-riga="tempo"><dt>In quanto tempo</dt><dd>La prima consegna entro 7 giorni lavorativi.</dd></div>
             <div class="riga" data-riga="prezzo"><dt>Da quanto</dt><dd>Da €290 al mese. Oppure un progetto solo, da €249. <a href="listino/#foto-video">I canoni e i progetti, nel listino</a></dd></div>
           </dl>
         </div>
-        <figure class="telefono" data-scorre data-componente="reel-due-foto" data-durata="24.5" data-copione="0.04:0.4 0.94:24.5"
-          data-momenti="mandi@0.15 ricevi@8.9 tempo@18.7 prezzo@20.9">
+        <figure class="telefono" data-reel="reel-due-foto" data-durata="24.5">
           <video muted playsinline preload="none" data-src="media/reel-due-foto.mp4" data-poster="media/reel-due-foto.jpg" width="720" height="1280"
             aria-label="Il reel «Due foto»: due foto della Collana Sorrento dal telefono diventano scatti, un video e il feed di Aura Gioielli"></video>
-          <button type="button" class="con-audio" data-con-audio="media/reel-due-foto.mp4" aria-label="Guarda il reel «Due foto» con l'audio">▶ Con l'audio</button>
         </figure>
       </article>
       </div>
@@ -817,7 +1122,7 @@ ul{margin:0;padding-left:1.1em}
 
       <div class="separatore"></div>
 
-      <div class="binario" data-binario style="--binario:440" data-capitoli="Social e negozio">
+      <div class="binario" data-binario style="--binario:160" data-capitoli="Social e negozio">
       <div class="palco">
       <article id="social" class="reel-palco quadro" data-blocco="social-negozio" aria-labelledby="t-social">
         <div class="testo">
@@ -830,11 +1135,9 @@ ul{margin:0;padding-left:1.1em}
             <div class="riga" data-riga="prezzo"><dt>Da quanto</dt><dd>€290 al mese ciascuno. €190 se lo aggiungi a un altro canone: è l'unico sconto, uguale per tutti. <a href="listino/#social">Social e negozio, nel listino</a></dd></div>
           </dl>
         </div>
-        <figure class="telefono" data-scorre data-componente="reel-dei-tuoi-social" data-durata="26.7" data-copione="0.04:0.4 0.94:26.7"
-          data-momenti="mandi@2.39 ricevi@10.4 tempo@22.43 prezzo@24.63">
+        <figure class="telefono" data-reel="reel-dei-tuoi-social" data-durata="26.7">
           <video muted playsinline preload="none" data-src="media/reel-dei-tuoi-social.mp4" data-poster="media/reel-dei-tuoi-social.jpg" width="720" height="1280"
             aria-label="Il reel «Dei tuoi social»: da due scatti del telefono, un post pronto, e il mese di luglio sul profilo di Aura Gioielli"></video>
-          <button type="button" class="con-audio" data-con-audio="media/reel-dei-tuoi-social.mp4" aria-label="Guarda il reel «Dei tuoi social» con l'audio">▶ Con l'audio</button>
         </figure>
       </article>
       </div>
@@ -842,10 +1145,64 @@ ul{margin:0;padding-left:1.1em}
     </div>
   </section>
 
+  <!-- il caso Aura: quattro passaggi nella stessa cornice, poi la pagina sua; sotto, gli altri lavori. Dalla revisione del 25/09
+       (punto 6) viene subito dopo foto, video e social, che mostrano già Aura, e prima della notte: arrivava al quindicesimo
+       schermo, dopo tutti i sistemi. Prima dell'assistente e non dopo: Aura quell'assistente non ce l'ha acceso -->
+  <section id="aura" class="fascia giorno">
+    <div class="dentro">
+      <!-- il capitolo sta sul binario, come per i reel: il salto arriva col palco agganciato e l'anteprima intera (col capitolo sulla
+           sezione, al computer il salto si fermava prima dell'aggancio e l'anteprima usciva di 24 px dal fondo; misurato il 25/09) -->
+      <div class="binario" data-binario style="--binario:260" data-capitoli="Caso Aura">
+      <div class="palco">
+      <article class="prova-palco quadro" aria-labelledby="t-aura">
+        <div class="testo">
+          <span class="stato-linea"><b>Aura Gioielli</b> · il nostro e-commerce, un progetto del fondatore</span>
+          <h2 id="t-aura">Lo facciamo già, <span class="firma">per noi</span>.</h2>
+          <p>Aura Gioielli è il nostro e-commerce. Ogni immagine del negozio nasce in studio, e adesso anche il negozio.</p>
+          <ol class="passaggi"><li>La foto vera del gioiello</li><li>Lo scatto che apre la sua pagina sul negozio</li><li>Uno scatto diventato video</li><li>Il sito nuovo, in arrivo online</li></ol>
+          <a class="bottone-pieno" href="prove/aura/">Guarda il caso Aura</a>
+        </div>
+        <div class="anteprima" data-anteprima data-componente="prova-aura" data-copione="-0.2:0 0.85:6 1:6">
+          <figure><img data-src="prove/aura/media/aura-bracciale-sorrento-prima.jpg" alt="La foto vera del Bracciale Sorrento" width="1280" height="1600"><figcaption class="didascalia-anteprima">1 · La foto vera</figcaption></figure>
+          <figure data-entra><img data-src="prove/aura/media/aura-bracciale-sorrento-dopo.jpg" alt="Lo scatto che apre la pagina del Bracciale Sorrento sul negozio" width="1280" height="1600"><figcaption class="didascalia-anteprima">2 · Lo scatto sul negozio</figcaption></figure>
+          <figure data-entra><video data-auto muted playsinline loop preload="none" data-src="media/aura-scatto-muove.mp4" data-poster="media/aura-scatto-muove.jpg" aria-label="Lo scatto della Collana Sorrento, diventato un video di pochi secondi"></video><figcaption class="didascalia-anteprima">3 · Lo scatto, in video</figcaption></figure>
+          <figure data-entra data-sito-nuovo><img data-src="prove/aura/media/aura-isola-computer.jpg" alt="Il primo fotogramma del film dell'isola, nella home del sito nuovo di Aura" width="1280" height="720"><figcaption class="didascalia-anteprima">4 · Il sito nuovo · in arrivo online</figcaption></figure>
+        </div>
+      </article>
+      </div>
+      </div>
+
+      <div class="separatore"></div>
+
+      <div class="altri" data-capitoli="Altri lavori">
+        <span class="occhiello">Altri lavori, su progetto</span>
+        <!-- revisione del 25/09, punto 8: il Mondo dice cos'è e quanto costa; e questo stesso sito è un progetto che si compra -->
+        <article class="scheda-lavoro mondo">
+            <div class="anteprima verticale" data-anteprima data-componente="prova-mondi" data-copione="0:0 1:6">
+              <img data-src="prove/mondi/media/mondi-manifesto.jpg" alt="Il manifesto di Avoria Studio" width="1080" height="1920">
+              <img data-entra data-src="prove/mondi/media/mondi-range.jpg" alt="La copertina di «Proof of Range»" width="1080" height="1920">
+              <img data-entra data-src="prove/mondi/media/mondi-v11.jpg" alt="La copertina di «Ventiquattrore»" width="1080" height="1920">
+              <img data-entra data-src="prove/mondi/media/mondi-v12.jpg" alt="La copertina di «Ciak Impossibile»" width="1080" height="1920">
+              <img data-entra data-src="prove/mondi/media/mondi-v13.jpg" alt="La copertina di «La Telefonata»" width="1080" height="1920">
+              <img data-entra data-src="prove/mondi/media/mondi-clessidra.jpg" alt="La copertina di «La Clessidra»" width="1080" height="1920">
+              <span class="didascalia-anteprima">Il manifesto e cinque film</span>
+            </div>
+            <div class="scheda-testo">
+            <h3>Un Mondo intorno al tuo prodotto</h3>
+            <p>Una campagna con una storia: l'idea, 6 scatti, 2 video e le versioni per la pubblicità. Qui, il manifesto di Avoria e cinque film nati in studio.</p>
+            <p class="prezzo-riga">Un progetto, da €1.200. <a href="listino/#progetti">Il Mondo, nel listino</a></p>
+            <a class="bottone-vuoto" href="prove/mondi/">Guarda i Mondi</a>
+            </div>
+        </article>
+        <p class="riga-sito"><b>Un sito che si guarda come un film</b><span>Come questo: mentre scorri, la pagina si racconta e i video partono quando arrivi. Il sito film da scroll, in 4 settimane.</span><span class="prezzo-riga">Un progetto, da €2.900. <a href="listino/#progetti">Il sito film, nel listino</a></span></p>
+      </div>
+    </div>
+  </section>
+
   <!-- l'assistente e i sistemi: la notte entra attraverso l'apertura dell'Arco -->
   <section class="fascia notte" aria-label="L'assistente e i sistemi" data-soglia-ingresso>
     <div class="dentro">
-      <div class="binario" data-binario style="--binario:400" data-capitoli="Assistente">
+      <div class="binario" data-binario style="--binario:160" data-capitoli="Assistente">
       <div class="palco">
       <article id="clienti" class="reel-palco quadro" data-blocco="clienti" aria-labelledby="t-clienti">
         <div class="testo">
@@ -858,26 +1215,24 @@ ul{margin:0;padding-left:1.1em}
             <div class="riga" data-riga="prezzo"><dt>Da quanto</dt><dd>€990 di avvio, poi €90 al mese. <a href="listino/#clienti">L'assistente, nel listino</a></dd></div>
           </dl>
         </div>
-        <figure class="telefono" data-scorre data-componente="reel-alle-0214" data-durata="22" data-copione="0.04:0.4 0.94:22"
-          data-momenti="ricevi@2.6 mandi@7.9 tempo@16.4 prezzo@19.3">
+        <figure class="telefono" data-reel="reel-alle-0214" data-durata="22">
           <video muted playsinline preload="none" data-src="media/reel-alle-0214.mp4" data-poster="media/reel-alle-0214.jpg" width="720" height="1280"
             aria-label="Il reel «Alle 02.14»: di notte una cliente scrive ad Aura Gioielli e risponde l'assistente AI, con le pagine vere del negozio. Conversazione di esempio"></video>
-          <button type="button" class="con-audio" data-con-audio="media/reel-alle-0214.mp4" aria-label="Guarda il reel «Alle 02.14» con l'audio">▶ Con l'audio</button>
         </figure>
       </article>
       </div>
       </div>
-      <p class="azienda" data-svela><span class="stato-linea">Assistente dell'azienda</span><span>Per clienti e personale, dai tuoi documenti: l'Assistente dell'azienda, €2.900 di avvio e €290 al mese.</span></p>
-
       <div class="separatore"></div>
 
-      <div id="lavoro" class="capitolo" data-blocco="lavoro" data-capitoli="Sistemi">
+      <div id="lavoro" class="capitolo" data-blocco="lavoro" data-capitoli="Lavoro di ogni giorno">
         <span class="occhiello">Il lavoro che si ripete</span>
         <h2>Il lavoro di ogni giorno, <span class="firma">fatto</span> da un sistema.</h2>
         <p class="lead">Le cose che fai ogni giorno a mano, fatte da un sistema che controlli tu. Se non sai da dove cominciare, c'è l'analisi: guardiamo come lavori e ti diciamo cosa conviene, in 10 giorni lavorativi, da €690.</p>
       </div>
 
-      <div class="binario" data-binario style="--binario:210">
+      <!-- le foto del catalogo (revisione del 25/09, punto 9): al posto dei vasi disegnati, la pagina del negozio dove aggiungi un
+           prodotto e le sue foto vere, dalla prova del catalogo: la foto dal telefono, poi quella che apre la pagina -->
+      <div class="binario" data-binario style="--binario:160">
       <div class="palco">
       <article class="servizio quadro" data-servizio="foto-catalogo" aria-labelledby="s-catalogo">
         <div class="testo">
@@ -885,19 +1240,59 @@ ul{margin:0;padding-left:1.1em}
           <h3 id="s-catalogo">Aggiungi un prodotto: le sue foto si fanno da sole.</h3>
           <dl class="righe ferme">
             <div class="riga accesa"><dt>Cosa mandi</dt><dd data-mandi>L'accesso al negozio, Shopify o WooCommerce, e i primi 20 prodotti da cui partire.</dd></div>
-            <div class="riga accesa"><dt>Cosa ricevi</dt><dd data-ricevi>Quando aggiungi o cambi un prodotto, le sue foto ambientate si fanno da sole, nei formati di negozio, marketplace e pubblicità, e le controlliamo prima che escano.</dd></div>
+            <div class="riga accesa"><dt>Cosa ricevi</dt><dd data-ricevi>Quando aggiungi o cambi un prodotto, le sue foto ambientate si fanno da sole, nei formati del negozio, di Amazon, Etsy e simili e della pubblicità, e le controlliamo prima che escano.</dd></div>
             <div class="riga accesa"><dt>In quanto tempo</dt><dd data-tempo>3 settimane.</dd></div>
             <div class="riga accesa"><dt>Da quanto</dt><dd>€1.900 di avvio, poi €390 al mese.</dd></div>
           </dl>
         </div>
-        <div class="scena catalogo" data-componente="scena-catalogo" data-copione="-0.35:0.4 0.2:2.8 0.5:5.2 0.8:7.4 1:8.6"></div>
+        <figure class="scena-app" data-scena="foto-catalogo">
+          <div class="app-cornice">
+            <div class="app-barra" aria-hidden="true"><i></i><i></i><i></i><span>iltuonegozio.it/admin</span></div>
+            <div class="app negozio">
+              <div class="app-menu">
+                <p class="app-marchio"><span class="app-logo" aria-hidden="true"><svg class="ico"><use href="#ico-negozio"/></svg></span><b>Il tuo negozio</b></p>
+                <ul aria-label="Il menu del negozio d'esempio"><li>Oggi</li><li>Ordini</li><li class="attivo">Prodotti</li><li>Clienti</li></ul>
+              </div>
+              <div class="app-oggi">
+                <div class="app-testa"><b>Nuovo prodotto</b><span class="salva" data-segna="2.2|salvato" data-poi="2.2|Salvato">Salva</span></div>
+                <p class="app-avviso scivola" data-da="2.5" data-a="4.4"><i aria-hidden="true"></i>Prodotto salvato · le foto si preparano</p>
+                <div class="cat-scheda">
+                  <div class="cat-foto">
+                    <p class="cat-vuoto" aria-hidden="true"><svg class="ico"><use href="#ico-su"/></svg>Aggiungi le foto</p>
+                    <img class="tieni" data-da="1.2" src="prove/catalogo/media/catalogo-corda-intera.jpg" alt="La Collana Corda nella foto vera, su un busto nero" width="640" height="800" loading="lazy">
+                    <img class="tieni cat-nuova" data-da="4.4" src="prove/catalogo/media/catalogo-corda.jpg" alt="La Collana Corda indossata: la prima foto della sua pagina" width="800" height="1000" loading="lazy">
+                    <span class="cat-etichetta tieni" data-da="1.2" data-poi="4.4|Pagina del negozio">Dal telefono</span>
+                  </div>
+                  <dl class="cat-campi">
+                    <div><dt>Titolo</dt><dd><span class="tieni" data-da="0.4" data-batti>Collana Corda</span></dd></div>
+                    <div><dt>Foto</dt><dd class="cat-stato"><span data-da="0" data-a="1.2">Nessuna foto</span><span data-da="1.2" data-a="2.8">1 foto dal telefono</span><span class="attesa" data-da="2.8" data-a="4.4">In preparazione…</span><span data-da="4.4">Pronta: la guardiamo noi</span></dd></div>
+                    <div class="tieni" data-da="5.6"><dt>Sul negozio</dt><dd class="cat-fatto"><svg class="ico" aria-hidden="true"><use href="#ico-fatto"/></svg>Controllata · online</dd></div>
+                  </dl>
+                </div>
+                <div class="cat-altri">
+                  <p class="app-titoletto">Già sul negozio, nello stesso stile</p>
+                  <ul>
+                    <li><img src="prove/catalogo/media/catalogo-cuore.jpg" alt="La Collana Cuore indossata, la prima foto della sua pagina" width="800" height="1000" loading="lazy"><span>Collana Cuore</span></li>
+                    <li><img src="prove/catalogo/media/catalogo-orsacchiotto.jpg" alt="La Collana Orsacchiotto indossata, la prima foto della sua pagina" width="800" height="1000" loading="lazy"><span>Collana Orsacchiotto</span></li>
+                    <li><img src="prove/catalogo/media/catalogo-croce.jpg" alt="La Collana con Croce Zirconata indossata, la prima foto della sua pagina" width="800" height="1000" loading="lazy"><span>Collana Croce</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption><span>Esempio · foto vere, dalla nostra prova del catalogo: aggiungi il prodotto e la sua foto si fa da sola</span><a href="prove/catalogo/">Guarda la prova</a></figcaption>
+        </figure>
       </article>
       </div>
       </div>
 
       <div class="separatore"></div>
 
-      <div class="binario" data-binario style="--binario:210">
+      <!-- il preventivo e il gestionale (25/09): al posto dei pannelli scuri, che Simone trovava «AI slop», le interfacce che il
+           cliente conosce già. Un DM sul telefono disegnato, come i reel qui sopra: il cliente scrive, la bozza si scrive dal listino,
+           tu approvi, parte nella stessa chat. Poi lo stesso preventivo, accettato, arriva nel gestionale come ordine. Le scene partono
+           da sole quando le vedi, una volta, e si rivedono col bottone (scene-sistemi.js); ogni pezzo dice quando entra (data-da) -->
+      <div class="binario" data-binario style="--binario:160">
       <div class="palco">
       <article class="servizio rovescio quadro" data-servizio="preventivo" aria-labelledby="s-preventivo">
         <div class="testo">
@@ -905,19 +1300,57 @@ ul{margin:0;padding-left:1.1em}
           <h3 id="s-preventivo">Il messaggio del cliente diventa un preventivo.</h3>
           <dl class="righe ferme">
             <div class="riga accesa"><dt>Cosa mandi</dt><dd data-mandi>Il tuo listino e i canali da cui arrivano le richieste: DM, email, modulo del sito, fino a 3.</dd></div>
-            <div class="riga accesa"><dt>Cosa ricevi</dt><dd data-ricevi>Le richieste finiscono in un registro unico, il preventivo si scrive da solo dal tuo listino e tu lo approvi. I promemoria ai clienti partono da soli.</dd></div>
+            <div class="riga accesa"><dt>Cosa ricevi</dt><dd data-ricevi>Le richieste finiscono in un solo elenco, il preventivo si scrive da solo dal tuo listino e tu lo approvi. I promemoria ai clienti partono da soli.</dd></div>
             <div class="riga accesa"><dt>In quanto tempo</dt><dd data-tempo>3–4 settimane.</dd></div>
             <div class="riga accesa"><dt>Da quanto</dt><dd>€2.400 di avvio, poi €290 al mese.</dd></div>
           </dl>
         </div>
-        <div class="contenitore-scena"><div class="scena notte" data-componente="scena-automazioni" data-copione="-0.35:0 0.75:8.8 1:9.6"></div></div>
+        <figure class="scena-dm" data-scena="preventivo">
+          <div class="telefono alto dm">
+            <div class="ig">
+              <div class="ig-stato" aria-hidden="true"><span>10:42</span><i class="ig-isola"></i>
+                <svg viewBox="0 0 54 12"><g fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="6" width="3" height="6" rx="1"/><rect x="10" y="3.5" width="3" height="8.5" rx="1"/><rect x="15" y="1" width="3" height="11" rx="1"/><path d="M28 11.5 24.3 7.4a5.6 5.6 0 0 1 7.4 0zM21.6 4.8a9.6 9.6 0 0 1 12.8 0l-1.4 1.5a7.6 7.6 0 0 0-10 0z"/><rect x="38" y="1.5" width="14" height="9" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="39.8" y="3.3" width="8.4" height="5.4" rx="1.2"/></g></svg></div>
+              <div class="ig-testa">
+                <svg class="ico" aria-hidden="true"><use href="#ico-indietro"/></svg>
+                <span class="ig-avatar" aria-hidden="true">SR</span>
+                <span class="ig-chi"><b>Studio Rossi</b><small>studio.rossi.eventi</small></span>
+                <span class="ig-azioni" aria-hidden="true"><svg class="ico"><use href="#ico-chiama"/></svg><svg class="ico"><use href="#ico-video"/></svg></span>
+              </div>
+              <div class="ig-chat">
+                <div class="ig-profilo" aria-hidden="true"><span class="ig-avatar">SR</span><b>Studio Rossi</b><small>studio.rossi.eventi</small><span class="ig-vedi">Visualizza profilo</span></div>
+                <p class="ig-ora">Oggi 10:41</p>
+                <p class="ig-bolla lui" data-da="0.5">Buongiorno! Fate vasi con il logo inciso?</p>
+                <p class="ig-bolla lui coda" data-da="1.6"><span class="ig-avatar" aria-hidden="true">SR</span>Ce ne servono 40 per un evento aziendale, entro il 15 novembre.</p>
+                <p class="ig-bolla io" data-da="7.2">Ecco il preventivo per i 40 vasi, valido 15 giorni.</p>
+                <p class="ig-bolla io ig-allegato" data-da="7.7"><i class="ig-foglio" aria-hidden="true"><i></i><i></i><i></i><i></i></i><span><b>Preventivo n. 118</b><small>40 Vasi Arco con logo · €960,00 + IVA</small><small class="apri">Apri il PDF</small></span></p>
+                <p class="ig-ora" data-da="8.7">11:20</p>
+                <p class="ig-bolla lui coda" data-da="9.1"><span class="ig-avatar" aria-hidden="true">SR</span>Perfetto, confermiamo!</p>
+              </div>
+              <div class="ig-scrivi" aria-hidden="true"><span class="ig-camera"><svg class="ico"><use href="#ico-foto"/></svg></span><span>Messaggio…</span><svg class="ico"><use href="#ico-voce"/></svg><svg class="ico"><use href="#ico-immagine"/></svg><svg class="ico"><use href="#ico-adesivo"/></svg></div>
+              <div class="bozza scivola" data-da="2.6" data-a="6.9">
+                <i class="maniglia" aria-hidden="true"></i>
+                <p class="bozza-testa"><b>Bozza del preventivo</b><span>la vedi solo tu</span></p>
+                <dl>
+                  <div class="tieni" data-da="3.0"><dt>Cliente</dt><dd data-batti>Studio Rossi</dd></div>
+                  <div class="tieni" data-da="3.4"><dt>Articolo</dt><dd data-batti>Vaso Arco, logo inciso</dd></div>
+                  <div class="tieni" data-da="3.8"><dt>Quantità</dt><dd data-batti>40</dd></div>
+                  <div class="tieni" data-da="4.2"><dt>Prezzo</dt><dd><span data-batti>€24,00 l'uno</span> <em>dal tuo listino</em></dd></div>
+                  <div class="tieni" data-da="4.6"><dt>Consegna</dt><dd data-batti>entro il 15 novembre</dd></div>
+                  <div class="tieni totale" data-da="5.0"><dt>Totale</dt><dd data-batti>€960,00 + IVA</dd></div>
+                </dl>
+                <p class="bozza-bottoni tieni" data-da="5.5"><span>Modifica</span><span class="approva" data-segna="6.3|toccato">Approva e invia</span></p>
+              </div>
+            </div>
+          </div>
+          <figcaption><span>Esempio · il cliente scrive in DM, tu approvi, il preventivo parte nella stessa chat</span></figcaption>
+        </figure>
       </article>
       </div>
       </div>
 
       <div class="separatore"></div>
 
-      <div class="binario" data-binario style="--binario:210">
+      <div class="binario" data-binario style="--binario:160">
       <div class="palco">
       <article class="servizio quadro" data-servizio="gestionale" aria-labelledby="s-gestionale">
         <div class="testo">
@@ -930,7 +1363,46 @@ ul{margin:0;padding-left:1.1em}
             <div class="riga accesa"><dt>Da quanto</dt><dd>Da €6.900, poi la manutenzione da €240 al mese.</dd></div>
           </dl>
         </div>
-        <div class="contenitore-scena"><div class="scena notte" data-componente="scena-gestionali" data-copione="-0.35:0 0.75:8.6 1:9.6"></div></div>
+        <figure class="scena-app" data-scena="gestionale">
+          <div class="app-cornice">
+            <div class="app-barra" aria-hidden="true"><i></i><i></i><i></i><span>gestionale.ceramichelevante.it</span></div>
+            <div class="app">
+              <div class="app-menu">
+                <p class="app-marchio"><span class="app-logo" aria-hidden="true">CL</span><b>Ceramiche Levante</b></p>
+                <ul aria-label="Il menu dell'app d'esempio"><li class="attivo">Oggi</li><li>Ordini</li><li>Magazzino</li><li>Clienti</li><li>Preventivi</li></ul>
+              </div>
+              <div class="app-oggi">
+                <div class="app-testa"><b>Oggi</b><span>martedì 14 ottobre</span></div>
+                <p class="app-avviso scivola" data-da="0.8" data-a="4.6"><i aria-hidden="true"></i>Preventivo n. 118 accettato · Studio Rossi</p>
+                <div class="app-colonne">
+                  <section class="app-ordini" aria-label="Ordini da preparare, esempio">
+                    <p class="app-titoletto">Ordini da preparare</p>
+                    <ol>
+                      <li class="arrivato" data-da="1.6"><span class="num">#1046</span><b>Studio Rossi</b><span class="stato" data-poi="6.4|In corso" data-segna="6.4|avviato">Nuovo</span><small>40 Vasi Arco, logo inciso · entro il 15 nov</small></li>
+                      <li><span class="num">#1045</span><b>Marco T.</b><span class="stato pronto">Pronto</span><small>2 Brocche Levante</small></li>
+                      <li><span class="num">#1044</span><b>Hotel Miramare</b><span class="stato">In corso</span><small>12 set di piatti Soglia</small></li>
+                      <li><span class="num">#1043</span><b>Giulia M.</b><span class="stato">Da spedire</span><small>1 Vaso Arco</small></li>
+                    </ol>
+                  </section>
+                  <section class="app-magazzino" aria-label="Magazzino, esempio">
+                    <p class="app-titoletto">Magazzino</p>
+                    <ul>
+                      <li class="scorta" data-segna="2.6|manca"><span>Vaso Arco</span><b>12</b><i style="--q:.3"></i><small class="tieni" data-da="2.6">Ne servono 40: ne mancano 28</small></li>
+                      <li class="scorta"><span>Set piatti Soglia</span><b>30</b><i style="--q:.75"></i></li>
+                      <li class="scorta"><span>Brocca Levante</span><b>8</b><i style="--q:.4"></i></li>
+                    </ul>
+                    <div class="app-proposta" data-da="3.8" data-segna="5.6|inviata">
+                      <p class="domanda">Ordino 30 Vasi Arco alla Fornace Bini? Arrivano in 6 giorni, in tempo per il 15 novembre.</p>
+                      <p class="app-bottoni"><span>Più tardi</span><span class="primo" data-segna="5.0|toccato">Invia l'ordine</span></p>
+                      <p class="fatto"><svg class="ico" aria-hidden="true"><use href="#ico-fatto"/></svg>Ordine inviato alla Fornace Bini · arrivano il 21 ottobre</p>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption><span>Esempio · un'app col nome del tuo negozio: il preventivo accettato diventa un ordine, e il magazzino avvisa da solo</span></figcaption>
+        </figure>
       </article>
       </div>
       </div>
@@ -946,82 +1418,20 @@ ul{margin:0;padding-left:1.1em}
       <h2 id="reparto-titolo">Reparto AI</h2>
       <p class="prezzo prezzo-grande">da €1.690<small>/mese</small></p>
       <p class="spiega">Foto, video, social e un sistema, seguiti da una persona sola.</p>
-      <ul class="punti"><li>Il canone Firma: 30 scatti, 3 reel e 3 scatti che si muovono al mese</li><li>I tuoi social, compresi</li><li>Priorità su tutto</li></ul>
     </div>
     <div class="notte" data-tenda>
-      <span class="occhiello">… e un sistema</span>
-      <h2><span class="firma">Sempre</span> acceso.</h2>
-      <ul class="punti"><li>Il canone di un sistema a scelta; l'avvio si paga a parte</li><li>Un'evoluzione dei sistemi al mese</li><li>Una call di regia al mese</li></ul>
-      <p class="spiega" data-mandi data-tempo>Cosa ci mandi e in quanto tempo: come per ogni servizio qui sopra.</p>
-      <div class="azioni"><a class="bottone-pieno chiaro" href="listino/#reparto">Il Reparto AI, nel listino</a></div>
+      <span class="occhiello">… e un sistema, sempre acceso</span>
+      <!-- revisione del 25/09, punto 5: l'offerta più cara era l'unica senza le quattro righe -->
+      <dl class="righe">
+        <div class="riga" data-riga="mandi"><dt>Cosa mandi</dt><dd data-mandi>Due o tre foto dal telefono per ogni prodotto, l'accesso ai tuoi profili come collaboratore e, per il sistema, quello che chiede il suo avvio.</dd></div>
+        <div class="riga" data-riga="ricevi"><dt>Cosa ricevi</dt><dd>Ogni mese 30 scatti, 3 reel e 3 brevi video nati dagli scatti; i tuoi social, pubblicati da noi; un sistema a scelta, con un miglioramento al mese e una call al mese per decidere cosa fare. Le tue richieste passano prima.</dd></div>
+        <div class="riga" data-riga="tempo"><dt>In quanto tempo</dt><dd data-tempo>Foto, video e social partono entro 7 giorni lavorativi. Il sistema, coi tempi del suo avvio, scritti nella sua scheda qui sopra.</dd></div>
+        <div class="riga" data-riga="prezzo"><dt>Da quanto</dt><dd>Da €1.690 al mese. L'avvio del sistema si paga a parte. <a href="listino/#reparto">Il Reparto AI, nel listino</a></dd></div>
+      </dl>
     </div>
   </section>
   </div>
   </div>
-
-  <!-- il caso Aura: quattro passaggi nella stessa cornice, poi la pagina sua; sotto, gli altri lavori -->
-  <section id="aura" class="fascia giorno" data-capitoli="Caso Aura">
-    <div class="dentro">
-      <div class="binario" data-binario style="--binario:260">
-      <div class="palco">
-      <article class="prova-palco quadro" aria-labelledby="t-aura">
-        <div class="testo">
-          <span class="stato-linea"><b>Aura Gioielli</b> · il nostro e-commerce, un progetto del fondatore</span>
-          <h2 id="t-aura">Lo facciamo già, <span class="firma">per noi</span>.</h2>
-          <p>Aura Gioielli è il nostro e-commerce. Ogni immagine del negozio nasce in studio, e adesso anche il negozio.</p>
-          <ol class="passaggi"><li>La foto vera del gioiello</li><li>Lo scatto che apre la sua pagina sul negozio</li><li>Uno scatto che si muove</li><li>Il sito nuovo, in arrivo online</li></ol>
-          <a class="bottone-pieno" href="prove/aura/">Guarda il caso Aura</a>
-        </div>
-        <div class="anteprima" data-anteprima data-componente="prova-aura" data-copione="-0.2:0 0.85:6 1:6">
-          <figure><img data-src="prove/aura/media/aura-bracciale-sorrento-prima.jpg" alt="La foto vera del Bracciale Sorrento" width="1280" height="1600"><figcaption class="didascalia-anteprima">1 · La foto vera</figcaption></figure>
-          <figure data-entra><img data-src="prove/aura/media/aura-bracciale-sorrento-dopo.jpg" alt="Lo scatto che apre la pagina del Bracciale Sorrento sul negozio" width="1280" height="1600"><figcaption class="didascalia-anteprima">2 · Lo scatto sul negozio</figcaption></figure>
-          <figure data-entra><video data-auto muted playsinline loop preload="none" data-src="media/aura-scatto-muove.mp4" data-poster="media/aura-scatto-muove.jpg" aria-label="Lo scatto della Collana Sorrento che si muove"></video><figcaption class="didascalia-anteprima">3 · Uno scatto che si muove</figcaption></figure>
-          <figure data-entra data-sito-nuovo><img data-src="prove/aura/media/aura-isola-computer.jpg" alt="Il primo fotogramma del film dell'isola, nella home del sito nuovo di Aura" width="1280" height="720"><figcaption class="didascalia-anteprima">4 · Il sito nuovo · in arrivo online</figcaption></figure>
-        </div>
-      </article>
-      </div>
-      </div>
-
-      <div class="separatore"></div>
-
-      <div class="altri" data-capitoli="Altri lavori">
-        <span class="occhiello">Altri lavori</span>
-        <div class="fila due">
-          <article class="scheda-lavoro">
-            <div class="anteprima griglia" data-anteprima data-componente="prova-catalogo" data-copione="0:0 1:6">
-              <img data-src="prove/catalogo/media/catalogo-corda-intera.jpg" alt="La Collana Corda nella foto vera" width="640" height="800">
-              <div class="tessere">
-                <img data-entra data-src="prove/catalogo/media/catalogo-corda.jpg" alt="Collana Corda, la prima immagine della sua pagina" width="800" height="1000">
-                <img data-entra data-src="prove/catalogo/media/catalogo-coppia-corda.jpg" alt="Collana e Bracciale Corda, la prima immagine della sua pagina" width="800" height="1000">
-                <img data-entra data-src="prove/catalogo/media/catalogo-bracciale-corda.jpg" alt="Bracciale Corda, la prima immagine della sua pagina" width="800" height="1000">
-                <img data-entra data-src="prove/catalogo/media/catalogo-cuore.jpg" alt="Collana Cuore, la prima immagine della sua pagina" width="800" height="1000">
-                <img data-entra data-src="prove/catalogo/media/catalogo-orsacchiotto.jpg" alt="Collana Orsacchiotto, la prima immagine della sua pagina" width="800" height="1000">
-                <img data-entra data-src="prove/catalogo/media/catalogo-croce.jpg" alt="Collana con Croce Zirconata, la prima immagine della sua pagina" width="800" height="1000">
-              </div>
-              <span class="didascalia-anteprima">Foto vera → sei pagine del negozio</span>
-            </div>
-            <h3>Le foto del catalogo, da sole</h3>
-            <p>Dalle foto vere di una collana, la prima immagine di sei pagine del negozio, tutte con lo stesso stile.</p>
-            <a class="bottone-vuoto" href="prove/catalogo/">Guarda la prova</a>
-          </article>
-          <article class="scheda-lavoro">
-            <div class="anteprima verticale" data-anteprima data-componente="prova-mondi" data-copione="0:0 1:6">
-              <img data-src="prove/mondi/media/mondi-manifesto.jpg" alt="Il manifesto di Avoria Studio" width="1080" height="1920">
-              <img data-entra data-src="prove/mondi/media/mondi-range.jpg" alt="La copertina di «Proof of Range»" width="1080" height="1920">
-              <img data-entra data-src="prove/mondi/media/mondi-v11.jpg" alt="La copertina di «Ventiquattrore»" width="1080" height="1920">
-              <img data-entra data-src="prove/mondi/media/mondi-v12.jpg" alt="La copertina di «Ciak Impossibile»" width="1080" height="1920">
-              <img data-entra data-src="prove/mondi/media/mondi-v13.jpg" alt="La copertina di «La Telefonata»" width="1080" height="1920">
-              <img data-entra data-src="prove/mondi/media/mondi-clessidra.jpg" alt="La copertina di «La Clessidra»" width="1080" height="1920">
-              <span class="didascalia-anteprima">Il manifesto e cinque film</span>
-            </div>
-            <h3>Un Mondo intorno al prodotto</h3>
-            <p>Una campagna con una storia: il manifesto di Avoria, girato in codice, e cinque film nati in studio.</p>
-            <a class="bottone-vuoto" href="prove/mondi/">Guarda i Mondi</a>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section id="come" class="fascia giorno" data-capitoli="Come funziona">
     <div class="dentro">
@@ -1047,7 +1457,8 @@ ul{margin:0;padding-left:1.1em}
       <p class="lead">Trenta minuti, gratis, per capire cosa ti serve. Oppure scrivici in DM.</p>
       <div class="azioni">
         <a class="bottone-pieno" href="mailto:avoriastudio@outlook.it?subject=Call%20con%20Avoria">Scrivi per la call</a>
-        <span class="dati">avoriastudio@outlook.it · DM @avor.iastudio</span>
+        <a class="bottone-vuoto" href="https://ig.me/m/avor.iastudio">Scrivici in DM</a>
+        <span class="dati"><a href="mailto:avoriastudio@outlook.it">avoriastudio@outlook.it</a> · <a href="https://instagram.com/avor.iastudio">@avor.iastudio</a></span>
       </div>
     </div>
   </section>
@@ -1337,6 +1748,189 @@ AV.righeAccese = righeAccese;
 AV.bersaglio = bersaglio;
 AV.daLiberare = daLiberare;
 AV.parsimonia = parsimonia;
+})();</script>
+<script>(function(){
+// FILE: src/video-reel-logica.mjs — i reel della home che partono da soli quando li vedi (25/09), senza DOM
+// Simone: «ogni video parta in automatico ogni volta che ci scorri… con l'audio già attivo». Prima avanzavano con lo scroll
+// (video-scorre.js, che resta al film dell'isola nella pagina di Aura). Il browser concede il suono solo a una pagina che chi
+// guarda ha già toccato (un link, un bottone, un tasto; lo scroll non conta): qui le regole su chi va, da dove e con che suono.
+
+// ne va uno solo: quello già partito resta finché se ne vede almeno `esce`, così un filo di scroll non lo ferma; altrimenti
+// parte il più visibile fra quelli che superano `entra`. voci = [{ id, quota }], la quota è la frazione del telefono in vista
+function chiSuona(voci, attuale, { entra = 0.6, esce = 0.3 } = {}) {
+  const di = (id) => { const x = voci.find((v) => v.id === id); return x ? x.quota : 0; };
+  if (attuale !== null && attuale !== undefined && di(attuale) >= esce) return attuale;
+  let scelto = null, meglio = -1;
+  for (const v of voci) if (v.quota >= entra && v.quota > meglio) { scelto = v.id; meglio = v.quota; }
+  return scelto;
+}
+
+// un reel che torna in vista riprende da dov'era; finito (o a un soffio dalla fine), riparte da capo
+function ripartenza(t, durata) {
+  if (!Number.isFinite(t) || t < 0) return 0;
+  return Number.isFinite(durata) && durata > 0 && t >= durata - 0.25 ? 0 : t;
+}
+
+// parte col suono se chi guarda non l'ha tolto e se il browser lo concede: `attivato` è navigator.userActivation.hasBeenActive,
+// null dove il browser non lo dice (allora si prova, e se rifiuta il reel riparte muto)
+function colSuono({ voglia, attivato }) {
+  return !!voglia && attivato !== false;
+}
+
+// la linea d'oro sotto il reel: quanto ne hai visto
+function avanzamento(t, durata) {
+  if (!Number.isFinite(t) || !Number.isFinite(durata) || durata <= 0) return 0;
+  return Math.min(Math.max(t / durata, 0), 1);
+}
+
+// il bottone dell'audio sul telefono, che dice cosa succede se lo tocchi. Muto si offre per intero; col suono resta l'icona sola,
+// perché si guarda il reel e non il bottone. `aMano`: col movimento ridotto o il risparmio dati il reel non parte da solo
+function bottone({ muto = true, finito = false, aMano = false } = {}) {
+  if (finito) return { stato: 'rivedi', testo: 'Rivedi', etichetta: "Rivedi il reel dall'inizio" };
+  if (aMano) return { stato: 'guarda', testo: "Guarda con l'audio", etichetta: "Guarda il reel con l'audio" };
+  if (muto) return { stato: 'muto', testo: "Attiva l'audio", etichetta: "Attiva l'audio del reel" };
+  return { stato: 'suona', testo: '', etichetta: "Togli l'audio del reel" };
+}
+
+// Simone, 25/09 (seconda passata): «la possibilità di tornare indietro su ogni video». Sotto il reel c'è una barra: un tocco
+// o un trascinamento portano lì. La barra va da 0 a 1, il reel da 0 alla sua durata
+function secondoDa(frazione, durata) {
+  if (!Number.isFinite(frazione) || !Number.isFinite(durata) || durata <= 0) return 0;
+  return Math.min(Math.max(frazione, 0), 1) * durata;
+}
+
+// dalla tastiera: le frecce spostano di 2 secondi, Inizio e Fine vanno ai capi; un altro tasto non sposta niente (null)
+function passo(tasto, t, durata) {
+  const d = Number.isFinite(durata) && durata > 0 ? durata : 0, ora = Number.isFinite(t) ? t : 0;
+  const dove = { ArrowLeft: ora - 2, ArrowDown: ora - 2, ArrowRight: ora + 2, ArrowUp: ora + 2, Home: 0, End: d }[tasto];
+  return dove === undefined ? null : Math.min(Math.max(dove, 0), d);
+}
+
+// «un tasto in alto a destra… per metterlo anche a tutto schermo»: lo standard dove il browser lo ha; sull'iPhone Safari lo
+// concede solo al video, col lettore del telefono (webkitEnterFullscreen); dove non c'è né l'uno né l'altro, il tasto non si mostra
+function modoSchermo({ standard, iphone }) {
+  return standard ? 'standard' : iphone ? 'iphone' : null;
+}
+
+AV.chiSuona = chiSuona;
+AV.ripartenza = ripartenza;
+AV.colSuono = colSuono;
+AV.avanzamento = avanzamento;
+AV.bottone = bottone;
+AV.secondoDa = secondoDa;
+AV.passo = passo;
+AV.modoSchermo = modoSchermo;
+})();</script>
+<script>(function(){
+// FILE: src/scene-sistemi-logica.mjs — le due scene dei sistemi che partono da sole quando le vedi (25/09), senza DOM
+// Simone: i pannelli di «Dal messaggio al preventivo» e del gestionale «molto AI slop»; serve «una prova chiara», per esempio
+// «un'interfaccia di Instagram». Al posto dei pannelli: un DM vero sul telefono disegnato, e il gestionale nella finestra del
+// computer (sul telefono, in un telefono). Ogni pezzo della scena dice nell'HTML quando entra (data-da) e quando esce (data-a).
+
+// un pezzo è in scena dal suo secondo d'entrata fino a quello d'uscita, se ce l'ha
+function inScena(t, da, a = null) {
+  if (!Number.isFinite(t) || !Number.isFinite(da)) return false;
+  return t >= da && !(Number.isFinite(a) && t >= a);
+}
+
+// una scritta che si batte da sola: quante lettere si vedono al secondo t (cps = lettere al secondo)
+function lettere(testo, t, da, cps = 40) {
+  const n = String(testo).length;
+  if (!Number.isFinite(t) || !Number.isFinite(da) || t < da) return 0;
+  return Math.min(n, Math.floor((t - da) * cps));
+}
+
+// la scena dura fino all'ultimo pezzo che entra, più un respiro per leggerlo: prima di allora il bottone «Rivedi» non c'è
+function fineScena(momenti, respiro = 0.6) {
+  const validi = momenti.filter(Number.isFinite);
+  return validi.length ? Math.max(...validi) + respiro : 0;
+}
+
+// cosa fa la scena quando ne cambia la parte in vista: parte quando se ne vede più di metà, si ferma quando esce quasi tutta,
+// riprende da dov'era; finita resta finita (si rivede col bottone). stato: 'attesa' | 'va' | 'pausa' | 'finita'
+function azioneScena({ quota, stato }, { entra = 0.55, esce = 0.15 } = {}) {
+  if (stato === 'finita') return null;
+  if (stato === 'va') return quota < esce ? 'pausa' : null;
+  return quota >= entra ? 'parti' : null;
+}
+
+AV.inScena = inScena;
+AV.lettere = lettere;
+AV.fineScena = fineScena;
+AV.azioneScena = azioneScena;
+})();</script>
+<script>(function(){
+// FILE: src/flacone-logica.mjs — la boccetta di Avoria nell'apertura, senza Three.js (25/09)
+// Vetro, profumo color champagne e il marchio al centro: qui le misure e il movimento di camera, flacone.js le disegna.
+// Prende il posto della boccetta in ceramica (identita/src/scene/immagine.js), che resta ai reel e alla pagina dell'identità.
+var morbido = AV.morbido;
+
+// unità di scena; il vetro poggia a y = -1 come la boccetta di prima, così ombra e inquadratura non cambiano
+const FLACONE = {
+  corpo: { larghezza: 1.36, altezza: 1.56, profondita: 0.72, raggio: 0.14, smusso: 0.08 },
+  fondo: 0.26,                 // il vetro pieno sotto il profumo
+  parete: 0.1,                 // il vetro ai lati del profumo
+  livello: 0.36,               // la superficie del profumo (y)
+  collare: { raggio: 0.21, altezza: 0.075 },
+  tappo: { larghezza: 0.6, profondita: 0.46, altezza: 0.5, smusso: 0.05 },
+  marchio: { centro: -0.24, lato: 0.72 }   // il quadrato stampato sulla faccia davanti
+};
+
+// la camera gira intorno al vetro in un solo movimento e chiude sul marchio (la macro): ty e tz sono il punto guardato,
+// il centro del vetro per il giro e il marchio sulla faccia davanti per la macro. `tratto` è l'etichetta del tratto che parte lì.
+// Il riposo (t = 1,4, dove la home parte) è una tappa: lì la camera è ferma, e un filo di scroll non gira la boccetta.
+// La prima tappa è l'ultima (380° = 20°): se la scena gira da sola, il giro si chiude senza salti.
+const TAPPE_FLACONE = [
+  { t: 0,   dist: 5.4, elev: 8,  az: 20,  ty: 0, tz: 0, tratto: 0 },
+  { t: 1.4, dist: 5.4, elev: 9,  az: 12,  ty: 0, tz: 0, tratto: 0 },
+  { t: 3,   dist: 5.4, elev: 12, az: 80,  ty: 0, tz: 0, tratto: 1 },
+  { t: 5.5, dist: 5.0, elev: 74, az: 180, ty: 0, tz: 0, tratto: 2 },
+  { t: 7.5, dist: 2.5, elev: 6,  az: 342, ty: FLACONE.marchio.centro, tz: FLACONE.corpo.profondita / 2, tratto: 3 },
+  { t: 9,   dist: 5.4, elev: 8,  az: 380, ty: 0, tz: 0, tratto: 3 }
+];
+const ETICHETTE_FLACONE = ['FRONTALE', "DALL'ALTO", 'MACRO', 'UN SOLO MOVIMENTO'];
+
+function tra(a, b, x) { return a + (b - a) * x; }
+
+function posaFlacone(t) {
+  const T = TAPPE_FLACONE;
+  for (let k = 0; k < T.length - 1; k++) {
+    const A = T[k], B = T[k + 1];
+    if (t < B.t || k === T.length - 2) {
+      const x = morbido((t - A.t) / (B.t - A.t));
+      return { k: A.tratto, dist: tra(A.dist, B.dist, x), elev: tra(A.elev, B.elev, x), az: tra(A.az, B.az, x), ty: tra(A.ty, B.ty, x), tz: tra(A.tz, B.tz, x) };
+    }
+  }
+}
+
+// dove sta la camera, nelle coordinate della boccetta: dist dal punto guardato, allungata di `fattore` (in verticale si allontana)
+function puntoCamera(p, fattore = 1) {
+  const d = p.dist * fattore, el = p.elev * Math.PI / 180, az = p.az * Math.PI / 180;
+  return { x: Math.sin(az) * Math.cos(el) * d, y: p.ty + Math.sin(el) * d, z: p.tz + Math.cos(az) * Math.cos(el) * d };
+}
+
+// un azimut in gradi, portato fra -180 e 180: 0 è la faccia davanti, quella col marchio
+function angolo(az) {
+  const a = ((az % 360) + 360) % 360;
+  return a > 180 ? a - 360 : a;
+}
+
+function marchioSulVetro(F = FLACONE) {
+  const p = [], { larghezza, altezza, smusso } = F.corpo, m = F.marchio, mezzo = m.lato / 2;
+  if (mezzo > larghezza / 2 - smusso || m.centro - mezzo < -1 + smusso || m.centro + mezzo > -1 + altezza - smusso) {
+    p.push(`il marchio (lato ${m.lato}) esce dalla faccia piatta del vetro`);
+  }
+  if (m.centro <= -1 + F.fondo || m.centro >= F.livello) p.push(`il centro del marchio (${m.centro}) non sta sopra il profumo`);
+  return p;
+}
+
+AV.FLACONE = FLACONE;
+AV.TAPPE_FLACONE = TAPPE_FLACONE;
+AV.ETICHETTE_FLACONE = ETICHETTE_FLACONE;
+AV.posaFlacone = posaFlacone;
+AV.puntoCamera = puntoCamera;
+AV.angolo = angolo;
+AV.marchioSulVetro = marchioSulVetro;
 })();</script>
 <script>// FILE: src/arco3d.js — l'Arco in ceramica 3D e lo studio di posa condiviso
 (function () {
@@ -1644,69 +2238,219 @@ AV.parsimonia = parsimonia;
   });
 })();
 </script>
-<script>// FILE: src/scene/immagine.js — il prodotto da ogni angolo, in un solo movimento
+<script>// FILE: src/flacone.js — la boccetta di Avoria nell'apertura (25/09): vetro spesso, profumo champagne, il marchio al centro.
+// Misure e camera in flacone-logica.mjs; lo studio di posa è quello dell'Arco (identita/src/arco3d.js).
+// La boccetta in ceramica di prima (identita/src/scene/immagine.js) resta ai reel e alla pagina dell'identità.
 (function () {
   var AV = window.AV;
-  var TAPPE = [
-    { t: 0,   dist: 5.4, elev: 8,  az: -40, ty: 0 },
-    { t: 3,   dist: 5.4, elev: 12, az: 80,  ty: 0 },
-    { t: 5.5, dist: 5.0, elev: 78, az: 120, ty: 0 },
-    { t: 7.5, dist: 1.9, elev: 22, az: 150, ty: 0.62 },
-    { t: 9,   dist: 5.4, elev: 8,  az: 320, ty: 0 }
-  ];
-  var ETICHETTE = ['FRONTALE', "DALL'ALTO", 'MACRO', 'UN SOLO MOVIMENTO'];
+  var F = AV.FLACONE;
+  var INCHIOSTRO = '#16140F', GRAFITE = '#5E5A52';
 
-  function tra(a, b, x) { return a + (b - a) * x; }
-
-  function posa(t) {
-    for (var k = 0; k < TAPPE.length - 1; k++) {
-      var A = TAPPE[k], B = TAPPE[k + 1];
-      if (t < B.t || k === TAPPE.length - 2) {
-        var x = AV.morbido((t - A.t) / (B.t - A.t));
-        return { k: k, dist: tra(A.dist, B.dist, x), elev: tra(A.elev, B.elev, x), az: tra(A.az, B.az, x), ty: tra(A.ty, B.ty, x) };
-      }
-    }
+  function rettangolo(THREE, w, h, r) {
+    var s = new THREE.Shape(), x = -w / 2, y = -h / 2;
+    s.moveTo(x + r, y);
+    s.lineTo(x + w - r, y); s.quadraticCurveTo(x + w, y, x + w, y + r);
+    s.lineTo(x + w, y + h - r); s.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    s.lineTo(x + r, y + h); s.quadraticCurveTo(x, y + h, x, y + h - r);
+    s.lineTo(x, y + r); s.quadraticCurveTo(x, y, x + r, y);
+    return s;
   }
 
-  function prodotto(THREE) {
-    var g = new THREE.Group();
-    // pochi punti di controllo, poi una curva: con 9 punti diritti le spalle uscivano spigolose
-    var controllo = [[0, -1], [0.58, -1], [0.69, -0.95], [0.72, -0.62], [0.72, -0.2], [0.66, 0.2], [0.47, 0.44], [0.26, 0.55], [0.2, 0.6], [0.2, 0.64], [0, 0.64]]
-      .map(function (p) { return new THREE.Vector2(p[0], p[1]); });
-    var profilo = new THREE.SplineCurve(controllo).getPoints(120);
-    var corpo = new THREE.Mesh(new THREE.LatheGeometry(profilo, 96),
-      new THREE.MeshPhysicalMaterial({ color: AV.lineare(THREE, 0xF3EDE2), roughness: 0.34, clearcoat: 0.6, clearcoatRoughness: 0.25 }));
-    var oro = new THREE.MeshStandardMaterial({ color: AV.lineare(THREE, 0xB8935E), metalness: 1, roughness: 0.34 });
-    var collare = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.25, 0.1, 64), oro);
-    collare.position.y = 0.69;
-    var tappo = new THREE.Mesh(new THREE.CylinderGeometry(0.31, 0.31, 0.56, 64),
-      new THREE.MeshPhysicalMaterial({ color: AV.lineare(THREE, 0x1B1914), roughness: 0.42, clearcoat: 0.4 }));
-    tappo.position.y = 1.02;
-    // il filo d'oro è un tratto d'anello appena fuori dal corpo: una barra piatta veniva bucata dalla curva
-    var filo = new THREE.Mesh(new THREE.CylinderGeometry(0.736, 0.736, 0.028, 48, 1, true, -0.31, 0.62),
-      new THREE.MeshStandardMaterial({ color: AV.lineare(THREE, 0xB8935E), metalness: 1, roughness: 0.34, side: THREE.DoubleSide }));
-    filo.position.set(0, -0.32, 0);
-    g.add(corpo, collare, tappo, filo);
-
-    var c = document.createElement('canvas');
-    c.width = c.height = 128;
-    var x = c.getContext('2d');
-    var gr = x.createRadialGradient(64, 64, 4, 64, 64, 64);
-    gr.addColorStop(0, 'rgba(22,20,15,0.38)');
-    gr.addColorStop(1, 'rgba(22,20,15,0)');
-    x.fillStyle = gr;
-    x.fillRect(0, 0, 128, 128);
-    var ombra = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 2.6),
-      new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false }));
-    ombra.rotation.x = -Math.PI / 2;
-    ombra.position.y = -1.005;
-    g.add(ombra);
-    g.position.y = -0.1;
+  // l'estrusione ha le facce staccate, e un vetro a faccette tradisce il 3D: si cuciono i vertici uguali e le normali si ammorbidiscono
+  function liscio(THREE, geo) {
+    var p = geo.attributes.position, visti = {}, pos = [], indice = [];
+    for (var i = 0; i < p.count; i++) {
+      var k = Math.round(p.getX(i) * 1e4) + ',' + Math.round(p.getY(i) * 1e4) + ',' + Math.round(p.getZ(i) * 1e4);
+      if (visti[k] === undefined) { visti[k] = pos.length / 3; pos.push(p.getX(i), p.getY(i), p.getZ(i)); }
+      indice.push(visti[k]);
+    }
+    var g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    g.setIndex(indice);
+    g.computeVertexNormals();
     return g;
   }
 
-  function componenteImmagine(nome) {
-    var studio = null, etichetta = null, trattini = [];
+  // un blocco dagli spigoli morbidi, centrato: la sagoma davanti estrusa in profondità, lo smusso arrotonda ogni bordo
+  function blocco(THREE, w, h, d, r, b) {
+    var geo = new THREE.ExtrudeGeometry(rettangolo(THREE, w - 2 * b, h - 2 * b, Math.max(r - b, 0.01)),
+      { depth: d - 2 * b, bevelEnabled: true, bevelThickness: b, bevelSize: b, bevelSegments: 8, curveSegments: 16 });
+    geo.translate(0, 0, -(d - 2 * b) / 2);
+    return liscio(THREE, geo);
+  }
+
+  // una parola spaziata lettera per lettera (letterSpacing del canvas non c'è ovunque)
+  function spaziato(x, testo, cx, y, carattere, corpo, em, colore) {
+    x.font = carattere.replace('%', corpo + 'px');
+    x.fillStyle = colore;
+    x.textBaseline = 'alphabetic';
+    var larghe = testo.split('').map(function (c) { return x.measureText(c).width; });
+    var tutto = larghe.reduce(function (a, b) { return a + b; }, 0) + (testo.length - 1) * em * corpo;
+    var px = cx - tutto / 2;
+    testo.split('').forEach(function (c, i) { x.fillText(c, px, y); px += larghe[i] + em * corpo; });
+  }
+
+  // l'Arco del simbolo della pagina (viewBox 160 × 200): gambe e volta, poi la barra
+  function arco(x, gambe, barra) {
+    x.lineCap = 'round'; x.lineJoin = 'round';
+    if (gambe) { x.strokeStyle = gambe; x.lineWidth = 15; x.beginPath(); x.moveTo(20, 180); x.lineTo(68, 30); x.quadraticCurveTo(80, 16, 92, 30); x.lineTo(140, 180); x.stroke(); }
+    if (barra) { x.strokeStyle = barra; x.lineWidth = 13; x.beginPath(); x.moveTo(44, 110); x.lineTo(116, 110); x.stroke(); }
+  }
+
+  // il marchio su due tele: inchiostro (l'Arco, AVORIA, STUDIO) e oro (la barra dell'Arco, che sul vetro è metallo vero)
+  function disegnaMarchio(inchiostro, oro) {
+    var N = inchiostro.width, s = N / 1024, k = 1.75 * s;
+    var a = inchiostro.getContext('2d'), b = oro.getContext('2d');
+    a.clearRect(0, 0, N, N);
+    b.fillStyle = '#000'; b.fillRect(0, 0, N, N);
+    [[a, INCHIOSTRO, null], [b, null, '#fff']].forEach(function (q) {
+      q[0].save(); q[0].translate(N / 2 - 80 * k, 207 * s); q[0].scale(k, k); arco(q[0], q[1], q[2]); q[0].restore();
+    });
+    spaziato(a, 'AVORIA', N / 2, 707 * s, '600 % "Playfair Display", Georgia, serif', Math.round(132 * s), 0.16, INCHIOSTRO);
+    spaziato(a, 'STUDIO', N / 2, 787 * s, '400 % "Geist Mono", ui-monospace, monospace', Math.round(40 * s), 0.5, GRAFITE);
+  }
+
+  // su fondo chiaro il vetro si riconosce dai bordi: dove la superficie gira via dall'occhio diventa più presente (radente),
+  // e un velo leggero dà corpo alle facce. Con un colore, il bordo tende a quel colore (il profumo, più denso ai lati).
+  // Tutti i parametri entrano nella chiave del programma, altrimenti vetro e profumo dividerebbero lo stesso shader.
+  function bordi(m, forza, esponente, velo, colore) {
+    var chiave = ['bordi', forza, esponente, velo, colore].join('|');
+    m.customProgramCacheKey = function () { return chiave; };
+    m.onBeforeCompile = function (s) {
+      s.fragmentShader = s.fragmentShader.replace('#include <tonemapping_fragment>',
+        'float radente = pow(1.0 - saturate(dot(normal, normalize(vViewPosition))), ' + esponente.toFixed(2) + ') * ' + forza.toFixed(2) + ';\n' +
+        (colore ? 'gl_FragColor.rgb = mix(gl_FragColor.rgb, vec3(' + colore + '), radente);\n' : '') +
+        'gl_FragColor.a = max(max(gl_FragColor.a, radente), ' + velo.toFixed(3) + ');\n#include <tonemapping_fragment>');
+    };
+    return m;
+  }
+
+  // lo studio del vetro, come su un set vero: pannelli neri intorno e tre luci. Nello studio chiaro del sito il vetro
+  // rifletteva la stanza e usciva smerigliato; qui i bordi escono scuri e i riflessi delle luci netti (banco del 25/09)
+  function studioVetro(THREE, renderer) {
+    var set = new THREE.Scene();
+    set.add(new THREE.Mesh(new THREE.BoxGeometry(24, 24, 24), new THREE.MeshBasicMaterial({ color: 0x2a2a2a, side: THREE.BackSide })));
+    // le tre luci del sito, più due strisce alte dietro la camera: sulla faccia davanti diventano i due riflessi verticali
+    [[-6, 5, 7, 7, 5, 3.2], [7, 1, 4, 3, 8, 2.2], [0, 9, -3, 10, 3, 1.4], [-2.6, 0.5, 8, 0.9, 14, 7], [3.1, 0.5, 8, 0.4, 14, 4]].forEach(function (q) {
+      var m = new THREE.Mesh(new THREE.PlaneGeometry(q[3], q[4]), new THREE.MeshBasicMaterial({ color: new THREE.Color(q[5], q[5], q[5]), side: THREE.DoubleSide }));
+      m.position.set(q[0], q[1], q[2]); m.lookAt(0, 0, 0); set.add(m);
+    });
+    var pm = new THREE.PMREMGenerator(renderer), mappa = pm.fromScene(set, 0.02).texture;
+    pm.dispose();
+    return mappa;
+  }
+
+  // il profumo: luce che lo attraversa, non una superficie illuminata. Champagne chiaro in basso, ambra verso il pelo e
+  // dove il liquido è più spesso (i lati visti di sbieco), una riga di luce sul fondo e una sul pelo. Colori esatti, senza tone mapping.
+  function liquido(THREE, altezza) {
+    var lin = function (h) { return AV.lineare(THREE, h); };
+    return new THREE.ShaderMaterial({
+      uniforms: { chiaro: { value: lin(0xF2DCA8) }, ambra: { value: lin(0xC99443) }, altezza: { value: altezza } },
+      vertexShader: 'uniform float altezza; varying vec3 vN; varying vec3 vV; varying float vH;\n' +
+        'void main() { vec4 mv = modelViewMatrix * vec4(position, 1.0); vV = -mv.xyz; vN = normalize(normalMatrix * normal);\n' +
+        '  vH = position.y / altezza + 0.5; gl_Position = projectionMatrix * mv; }',
+      fragmentShader: 'uniform vec3 chiaro; uniform vec3 ambra; varying vec3 vN; varying vec3 vV; varying float vH;\n' +
+        'void main() { float r = pow(1.0 - clamp(dot(normalize(vN), normalize(vV)), 0.0, 1.0), 2.0);\n' +
+        '  vec3 c = mix(chiaro, ambra, clamp(0.15 + vH * 0.45 + r * 0.8, 0.0, 1.0));\n' +
+        '  c = mix(c, vec3(1.0, 0.96, 0.86), smoothstep(0.07, 0.0, vH) * 0.7 + smoothstep(0.975, 1.0, vH) * 0.5);\n' +
+        '  gl_FragColor = vec4(c, 0.6 + r * 0.3);\n#include <encodings_fragment>\n}',
+      transparent: true, depthWrite: false, toneMapped: false
+    });
+  }
+
+  function prodotto(THREE, renderer) {
+    var g = new THREE.Group(), C = F.corpo, lin = function (h) { return AV.lineare(THREE, h); };
+    var fondoY = -1, cimaY = fondoY + C.altezza;
+
+    // il vetro: due gusci, le facce di dietro prima e quelle davanti dopo, così i riflessi dei due lati si sommano
+    // il vetro non ha colore suo (nero = niente luce diffusa): si vede solo per quello che riflette
+    var riflessi = studioVetro(THREE, renderer);
+    // il guscio davanti disegna il contorno; quello dietro solo un filo, sennò le pareti viste di taglio escono fumé
+    function vetro(lato, forza) {
+      return bordi(new THREE.MeshPhysicalMaterial({ color: 0x000000, metalness: 0, roughness: 0.02, transmission: 1, transparent: true,
+        envMap: riflessi, side: lato, depthWrite: false }), forza, 4, 0.015);
+    }
+    var forma = blocco(THREE, C.larghezza, C.altezza, C.profondita, C.raggio, C.smusso);
+    var dietro = new THREE.Mesh(forma, vetro(THREE.BackSide, 0.12)), davanti = new THREE.Mesh(forma, vetro(THREE.FrontSide, 0.4));
+    dietro.position.y = davanti.position.y = fondoY + C.altezza / 2;
+    dietro.renderOrder = 1; davanti.renderOrder = 3;
+
+    // il profumo: dentro le pareti, sopra il fondo pieno, fino al livello
+    var basso = fondoY + F.fondo, alto = F.livello;
+    var profumo = new THREE.Mesh(blocco(THREE, C.larghezza - 2 * F.parete, alto - basso, C.profondita - 2 * F.parete, C.raggio * 0.6, 0.04),
+      liquido(THREE, alto - basso));
+    profumo.position.y = (basso + alto) / 2;
+    profumo.renderOrder = 2;
+
+    var oroMetallo = function (extra) {
+      var m = new THREE.MeshStandardMaterial({ color: lin(0xB8935E), metalness: 1, roughness: 0.32 });
+      for (var k in extra) m[k] = extra[k];
+      return m;
+    };
+    var collare = new THREE.Mesh(new THREE.CylinderGeometry(F.collare.raggio, F.collare.raggio, F.collare.altezza, 64), oroMetallo());
+    collare.position.y = cimaY + F.collare.altezza / 2;
+    var T = F.tappo;
+    var tappo = new THREE.Mesh(blocco(THREE, T.larghezza, T.altezza, T.profondita, 0.08, T.smusso),
+      new THREE.MeshPhysicalMaterial({ color: lin(0x1B1914), roughness: 0.42, clearcoat: 0.4 }));
+    tappo.position.y = cimaY + F.collare.altezza + T.altezza / 2;
+    g.add(dietro, profumo, davanti, collare, tappo);
+
+    // il marchio stampato al centro della faccia davanti: inchiostro, e la barra in oro
+    var anis = renderer.capabilities.getMaxAnisotropy();
+    function tela(n) { var c = document.createElement('canvas'); c.width = c.height = n; return c; }
+    function trama(c) { var t = new THREE.CanvasTexture(c); t.anisotropy = anis; return t; }
+    var telaInchiostro = tela(1024), telaOro = tela(1024);
+    disegnaMarchio(telaInchiostro, telaOro);
+    var mappa = trama(telaInchiostro), mappaOro = trama(telaOro);
+    mappa.encoding = THREE.sRGBEncoding;
+    var quadro = new THREE.PlaneGeometry(F.marchio.lato, F.marchio.lato);
+    var stampa = new THREE.Mesh(quadro, new THREE.MeshStandardMaterial({ map: mappa, transparent: true, roughness: 0.55, metalness: 0, depthWrite: false, side: THREE.DoubleSide }));
+    var foglia = new THREE.Mesh(quadro, oroMetallo({ alphaMap: mappaOro, transparent: true, depthWrite: false, side: THREE.DoubleSide }));
+    stampa.position.set(0, F.marchio.centro, C.profondita / 2 + 0.0015);
+    foglia.position.set(0, F.marchio.centro, C.profondita / 2 + 0.003);
+    g.add(stampa, foglia);
+
+    // sul tappo, per chi guarda dall'alto, l'Arco in oro
+    var telaTappo = tela(256), x = telaTappo.getContext('2d');
+    x.fillStyle = '#000'; x.fillRect(0, 0, 256, 256);
+    x.save(); x.translate(128 - 80 * 1.05, 128 - 100 * 1.05); x.scale(1.05, 1.05); arco(x, '#fff', '#fff'); x.restore();
+    var sigillo = new THREE.Mesh(new THREE.PlaneGeometry(0.3, 0.3), oroMetallo({ alphaMap: trama(telaTappo), transparent: true, depthWrite: false }));
+    sigillo.rotation.set(-Math.PI / 2, 0, Math.PI);   // la volta dell'Arco verso la faccia davanti
+    sigillo.position.y = tappo.position.y + T.altezza / 2 + 0.002;
+    sigillo.renderOrder = 6;
+    g.add(sigillo);
+
+    // l'ombra, e dentro l'ombra la luce che passa dal profumo
+    var c = tela(256), o = c.getContext('2d');
+    // la tela copre 3 × 3 unità: 85 px per unità; la base del vetro è 1,36 × 0,72
+    [[80, 0.22], [52, 0.26]].forEach(function (q) {
+      o.save(); o.translate(128, 128); o.scale(1, 0.56);
+      var gr = o.createRadialGradient(0, 0, 4, 0, 0, q[0]);
+      gr.addColorStop(0, 'rgba(22,20,15,' + q[1] + ')'); gr.addColorStop(1, 'rgba(22,20,15,0)');
+      o.fillStyle = gr; o.fillRect(-128, -230, 256, 460);
+      o.restore();
+    });
+    var luce = o.createRadialGradient(150, 104, 2, 150, 104, 44);
+    luce.addColorStop(0, 'rgba(214,170,96,0.34)'); luce.addColorStop(1, 'rgba(214,170,96,0)');
+    o.fillStyle = luce; o.fillRect(0, 0, 256, 256);
+    var ombra = new THREE.Mesh(new THREE.PlaneGeometry(3, 3),
+      new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(c), transparent: true, depthWrite: false }));
+    ombra.rotation.x = -Math.PI / 2;
+    ombra.position.y = fondoY - 0.005;
+    ombra.renderOrder = -1;
+    g.add(ombra);
+    g.position.y = -0.1;
+
+    return {
+      gruppo: g,
+      // da dietro la stampa sta oltre il profumo: si disegna per prima, così il profumo la vela
+      lato: function (camera) { var d = camera.position.z > 0; stampa.renderOrder = d ? 4 : 0; foglia.renderOrder = d ? 5 : 0.5; },
+      ridisegna: function () { disegnaMarchio(telaInchiostro, telaOro); mappa.needsUpdate = mappaOro.needsUpdate = true; }
+    };
+  }
+
+  function componenteFlacone(nome) {
+    var studio = null, boccetta = null, etichetta = null, trattini = [], ultimo = null;
     return {
       nome: nome, durata: 9, riposo: 1.4,
       monta: function (r) {
@@ -1715,14 +2459,22 @@ AV.parsimonia = parsimonia;
         canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;display:block';
         r.appendChild(canvas);
         try { studio = AV.creaStudio(canvas, { notte: false }); } catch (e) { canvas.remove(); throw e; }
-        studio.scena.add(prodotto(studio.THREE));
+        boccetta = prodotto(studio.THREE, studio.renderer);
+        studio.scena.add(boccetta.gruppo);
+        // il marchio si ridisegna quando arrivano i caratteri della casa
+        if (document.fonts && document.fonts.load) {
+          Promise.all([document.fonts.load('600 132px "Playfair Display"'), document.fonts.load('400 40px "Geist Mono"')]).then(function () {
+            boccetta.ridisegna();
+            if (ultimo !== null) studio.disegna();
+          }, function () {});
+        }
         var hud = document.createElement('div');
         hud.className = 'scena-hud';
         etichetta = document.createElement('span');
         etichetta.className = 'dati';
         var fila = document.createElement('span');
         fila.className = 'pallini';
-        for (var i = 0; i < ETICHETTE.length; i++) {
+        for (var i = 0; i < AV.ETICHETTE_FLACONE.length; i++) {
           var p = document.createElement('i');
           fila.appendChild(p);
           trattini.push(p);
@@ -1733,220 +2485,136 @@ AV.parsimonia = parsimonia;
         r.classList.add('ha-3d');
       },
       seek: function (t) {
+        ultimo = t;
         studio.adatta();
-        var p = posa(t), cam = studio.camera;
-        var dist = p.dist * Math.max(1, 0.95 / cam.aspect);   // in verticale la camera stringe: si allontana
-        var el = p.elev * Math.PI / 180, az = p.az * Math.PI / 180, cy = p.ty - 0.1;
-        cam.position.set(Math.sin(az) * Math.cos(el) * dist, cy + Math.sin(el) * dist, Math.cos(az) * Math.cos(el) * dist);
-        cam.lookAt(0, cy, 0);
-        if (etichetta.textContent !== ETICHETTE[p.k]) etichetta.textContent = ETICHETTE[p.k];
+        var p = AV.posaFlacone(t), cam = studio.camera;
+        var q = AV.puntoCamera(p, Math.max(1, 0.95 / cam.aspect));   // in verticale la camera stringe: si allontana
+        cam.position.set(q.x, q.y - 0.1, q.z);   // la boccetta sta 0,1 più in basso (gruppo)
+        cam.lookAt(0, p.ty - 0.1, p.tz);
+        boccetta.lato(cam);
+        var testo = AV.ETICHETTE_FLACONE[p.k];
+        if (etichetta.textContent !== testo) etichetta.textContent = testo;
         trattini.forEach(function (q, i) { q.classList.toggle('attivo', i === p.k); });
         studio.disegna();
       }
     };
   }
 
-  AV.componenti.push(componenteImmagine('scena-immagine'));
-  AV.componenti.push(componenteImmagine('hero-immagine'));
+  AV.componenti.push(componenteFlacone('hero-flacone'));
 })();
 </script>
-<script>// FILE: src/scene/catalogo.js — una foto diventa un catalogo, e si aggiorna da sola
+<script>// FILE: src/scene-sistemi.js — le scene del preventivo e del gestionale (25/09): partono da sole quando le vedi, una volta, e
+// finite restano ferme sull'ultima immagine col bottone «Rivedi». Ogni pezzo dice nell'HTML quando entra (data-da) e quando
+// esce (data-a); data-batti batte la scritta dal momento del pezzo che la contiene; data-segna="t|classe" mette una classe da
+// quel secondo; data-poi="t|scritta" cambia la scritta. Il movimento ridotto e ?t= mostrano subito l'ultima immagine.
 (function () {
   var AV = window.AV;
-  var FLACONE = '<svg viewBox="0 0 60 100" aria-hidden="true"><rect x="22" y="4" width="16" height="16" rx="2" fill="#1B1914"/><rect x="25" y="20" width="10" height="4" fill="#B8935E"/><path d="M25 24 Q10 30 10 46 L10 92 Q10 96 14 96 L46 96 Q50 96 50 92 L50 46 Q50 30 35 24 Z" fill="#F3EDE2" stroke="rgba(22,20,15,.18)"/><rect x="21" y="68" width="18" height="1.6" fill="#B8935E"/></svg>';
-  var VASO = '<svg viewBox="0 0 60 100" aria-hidden="true"><path d="M20 8 L40 8 L38 16 Q54 30 52 60 Q50 90 30 96 Q10 90 8 60 Q6 30 22 16 Z" fill="#E9E1D2" stroke="rgba(22,20,15,.18)"/><path d="M14 58 L46 58" stroke="#B8935E" stroke-width="1.6"/></svg>';
-  var AMBIENTI = [
-    ['studio', 'linear-gradient(180deg,#FBFAF7,#EDE8DE)', false],
-    ['marmo', 'linear-gradient(135deg,#f4f1ec 0%,#e3ded6 40%,#f2eee8 41%,#dcd6cc 70%,#efebe5 100%)', false],
-    ['lino', 'repeating-linear-gradient(90deg,#e8e0d0 0 2px,#e2d9c7 2px 4px)', false],
-    ['sabbia', 'radial-gradient(120% 80% at 50% 100%,#d9c4a0,#efe3cc)', false],
-    ['notte', 'radial-gradient(80% 60% at 50% 40%,#23262d,#07080A)', true],
-    ['oliveto', 'linear-gradient(180deg,#dfe3cf,#a9b28c)', false],
-    ['vetro', 'linear-gradient(160deg,#e9eef0,#c9d4d8)', false],
-    ['cemento', 'linear-gradient(180deg,#cfccc6,#b5b1aa)', false],
-    ['velluto', 'radial-gradient(90% 70% at 30% 20%,#5a2a33,#2a1216)', true],
-    ['agrumi', 'linear-gradient(180deg,#f6e7b8,#e9c46a)', false],
-    ['noce', 'linear-gradient(180deg,#8a6446,#5b3f2b)', true],
-    ['travertino', 'repeating-linear-gradient(0deg,#e6dccb 0 6px,#dccfb9 6px 7px)', false]
-  ];
-  var N = AMBIENTI.length;
-  var radice = null, tessere = [], sorgente = null, riga = null;
+  var calmo = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var fisso = new URLSearchParams(location.search).has('t');
+  var tutte = [], giro = 0, prima = null;
 
-  function griglia(W, H) {
-    var fisse = radice && Number(radice.getAttribute('data-colonne'));   // una regia può chiedere le colonne (reel a un sistema solo: 4)
-    var cols = fisse || (W >= 560 ? 4 : 3), righe = Math.ceil(N / cols);
-    var alto = 44, gap = 8;
-    var cw = (W - gap * (cols - 1)) / cols, ch = cw * 1.25;
-    if (righe * ch + (righe - 1) * gap > H - alto - 8) {
-      ch = (H - alto - 8 - gap * (righe - 1)) / righe;
-      cw = ch / 1.25;
-    }
-    var ox = (W - (cols * cw + (cols - 1) * gap)) / 2;
-    return function (i) {
-      return { x: ox + (i % cols) * (cw + gap), y: alto + Math.floor(i / cols) * (ch + gap), w: cw, h: ch };
-    };
+  function numero(x) { return x === null || x === undefined || x === '' ? null : parseFloat(x); }
+  function coppia(v) { var i = v.indexOf('|'); return { t: parseFloat(v.slice(0, i)), v: v.slice(i + 1) }; }
+
+  function prepara(el) {
+    var s = { el: el, nome: el.getAttribute('data-scena'), t: 0, stato: 'attesa', quota: 0, pezzi: [], batti: [], segni: [], cambi: [], bottone: null };
+    Array.prototype.forEach.call(el.querySelectorAll('[data-da]'), function (p) {
+      s.pezzi.push({ el: p, da: numero(p.getAttribute('data-da')), a: numero(p.getAttribute('data-a')), presente: null });
+    });
+    Array.prototype.forEach.call(el.querySelectorAll('[data-batti]'), function (p) {
+      var madre = p.closest('[data-da]');
+      s.batti.push({ el: p, testo: p.textContent, da: (madre ? numero(madre.getAttribute('data-da')) : 0) + 0.1, n: -1 });
+    });
+    Array.prototype.forEach.call(el.querySelectorAll('[data-segna]'), function (p) {
+      var c = coppia(p.getAttribute('data-segna'));
+      s.segni.push({ el: p, t: c.t, classe: c.v });
+    });
+    Array.prototype.forEach.call(el.querySelectorAll('[data-poi]'), function (p) {
+      var c = coppia(p.getAttribute('data-poi'));
+      s.cambi.push({ el: p, t: c.t, prima: p.textContent, dopo: c.v });
+    });
+    var momenti = s.pezzi.map(function (p) { return p.da; })
+      .concat(s.pezzi.map(function (p) { return p.a; }), s.segni.map(function (x) { return x.t; }), s.cambi.map(function (x) { return x.t; }));
+    s.fine = AV.fineScena(momenti.filter(function (x) { return x !== null; }));
+    el.classList.add('in-scena');
+    if (!calmo && !fisso) el.classList.add('anima');
+    return s;
   }
 
-  function mettici(el, b, opacita, scala) {
-    el.style.transform = 'translate(' + b.x.toFixed(1) + 'px,' + b.y.toFixed(1) + 'px) scale(' + scala.toFixed(3) + ')';
-    el.style.width = b.w.toFixed(1) + 'px';
-    el.style.height = b.h.toFixed(1) + 'px';
-    el.style.opacity = opacita.toFixed(3);
+  function vai(s, t) {
+    s.t = t;
+    s.pezzi.forEach(function (p) {
+      var d = AV.inScena(t, p.da, p.a);
+      if (d !== p.presente) { p.presente = d; p.el.classList.toggle('presente', d); }
+    });
+    s.batti.forEach(function (b) {
+      var n = AV.lettere(b.testo, t, b.da, 38);
+      if (n !== b.n) { b.n = n; b.el.textContent = b.testo.slice(0, n); }
+    });
+    s.segni.forEach(function (x) { x.el.classList.toggle(x.classe, t >= x.t); });
+    s.cambi.forEach(function (x) { var v = t >= x.t ? x.dopo : x.prima; if (x.el.textContent !== v) x.el.textContent = v; });
   }
 
-  AV.componenti.push({
-    nome: 'scena-catalogo', durata: 11, riposo: 4.2,
-    monta: function (r) {
-      radice = r;
-      r.classList.add('catalogo');
-      if (getComputedStyle(r).position === 'static') r.style.position = 'relative';
-      riga = document.createElement('div');
-      riga.className = 'catalogo-riga dati';
-      r.appendChild(riga);
-      AMBIENTI.forEach(function (a) {
-        var d = document.createElement('div');
-        d.className = 'tessera' + (a[2] ? ' scura' : '');
-        d.style.background = a[1];
-        d.innerHTML = '<span class="prod prod-a">' + FLACONE + '</span><span class="prod prod-b">' + VASO + '</span><span class="nome dati">' + a[0] + '</span>';
-        r.appendChild(d);
-        tessere.push(d);
-      });
-      sorgente = document.createElement('div');
-      sorgente.className = 'tessera sorgente';
-      sorgente.innerHTML = '<span class="prod prod-a">' + FLACONE + '</span><span class="nome dati">foto di partenza</span>';
-      r.appendChild(sorgente);
-    },
-    seek: function (t) {
-      var W = radice.clientWidth, H = radice.clientHeight;
-      var pos = griglia(W, H), p0 = pos(0);
-      var bw = Math.min(W * 0.36, (H - 60) * 0.8);
-      var grande = { x: (W - bw) / 2, y: (H - bw * 1.25) / 2 + 16, w: bw, h: bw * 1.25 };
-      var va = AV.morbido((t - 0.9) / 0.8) * (1 - AV.morbido((t - 10.1) / 0.7));
-      mettici(sorgente, {
-        x: tra(grande.x, p0.x, va), y: tra(grande.y, p0.y, va),
-        w: tra(grande.w, p0.w, va), h: tra(grande.h, p0.h, va)
-      }, 1 - AV.morbido((t - 1.6) / 0.3) * (1 - AV.morbido((t - 9.9) / 0.3)), 1);
-      tessere.forEach(function (el, i) {
-        var entra = AV.morbido((t - 1.5 - i * 0.12) / 0.45) * (1 - AV.morbido((t - 9.4 - (N - i) * 0.04) / 0.4));
-        mettici(el, pos(i), entra, 0.7 + 0.3 * entra);
-        el.style.setProperty('--cambio', AV.morbido((t - 5.4 - i * 0.09) / 0.35).toFixed(3));
-      });
-      var testo = t < 1.5 ? 'UNA FOTO DI CATALOGO'
-        : t < 5.0 ? '12 AMBIENTAZIONI · STESSO PRODOTTO · ESEMPIO'
-        : 'CATALOGO AGGIORNATO · FOTO RIGENERATE · ESEMPIO';
-      if (riga.textContent !== testo) riga.textContent = testo;
-    }
+  function bottone(s) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'rivedi';
+    b.hidden = true;
+    b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></svg><span>Rivedi</span>';
+    b.setAttribute('aria-label', "Rivedi l'esempio dall'inizio");
+    b.addEventListener('click', function () { vai(s, 0); s.stato = 'va'; b.hidden = true; avvia(); });
+    var sotto = s.el.querySelector('figcaption') || s.el;
+    sotto.appendChild(b);
+    return b;
+  }
+
+  function fotogramma(ora) {
+    giro = 0;
+    var dt = prima === null ? 0 : Math.min((ora - prima) / 1000, 0.1);
+    prima = ora;
+    var ancora = false;
+    tutte.forEach(function (s) {
+      if (s.stato !== 'va') return;
+      var t = Math.min(s.t + dt, s.fine);
+      vai(s, t);
+      if (t >= s.fine) { s.stato = 'finita'; s.bottone.hidden = false; }
+      else ancora = true;
+    });
+    if (ancora) giro = requestAnimationFrame(fotogramma);
+    else prima = null;
+  }
+  function avvia() { if (!giro) { prima = null; giro = requestAnimationFrame(fotogramma); } }
+
+  function decidi(s) {
+    if (document.hidden) { if (s.stato === 'va') s.stato = 'pausa'; return; }
+    var a = AV.azioneScena({ quota: s.quota, stato: s.stato });
+    if (a === 'parti') { s.stato = 'va'; avvia(); }
+    else if (a === 'pausa') s.stato = 'pausa';
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-scena]'), function (el) {
+    var s = prepara(el);
+    tutte.push(s);
+    if (calmo || fisso || !('IntersectionObserver' in window)) { vai(s, s.fine); s.stato = 'finita'; return; }
+    s.bottone = bottone(s);
+    vai(s, 0);
   });
 
-  function tra(a, b, x) { return a + (b - a) * x; }
-})();
-</script>
-<script>// FILE: src/scene/automazioni.js — un DM diventa un preventivo, e parte da solo
-(function () {
-  var AV = window.AV;
-  var DM = 'Buongiorno, fate 40 vasi incisi per un evento aziendale a novembre?';
-  var CAMPI = [
-    ['Cliente', 'Studio Rossi'],
-    ['Articolo', 'Vaso Arco, incisione logo'],
-    ['Quantità', '40'],
-    ['Consegna', 'entro il 15 novembre'],
-    ['Totale', 'calcolato dal vostro listino']
-  ];
-  var STATI = [['Inviato al cliente', 6.8], ['Follow-up fra 3 giorni', 7.6], ['CRM aggiornato', 8.4]];
-  var radice = null, bolla = null, filo = null, righe = [], valori = [], stati = [];
+  if (!calmo && !fisso && 'IntersectionObserver' in window) {
+    var soglie = [0, 0.1, 0.15, 0.3, 0.45, 0.55, 0.7, 0.85, 1];
+    var io = new IntersectionObserver(function (voci) {
+      voci.forEach(function (e) {
+        var s = tutte.find(function (x) { return x.el === e.target; });
+        if (!s) return;
+        s.quota = e.isIntersecting ? e.intersectionRatio : 0;
+        decidi(s);
+      });
+    }, { threshold: soglie });
+    tutte.forEach(function (s) { io.observe(s.el); });
+    document.addEventListener('visibilitychange', function () { tutte.forEach(decidi); });
+  }
 
-  AV.componenti.push({
-    nome: 'scena-automazioni', durata: 12, riposo: 9,
-    monta: function (r) {
-      radice = r;
-      r.classList.add('auto');
-      r.innerHTML =
-        '<div class="pannello auto-dm"><span class="dati etichetta">DM · Instagram · esempio</span><p class="bolla"></p></div>' +
-        '<svg class="auto-filo" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path d="M0 5 H100" pathLength="1"/></svg>' +
-        '<div class="pannello auto-prev"><span class="dati etichetta">Preventivo · bozza automatica</span><dl></dl></div>' +
-        '<ul class="auto-stato dati"></ul>';
-      bolla = r.querySelector('.bolla');
-      filo = r.querySelector('.auto-filo path');
-      var dl = r.querySelector('dl');
-      CAMPI.forEach(function (c) {
-        var riga = document.createElement('div');
-        riga.className = 'riga';
-        riga.innerHTML = '<dt>' + c[0] + '</dt><dd></dd>';
-        dl.appendChild(riga);
-        righe.push(riga);
-        valori.push(riga.querySelector('dd'));
-      });
-      var ul = r.querySelector('ul');
-      STATI.forEach(function (s) {
-        var li = document.createElement('li');
-        li.textContent = s[0];
-        ul.appendChild(li);
-        stati.push(li);
-      });
-    },
-    seek: function (t) {
-      radice.style.opacity = (1 - AV.morbido((t - 11) / 0.8)).toFixed(3);
-      bolla.textContent = AV.battuta(DM, t, 0.4, 38);
-      filo.style.strokeDashoffset = (1 - AV.morbido((t - 2.4) / 0.6)).toFixed(3);
-      CAMPI.forEach(function (c, i) {
-        var t0 = 3.0 + i * 0.7;
-        righe[i].classList.toggle('vista', t >= t0);
-        valori[i].textContent = AV.battuta(c[1], t, t0 + 0.1, 40);
-      });
-      STATI.forEach(function (s, i) { stati[i].classList.toggle('vista', t >= s[1]); });
-    }
-  });
-})();
-</script>
-<script>// FILE: src/scene/gestionali.js — ordini e magazzino in un cruscotto che avvisa da solo
-(function () {
-  var AV = window.AV;
-  var ORDINI = [
-    ['1041', 'Vaso Arco ×2', 'Pronto'],
-    ['1042', 'Set piatti Soglia', 'In lavorazione'],
-    ['1043', 'Vaso Arco ×1', 'Pronto'],
-    ['1044', 'Brocca Levante', 'Da imballare'],
-    ['1045', 'Vaso Arco ×3', 'In attesa']
-  ];
-  var SCORTE = [['Vaso Arco', 0.72, 0.12], ['Set Soglia', 0.55, 0.52], ['Brocca Levante', 0.38, 0.34], ['Ciotola Duna', 0.8, 0.78]];
-  var radice = null, righe = [], barre = [], avviso = null, bottone = null;
-
-  AV.componenti.push({
-    nome: 'scena-gestionali', durata: 12, riposo: 9.5,
-    monta: function (r) {
-      radice = r;
-      r.classList.add('gest');
-      var html = '<div class="pannello gest-ordini"><span class="dati etichetta">Ordini di oggi · esempio</span><table><tbody>';
-      ORDINI.forEach(function (o) {
-        html += '<tr><td class="dati">#' + o[0] + '</td><td>' + o[1] + '</td><td class="dati stato">' + o[2] + '</td></tr>';
-      });
-      html += '</tbody></table></div><div class="pannello gest-scorte"><span class="dati etichetta">Magazzino · esempio</span>';
-      SCORTE.forEach(function (s) { html += '<div class="scorta"><span>' + s[0] + '</span><i><b></b></i></div>'; });
-      html += '<p class="avviso dati">Scorta bassa · Vaso Arco</p><p class="bottone dati">Riordino proposto · 60 pz</p></div>';
-      r.innerHTML = html;
-      righe = Array.prototype.slice.call(r.querySelectorAll('tr'));
-      barre = Array.prototype.slice.call(r.querySelectorAll('.scorta'));
-      avviso = r.querySelector('.avviso');
-      bottone = r.querySelector('.bottone');
-    },
-    seek: function (t) {
-      radice.style.opacity = (1 - AV.morbido((t - 11) / 0.8)).toFixed(3);
-      righe.forEach(function (tr, i) { tr.classList.toggle('vista', t >= 0.8 + i * 0.45); });
-      var cala = AV.morbido((t - 4.4) / 1.2);
-      barre.forEach(function (b, i) {
-        var s = SCORTE[i];
-        var v = s[1] + (s[2] - s[1]) * cala;
-        var entra = AV.morbido((t - 1.2 - i * 0.2) / 0.6);
-        b.querySelector('b').style.transform = 'scaleX(' + (v * entra).toFixed(3) + ')';
-        b.classList.toggle('bassa', v < 0.2 && entra > 0.99);
-      });
-      avviso.classList.toggle('vista', t >= 5.8);
-      bottone.classList.toggle('vista', t >= 6.6);
-      bottone.classList.toggle('premuto', t >= 8.0);
-      var scritta = t >= 8.0 ? 'Ordine al fornitore inviato' : 'Riordino proposto · 60 pz';
-      if (bottone.textContent !== scritta) bottone.textContent = scritta;
-    }
-  });
+  AV.scene = { tutte: tutte, vai: vai };
 })();
 </script>
 <script>// FILE: src/anteprime.js — le anteprime: immagini che entrano con lo scroll, caricate solo quando servono
@@ -1993,107 +2661,336 @@ AV.parsimonia = parsimonia;
   });
 })();
 </script>
-<script>// FILE: src/video-scorre.js — un video che segue lo scroll (blocco 5B): scaricato intero quando il suo palco si avvicina,
-// cercato senza accodare ricerche, con le righe del blocco che si accendono ai momenti del reel.
-// Le lezioni sono quelle del film dell'isola di Aura (film-scrub.js, 19–20/09): il file intero in memoria cerca subito;
-// scrivere currentTime mentre una ricerca è in volo la annulla, quindi si aspetta `seeked` e ci si riallinea.
+<script>// FILE: src/video-reel.js — i tre reel della home partono da soli quando li vedi, uno alla volta, col suono se il browser lo
+// concede (25/09). Prende il posto di video-scorre.js nella home: là il reel avanzava con lo scroll e servivano tre schermi
+// e mezzo per vederlo tutto. Sul telefono disegnato: il bottone dell'audio in basso, la barra d'oro per tornare indietro sotto,
+// il tutto schermo in alto a destra. Le quattro righe del blocco sono accese da subito e non aspettano il reel (seconda passata).
+// Il suono: un browser lo concede solo a una pagina già toccata (un link, un bottone, un tasto; lo scroll non conta). Chi arriva
+// e scorre e basta vede il reel muto col bottone «Attiva l'audio»; al primo tocco sulla pagina l'audio si accende, e da lì ogni
+// reel parte col suono, finché non lo togli tu.
 (function () {
   var AV = window.AV;
   var calmo = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   var c = navigator.connection;
   var risparmio = AV.parsimonia({ saveData: c && c.saveData, effectiveType: c && c.effectiveType });
   var telefono = !!(window.matchMedia && matchMedia('(max-width: 900px)').matches);
-  var tutti = [];
+  var fisso = new URLSearchParams(location.search).has('t');   // ?t= congela la pagina per gli scatti: niente partenze da sole
+  var ua = navigator.userActivation || null;
+  var CHIAVE = 'avoria-reel-audio';
+  var tutti = [], attuale = null, giro = 0, timer = 0, ultimoScroll = 0;
 
-  function scegli(v, attr) {
-    return (telefono && v.getAttribute(attr + '-telefono')) || v.getAttribute(attr);
+  // sull'iPhone l'audio della pagina segue il tasto silenzioso (Safari 17 in poi; altrove la proprietà non c'è)
+  try { if (navigator.audioSession) navigator.audioSession.type = 'ambient'; } catch (e) { /* niente */ }
+
+  // chi ha tolto l'audio lo ritrova tolto negli altri reel e ricaricando la pagina, finché non la chiude
+  var voglia = true;
+  try { voglia = sessionStorage.getItem(CHIAVE) !== 'no'; } catch (e) { /* senza archivio: col suono */ }
+  function vuoi(si) {
+    voglia = si;
+    try { sessionStorage.setItem(CHIAVE, si ? 'si' : 'no'); } catch (e) { /* niente */ }
   }
+  function attivato() { return ua ? ua.hasBeenActive : null; }
+
+  function scegli(v, attr) { return (telefono && v.getAttribute(attr + '-telefono')) || v.getAttribute(attr); }
   function segna(s, stato) { s.stato = stato; s.el.setAttribute('data-stato', stato); }
-  function distanza(s) {
-    var r = (s.el.closest('[data-binario]') || s.el).getBoundingClientRect();
-    return r.bottom < 0 ? -r.bottom : r.top > innerHeight ? r.top - innerHeight : 0;
+  function durata(s) { return s.video.duration || s.durata; }
+  function svg(d) { return '<svg viewBox="0 0 24 24" aria-hidden="true">' + d + '</svg>'; }
+
+  var ICONA = {
+    muto: '<path d="M3 9h4l5-4v14l-5-4H3z"/><path d="M16 9l5 6M21 9l-5 6"/>',
+    suona: '<path d="M3 9h4l5-4v14l-5-4H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"/>',
+    rivedi: '<path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/>',
+    guarda: '<path d="M7 5l12 7-12 7z"/>',
+    schermo: '<path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/>'
+  };
+  function ridisegna(s) {
+    var b = AV.bottone({ muto: s.video.muted, finito: s.finito, aMano: s.aMano && !s.partito });
+    if (b.stato === s.bottoneStato) return;
+    s.bottoneStato = b.stato;
+    s.bottone.setAttribute('data-stato', b.stato);
+    s.bottone.setAttribute('aria-label', b.etichetta);
+    s.bottone.innerHTML = svg(ICONA[b.stato]) + (b.testo ? '<span>' + b.testo + '</span>' : '');
   }
-  function copertina(s) {
+
+  // la barra d'oro segue il reel; mentre la trascini la guida il dito
+  function segui(s) {
+    if (s.trascina) return;
+    var d = durata(s), t = s.finito ? d : s.video.currentTime, x = AV.avanzamento(t, d);
+    s.barra.value = String(Math.round(x * 1000));
+    s.barra.style.setProperty('--fatto', (x * 100).toFixed(2) + '%');
+  }
+  function dici(s) {
+    var d = durata(s), t = s.finito ? d : s.video.currentTime;
+    s.barra.setAttribute('aria-valuetext', Math.round(t) + ' secondi di ' + Math.round(d));
+  }
+  // un giro di fotogrammi solo mentre un reel va: la barra segue il video
+  function batti() {
+    giro = 0;
+    if (!attuale || attuale.video.paused) return;
+    segui(attuale);
+    giro = requestAnimationFrame(batti);
+  }
+  function battito() { if (!giro) giro = requestAnimationFrame(batti); }
+
+  function carica(s) {
+    if (s.stato !== 'fermo' && s.stato !== 'riposo') return;
+    segna(s, 'carica');
     var p = scegli(s.video, 'data-poster');
-    if (p && s.video.getAttribute('poster') !== p) s.video.setAttribute('poster', p);
+    if (p) s.video.setAttribute('poster', p);
+    s.video.preload = 'auto';
+    s.video.addEventListener('loadeddata', function () { segna(s, 'pronto'); }, { once: true });
+    s.video.src = scegli(s.video, 'data-src');
   }
-  // accesa: dal suo momento in poi. corrente: l'ultima accesa, o la prima che verrà (sul telefono si legge solo quella, 24/09)
-  function accendi(s, t) {
-    var acc = AV.righeAccese(t, s.momenti), corrente = s.momenti.length ? s.momenti[0].riga : null;
-    s.momenti.forEach(function (m) { if (acc[m.riga]) corrente = m.riga; });
-    s.righe.forEach(function (r) {
-      var k = r.getAttribute('data-riga');
-      r.classList.toggle('accesa', !!acc[k]);
-      r.classList.toggle('corrente', k === corrente);
+
+  // il browser rifiuta il suono a una pagina mai toccata: il reel riparte muto, col bottone per accenderlo. Se rifiuta anche
+  // il reel muto (l'iPhone col risparmio energetico), resta la copertina col bottone, e non si riprova a ogni scroll
+  function suona(s, conSuono) {
+    var v = s.video;
+    v.muted = !conSuono;
+    s.bloccato = false;
+    var p = v.play();
+    if (p && p.catch) {
+      p.catch(function (err) {
+        if (attuale !== s || (err && err.name === 'AbortError')) return;   // AbortError: fermato prima di partire, da noi
+        if (v.muted) { s.bloccato = true; ridisegna(s); return; }
+        v.muted = true;
+        ridisegna(s);
+        var q = v.play();
+        if (q && q.catch) q.catch(function (e) { if (!(e && e.name === 'AbortError')) s.bloccato = true; });
+      });
+    }
+    ridisegna(s);
+  }
+  // Safari dà il suono a un video solo dentro un gesto, video per video: al primo tocco si sbloccano anche gli altri reel,
+  // così il secondo parte col suono senza chiederlo di nuovo. play() e subito pause(): non si vede e non scarica niente in più
+  function sblocca(tranne) {
+    tutti.forEach(function (s) {
+      var v = s.video;
+      if (s === tranne || s.sbloccato || !v.paused || v.ended) return;
+      s.sbloccato = true;
+      try { var p = v.play(); v.pause(); if (p && p.catch) p.catch(function () { /* interrotto apposta */ }); } catch (e) { /* niente */ }
     });
   }
-  function cerca(s) {
-    var v = s.video;
-    if (s.stato !== 'pronto' || v.seeking || s.t === null) return;
-    var t = AV.bersaglio(s.t, v.duration || s.durata);
-    // se il browser ha agganciato un fotogramma vicino a quello chiesto, non si insiste: chiedi 10,00, ti dà 9,98…
-    if (Math.abs(v.currentTime - t) > 0.01 && t !== s.chiesto) { s.chiesto = t; v.currentTime = t; }
+  function avvia(s) {
+    carica(s);
+    var r = AV.ripartenza(s.video.currentTime, durata(s));
+    if (s.finito || r !== s.video.currentTime) { s.finito = false; try { s.video.currentTime = r; } catch (e) { /* ancora senza dati */ } }
+    s.partito = true;
+    suona(s, AV.colSuono({ voglia: voglia, attivato: attivato() }));
   }
-  function libera(s) {
-    segna(s, 'fermo');
-    s.video.removeAttribute('src');
-    s.video.load();
-    if (s.blob) { URL.revokeObjectURL(s.blob); s.blob = null; }
-    s.chiesto = null;
+  function ferma(s) { if (!s.video.paused) s.video.pause(); }
+  // parte quando la pagina si ferma (200 ms senza scroll), o dopo 900 ms in vista anche se scorri piano: un capitolo o una tappa
+  // fanno scorrere la pagina sopra gli altri reel, e senza questa attesa ognuno darebbe un colpo di musica passando
+  function parti(s) {
+    var da = performance.now();
+    clearTimeout(timer);
+    (function prova() {
+      timer = setTimeout(function () {
+        timer = 0;
+        if (attuale !== s || document.hidden) return;
+        var ora = performance.now();
+        if (ora - ultimoScroll < 200 && ora - da < 900) return prova();
+        avvia(s);
+      }, 120);
+    })();
   }
-  function carica(s) {
-    if (s.stato !== 'fermo') return;
-    segna(s, 'carica');
-    copertina(s);
-    var url = scegli(s.video, 'data-src');
-    var scarica = window.fetch ? fetch(url).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.blob(); }) : Promise.reject(new Error('senza fetch'));
-    scarica.then(function (b) { s.blob = URL.createObjectURL(b); return s.blob; })
-      .catch(function () { return url; })   // dentro l'Artifact o senza fetch: il file diretto, cercato a pezzi
-      .then(function (u) {
-        if (s.stato !== 'carica') { if (s.blob) { URL.revokeObjectURL(s.blob); s.blob = null; } return; }
-        s.video.addEventListener('loadeddata', function () { segna(s, 'pronto'); cerca(s); }, { once: true });
-        s.video.src = u;
-        s.video.load();
-      });
-    var via = AV.daLiberare(tutti.filter(function (x) { return x.stato !== 'fermo' && x.stato !== 'riposo'; })
-      .map(function (x) { return { id: x.id, distanza: distanza(x) }; }), 2);
-    tutti.forEach(function (x) { if (via.indexOf(x.id) >= 0) libera(x); });
+  function aspetta() { clearTimeout(timer); timer = 0; }
+  function pieno() { return tutti.some(function (s) { return s.pieno; }); }
+
+  // quale reel va adesso: al più uno, quello che si vede (video-reel-logica.mjs). Uno fatto partire a mano (movimento ridotto,
+  // risparmio dati) va finché resta in vista, e uscito si ferma; quelli automatici ripartono da soli quando tornano.
+  // A tutto schermo non si decide niente: il reel è di chi lo guarda
+  function decidi() {
+    if (pieno()) return;
+    if (document.hidden) { aspetta(); if (attuale) ferma(attuale); return; }
+    if (attuale && attuale.aMano) {
+      if (attuale.quota < 0.3) { ferma(attuale); attuale = null; }
+      return;
+    }
+    var voci = tutti.filter(function (s) { return !s.aMano; }).map(function (s) { return { id: s.id, quota: s.quota }; });
+    var id = AV.chiSuona(voci, attuale ? attuale.id : null);
+    var prossimo = id === null ? null : tutti[id];
+    if (prossimo === attuale) {
+      if (attuale && attuale.video.paused && !attuale.finito && !attuale.bloccato && !timer) parti(attuale);
+      return;
+    }
+    if (attuale) ferma(attuale);
+    attuale = prossimo;
+    if (attuale) parti(attuale); else aspetta();
   }
 
-  Array.prototype.forEach.call(document.querySelectorAll('[data-scorre]'), function (el, k) {
+  // dopo un gesto sul reel (la barra, il tutto schermo): diventa lui quello che va, e va, col suono se non l'hai tolto
+  function prendi(s) {
+    aspetta();
+    if (attuale !== s) { if (attuale) ferma(attuale); attuale = s; }
+    sblocca(s);
+    carica(s);
+    s.partito = true;
+    if (s.video.paused) suona(s, voglia);
+    else if (voglia && s.video.muted) s.video.muted = false;
+    ridisegna(s);
+  }
+
+  // il bottone, e il reel stesso: accendono o tolgono l'audio; alla fine, o se il reel non è ancora partito, lo fanno partire
+  function tocca(s) {
+    var v = s.video;
+    aspetta();
+    if (attuale !== s) { if (attuale) ferma(attuale); attuale = s; }
+    sblocca(s);
+    if (s.finito || s.bloccato || (s.aMano && !s.partito)) {
+      vuoi(true);
+      carica(s);
+      if (s.finito) { s.finito = false; try { v.currentTime = 0; } catch (e) { /* ancora senza dati */ } }
+      s.partito = true;
+      suona(s, true);
+      return;
+    }
+    if (v.muted) { vuoi(true); v.muted = false; if (v.paused) suona(s, true); }
+    else { vuoi(false); v.muted = true; }
+    ridisegna(s);
+  }
+
+  // «tornare indietro su ogni video»: la barra porta il reel dove la tocchi o la lasci; se era finito, riparte da lì
+  function vaiA(s, t) {
+    s.finito = false;
+    try { s.video.currentTime = t; } catch (e) { /* ancora senza dati */ }
+    var x = AV.avanzamento(t, durata(s));
+    s.barra.style.setProperty('--fatto', (x * 100).toFixed(2) + '%');
+    dici(s);
+    ridisegna(s);
+  }
+
+  // il tutto schermo: il video da solo, coi comandi del browser (pausa, volume, la sua barra); uscito, il reel torna nel telefono
+  var modo = AV.modoSchermo({
+    standard: !!(document.fullscreenEnabled && HTMLVideoElement.prototype.requestFullscreen),
+    iphone: typeof HTMLVideoElement.prototype.webkitEnterFullscreen === 'function'
+  });
+  function esci(s) {
+    if (!s.pieno) return;
+    s.pieno = false;
+    s.video.controls = false;
+    ridisegna(s);
+    decidi();
+  }
+  function schermoIntero(s) {
+    var v = s.video;
+    prendi(s);
+    s.pieno = true;
+    v.controls = true;
+    try {
+      if (modo === 'standard') { var p = v.requestFullscreen(); if (p && p.catch) p.catch(function () { esci(s); }); }
+      else v.webkitEnterFullscreen();
+    } catch (e) { esci(s); }
+  }
+  document.addEventListener('fullscreenchange', function () {
+    if (!document.fullscreenElement) tutti.forEach(esci);
+  });
+
+  // al primo tocco sulla pagina (un link, un bottone, un tasto) il reel che sta andando muto prende il suono, se non l'hai tolto.
+  // Solo dentro il gesto: fuori, Chrome e Safari fermerebbero il video invece di dargli il suono. I tocchi sul reel li gestisce lui
+  function primoTocco(ev) {
+    if (ua && !ua.isActive) return;
+    if (ev.target && ev.target.closest && ev.target.closest('[data-reel]')) return;
+    sblocca(attuale);
+    if (!voglia || !attuale || attuale.video.paused || !attuale.video.muted) return;
+    attuale.video.muted = false;
+    ridisegna(attuale);
+    var s = attuale;
+    setTimeout(function () { if (attuale === s && s.video.paused && !s.finito) suona(s, false); }, 300);
+  }
+  ['click', 'keydown', 'touchend'].forEach(function (tipo) { addEventListener(tipo, primoTocco, true); });
+
+  function elemento(tag, classe, etichetta) {
+    var e = document.createElement(tag);
+    e.className = classe;
+    if (etichetta) e.setAttribute('aria-label', etichetta);
+    return e;
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-reel]'), function (el, k) {
     var video = el.querySelector('video');
-    var quadro = el.closest('.quadro') || el.parentNode;
     var s = {
       id: k, el: el, video: video, durata: Number(el.getAttribute('data-durata')) || 1,
-      momenti: AV.leggiMomenti(el.getAttribute('data-momenti') || ''),
-      righe: Array.prototype.slice.call(quadro.querySelectorAll('[data-riga]')),
-      t: null, chiesto: null, blob: null, stato: 'fermo'
+      quota: 0, finito: false, partito: false, bloccato: false, sbloccato: false, trascina: false, pieno: false,
+      aMano: calmo || risparmio || fisso || !('IntersectionObserver' in window),
+      stato: 'fermo', bottoneStato: ''
     };
     tutti.push(s);
-    video.addEventListener('seeked', function () { cerca(s); });
-    AV.componenti.push({
-      nome: el.getAttribute('data-componente'), durata: s.durata, riposo: s.durata,
-      monta: function () {
-        segna(s, 'fermo');
-        if (calmo || risparmio) { segna(s, 'riposo'); copertina(s); return; }
-        // guidate dal reel, le righe possono stringersi in una frase sola (sito.css, telefono); a riposo restano tutte leggibili
-        if (s.righe.length) s.righe[0].parentNode.classList.add('a-tempo');
-        if (!('IntersectionObserver' in window)) return carica(s);
-        var io = new IntersectionObserver(function (voci) {
-          voci.forEach(function (e) { if (e.isIntersecting) carica(s); });
-        }, { rootMargin: '150% 0px' });
-        io.observe(el.closest('[data-binario]') || el);
-      },
-      seek: function (t) {
-        s.t = t;
-        accendi(s, s.stato === 'riposo' ? s.durata : t);
-        cerca(s);
-      }
+    s.bottone = elemento('button', 'audio');
+    s.bottone.type = 'button';
+    s.barra = elemento('input', 'scorri', 'Il punto del reel: trascina per tornare indietro');
+    s.barra.type = 'range';
+    s.barra.min = '0';
+    s.barra.max = '1000';
+    s.barra.step = '1';
+    s.barra.value = '0';
+    el.appendChild(s.barra);
+    el.appendChild(s.bottone);
+    if (modo) {
+      s.schermo = elemento('button', 'schermo', 'Guarda il reel a tutto schermo');
+      s.schermo.type = 'button';
+      s.schermo.innerHTML = svg(ICONA.schermo);
+      el.appendChild(s.schermo);
+      s.schermo.addEventListener('click', function () { schermoIntero(s); });
+      video.addEventListener('webkitendfullscreen', function () { esci(s); });
+    }
+
+    s.bottone.addEventListener('click', function (ev) { ev.stopPropagation(); tocca(s); });
+    video.addEventListener('click', function () { if (!s.pieno) tocca(s); });
+    s.barra.addEventListener('input', function () {
+      s.trascina = true;
+      vaiA(s, AV.secondoDa(Number(s.barra.value) / 1000, durata(s)));
     });
+    s.barra.addEventListener('change', function () { s.trascina = false; prendi(s); });
+    s.barra.addEventListener('keydown', function (ev) {
+      var t = AV.passo(ev.key, s.video.currentTime, durata(s));
+      if (t === null) return;
+      ev.preventDefault();
+      vaiA(s, t);
+      segui(s);
+      prendi(s);
+    });
+    video.addEventListener('playing', function () { el.setAttribute('data-suona', ''); ridisegna(s); battito(); });
+    video.addEventListener('pause', function () { el.removeAttribute('data-suona'); segui(s); dici(s); });
+    video.addEventListener('volumechange', function () { if (s.pieno) vuoi(!video.muted); ridisegna(s); });
+    video.addEventListener('ended', function () { s.finito = true; segui(s); dici(s); ridisegna(s); });
+
+    if (s.aMano) {
+      // col movimento ridotto o il risparmio dati: la copertina, e il reel parte solo se lo chiedi tu
+      segna(s, 'riposo');
+      var p = scegli(video, 'data-poster');
+      if (p) video.setAttribute('poster', p);
+    }
+    dici(s);
+    ridisegna(s);
   });
+  if (!tutti.length) return;
+
+  if ('IntersectionObserver' in window) {
+    var vicino = new IntersectionObserver(function (voci) {
+      voci.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        tutti.forEach(function (s) { if (s.el === e.target && !s.aMano) carica(s); });
+      });
+    }, { rootMargin: '100% 0px' });
+    var soglie = [];
+    for (var i = 0; i <= 20; i++) soglie.push(i / 20);
+    var vista = new IntersectionObserver(function (voci) {
+      voci.forEach(function (e) {
+        tutti.forEach(function (s) { if (s.el === e.target) s.quota = e.isIntersecting ? e.intersectionRatio : 0; });
+      });
+      decidi();
+    }, { threshold: soglie });
+    tutti.forEach(function (s) { vicino.observe(s.el); vista.observe(s.el); });
+  }
+  document.addEventListener('visibilitychange', decidi);
+  addEventListener('scroll', function () { ultimoScroll = performance.now(); }, { passive: true });
+
+  AV.reel = { tutti: tutti, attuale: function () { return attuale; } };
 })();
 </script>
-<script>// FILE: src/video-vista.js — i video che girano da soli quando si vedono (muti, in loop) e il lettore «Con l'audio» (blocco 5B)
+<script>// FILE: src/video-vista.js — i video che girano da soli quando si vedono, muti e in loop (blocco 5B). Il lettore «Con l'audio»
+// se n'è andato il 25/09: i reel della home partono da soli col loro bottone dell'audio (video-reel.js)
 (function () {
   var calmo = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
 
@@ -2118,28 +3015,6 @@ AV.parsimonia = parsimonia;
     }, { threshold: 0.25 });
     auto.forEach(function (v) { vicino.observe(v); dentro.observe(v); });
   }
-
-  // «▶ Con l'audio»: il video intero, col suono e i comandi, sopra la pagina; chiuso, si torna dov'eri
-  var lettore = null;
-  function apri(src, titolo) {
-    if (!lettore) {
-      lettore = document.createElement('dialog');
-      lettore.className = 'lettore';
-      lettore.innerHTML = '<button type="button" class="chiudi" aria-label="Chiudi il video">×</button><video controls playsinline></video>';
-      document.body.appendChild(lettore);
-      lettore.querySelector('.chiudi').addEventListener('click', function () { lettore.close(); });
-      lettore.addEventListener('click', function (e) { if (e.target === lettore) lettore.close(); });
-      lettore.addEventListener('close', function () { var v = lettore.querySelector('video'); v.pause(); v.removeAttribute('src'); v.load(); });
-    }
-    var v = lettore.querySelector('video');
-    v.setAttribute('aria-label', titolo);
-    v.src = src;
-    if (lettore.showModal) lettore.showModal(); else lettore.setAttribute('open', '');
-    var p = v.play(); if (p && p.catch) p.catch(function () {});
-  }
-  Array.prototype.forEach.call(document.querySelectorAll('[data-con-audio]'), function (b) {
-    b.addEventListener('click', function () { apri(b.getAttribute('data-con-audio'), b.getAttribute('aria-label') || 'Video'); });
-  });
 })();
 </script>
 <script>// FILE: src/regia.js — il regista: lo scroll diventa il tempo delle scene
