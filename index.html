@@ -573,6 +573,14 @@ ul{margin:0;padding-left:1.1em}
 .stato-linea b,.nuovo,.giorni b{color:var(--oro-etichetta,var(--oro))}
 /* le tappe di notte: il nero sta nella scheda arrotondata, non nel riquadro quadrato dietro, che si vedeva agli angoli */
 .percorso .tappa.notte{background:none}
+/* Aperto (12/10): il blocco è di notte; le carte restano chiare, col testo e il grigio del giorno (l'acciaio della notte sul chiaro
+   non si legge), e quella consigliata prende il filo d'oro per staccarsi dal nero */
+.notte .canone{color:var(--inchiostro);--secondario:var(--grafite)}
+.notte .canone.consigliato{border-color:var(--oro);color:var(--avorio)}
+#aperto .insegna{margin-bottom:14px}
+/* «Con la vetrina» ha tre voci: senza questa riga la griglia le allargava fino all'altezza delle altre carte (13/10) */
+#aperto .canone .punti{align-content:start}
+#aperto .spiega a{color:inherit}
 </style>
 <style>/* FILE: src/sito.css — solo ciò che serve alla home del sito, sopra lo stile del kit */
 .bottone-piccolo{padding:9px 14px;font-size:.68rem}
@@ -612,6 +620,9 @@ ul{margin:0;padding-left:1.1em}
 /* cosa facciamo: il percorso del listino senza prezzi, con la sua frase sempre leggibile */
 .percorso.cinque .tappa .nota{display:block}
 @media (max-width:860px){.percorso.cinque{grid-template-columns:minmax(0,1fr)}.percorso.cinque .tappa.insieme{grid-column:auto}}
+/* la sesta riga (12/10, specifica PIANO-APERTO §5.1): Aperto porta alla sua pagina e prende tutta la larghezza sotto le cinque */
+.percorso.cinque .tappa.aperto{grid-column:1 / -1}
+.tappa.aperto a{background:linear-gradient(135deg,#2b2519 0%,var(--nero) 60%)}
 
 /* i reel nel film: le quattro righe a sinistra, il telefono a destra */
 .reel-palco{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,5vw,80px);align-items:center;padding-block:clamp(12px,2vw,28px)}
@@ -1020,7 +1031,7 @@ ul{margin:0;padding-left:1.1em}
 <header class="barra-nav">
   <a class="marchio" href="#apertura" aria-label="Avoria Studio, inizio pagina"><svg><use href="#arco"/></svg><span class="parola">AVORIA</span></a>
   <nav aria-label="Sezioni">
-    <a href="#foto-video">Foto e video</a><a href="#social">Social</a><a href="#aura">Aura</a><a href="#clienti">Assistente</a><a href="listino/">Listino</a>
+    <a href="#foto-video">Foto e video</a><a href="#social">Social</a><a href="#aura">Aura</a><a href="#clienti">Assistente</a><a href="aperto/">Bar e ristoranti</a><a href="listino/">Listino</a>
     <a class="bottone-pieno bottone-piccolo" href="#call">Prenota una call</a>
   </nav>
   <!-- revisione del 25/09, punto 1: sul telefono il menu non c'è, e fino alla chiusura non c'era un modo per scriverci -->
@@ -1080,12 +1091,13 @@ ul{margin:0;padding-left:1.1em}
         <span class="occhiello">Cosa facciamo</span>
         <h2>Cosa possiamo <span class="firma">fare</span> per te.</h2>
       </div>
-      <ol class="percorso cinque" aria-label="I cinque servizi" data-svela>
+      <ol class="percorso cinque" aria-label="I servizi" data-svela>
         <li class="tappa"><a href="#foto-video" data-salta><small>Ci mandi due foto</small><b>Foto e video</b><span class="nota">Ci mandi due foto dal telefono: ti tornano scatti e video pronti per il negozio e i social.</span></a></li>
         <li class="tappa"><a href="#social" data-salta><small>Pubblichiamo noi</small><b>I tuoi social e il tuo negozio</b><span class="nota">Il piano del mese, le didascalie, il profilo in ordine. E il negozio online sempre aggiornato.</span></a></li>
         <li class="tappa notte"><a href="#clienti" data-salta><small>Anche alle 02:14</small><b>I clienti che ti scrivono</b><span class="nota">Quando un cliente scrive, risponde l'AI con le pagine vere del tuo negozio. Quello che non sa lo passa a te.</span></a></li>
         <li class="tappa notte"><a href="#lavoro" data-salta><small>Ogni giorno, a mano</small><b>Il lavoro che si ripete</b><span class="nota">Le cose che fai ogni giorno a mano, fatte da un sistema che controlli tu.</span></a></li>
         <li class="tappa notte insieme"><a href="#reparto" data-salta><small>Tutto insieme</small><b>Reparto AI</b><span class="nota">Foto, video, social e un sistema, seguiti da una persona sola.</span></a></li>
+        <li class="tappa notte aperto"><a href="aperto/"><small>Bar, pizzerie, ristoranti</small><b>Aperto · il tuo locale</b><span class="nota">Il telefono che risponde mentre servi, i clienti che tornano, i conti e il personale.</span></a></li>
       </ol>
       <div class="principio" data-svela>
         <b>L'AI, dichiarata</b>
@@ -1224,6 +1236,68 @@ ul{margin:0;padding-left:1.1em}
       </div>
       <div class="separatore"></div>
 
+      <!-- il preventivo (25/09), subito sotto l'assistente dal 26/09: Simone, «è praticamente quasi la stessa cosa». Un cliente
+           scrive in DM, la bozza si scrive dal listino, tu approvi, parte nella stessa chat. Al posto dei pannelli scuri, che
+           Simone trovava «AI slop», l'interfaccia che il cliente conosce già. La scena parte da sola quando la vedi, una volta,
+           e si rivede col bottone (scene-sistemi.js); ogni pezzo dice quando entra (data-da) -->
+      <div class="binario" data-binario style="--binario:160">
+      <div class="palco">
+      <article class="servizio rovescio quadro" data-servizio="preventivo" aria-labelledby="s-preventivo">
+        <div class="testo">
+          <span class="stato-linea"><b>Dal messaggio al preventivo</b> · per chi vende su misura o a quantità</span>
+          <h3 id="s-preventivo">Il messaggio del cliente diventa un preventivo.</h3>
+          <dl class="righe ferme">
+            <div class="riga accesa"><dt>Cosa mandi</dt><dd data-mandi>Il tuo listino e i canali da cui arrivano le richieste: DM, email, modulo del sito, fino a 3.</dd></div>
+            <div class="riga accesa"><dt>Cosa ricevi</dt><dd data-ricevi>Le richieste finiscono in un solo elenco, il preventivo si scrive da solo dal tuo listino e tu lo approvi. I promemoria ai clienti partono da soli.</dd></div>
+            <div class="riga accesa"><dt>In quanto tempo</dt><dd data-tempo>3–4 settimane.</dd></div>
+            <div class="riga accesa"><dt>Da quanto</dt><dd>€2.400 di avvio, poi €290 al mese.</dd></div>
+          </dl>
+        </div>
+        <figure class="scena-dm" data-scena="preventivo">
+          <div class="telefono alto dm">
+            <div class="ig">
+              <div class="ig-stato" aria-hidden="true"><span>10:42</span><i class="ig-isola"></i>
+                <svg viewBox="0 0 54 12"><g fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="6" width="3" height="6" rx="1"/><rect x="10" y="3.5" width="3" height="8.5" rx="1"/><rect x="15" y="1" width="3" height="11" rx="1"/><path d="M28 11.5 24.3 7.4a5.6 5.6 0 0 1 7.4 0zM21.6 4.8a9.6 9.6 0 0 1 12.8 0l-1.4 1.5a7.6 7.6 0 0 0-10 0z"/><rect x="38" y="1.5" width="14" height="9" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="39.8" y="3.3" width="8.4" height="5.4" rx="1.2"/></g></svg></div>
+              <div class="ig-testa">
+                <svg class="ico" aria-hidden="true"><use href="#ico-indietro"/></svg>
+                <span class="ig-avatar" aria-hidden="true">SR</span>
+                <span class="ig-chi"><b>Studio Rossi</b><small>studio.rossi.eventi</small></span>
+                <span class="ig-azioni" aria-hidden="true"><svg class="ico"><use href="#ico-chiama"/></svg><svg class="ico"><use href="#ico-video"/></svg></span>
+              </div>
+              <div class="ig-chat">
+                <div class="ig-profilo" aria-hidden="true"><span class="ig-avatar">SR</span><b>Studio Rossi</b><small>studio.rossi.eventi</small><span class="ig-vedi">Visualizza profilo</span></div>
+                <p class="ig-ora">Oggi 10:41</p>
+                <p class="ig-bolla lui" data-da="0.5">Buongiorno! Fate vasi con il logo inciso?</p>
+                <p class="ig-bolla lui coda" data-da="1.6"><span class="ig-avatar" aria-hidden="true">SR</span>Ce ne servono 40 per un evento aziendale, entro il 15 novembre.</p>
+                <p class="ig-bolla io" data-da="7.2">Ecco il preventivo per i 40 vasi, valido 15 giorni.</p>
+                <p class="ig-bolla io ig-allegato" data-da="7.7"><i class="ig-foglio" aria-hidden="true"><i></i><i></i><i></i><i></i></i><span><b>Preventivo n. 118</b><small>40 Vasi Arco con logo · €960,00 + IVA</small><small class="apri">Apri il PDF</small></span></p>
+                <p class="ig-ora" data-da="8.7">11:20</p>
+                <p class="ig-bolla lui coda" data-da="9.1"><span class="ig-avatar" aria-hidden="true">SR</span>Perfetto, confermiamo!</p>
+              </div>
+              <div class="ig-scrivi" aria-hidden="true"><span class="ig-camera"><svg class="ico"><use href="#ico-foto"/></svg></span><span>Messaggio…</span><svg class="ico"><use href="#ico-voce"/></svg><svg class="ico"><use href="#ico-immagine"/></svg><svg class="ico"><use href="#ico-adesivo"/></svg></div>
+              <div class="bozza scivola" data-da="2.6" data-a="6.9">
+                <i class="maniglia" aria-hidden="true"></i>
+                <p class="bozza-testa"><b>Bozza del preventivo</b><span>la vedi solo tu</span></p>
+                <dl>
+                  <div class="tieni" data-da="3.0"><dt>Cliente</dt><dd data-batti>Studio Rossi</dd></div>
+                  <div class="tieni" data-da="3.4"><dt>Articolo</dt><dd data-batti>Vaso Arco, logo inciso</dd></div>
+                  <div class="tieni" data-da="3.8"><dt>Quantità</dt><dd data-batti>40</dd></div>
+                  <div class="tieni" data-da="4.2"><dt>Prezzo</dt><dd><span data-batti>€24,00 l'uno</span> <em>dal tuo listino</em></dd></div>
+                  <div class="tieni" data-da="4.6"><dt>Consegna</dt><dd data-batti>entro il 15 novembre</dd></div>
+                  <div class="tieni totale" data-da="5.0"><dt>Totale</dt><dd data-batti>€960,00 + IVA</dd></div>
+                </dl>
+                <p class="bozza-bottoni tieni" data-da="5.5"><span>Modifica</span><span class="approva" data-segna="6.3|toccato">Approva e invia</span></p>
+              </div>
+            </div>
+          </div>
+          <figcaption><span>Esempio · il cliente scrive in DM, tu approvi, il preventivo parte nella stessa chat</span></figcaption>
+        </figure>
+      </article>
+      </div>
+      </div>
+
+      <div class="separatore"></div>
+
       <div id="lavoro" class="capitolo" data-blocco="lavoro" data-capitoli="Lavoro di ogni giorno">
         <span class="occhiello">Il lavoro che si ripete</span>
         <h2>Il lavoro di ogni giorno, <span class="firma">fatto</span> da un sistema.</h2>
@@ -1288,71 +1362,10 @@ ul{margin:0;padding-left:1.1em}
 
       <div class="separatore"></div>
 
-      <!-- il preventivo e il gestionale (25/09): al posto dei pannelli scuri, che Simone trovava «AI slop», le interfacce che il
-           cliente conosce già. Un DM sul telefono disegnato, come i reel qui sopra: il cliente scrive, la bozza si scrive dal listino,
-           tu approvi, parte nella stessa chat. Poi lo stesso preventivo, accettato, arriva nel gestionale come ordine. Le scene partono
-           da sole quando le vedi, una volta, e si rivedono col bottone (scene-sistemi.js); ogni pezzo dice quando entra (data-da) -->
       <div class="binario" data-binario style="--binario:160">
       <div class="palco">
-      <article class="servizio rovescio quadro" data-servizio="preventivo" aria-labelledby="s-preventivo">
-        <div class="testo">
-          <span class="stato-linea"><b>Dal messaggio al preventivo</b> · per chi vende su misura o a quantità</span>
-          <h3 id="s-preventivo">Il messaggio del cliente diventa un preventivo.</h3>
-          <dl class="righe ferme">
-            <div class="riga accesa"><dt>Cosa mandi</dt><dd data-mandi>Il tuo listino e i canali da cui arrivano le richieste: DM, email, modulo del sito, fino a 3.</dd></div>
-            <div class="riga accesa"><dt>Cosa ricevi</dt><dd data-ricevi>Le richieste finiscono in un solo elenco, il preventivo si scrive da solo dal tuo listino e tu lo approvi. I promemoria ai clienti partono da soli.</dd></div>
-            <div class="riga accesa"><dt>In quanto tempo</dt><dd data-tempo>3–4 settimane.</dd></div>
-            <div class="riga accesa"><dt>Da quanto</dt><dd>€2.400 di avvio, poi €290 al mese.</dd></div>
-          </dl>
-        </div>
-        <figure class="scena-dm" data-scena="preventivo">
-          <div class="telefono alto dm">
-            <div class="ig">
-              <div class="ig-stato" aria-hidden="true"><span>10:42</span><i class="ig-isola"></i>
-                <svg viewBox="0 0 54 12"><g fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="6" width="3" height="6" rx="1"/><rect x="10" y="3.5" width="3" height="8.5" rx="1"/><rect x="15" y="1" width="3" height="11" rx="1"/><path d="M28 11.5 24.3 7.4a5.6 5.6 0 0 1 7.4 0zM21.6 4.8a9.6 9.6 0 0 1 12.8 0l-1.4 1.5a7.6 7.6 0 0 0-10 0z"/><rect x="38" y="1.5" width="14" height="9" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="39.8" y="3.3" width="8.4" height="5.4" rx="1.2"/></g></svg></div>
-              <div class="ig-testa">
-                <svg class="ico" aria-hidden="true"><use href="#ico-indietro"/></svg>
-                <span class="ig-avatar" aria-hidden="true">SR</span>
-                <span class="ig-chi"><b>Studio Rossi</b><small>studio.rossi.eventi</small></span>
-                <span class="ig-azioni" aria-hidden="true"><svg class="ico"><use href="#ico-chiama"/></svg><svg class="ico"><use href="#ico-video"/></svg></span>
-              </div>
-              <div class="ig-chat">
-                <div class="ig-profilo" aria-hidden="true"><span class="ig-avatar">SR</span><b>Studio Rossi</b><small>studio.rossi.eventi</small><span class="ig-vedi">Visualizza profilo</span></div>
-                <p class="ig-ora">Oggi 10:41</p>
-                <p class="ig-bolla lui" data-da="0.5">Buongiorno! Fate vasi con il logo inciso?</p>
-                <p class="ig-bolla lui coda" data-da="1.6"><span class="ig-avatar" aria-hidden="true">SR</span>Ce ne servono 40 per un evento aziendale, entro il 15 novembre.</p>
-                <p class="ig-bolla io" data-da="7.2">Ecco il preventivo per i 40 vasi, valido 15 giorni.</p>
-                <p class="ig-bolla io ig-allegato" data-da="7.7"><i class="ig-foglio" aria-hidden="true"><i></i><i></i><i></i><i></i></i><span><b>Preventivo n. 118</b><small>40 Vasi Arco con logo · €960,00 + IVA</small><small class="apri">Apri il PDF</small></span></p>
-                <p class="ig-ora" data-da="8.7">11:20</p>
-                <p class="ig-bolla lui coda" data-da="9.1"><span class="ig-avatar" aria-hidden="true">SR</span>Perfetto, confermiamo!</p>
-              </div>
-              <div class="ig-scrivi" aria-hidden="true"><span class="ig-camera"><svg class="ico"><use href="#ico-foto"/></svg></span><span>Messaggio…</span><svg class="ico"><use href="#ico-voce"/></svg><svg class="ico"><use href="#ico-immagine"/></svg><svg class="ico"><use href="#ico-adesivo"/></svg></div>
-              <div class="bozza scivola" data-da="2.6" data-a="6.9">
-                <i class="maniglia" aria-hidden="true"></i>
-                <p class="bozza-testa"><b>Bozza del preventivo</b><span>la vedi solo tu</span></p>
-                <dl>
-                  <div class="tieni" data-da="3.0"><dt>Cliente</dt><dd data-batti>Studio Rossi</dd></div>
-                  <div class="tieni" data-da="3.4"><dt>Articolo</dt><dd data-batti>Vaso Arco, logo inciso</dd></div>
-                  <div class="tieni" data-da="3.8"><dt>Quantità</dt><dd data-batti>40</dd></div>
-                  <div class="tieni" data-da="4.2"><dt>Prezzo</dt><dd><span data-batti>€24,00 l'uno</span> <em>dal tuo listino</em></dd></div>
-                  <div class="tieni" data-da="4.6"><dt>Consegna</dt><dd data-batti>entro il 15 novembre</dd></div>
-                  <div class="tieni totale" data-da="5.0"><dt>Totale</dt><dd data-batti>€960,00 + IVA</dd></div>
-                </dl>
-                <p class="bozza-bottoni tieni" data-da="5.5"><span>Modifica</span><span class="approva" data-segna="6.3|toccato">Approva e invia</span></p>
-              </div>
-            </div>
-          </div>
-          <figcaption><span>Esempio · il cliente scrive in DM, tu approvi, il preventivo parte nella stessa chat</span></figcaption>
-        </figure>
-      </article>
-      </div>
-      </div>
-
-      <div class="separatore"></div>
-
-      <div class="binario" data-binario style="--binario:160">
-      <div class="palco">
-      <article class="servizio quadro" data-servizio="gestionale" aria-labelledby="s-gestionale">
+      <!-- il gestionale: lo stesso preventivo n. 118, accettato, arriva come ordine -->
+      <article class="servizio rovescio quadro" data-servizio="gestionale" aria-labelledby="s-gestionale">
         <div class="testo">
           <span class="stato-linea"><b>Il gestionale su misura</b> · dopo l'analisi</span>
           <h3 id="s-gestionale">Ordini, magazzino o prenotazioni in un'app fatta sul tuo modo di lavorare.</h3>
@@ -1464,7 +1477,7 @@ ul{margin:0;padding-left:1.1em}
   </section>
 </main>
 
-<footer class="piede"><span>Avoria Studio · <a href="mailto:avoriastudio@outlook.it">avoriastudio@outlook.it</a> · Instagram <a href="https://instagram.com/avor.iastudio">@avor.iastudio</a></span><span>Settembre 2026</span></footer>
+<footer class="piede"><span>Avoria Studio · <a href="mailto:avoriastudio@outlook.it">avoriastudio@outlook.it</a> · Instagram <a href="https://instagram.com/avor.iastudio">@avor.iastudio</a> · <a href="aperto/">Bar e ristoranti</a></span><span>Settembre 2026</span></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>window.AV = window.AV || { componenti: [] };</script><script>(function(){
