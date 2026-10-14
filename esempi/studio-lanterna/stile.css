@@ -1,0 +1,117 @@
+/* Studio Lanterna — commercialisti. Blu notte e carta, l'ambra della lanterna solo sul blu; Newsreader per i titoli, Public Sans per
+   il testo. Il momento di scroll è la lanterna: nell'apertura la luce calda si allarga mentre scorri, e le scadenze si spuntano */
+:root{
+  --notte:#1E2A3B; --notte-2:#2B3A50; --carta:#F4F1EA; --carta-2:#E9E4D8;
+  --ambra:#E2A23B; --ambra-scuro:#8A5A12; --grigio:#5A6472; --bordo:rgba(30,42,59,.14);
+}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+body{background:var(--carta);color:var(--notte);font:400 1.0625rem/1.65 'Public Sans',system-ui,sans-serif}
+h1,h2,h3,.marchio{font-family:'Newsreader',Georgia,serif;font-weight:600;line-height:1.08;margin:0}
+h2{font-size:clamp(1.9rem,5.6vw,3rem);max-width:20ch}
+h3{font-size:1.35rem}
+p{margin:0 0 1em}
+section{scroll-margin-top:72px}
+.dentro{max-width:1120px;margin:0 auto}
+main>section{padding:clamp(64px,11vw,128px) clamp(16px,5vw,64px)}
+.occhiello{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ambra-scuro);margin-bottom:14px}
+
+/* la testata e i bottoni */
+.testata{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:10px clamp(16px,5vw,64px);background:rgba(30,42,59,.96);color:var(--carta)}
+.testata .marchio{display:inline-flex;align-items:center;gap:10px;min-height:48px;font-size:1.35rem;color:var(--carta);text-decoration:none}
+.fiamma{width:12px;height:18px;border-radius:50% 50% 45% 45%;background:radial-gradient(circle at 50% 70%,#FFE3A8,var(--ambra));box-shadow:0 0 14px var(--ambra)}
+.bottone{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:10px;
+  font:600 1rem/1 'Public Sans',system-ui,sans-serif;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background-color .2s}
+.bottone.pieno{background:var(--carta);color:var(--notte)}
+.bottone.piccolo{padding:0 18px}
+.bottone.ambra{background:var(--ambra);color:var(--notte)}
+.bottone.ambra:hover{background:#F0B65A}
+.bottone.chiaro-vuoto{color:var(--carta);border-color:rgba(244,241,234,.7)}
+.bottone.chiaro-vuoto:hover{background:var(--notte-2)}
+.azioni{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* l'apertura, di notte: la lanterna. Senza script la luce è già accesa a metà; con lo script si allarga mentre scorri */
+.apertura{position:relative;overflow:hidden;background:var(--notte);color:var(--carta);--luce:.8}
+.scorre-attivo .apertura{--luce:calc(.35 + var(--p) * 1.1)}
+.apertura::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 75% 42%,rgba(226,162,59,.5) 0,rgba(226,162,59,.16) calc(var(--luce) * 22%),rgba(226,162,59,0) calc(var(--luce) * 46%))}
+.apertura .dentro{position:relative;display:grid;gap:40px;align-items:center}
+.apertura .occhiello{color:var(--ambra)}
+.apertura h1{font-size:clamp(2.7rem,10vw,5.4rem);font-weight:600;margin-bottom:22px;max-width:12ch}
+.lead{font-size:clamp(1.1rem,2.5vw,1.25rem);max-width:36ch;color:#D9DEE6}
+.lume{margin:0 auto;width:min(88vw,460px);border-radius:200px 200px 18px 18px;overflow:hidden;box-shadow:0 0 0 1px rgba(226,162,59,.35),0 40px 90px -30px rgba(226,162,59,.45)}
+.lume img{width:100%;aspect-ratio:4/5;object-fit:cover}
+@media (min-width:900px){.apertura .dentro{grid-template-columns:1.15fr .85fr}.lume{width:100%}}
+
+/* lo studio */
+.chi .dentro{display:grid;gap:40px;align-items:center}
+.chi h2{margin-bottom:22px}
+.chi p{max-width:48ch}
+.ritratto{margin:0;border-radius:18px;overflow:hidden}
+.ritratto img{width:100%;aspect-ratio:4/5;object-fit:cover}
+@media (min-width:900px){.chi .dentro{grid-template-columns:1.1fr .9fr;gap:72px}}
+
+/* i servizi e le scadenze che si spuntano */
+.servizi{background:var(--carta-2)}
+.nota{font-size:.95rem;color:var(--grigio);margin-top:12px}
+.carte{display:grid;gap:18px;margin-top:36px}
+.carta{background:var(--carta);border:1px solid var(--bordo);border-radius:16px;padding:26px 24px;display:flex;flex-direction:column}
+.carta h3{margin-bottom:10px}
+.carta p{color:var(--grigio)}
+.carta .prezzo{margin:auto 0 0;padding-top:12px;border-top:1px solid var(--bordo);color:var(--notte);font-weight:600}
+@media (min-width:720px){.carte{grid-template-columns:1fr 1fr}}
+@media (min-width:1080px){.carte{grid-template-columns:repeat(4,1fr)}}
+.scadenze{margin-top:48px;max-width:640px}
+.scadenze h3{margin-bottom:16px}
+.scadenze ul{list-style:none;margin:0;padding:0}
+.scadenze li{position:relative;display:flex;flex-wrap:wrap;gap:4px 12px;padding:14px 0 14px 44px;border-bottom:1px solid var(--bordo)}
+.scadenze li b{min-width:9ch}
+.scadenze li::before{content:"";position:absolute;left:0;top:14px;width:26px;height:26px;border-radius:7px;border:2px solid var(--notte);background:var(--ambra)}
+.scadenze li::after{content:"";position:absolute;left:9px;top:19px;width:7px;height:12px;border:solid var(--notte);border-width:0 3px 3px 0;transform:rotate(45deg)}
+.scorre-attivo .scadenze li::before{background:color-mix(in srgb,var(--ambra) calc(var(--e) * 100%),transparent)}
+.scorre-attivo .scadenze li::after{opacity:var(--e)}
+
+/* le foto */
+.galleria{display:grid;gap:18px;margin-top:36px}
+.galleria figure{margin:0}
+.galleria img{width:100%;border-radius:14px;aspect-ratio:3/2;object-fit:cover}
+@media (min-width:700px){.galleria{grid-template-columns:1fr 1fr}}
+
+/* le recensioni d'esempio */
+.voci-clienti{display:grid;gap:18px;margin-top:36px}
+.voci-clienti blockquote{margin:0;border-left:4px solid var(--ambra);background:var(--carta-2);border-radius:0 14px 14px 0;padding:24px 24px 20px}
+.voci-clienti blockquote p:first-child{font-family:'Newsreader',Georgia,serif;font-size:1.3rem;line-height:1.35}
+.firma{font-size:.95rem;color:var(--grigio);margin:0}
+@media (min-width:900px){.voci-clienti{grid-template-columns:repeat(3,1fr)}}
+
+/* la mappa disegnata */
+.cartina{margin:36px 0 0;max-width:760px}
+.cartina svg{width:100%;border-radius:16px;border:1px solid var(--bordo)}
+.cartina figcaption{font-size:.95rem;color:var(--grigio);margin-top:12px}
+
+/* gli orari */
+.orari{background:var(--carta-2)}
+.giorni{display:grid;max-width:640px;margin:32px 0 0}
+.giorni div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--bordo)}
+.giorni dt{font-weight:600}
+.giorni dd{margin:0;text-align:right}
+
+/* i contatti, di notte */
+.contatti{background:var(--notte);color:var(--carta)}
+.contatti .occhiello{color:var(--ambra)}
+.contatti .dentro{display:grid;gap:44px}
+.contatti h2{margin-bottom:20px}
+.numero{font-family:'Newsreader',Georgia,serif;font-size:1.7rem;margin-top:18px}
+.modulo{background:var(--notte-2);border-radius:18px;padding:28px 24px;display:grid;gap:16px}
+.modulo label{display:grid;gap:6px;font-size:.95rem;font-weight:600}
+.modulo input,.modulo textarea{font:inherit;font-weight:400;min-height:48px;padding:10px 14px;border-radius:10px;border:1px solid rgba(244,241,234,.35);background:var(--notte);color:var(--carta);width:100%}
+.modulo input:focus-visible,.modulo textarea:focus-visible{outline:3px solid var(--ambra);outline-offset:2px}
+.modulo .bottone{justify-self:start}
+.modulo .nota-esempio{color:var(--ambra);font-weight:600}
+@media (min-width:900px){.contatti .dentro{grid-template-columns:1fr 1fr;align-items:start}}
+
+/* il piede */
+.piede{background:var(--carta-2);padding:40px clamp(16px,5vw,64px) 48px}
+.piede .marchio{font-size:1.4rem;margin-bottom:8px}
+.piede p{margin:0 0 6px}
+.piede .esempio{font-size:.95rem;color:var(--grigio);margin-top:14px}

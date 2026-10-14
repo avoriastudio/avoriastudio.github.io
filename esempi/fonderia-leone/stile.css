@@ -1,0 +1,114 @@
+/* Fonderia Leone — lavorazioni metalliche per aziende. Acciaio e fumo, l'arancio della colata solo grande o sull'acciaio, la ruggine
+   per il testo piccolo sul chiaro; Barlow Condensed per i titoli, Barlow per il testo. Il momento di scroll è la colata: accanto alle
+   lavorazioni una barra si scalda dall'acciaio all'arancio mentre scorri, e le cifre d'esempio entrano una per volta */
+:root{
+  --acciaio:#2B2E33; --acciaio-2:#3A3E45; --fumo:#E7E5E1; --fumo-2:#D9D6D0;
+  --arancio:#F26A1B; --arancio-chiaro:#FF8F4D; --ruggine:#8A3A1F; --grigio:#55585E; --bordo:rgba(43,46,51,.16);
+}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+body{background:var(--fumo);color:var(--acciaio);font:400 1.0625rem/1.6 'Barlow',system-ui,sans-serif}
+h1,h2,h3,.marchio{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;line-height:1;text-transform:uppercase;letter-spacing:.01em;margin:0}
+h2{font-size:clamp(2.2rem,7vw,3.8rem);max-width:16ch}
+h3{font-size:1.6rem}
+p{margin:0 0 1em}
+section{scroll-margin-top:72px}
+.dentro{max-width:1120px;margin:0 auto}
+main>section{padding:clamp(64px,11vw,128px) clamp(16px,5vw,64px)}
+.occhiello{font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ruggine);margin-bottom:14px}
+
+/* la testata e i bottoni */
+.testata{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:10px clamp(16px,5vw,64px);background:rgba(43,46,51,.97);color:var(--fumo)}
+.testata .marchio{display:inline-flex;align-items:center;min-height:48px;font-size:1.6rem;color:var(--fumo);text-decoration:none}
+.bottone{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;
+  font:600 1rem/1 'Barlow',system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background-color .2s}
+.bottone.arancio{background:var(--arancio);color:#1A1B1E}
+.bottone.arancio:hover{background:var(--arancio-chiaro)}
+.bottone.chiaro-vuoto{color:var(--fumo);border-color:rgba(231,229,225,.75);background:transparent}
+.bottone.chiaro-vuoto:hover{background:var(--acciaio-2)}
+.bottone.piccolo{padding:0 18px}
+.azioni{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* l'apertura, sulla colata */
+.apertura{position:relative;overflow:hidden;background:var(--acciaio);color:var(--fumo);min-height:min(88vh,760px);display:flex;align-items:flex-end}
+.sfondo{position:absolute;inset:0;margin:0}
+.sfondo img{width:100%;height:100%;object-fit:cover;object-position:30% 50%}
+.sfondo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,27,30,.55) 0%,rgba(26,27,30,.78) 55%,rgba(26,27,30,.94) 100%)}
+.apertura .dentro{position:relative;width:100%}
+.apertura .occhiello{color:var(--arancio-chiaro)}
+.apertura h1{font-size:clamp(3rem,11vw,6.4rem);max-width:12ch;margin-bottom:22px}
+.lead{font-size:clamp(1.1rem,2.5vw,1.3rem);max-width:40ch;color:#E2E0DB}
+
+/* l'azienda */
+.chi .dentro{display:grid;gap:40px;align-items:center}
+.chi h2{margin-bottom:22px}
+.chi p{max-width:48ch}
+.ritratto{margin:0}
+.ritratto img{width:100%;aspect-ratio:4/5;object-fit:cover}
+@media (min-width:900px){.chi .dentro{grid-template-columns:1.1fr .9fr;gap:72px}}
+
+/* le lavorazioni: la barra che si scalda. Senza script la barra è già calda; con lo script si riempie mentre scorri */
+.lavorazioni{background:var(--acciaio);color:var(--fumo)}
+.lavorazioni .occhiello{color:var(--arancio-chiaro)}
+.lavorazioni .nota{font-size:.95rem;color:#C9C7C2;margin-top:12px}
+.colata{position:relative;display:grid;gap:26px;margin-top:40px;padding-left:34px;--caldo:1}
+.scorre-attivo .colata{--caldo:clamp(0, (var(--p) - .12) / .55, 1)}
+.colata::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:8px;border-radius:4px;
+  background:linear-gradient(180deg,var(--arancio-chiaro) 0,var(--arancio) calc(var(--caldo) * 100%),#4A4F57 calc(var(--caldo) * 100%));
+  box-shadow:0 0 calc(var(--caldo) * 22px) rgba(242,106,27,.55)}
+.colata h3{color:var(--fumo);margin-bottom:8px}
+.colata p{color:#D3D1CC;max-width:52ch;margin:0}
+@media (min-width:900px){.colata{grid-template-columns:1fr 1fr;column-gap:48px}}
+.cifre{list-style:none;margin:48px 0 0;padding:0;display:grid;gap:18px}
+.cifre li{border-top:2px solid var(--arancio);padding-top:14px}
+.cifre b{display:block;font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-size:2.2rem;line-height:1.05;color:var(--arancio-chiaro)}
+.cifre span{color:#D3D1CC}
+@media (min-width:800px){.cifre{grid-template-columns:repeat(3,1fr);gap:28px}}
+
+/* le foto */
+.galleria{display:grid;gap:16px;margin-top:36px}
+.galleria figure{margin:0}
+.galleria img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.galleria figcaption{font-size:.95rem;color:var(--grigio);margin-top:8px}
+@media (min-width:700px){.galleria{grid-template-columns:1fr 1fr}}
+
+/* le recensioni d'esempio */
+.recensioni{background:var(--fumo-2)}
+.voci-clienti{display:grid;gap:18px;margin-top:36px}
+.voci-clienti blockquote{margin:0;background:var(--fumo);padding:26px 24px;border-top:4px solid var(--acciaio)}
+.voci-clienti blockquote p:first-child{font-size:1.2rem;line-height:1.45;font-weight:500}
+.firma{font-size:.95rem;color:var(--grigio);margin:0}
+@media (min-width:900px){.voci-clienti{grid-template-columns:repeat(3,1fr)}}
+
+/* la mappa disegnata */
+.cartina{margin:36px 0 0;max-width:760px}
+.cartina svg{width:100%;border:1px solid var(--bordo)}
+.cartina figcaption{font-size:.95rem;color:var(--grigio);margin-top:12px}
+
+/* gli orari */
+.orari{background:var(--fumo-2)}
+.giorni{display:grid;max-width:640px;margin:32px 0 0}
+.giorni div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--bordo)}
+.giorni dt{font-weight:600}
+.giorni dd{margin:0;text-align:right}
+
+/* i contatti, sull'acciaio */
+.contatti{background:var(--acciaio);color:var(--fumo)}
+.contatti .occhiello{color:var(--arancio-chiaro)}
+.contatti .dentro{display:grid;gap:44px}
+.contatti h2{margin-bottom:20px}
+.contatti p{color:#D3D1CC}
+.numero{font-family:'Barlow Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:2rem;color:var(--fumo)}
+.modulo{background:var(--acciaio-2);padding:28px 24px;display:grid;gap:16px}
+.modulo label{display:grid;gap:6px;font-size:.95rem;font-weight:600}
+.modulo input,.modulo textarea{font:inherit;font-weight:400;min-height:48px;padding:10px 14px;border:1px solid rgba(231,229,225,.35);background:var(--acciaio);color:var(--fumo);width:100%}
+.modulo input:focus-visible,.modulo textarea:focus-visible{outline:3px solid var(--arancio-chiaro);outline-offset:2px}
+.modulo .bottone{justify-self:start}
+.modulo .nota-esempio{color:var(--arancio-chiaro);font-weight:600}
+@media (min-width:900px){.contatti .dentro{grid-template-columns:1fr 1fr;align-items:start}}
+
+/* il piede */
+.piede{background:var(--fumo-2);padding:40px clamp(16px,5vw,64px) 48px}
+.piede .marchio{font-size:1.6rem;margin-bottom:8px}
+.piede p{margin:0 0 6px}
+.piede .esempio{font-size:.95rem;color:var(--grigio);margin-top:14px}

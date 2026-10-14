@@ -1,0 +1,10 @@
+/* FILE: base/base.css — le poche regole comuni ai siti d'esempio. Lo stato di partenza è quello fermo e leggibile: il movimento lo
+   accende scorre.js con la classe .scorre-attivo, e ogni sito lo scrive solo sotto quella classe (lo controlla controlla-esempi) */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0}
+img,svg{max-width:100%;height:auto;display:block}
+.scorre-attivo [data-scorre~="entra"]{opacity:calc(.12 + .88 * var(--e, 1));transform:translateY(calc((1 - var(--e, 1)) * 28px))}
+.nota-esempio{margin:.75rem 0 0}
+.nota-esempio:empty{display:none}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px}

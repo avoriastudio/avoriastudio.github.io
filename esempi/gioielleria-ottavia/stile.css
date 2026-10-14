@@ -1,0 +1,114 @@
+/* Gioielleria Ottavia — gioielleria e laboratorio. Verde bosco, perla e rame (il rame solo grande o sul verde); DM Serif Display per
+   i titoli, Mulish per il testo. Niente oro su nero, niente Didot: non somiglia ad Aura. Il momento di scroll è la luce sul banco:
+   sulla foto delle fedi una lama di luce attraversa i gioielli mentre scorri, e la foto si avvicina appena */
+:root{
+  --bosco:#1F3A33; --bosco-2:#2C4B42; --perla:#F5F2EC; --perla-2:#ECE6DA;
+  --rame:#A8604A; --rame-scuro:#8A4A36; --rame-chiaro:#E9C7B8; --carbone:#22201E; --grigio:#5E5A54; --bordo:rgba(31,58,51,.15);
+}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+body{background:var(--perla);color:var(--carbone);font:400 1.0625rem/1.65 'Mulish',system-ui,sans-serif}
+h1,h2,h3,.marchio{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.08;margin:0;color:var(--bosco)}
+h2{font-size:clamp(2rem,5.8vw,3.2rem);max-width:18ch}
+h3{font-size:1.4rem}
+p{margin:0 0 1em}
+section{scroll-margin-top:72px}
+.dentro{max-width:1120px;margin:0 auto}
+main>section{padding:clamp(64px,11vw,128px) clamp(16px,5vw,64px)}
+.occhiello{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--rame-scuro);margin-bottom:14px}
+
+/* la testata e i bottoni */
+.testata{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:10px clamp(16px,5vw,64px);background:rgba(245,242,236,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--bordo)}
+.testata .marchio{display:inline-flex;align-items:center;min-height:48px;font-size:1.35rem;text-decoration:none}
+.bottone{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:2px;
+  font:700 .95rem/1 'Mulish',system-ui,sans-serif;letter-spacing:.04em;text-decoration:none;border:1.5px solid var(--bosco);cursor:pointer;transition:background-color .2s,color .2s}
+.bottone.pieno{background:var(--bosco);color:var(--perla)}
+.bottone.pieno:hover{background:var(--bosco-2)}
+.bottone.vuoto{color:var(--bosco);background:transparent}
+.bottone.vuoto:hover{background:var(--perla-2)}
+.bottone.piccolo{padding:0 18px}
+.azioni{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* l'apertura: la luce sul banco. Senza script la lama di luce non c'è e la foto è ferma */
+.apertura{padding-top:clamp(40px,8vw,96px)}
+.apertura .dentro{display:grid;gap:40px;align-items:center}
+.apertura h1{font-size:clamp(2.6rem,9vw,5rem);margin-bottom:22px;max-width:13ch}
+.lead{font-size:clamp(1.1rem,2.5vw,1.25rem);max-width:38ch;color:var(--grigio)}
+.vetrina{position:relative;margin:0;border-radius:4px;overflow:hidden;box-shadow:0 0 0 1px var(--bordo),0 40px 80px -40px rgba(31,58,51,.55)}
+.vetrina img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.vetrina::after{content:"";position:absolute;inset:-10% -60%;opacity:0;pointer-events:none;mix-blend-mode:soft-light;
+  background:linear-gradient(105deg,transparent 38%,rgba(255,250,240,.95) 50%,transparent 62%)}
+.scorre-attivo .vetrina::after{opacity:1;transform:translateX(calc((var(--p) * 1.6 - .8) * 100%))}
+.scorre-attivo .vetrina img{transform:scale(calc(1 + var(--p) * .06))}
+@media (min-width:900px){.apertura .dentro{grid-template-columns:1fr 1fr;gap:64px}}
+
+/* il laboratorio, sul verde */
+.chi{background:var(--bosco);color:var(--perla)}
+.chi h2{color:var(--perla);margin-bottom:22px}
+.chi .occhiello{color:var(--rame-chiaro)}
+.chi .dentro{display:grid;gap:40px;align-items:center}
+.chi p{max-width:46ch;color:#DCE4DF}
+.ritratto{margin:0;border-radius:4px;overflow:hidden}
+.ritratto img{width:100%;aspect-ratio:4/3;object-fit:cover}
+@media (min-width:900px){.chi .dentro{grid-template-columns:1fr 1fr;gap:72px}}
+
+/* i lavori, coi prezzi d'esempio */
+.nota{font-size:.95rem;color:var(--grigio);margin-top:12px}
+.lavori{list-style:none;margin:36px 0 0;padding:0;max-width:860px}
+.lavori li{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:22px 0;border-bottom:1px solid var(--bordo)}
+.lavori h3{margin-bottom:6px}
+.lavori p{margin:0;color:var(--grigio);max-width:46ch}
+.lavori b{flex:0 0 auto;font-family:'DM Serif Display',Georgia,serif;font-weight:400;font-size:1.3rem;color:var(--rame-scuro)}
+
+/* le foto */
+.foto{background:var(--perla-2)}
+.galleria{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}
+.galleria figure{margin:0}
+.galleria img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px}
+.galleria figcaption{font-size:.95rem;color:var(--grigio);margin-top:8px}
+@media (min-width:900px){.galleria{grid-template-columns:repeat(4,1fr);gap:20px}}
+
+/* le recensioni d'esempio */
+.voci-clienti{display:grid;gap:22px;margin-top:36px}
+.voci-clienti blockquote{margin:0;padding:0 0 0 22px;border-left:2px solid var(--rame)}
+.voci-clienti blockquote p:first-child{font-family:'DM Serif Display',Georgia,serif;font-size:1.4rem;line-height:1.3;color:var(--bosco)}
+.firma{font-size:.95rem;color:var(--grigio);margin:0}
+@media (min-width:900px){.voci-clienti{grid-template-columns:repeat(3,1fr)}}
+
+/* la mappa disegnata */
+.cartina{margin:36px 0 0;max-width:760px}
+.cartina svg{width:100%;border-radius:4px;border:1px solid var(--bordo)}
+.cartina figcaption{font-size:.95rem;color:var(--grigio);margin-top:12px}
+
+/* gli orari */
+.orari{background:var(--perla-2)}
+.giorni{display:grid;max-width:640px;margin:32px 0 0}
+.giorni div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--bordo)}
+.giorni dt{font-weight:700}
+.giorni dd{margin:0;text-align:right}
+
+/* i contatti, sul verde */
+.contatti{background:var(--bosco);color:var(--perla)}
+.contatti h2,.contatti h3{color:var(--perla)}
+.contatti .occhiello{color:var(--rame-chiaro)}
+.contatti .dentro{display:grid;gap:44px}
+.contatti h2{margin-bottom:20px}
+.contatti p{color:#DCE4DF}
+.numero{font-family:'DM Serif Display',Georgia,serif;font-size:1.7rem;margin-top:18px}
+.bottone.chiaro{background:var(--perla);color:var(--bosco);border-color:var(--perla)}
+.bottone.chiaro:hover{background:#fff}
+.bottone.chiaro-vuoto{color:var(--perla);border-color:var(--rame-chiaro);background:transparent}
+.bottone.chiaro-vuoto:hover{background:var(--bosco-2)}
+.modulo{background:var(--bosco-2);border-radius:4px;padding:28px 24px;display:grid;gap:16px}
+.modulo label{display:grid;gap:6px;font-size:.95rem;font-weight:700}
+.modulo input,.modulo textarea{font:inherit;font-weight:400;min-height:48px;padding:10px 14px;border-radius:2px;border:1px solid rgba(245,242,236,.35);background:var(--bosco);color:var(--perla);width:100%}
+.modulo input:focus-visible,.modulo textarea:focus-visible{outline:3px solid var(--rame-chiaro);outline-offset:2px}
+.modulo .bottone{justify-self:start}
+.modulo .nota-esempio{color:var(--rame-chiaro);font-weight:700}
+@media (min-width:900px){.contatti .dentro{grid-template-columns:1fr 1fr;align-items:start}}
+
+/* il piede */
+.piede{background:var(--perla-2);padding:40px clamp(16px,5vw,64px) 48px}
+.piede .marchio{font-size:1.4rem;margin-bottom:8px}
+.piede p{margin:0 0 6px}
+.piede .esempio{font-size:.95rem;color:var(--grigio);margin-top:14px}
