@@ -5,7 +5,7 @@
 <!-- FILE: src/listino.html — il listino 2.1: l'offerta per il titolare che fa tutto (specifica del blocco 3B), nella stessa identità e con la stessa regia della pagina-manuale -->
 <title>Avoria Studio · Listino</title>
 <link rel="canonical" href="https://avoriastudio.github.io/listino/">
-<meta name="description" content="I prezzi di Avoria Studio: foto e video, i tuoi social e il tuo negozio online, l'assistente AI per i clienti, i sistemi per il lavoro che si ripete, il canone Reparto AI e Aperto per bar, pizzerie e ristoranti. Al netto dell'IVA, se dovuta.">
+<meta name="description" content="I prezzi di Avoria Studio: foto e video, i siti per ogni attività, i tuoi social e il tuo negozio online, l'assistente AI per i clienti, i sistemi per il lavoro che si ripete, il canone Reparto AI e Aperto per bar, pizzerie e ristoranti. Al netto dell'IVA, se dovuta.">
 <style>@font-face {
   font-family: 'Archivo';
   font-style: normal;
@@ -683,6 +683,10 @@ ul{margin:0;padding-left:1.1em}
 /* «Con la vetrina» ha tre voci: senza questa riga la griglia le allargava fino all'altezza delle altre carte (13/10) */
 #aperto .canone .punti{align-content:start}
 #aperto .spiega a{color:inherit}
+/* I siti (13/10): sotto le tre carte, il canone e il su misura come voci, staccati dalle carte */
+#siti .voci{margin-top:clamp(24px,4vw,40px)}
+/* come per Aperto: le carte con meno punti non li allargano fino all'altezza della carta più lunga */
+#siti .canone .punti{align-content:start}
 </style>
 <style>/* FILE: src/insegna.css — l'insegna APERTO (specifica PIANO-APERTO §4.8): lettere da insegna nella palette di Avoria, nessun colore nuovo
    oltre all'oro chiaro della luce. --luce va da 0 (spenta: inchiostro) a 1 (accesa: oro chiaro con l'alone); .accesa fa il tremolio
@@ -713,7 +717,7 @@ ul{margin:0;padding-left:1.1em}
 <header class="barra-nav">
   <a class="marchio" href="../" aria-label="Avoria Studio, torna al sito"><svg><use href="#arco"/></svg><span class="parola">AVORIA</span></a>
   <nav aria-label="Sezioni">
-    <a href="#foto-video">Foto e video</a><a href="#social">Social</a><a href="#clienti">Assistente</a>
+    <a href="#foto-video">Foto e video</a><a href="#siti">Siti</a><a href="#social">Social</a><a href="#clienti">Assistente</a>
     <a href="#lavoro">Sistemi</a><a href="#reparto">Reparto AI</a><a href="#aperto">Aperto</a><a href="#mercato">Mercato</a>
   </nav>
 </header>
@@ -794,11 +798,45 @@ ul{margin:0;padding-left:1.1em}
         <div class="voce" data-servizio="ogni-angolo"><h3>Ogni angolo</h3><p data-spiega>Un prodotto ripreso in un solo movimento: di fronte, dall'alto, da vicino. Un video di 15 secondi in 3 formati e 8 scatti dalle stesse angolazioni. <span class="tempo" data-tempo>7 giorni lavorativi</span></p><span class="prezzo">€690</span></div>
         <div class="voce" data-servizio="logo-3d"><h3>Logo in 3D</h3><p data-spiega>Il tuo logo come un oggetto vero, nel materiale che scegli: un'animazione di 6 secondi in 3 formati, una versione che gira senza fine e 4 immagini fisse. <span class="tempo" data-tempo>7 giorni lavorativi</span></p><span class="prezzo">€390</span></div>
         <div class="voce" data-servizio="mondo"><h3>Mondo</h3><p data-spiega>Una campagna con una storia: l'idea, 6 scatti, 2 video e le versioni per la pubblicità. <span class="tempo" data-tempo>3 settimane</span></p><span class="prezzo">da €1.200</span></div>
-        <div class="voce" data-servizio="sito-film"><h3>Sito film da scroll</h3><p data-spiega>Un sito che si muove mentre lo scorri, come questo. <span class="tempo" data-tempo>4 settimane</span></p><span class="prezzo">da €2.900</span></div>
       </div>
       <div class="extra-riga" data-svela>
         <span class="stato-linea">Extra, quando superi il pacchetto</span>
         <ul class="extra"><li>Scatto in più <b>€35</b></li><li>Scatto che si muove in più <b>€49</b></li><li>Reel in più <b>€150</b></li><li>Scatto in 4K <b>€40</b></li><li>Voce narrante AI <b>€60</b></li><li>Consegna express <b>+30%</b></li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-bis · I siti (specifica SPEC-VIDEO-LANCIO-SITI §2, 13/10): tre livelli, il canone che li tiene accesi e il su misura -->
+  <section id="siti" class="fascia giorno" data-blocco="siti" data-capitoli="Siti">
+    <div class="dentro">
+      <div>
+        <span class="occhiello">I siti · per ogni attività</span>
+        <h2>Il sito della tua attività, <span class="firma">scritto</span> in codice.</h2>
+      </div>
+      <p class="lead" data-svela data-mandi><b>Cosa ci mandi:</b> il logo, se c'è, 6–10 foto dal telefono, i testi o 15 minuti di chiamata, i contatti e gli orari. Per studi, negozi, bar, ristoranti e aziende.</p>
+      <div class="canoni" data-svela>
+        <article class="canone" data-servizio="sito-codice">
+          <header><h3>Sito in codice</h3><span class="ruolo" data-spiega>Una pagina che avanza con lo scroll, fatta per il telefono</span></header>
+          <p class="prezzo">€290<small>, una volta</small></p>
+          <ul class="punti" data-ricevi><li>Chi sei, cosa fai, i servizi o il menu</li><li>Le tue foto, sistemate</li><li>Le recensioni, la mappa, gli orari</li><li>I contatti: chiamata, WhatsApp, prenotazione o modulo</li><li>Veloce, con la SEO di base e il collegamento alla scheda Google</li></ul>
+          <p class="condizioni" data-tempo>Online in 5 giorni lavorativi dal tuo materiale · 1 revisione</p>
+        </article>
+        <article class="canone" data-servizio="sito-scatti">
+          <header><h3>Sito con gli scatti</h3><span class="ruolo" data-spiega>Fino a 5 sezioni o pagine, con le foto rifatte da noi</span></header>
+          <p class="prezzo">€790<small>, una volta</small></p>
+          <ul class="punti" data-ricevi><li>Tutto il Sito in codice</li><li>Fino a 5 sezioni o pagine</li><li>6 scatti della tua attività, fatti dalle tue foto</li><li>1 scatto che si muove</li></ul>
+          <p class="condizioni" data-tempo>Online in 7 giorni lavorativi · 2 revisioni</p>
+        </article>
+        <article class="canone" data-servizio="sito-film">
+          <header><h3>Sito film da scroll</h3><span class="ruolo" data-spiega>Come questo: scene e video che avanzano mentre scorri</span></header>
+          <p class="prezzo">€1.490<small>, una volta</small></p>
+          <ul class="punti" data-ricevi><li>Fino a 6 sezioni, in due lingue</li><li>Fino a 8 scatti</li><li>Fino a 3 scene che si muovono</li></ul>
+          <p class="condizioni" data-tempo>Online in 3 settimane</p>
+        </article>
+      </div>
+      <div class="voci" data-svela>
+        <div class="voce" data-servizio="sito-acceso"><h3>Il sito acceso</h3><p data-spiega>Hosting, rinnovo del dominio, certificato, copia di sicurezza, un controllo al mese e una piccola modifica al mese: orari, prezzi, una foto. Senza canone ti consegniamo i file e le istruzioni. <span class="tempo" data-tempo>Ogni mese, dal giorno in cui è online</span></p><span class="prezzo">€19<small>/mese</small></span></div>
+        <div class="voce" data-servizio="sito-su-misura"><h3>Su misura</h3><p data-spiega>Prenotazioni, negozio online, area riservata, gestionale: si parte dalla call, come per <a href="#gestionali">i gestionali</a>. <span class="tempo" data-tempo>Tempi nel preventivo</span></p><span class="prezzo">preventivo</span></div>
       </div>
     </div>
   </section>
@@ -1043,7 +1081,8 @@ ul{margin:0;padding-left:1.1em}
             <tr><td>Chatbot per le domande frequenti</td><td>€500–1.500, poi €30–80 al mese</td><td>Assistente del negozio €990, poi €90 al mese</td><td>lucasammarco.com</td></tr>
             <tr><td>Centralino AI per ristoranti, solo il telefono</td><td>€129–199 al mese</td><td>Aperto · Risponde €149, con prenotazioni, WhatsApp e menu</td><td>listini pubblici di due servizi italiani</td></tr>
             <tr><td>Video aziendale o spot</td><td>€1.500–3.000</td><td>Ogni angolo €690</td><td>maxdefilms.com</td></tr>
-            <tr><td>Sito aziendale su misura</td><td>€2.500–8.000</td><td>Sito film da €2.900</td><td>artworkstudios.it · lorenzoalbano.it</td></tr>
+            <tr><td>Sito one-page o vetrina semplice, da un'agenzia</td><td>da €790</td><td>Sito in codice €290</td><td>artworkstudios.it</td></tr>
+            <tr><td>Sito vetrina strutturato, da un'agenzia</td><td>da €2.500</td><td>Sito film da scroll €1.490</td><td>artworkstudios.it</td></tr>
             <tr><td>Primo progetto AI</td><td>€1.500–5.000, poi €200–600 al mese</td><td>Analisi €690, avvii da €990</td><td>arko-ai.com</td></tr>
             <tr><td>Automazione con AI</td><td>€1.500–6.000, poi €150–500 al mese</td><td>€2.400, poi €290 al mese</td><td>astraloopstudio.com</td></tr>
             <tr><td>Assistente sui documenti</td><td>€3.500–5.500 di avvio</td><td>€2.900, poi €290 al mese</td><td>sos-ai.eu</td></tr>
@@ -1051,7 +1090,7 @@ ul{margin:0;padding-left:1.1em}
           </tbody>
         </table>
       </div>
-      <p class="fonti" data-svela>Fasce dichiarate da studi, agenzie e consulenti italiani nelle loro guide pubbliche, lette il 17 e il 23 settembre 2026; per il centralino, i listini pubblici letti il 10 ottobre 2026. Sono riferimenti del mercato, non misure nostre.</p>
+      <p class="fonti" data-svela>Fasce dichiarate da studi, agenzie e consulenti italiani nelle loro guide pubbliche, lette il 17 e il 23 settembre 2026; per il centralino, i listini pubblici letti il 10 ottobre 2026; per i siti, i prezzi di partenza di un'agenzia letti il 13 ottobre 2026. Sono riferimenti del mercato, non misure nostre.</p>
     </div>
   </section>
 
