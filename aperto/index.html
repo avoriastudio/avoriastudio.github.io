@@ -16,9 +16,194 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:locale" content="it_IT">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='40 30 160 200'%3E%3Crect x='40' y='30' width='160' height='200' fill='%231C1813'/%3E%3Cg fill='none' stroke='%23F4ECDE' stroke-width='15' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M60 210 L108 60'/%3E%3Cpath d='M180 210 L132 60'/%3E%3Cpath d='M108 60 Q120 46 132 60'/%3E%3C/g%3E%3Cline x1='84' y1='140' x2='156' y2='140' stroke='%23B8935E' stroke-width='13' stroke-linecap='round'/%3E%3C/svg%3E" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,600;1,500&display=swap">
+<style>@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 300 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url(../font/archivo-normal-300-900-vietnamese.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 300 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url(../font/archivo-normal-300-900-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 300 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url(../font/archivo-normal-300-900-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../font/geist-mono-normal-400-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../font/geist-mono-normal-400-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../font/geist-mono-normal-400-symbols2.woff2) format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../font/geist-mono-normal-400-vietnamese.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../font/geist-mono-normal-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../font/geist-mono-normal-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../font/geist-mono-normal-400-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../font/geist-mono-normal-400-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../font/geist-mono-normal-400-symbols2.woff2) format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../font/geist-mono-normal-400-vietnamese.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../font/geist-mono-normal-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../font/geist-mono-normal-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../font/playfair-display-italic-500-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../font/playfair-display-italic-500-vietnamese.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../font/playfair-display-italic-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(../font/playfair-display-italic-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../font/playfair-display-normal-600-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../font/playfair-display-normal-600-vietnamese.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../font/playfair-display-normal-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../font/playfair-display-normal-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
 <style>
 :root{
   --avorio:#F2EEE6; --posa:#FBFAF7; --inchiostro:#16140F; --grafite:#5E5A52;
@@ -67,7 +252,7 @@
 .indice button[aria-current="step"] .tacca::before{width:30px;background:var(--oro);opacity:1}
 .indice button.annuncia .nome{opacity:1;transform:none}
 .indice button:focus-visible{outline:none}
-.indice button:focus-visible .nome{outline:2px solid var(--oro);outline-offset:2px}
+.indice button:focus-visible .nome{outline:2px solid var(--anello,var(--oro));outline-offset:2px}
 
 
 .indice-corto{display:none}
@@ -92,7 +277,14 @@ html{scroll-behavior:smooth;background:var(--avorio)}
 body{margin:0;background:var(--avorio);color:var(--inchiostro);font-family:var(--f-titolo);font-size:17px;line-height:1.55}
 a{color:inherit}
 svg,canvas{max-width:100%}
-:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+
+:root,.giorno{--anello:var(--inchiostro)}
+.notte,[data-tono="notte"]{--anello:var(--oro)}
+:focus-visible{outline:2px solid var(--anello);outline-offset:3px}
+
+.salta{position:fixed;left:12px;top:-200px;z-index:50;padding:12px 18px;border-radius:999px;background:var(--inchiostro);color:var(--avorio-luce);
+  font-family:var(--f-dati);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+.salta:focus{top:calc(12px + env(safe-area-inset-top,0px))}
 .fascia{padding-inline:clamp(16px,5vw,72px);padding-block:clamp(56px,9vw,120px)}
 .dentro{max-width:1180px;margin-inline:auto;display:flex;flex-direction:column;gap:clamp(28px,4vw,56px)}
 h1,h2,h3{margin:0;font-weight:720;letter-spacing:-.025em;line-height:1.02;text-wrap:balance}
@@ -231,7 +423,9 @@ ul{margin:0;padding-left:1.1em}
 
 .chiusura{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
 .chiusura svg{width:56px;height:70px}
-.piede{padding:22px clamp(16px,5vw,72px);font-family:var(--f-dati);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grafite);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid #DDD5C7}
+.piede{padding:22px clamp(16px,5vw,72px);font-family:var(--f-dati);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grafite);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid #DDD5C7}
+
+.piede a{display:inline-block;padding-block:.5em}
 
 
 .barra-nav::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--oro);transform-origin:left;transform:scaleX(var(--avanza,0));pointer-events:none}
@@ -319,6 +513,8 @@ ul{margin:0;padding-left:1.1em}
 .tappa .nota{font-size:.8rem;color:var(--grafite);line-height:1.35}
 .tappa.soglia a{border-color:var(--oro)}
 .tappa.notte a{background:var(--nero);border-color:var(--filo-notte);color:var(--avorio-luce)}
+
+.giorno .tappa.notte{--anello:var(--inchiostro)}
 .tappa.notte small,.tappa.notte .nota,.tappa.notte .prezzo small{color:var(--acciaio)}
 .tappa.insieme a{background:linear-gradient(135deg,var(--nero) 52%,#2b2519)}
 .tappa a:hover{border-color:var(--oro)}
@@ -342,7 +538,8 @@ ul{margin:0;padding-left:1.1em}
 .canone.consigliato{background:var(--inchiostro);border-color:var(--inchiostro);color:var(--avorio)}
 .canone.consigliato .prezzo small,.canone.consigliato .condizioni{color:#C9C2B4}
 .canone.consigliato .condizioni{border-color:#3a362e}
-.segno{align-self:flex-start;font-family:var(--f-dati);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);
+
+.segno{align-self:flex-start;font-family:var(--f-dati);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);
   border:1px solid var(--oro);border-radius:999px;padding:3px 10px}
 
 
@@ -453,7 +650,7 @@ ul{margin:0;padding-left:1.1em}
 
 .bottone-vuoto{display:inline-block;border:1px solid var(--inchiostro);color:var(--inchiostro);text-decoration:none;border-radius:999px;padding:13px 23px;font-family:var(--f-dati);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
 .bottone-vuoto:hover{border-color:var(--oro)}
-.azioni .dati a{color:inherit}
+.azioni .dati a{display:inline-block;padding-block:.5em;color:inherit}   
 .azioni .dati{font-size:.66rem;color:var(--grafite)}
 
 
@@ -676,7 +873,9 @@ ul{margin:0;padding-left:1.1em}
 .rivedi[hidden]{display:none}
 .rivedi svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .rivedi:hover{border-color:var(--oro)}
-.rivedi:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.rivedi:focus-visible{outline:2px solid var(--anello,var(--oro));outline-offset:2px}
+
+.giorno .rivedi{border-color:var(--filo);color:var(--inchiostro)}
 .ico{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 
 
@@ -839,7 +1038,7 @@ ul{margin:0;padding-left:1.1em}
   .scrivici{display:inline-flex;align-items:center;gap:7px;min-height:44px;margin-block:-10px;padding:0 16px;border-radius:999px;background:var(--inchiostro);color:var(--avorio);
     font-family:var(--f-dati);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
   .scrivici .ico{width:16px;height:16px;flex:none}
-  .scrivici:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+  .scrivici:focus-visible{outline:2px solid var(--anello,var(--oro));outline-offset:2px}
 }
 
 
@@ -937,8 +1136,9 @@ ul{margin:0;padding-left:1.1em}
 
 
 .giornata{padding-bottom:clamp(24px,4vw,56px)}
+
 .momento{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:center;
-  max-width:1180px;margin-inline:auto;padding:clamp(24px,4vw,56px) clamp(16px,5vw,72px)}
+  width:100%;max-width:1180px;margin-inline:auto;padding:clamp(24px,4vw,56px) clamp(16px,5vw,72px)}
 .momento .testo{display:flex;flex-direction:column;gap:14px;max-width:46ch}
 .momento h3{margin:0;font-size:clamp(1.7rem,3.4vw,2.6rem);line-height:1.08;letter-spacing:-.015em}
 
@@ -947,6 +1147,8 @@ ul{margin:0;padding-left:1.1em}
 .livello{align-self:flex-start;padding:6px 12px;border:1px solid var(--filo);border-radius:99px;font-family:var(--f-dati);font-size:.75rem;
   letter-spacing:.1em;text-transform:uppercase;color:var(--secondario)}
 .scena-aperto{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px}
+
+.scena-aperto > [aria-hidden="true"]{pointer-events:none;-webkit-user-select:none;user-select:none}
 .scena-aperto figcaption{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
 .scena-aperto figcaption span{font-family:var(--f-dati);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--secondario)}
 .momento .telefono.dm{height:min(72svh,660px)}
@@ -1013,8 +1215,8 @@ ul{margin:0;padding-left:1.1em}
 .carta-timbri small{font-size:3.2cqw;color:var(--grafite)}
 .timbri{display:grid;grid-template-columns:repeat(10,1fr);gap:1.4cqw}
 .timbri i{aspect-ratio:1;border-radius:50%;background:var(--oro)}
-.timbri i.vuoto,.timbri i.nuovo{background:none;box-shadow:inset 0 0 0 .5cqw #CFC6B6}
-.timbrata .timbri i.nuovo{background:var(--oro);box-shadow:none;transition:background .3s}
+.timbri i.vuoto,.timbri i.timbro-nuovo{background:none;box-shadow:inset 0 0 0 .5cqw #CFC6B6}
+.timbrata .timbri i.timbro-nuovo{background:var(--oro);box-shadow:none;transition:background .3s}
 
 
 .ig-post{display:flex;flex:1;flex-direction:column;gap:2cqw;min-height:0;overflow:hidden}
@@ -1059,6 +1261,9 @@ ul{margin:0;padding-left:1.1em}
 .pubblica.toccato{transform:scale(.95);box-shadow:0 0 0 2cqw rgba(184,147,94,.35)}
 
 
+.dentro > div > h2 + .lead{margin-top:clamp(12px,1.6vw,20px)}
+
+
 .aperto-condizioni{max-width:820px}
 
 #prezzi .canone .punti{align-content:start}
@@ -1087,20 +1292,12 @@ ul{margin:0;padding-left:1.1em}
     <line x1="44" y1="110" x2="116" y2="110" stroke-width="13" stroke-linecap="round" style="stroke:var(--bar,#B8935E)"/>
   </symbol>
   
-  <symbol id="ico-indietro" viewBox="0 0 24 24"><path d="M15 4 7 12l8 8"/></symbol>
   <symbol id="ico-chiama" viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
-  <symbol id="ico-video" viewBox="0 0 24 24"><rect x="2.5" y="6" width="13" height="12" rx="3"/><path d="m15.5 10.5 6-3.5v10l-6-3.5"/></symbol>
-  <symbol id="ico-foto" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></symbol>
-  <symbol id="ico-voce" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></symbol>
-  <symbol id="ico-immagine" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="1.8"/><path d="m21 15-5-5-9 11"/></symbol>
-  <symbol id="ico-adesivo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0M9 9.5h.01M15 9.5h.01"/></symbol>
-  <symbol id="ico-fatto" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
-  
-  <symbol id="ico-negozio" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8a3 3 0 0 1 6 0"/></symbol>
   <symbol id="ico-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
-  <symbol id="ico-su" viewBox="0 0 24 24"><path d="M12 19V6M6 11l6-6 6 6"/></symbol>
 </svg>
 
+
+<a class="salta" href="#contenuto">Vai al contenuto</a>
 <header class="barra-nav">
   <a class="marchio" href="../" aria-label="Avoria Studio, torna al sito"><svg><use href="#arco"/></svg><span class="parola">AVORIA</span></a>
   <nav aria-label="Sezioni">
@@ -1110,7 +1307,7 @@ ul{margin:0;padding-left:1.1em}
   <a class="scrivici" href="https://ig.me/m/avor.iastudio"><svg class="ico" aria-hidden="true"><use href="#ico-chat"/></svg>Scrivici</a>
 </header>
 
-<main>
+<main id="contenuto">
   
   <section id="apertura" class="fascia giorno aperto-apertura" data-capitoli="Aperto">
     <div class="dentro">
@@ -1263,7 +1460,7 @@ ul{margin:0;padding-left:1.1em}
               <p class="ig-ora" data-da="0.2">Oggi 19:00 · messaggio automatico del bar</p>
               <p class="ig-bolla lui" data-da="0.6">Ciao Anna, è da un mese che non passi. Questa settimana il primo spritz te lo offriamo noi.</p>
               <p class="ig-bolla io" data-da="2.4">Ci vediamo venerdì, grazie.</p>
-              <div class="carta-timbri" data-da="3.6" data-segna="4.4|timbrata"><b>La tua tessera</b><span class="timbri" role="img" aria-label="La tessera di Anna: 8 timbri su 10"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="nuovo"></i><i class="vuoto"></i><i class="vuoto"></i></span><small>Al decimo caffè, uno lo offriamo noi</small></div>
+              <div class="carta-timbri" data-da="3.6" data-segna="4.4|timbrata"><b>La tua tessera</b><span class="timbri" role="img" aria-label="La tessera di Anna: 8 timbri su 10"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="timbro-nuovo"></i><i class="vuoto"></i><i class="vuoto"></i></span><small>Al decimo caffè, uno lo offriamo noi</small></div>
             </div>
           </div>
         </div>
@@ -1347,7 +1544,7 @@ ul{margin:0;padding-left:1.1em}
     <div class="palco">
     <article class="momento quadro" data-momento="notte" aria-labelledby="m-notte">
       <div class="testo">
-        <div class="insegna" data-insegna="accende" role="img" aria-label="Aperto"><span>APERTO</span></div>
+        <div class="insegna" data-insegna="accende" aria-hidden="true"><span>APERTO</span></div>
         <span class="ora">23:40 · chiuso</span>
         <h3 id="m-notte">Chiuso. L'insegna <span class="firma">resta</span> accesa.</h3>
         <p>Un cliente scrive e prenota per domani. Tu mandi un vocale, «domani la genovese a 14 euro», e il menu è già cambiato. La risposta alla recensione di stasera è pronta: la approvi tu.</p>
@@ -1465,7 +1662,7 @@ ul{margin:0;padding-left:1.1em}
   
   <section id="scrivici" class="fascia notte aperto-chiusura" data-capitoli="Scrivici">
     <div class="dentro">
-      <div class="insegna" data-insegna="accesa" role="img" aria-label="Aperto"><span>APERTO</span></div>
+      <div class="insegna" data-insegna="accesa" aria-hidden="true"><span>APERTO</span></div>
       <h2>Diventa uno dei <span class="firma">primi tre</span>.</h2>
       <p class="lead">Scrivici com'è il tuo locale: in una call di mezz'ora capiamo insieme da dove partire.</p>
       <div class="azioni"><a class="bottone-pieno chiaro" href="https://ig.me/m/avor.iastudio">Scrivici in DM</a><a class="bottone-vuoto" href="mailto:avoriastudio@outlook.it?subject=Aperto%2C%20il%20mio%20locale">Scrivi per la call</a>
@@ -1732,7 +1929,8 @@ AV.insegnaAccesa = insegnaAccesa;
     b.hidden = true;
     b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></svg><span>Rivedi</span>';
     b.setAttribute('aria-label', "Rivedi l'esempio dall'inizio");
-    b.addEventListener('click', function () { vai(s, 0); s.stato = 'va'; b.hidden = true; avvia(); });
+    s.el.tabIndex = -1;
+    b.addEventListener('click', function () { vai(s, 0); s.stato = 'va'; s.el.focus({ preventScroll: true }); b.hidden = true; avvia(); });
     var sotto = s.el.querySelector('figcaption') || s.el;
     sotto.appendChild(b);
     return b;
@@ -1811,7 +2009,6 @@ AV.insegnaAccesa = insegnaAccesa;
   addEventListener('scroll', chiedi, { passive: true });
   addEventListener('resize', chiedi);
   aggiorna();
-  AV.insegne = { tutte: insegne, aggiorna: aggiorna };
 })();
 </script>
 <script>(function () {
@@ -2112,8 +2309,9 @@ AV.insegnaAccesa = insegnaAccesa;
     '<p class="dove"><b></b><span></span></p>' +
     '<button type="button" class="succ" aria-label="Capitolo successivo"><span aria-hidden="true">→</span></button>' +
     '<i class="avanza" aria-hidden="true"></i>';
-  document.body.appendChild(nav);
-  document.body.appendChild(corto);
+  var barra = document.querySelector('.barra-nav');
+  if (barra) barra.after(nav, corto);
+  else { document.body.appendChild(nav); document.body.appendChild(corto); }
   var doveNum = corto.querySelector('.dove b');
   var doveNome = corto.querySelector('.dove span');
 
