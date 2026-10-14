@@ -2,7 +2,7 @@
 <html lang="it">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- FILE: src/home.html — la home del sito (blocco 5B): i cinque bisogni del listino 2.1, i tre reel che avanzano con lo scroll, il caso Aura -->
+
 <title>Avoria Studio · Foto, video e social per il tuo negozio</title>
 <meta name="description" content="Ci mandi due foto dal telefono: ti tornano scatti e video pronti per il negozio e i social. Se vuoi li pubblichiamo noi, e quando dormi ai clienti risponde l'AI.">
 <link rel="canonical" href="https://avoriastudio.github.io/">
@@ -13,10 +13,195 @@
 <meta property="og:image" content="https://avoriastudio.github.io/assets/og-avoria-2.jpg">
 <meta property="og:locale" content="it_IT">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='40 30 160 200'%3E%3Crect x='40' y='30' width='160' height='200' fill='%231C1813'/%3E%3Cg fill='none' stroke='%23F4ECDE' stroke-width='15' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M60 210 L108 60'/%3E%3Cpath d='M180 210 L132 60'/%3E%3Cpath d='M108 60 Q120 46 132 60'/%3E%3C/g%3E%3Cline x1='84' y1='140' x2='156' y2='140' stroke='%23B8935E' stroke-width='13' stroke-linecap='round'/%3E%3C/svg%3E" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Geist+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,600;1,500&display=swap">
-<style>/* FILE: src/tokens.css — i due stati dell'identità Avoria 2.0 */
+<style>@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 300 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url(font/archivo-normal-300-900-vietnamese.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 300 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url(font/archivo-normal-300-900-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 300 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url(font/archivo-normal-300-900-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(font/geist-mono-normal-400-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(font/geist-mono-normal-400-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(font/geist-mono-normal-400-symbols2.woff2) format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(font/geist-mono-normal-400-vietnamese.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(font/geist-mono-normal-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(font/geist-mono-normal-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(font/geist-mono-normal-400-cyrillic-ext.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(font/geist-mono-normal-400-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(font/geist-mono-normal-400-symbols2.woff2) format('woff2');
+  unicode-range: U+2000-2001, U+2004-2008, U+200A, U+23B8-23BD, U+2500-259F;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(font/geist-mono-normal-400-vietnamese.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(font/geist-mono-normal-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(font/geist-mono-normal-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(font/playfair-display-italic-500-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(font/playfair-display-italic-500-vietnamese.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(font/playfair-display-italic-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url(font/playfair-display-italic-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(font/playfair-display-normal-600-cyrillic.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(font/playfair-display-normal-600-vietnamese.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(font/playfair-display-normal-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(font/playfair-display-normal-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
 :root{
   --avorio:#F2EEE6; --posa:#FBFAF7; --inchiostro:#16140F; --grafite:#5E5A52;
   --nero:#07080A; --avorio-luce:#F4ECDE; --acciaio:#8A94A3; --filo-notte:#1E2229;
@@ -36,7 +221,7 @@
 .stretto{ font-family:var(--f-titolo); font-variation-settings:"wdth" 62; }
 @media (prefers-reduced-motion: reduce){ *,*::before,*::after{ animation:none!important; transition:none!important; } }
 </style>
-<style>/* FILE: src/voce.css — tabellone e parole che respirano */
+<style>
 .solari{display:grid;grid-template-columns:repeat(var(--celle),minmax(0,1fr));gap:3px;padding:6px;border-radius:6px;
   font-family:var(--f-dati);font-weight:500;background:var(--solari-telaio);
   font-size:var(--solari-corpo,clamp(12px,1.7vw,22px));max-width:calc(var(--celle) * 1.9em + 12px)}
@@ -49,13 +234,13 @@
 [data-respiro]{font-family:var(--f-titolo);font-variation-settings:"wdth" 62;font-weight:820;line-height:.92;
   letter-spacing:-.01em;white-space:nowrap}
 </style>
-<style>/* FILE: src/soglia.css — il palco a due strati */
+<style>
 [data-soglia]{position:relative;overflow:hidden;isolation:isolate}
-/* ogni strato è un contesto di sovrapposizione: uno z-index dentro il giorno non deve scavalcare la notte */
+
 [data-soglia] > .strato{position:absolute;inset:0;z-index:0}
 [data-soglia] > .strato-notte{visibility:hidden;z-index:1}
 </style>
-<style>/* FILE: src/scene/scene-giorno.css — scene della linea Immagine */
+<style>
 .scena{position:relative;overflow:hidden;border-radius:var(--raggio);min-height:340px}
 .scena > svg{position:absolute;inset:0;margin:auto;width:28%;height:auto}
 .ha-3d > svg{display:none}
@@ -74,7 +259,7 @@
 .catalogo .scura .nome{color:#C9C2B4}
 .catalogo-riga{position:absolute;left:0;right:0;top:14px;text-align:center;font-size:.7rem;color:var(--grafite)}
 </style>
-<style>/* FILE: src/scene/scene-notte.css — scene della linea Sistemi */
+<style>
 .notte .pannello{border:1px solid var(--filo-notte);border-radius:10px;padding:14px 16px;background:rgba(244,236,222,.02)}
 .notte .etichetta{display:block;font-size:.62rem;color:var(--acciaio);margin-bottom:8px}
 .contenitore-scena{container:scena / inline-size}
@@ -125,19 +310,18 @@
 .gest .bottone.premuto{background:var(--avorio-luce);color:var(--nero)}
 @container scena (max-width: 720px){.gest{grid-template-columns:minmax(0,1fr)}}
 </style>
-<style>/* FILE: src/regia.css — il film da scroll: binari, palchi agganciati, entrate, indice dei capitoli */
+<style>
 
-/* un binario è alto --binario schermi; il suo palco resta agganciato sotto la barra.
-   Nessun antenato di un palco può avere overflow: romperebbe lo sticky. */
+
 .film [data-binario].fermo{height:calc(var(--binario,200) * 1vh);height:calc(var(--binario,200) * 1svh)}
 .film [data-binario].fermo > .palco{position:sticky;top:var(--alto-nav,0px);display:flex;flex-direction:column;overflow:hidden;
   height:calc(100vh - var(--alto-nav,0px));height:calc(100svh - var(--alto-nav,0px))}
 .film [data-binario].fermo > .palco > .quadro{flex:1 0 auto}
 
-/* entrate: senza regista --e non esiste e il blocco resta pieno */
+
 .film [data-svela]{opacity:calc(.28 + .72 * var(--e,1));transform:translate3d(0,calc((1 - var(--e,1)) * 36px),0)}
 
-/* indice: tacche a destra; i nomi compaiono passando sopra, e per un attimo quando cambia capitolo */
+
 .indice{position:fixed;right:clamp(4px,1vw,16px);top:50%;transform:translateY(-50%);z-index:30;pointer-events:none;
   --tacca:#5E5A52;--nome:#16140F;--nome-fondo:rgba(251,250,247,.95);--nome-filo:#DDD5C7}
 .indice[data-tono="notte"]{--tacca:#8A94A3;--nome:#F4ECDE;--nome-fondo:rgba(13,15,19,.92);--nome-filo:#262b33}
@@ -154,9 +338,9 @@
 .indice button[aria-current="step"] .tacca::before{width:30px;background:var(--oro);opacity:1}
 .indice button.annuncia .nome{opacity:1;transform:none}
 .indice button:focus-visible{outline:none}
-.indice button:focus-visible .nome{outline:2px solid var(--oro);outline-offset:2px}
+.indice button:focus-visible .nome{outline:2px solid var(--anello,var(--oro));outline-offset:2px}
 
-/* telefono: una barra in basso con capitolo, avanti e indietro */
+
 .indice-corto{display:none}
 @media (max-width:760px){
   .indice{display:none}
@@ -173,13 +357,20 @@
   .indice-corto .avanza{position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--oro);transform-origin:left;transform:scaleX(var(--avanza,0))}
 }
 </style>
-<style>/* FILE: src/pagina.css — la pagina-manuale dell'identità */
+<style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--avorio)}
 body{margin:0;background:var(--avorio);color:var(--inchiostro);font-family:var(--f-titolo);font-size:17px;line-height:1.55}
 a{color:inherit}
 svg,canvas{max-width:100%}
-:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+
+:root,.giorno{--anello:var(--inchiostro)}
+.notte,[data-tono="notte"]{--anello:var(--oro)}
+:focus-visible{outline:2px solid var(--anello);outline-offset:3px}
+
+.salta{position:fixed;left:12px;top:-200px;z-index:50;padding:12px 18px;border-radius:999px;background:var(--inchiostro);color:var(--avorio-luce);
+  font-family:var(--f-dati);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+.salta:focus{top:calc(12px + env(safe-area-inset-top,0px))}
 .fascia{padding-inline:clamp(16px,5vw,72px);padding-block:clamp(56px,9vw,120px)}
 .dentro{max-width:1180px;margin-inline:auto;display:flex;flex-direction:column;gap:clamp(28px,4vw,56px)}
 h1,h2,h3{margin:0;font-weight:720;letter-spacing:-.025em;line-height:1.02;text-wrap:balance}
@@ -195,7 +386,7 @@ ul{margin:0;padding-left:1.1em}
 .tre{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:860px){.due,.tre{grid-template-columns:minmax(0,1fr)}}
 
-/* barra */
+
 .barra-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(16px,5vw,72px);background:rgba(242,238,230,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #DDD5C7}
 .marchio{display:flex;align-items:center;gap:10px;text-decoration:none}
 .marchio svg{width:18px;height:23px}
@@ -205,7 +396,7 @@ ul{margin:0;padding-left:1.1em}
 .barra-nav nav a:hover{color:var(--inchiostro)}
 @media (max-width:760px){.barra-nav nav{display:none}}
 
-/* apertura */
+
 .hero{height:clamp(580px,84vh,840px)}
 .hero .strato{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:center;gap:clamp(16px,4vw,48px);padding:clamp(24px,5vw,72px)}
 .hero .colonna{display:flex;flex-direction:column;gap:24px;position:relative;z-index:1}
@@ -227,7 +418,7 @@ ul{margin:0;padding-left:1.1em}
   .hero .strato-notte{align-content:start;padding-top:clamp(72px,14vh,120px)}
 }
 
-/* racconto */
+
 .claim{font-size:clamp(2.8rem,7.4vw,6.4rem);font-weight:760;letter-spacing:-.035em;line-height:.98}
 .linea{border-top:2px solid var(--inchiostro);padding-top:18px;display:flex;flex-direction:column;gap:12px}
 .linea.di-notte{border-color:var(--oro)}
@@ -236,7 +427,7 @@ ul{margin:0;padding-left:1.1em}
 .principio{display:grid;grid-template-columns:auto 1fr;gap:14px 20px;align-items:baseline;border-top:1px solid #DDD5C7;padding-top:18px}
 .principio b{font-family:var(--f-dati);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--grafite)}
 
-/* due stati */
+
 .due-stati{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 .due-stati > div{padding:clamp(40px,6vw,88px) clamp(16px,5vw,72px);display:flex;flex-direction:column;gap:24px}
 @media (max-width:860px){.due-stati{grid-template-columns:minmax(0,1fr)}}
@@ -246,7 +437,7 @@ ul{margin:0;padding-left:1.1em}
 .campione b{font-family:var(--f-titolo);font-size:.9rem;letter-spacing:0;font-weight:600}
 .campione span{color:var(--secondario)}
 
-/* caratteri */
+
 .provino{display:flex;flex-direction:column;gap:14px;border-top:1px solid #DDD5C7;padding-top:22px}
 .provino .campo-prova{font-size:clamp(3rem,10vw,8.6rem);font-weight:700;line-height:.95;letter-spacing:-.03em;overflow-wrap:anywhere}
 .controllo{display:flex;align-items:center;gap:14px;font-family:var(--f-dati);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--grafite)}
@@ -257,7 +448,7 @@ ul{margin:0;padding-left:1.1em}
 .firma-grande{font-size:clamp(2.4rem,5vw,4rem);line-height:1}
 .wordmark-grande{font-family:var(--f-firma);font-weight:600;letter-spacing:.2em;font-size:clamp(2rem,5vw,3.6rem)}
 
-/* arco */
+
 .arco-palchi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 .palco-arco{position:relative;height:clamp(340px,44vw,520px);display:grid;place-items:center}
 .palco-arco > svg{width:24%;max-width:150px;height:auto}
@@ -267,7 +458,7 @@ ul{margin:0;padding-left:1.1em}
 .schema svg{display:block;width:100%;min-width:520px;height:auto}
 .regola-numero{display:flex;flex-direction:column;gap:8px;border-top:2px solid var(--oro);padding-top:14px}
 
-/* movimento */
+
 .confronto{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;background:var(--filo-notte);border-radius:var(--raggio);overflow:hidden}
 .confronto > div{background:var(--nero);padding:26px;display:flex;flex-direction:column;gap:12px}
 .confronto > div.chiaro{background:var(--avorio);color:var(--inchiostro)}
@@ -275,7 +466,7 @@ ul{margin:0;padding-left:1.1em}
 .linea-tempo{overflow-x:auto}
 .linea-tempo svg{display:block;width:100%;min-width:620px;height:auto}
 
-/* servizi */
+
 .ingresso{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px 48px;align-items:end;border:1px solid var(--oro);border-radius:var(--raggio);padding:clamp(22px,4vw,40px);background:var(--posa)}
 @media (max-width:860px){.ingresso{grid-template-columns:minmax(0,1fr)}}
 .servizio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:center}
@@ -297,7 +488,7 @@ ul{margin:0;padding-left:1.1em}
 .come{font-family:var(--f-dati);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;border-radius:999px;padding:6px 12px;align-self:flex-start}
 .separatore{height:1px;background:var(--filo, #DDD5C7)}
 
-/* regole */
+
 .regole{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 @media (max-width:760px){.regole{grid-template-columns:minmax(0,1fr)}}
 .regole ul{list-style:none;padding:0;display:grid;gap:10px}
@@ -305,7 +496,7 @@ ul{margin:0;padding-left:1.1em}
 .regole .si li::before{content:"";width:14px;height:2px;background:var(--oro);display:block;transform:translateY(-4px)}
 .regole .no li::before{content:"×";font-family:var(--f-dati);color:var(--grafite)}
 
-/* cosa cambia */
+
 .tabella{overflow-x:auto;border:1px solid var(--filo-notte);border-radius:var(--raggio)}
 .tabella table{width:100%;min-width:640px;border-collapse:collapse;font-size:.95rem}
 .tabella th,.tabella td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--filo-notte);vertical-align:top}
@@ -315,12 +506,14 @@ ul{margin:0;padding-left:1.1em}
 .tabella td:last-child{color:var(--avorio-luce)}
 .tabella td:nth-child(2){color:#8f8a80}
 
-/* chiusura */
+
 .chiusura{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
 .chiusura svg{width:56px;height:70px}
-.piede{padding:22px clamp(16px,5vw,72px);font-family:var(--f-dati);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grafite);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid #DDD5C7}
+.piede{padding:22px clamp(16px,5vw,72px);font-family:var(--f-dati);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grafite);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid #DDD5C7}
 
-/* film da scroll: la pagina a regista acceso (html.film) */
+.piede a{display:inline-block;padding-block:.5em}
+
+
 .barra-nav::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--oro);transform-origin:left;transform:scaleX(var(--avanza,0));pointer-events:none}
 @media (max-width:760px){.barra-nav::after{display:none}}
 
@@ -338,7 +531,7 @@ ul{margin:0;padding-left:1.1em}
 .hero-regia .corsa{position:absolute;left:clamp(24px,5vw,72px);right:clamp(24px,5vw,72px);bottom:10px;height:1px;background:color-mix(in srgb,currentColor 28%,transparent)}
 .hero-regia .corsa::after{content:"";position:absolute;inset:0;background:var(--oro);transform-origin:left;transform:scaleX(var(--p,0))}
 
-/* palchi agganciati */
+
 .film .fermo .due-stati > div{justify-content:center}
 .film .fermo .arco-palchi{grid-auto-rows:minmax(0,1fr)}
 .film .fermo .palco-arco{height:auto;min-height:0}
@@ -351,13 +544,13 @@ ul{margin:0;padding-left:1.1em}
 }
 @media (max-width:760px){
   .film .piede{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
-  /* la barra dell'indice occupa il fondo dello schermo: la regia dell'apertura sale sopra di lei */
+  
   .film .hero-regia{padding-bottom:calc(78px + env(safe-area-inset-bottom,0px))}
   .film .hero-regia .corsa{bottom:calc(68px + env(safe-area-inset-bottom,0px))}
   .film .fermo .hero .strato.giorno{padding-bottom:104px}
 }
 @media (max-width:760px){.film .fermo .hero .palco3d{height:26vh;height:26svh}}
-/* telefoni bassi: l'apertura agganciata deve stare tutta nel palco, sopra la barra dell'indice */
+
 @media (max-width:760px) and (max-height:760px){
   .film .fermo .hero .colonna{gap:14px}
   .film .fermo .hero h1{font-size:2.25rem}
@@ -369,7 +562,7 @@ ul{margin:0;padding-left:1.1em}
   .film .fermo .hero .palco3d{display:none}
 }
 </style>
-<style>/* FILE: src/listino.css — il listino 2.0: prezzi, canoni, sistemi. Si appoggia a tokens, pagina e regia */
+<style>
 
 .prezzo{font-family:var(--f-titolo);font-weight:720;font-size:clamp(1.5rem,2.4vw,2rem);letter-spacing:-.02em;line-height:1;
   font-variant-numeric:tabular-nums;white-space:nowrap;margin:0}
@@ -379,10 +572,10 @@ ul{margin:0;padding-left:1.1em}
 .punti li{display:grid;grid-template-columns:16px 1fr;gap:10px;align-items:baseline}
 .punti li::before{content:"";width:12px;height:2px;background:var(--oro);transform:translateY(-4px)}
 .fascia-stretta{padding-block:clamp(40px,6vw,88px)}
-/* un capitolo senza margine proprio: il salto lo porta un po' sotto la barra, senza cambiare l'impaginato */
+
 .capitolo{padding-top:28px;margin-top:-28px}
 
-/* apertura: titolo, Arco in 3D e il percorso che si accende con lo scroll */
+
 .apertura-listino{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-content:center;
   gap:clamp(18px,3vw,36px) clamp(24px,4vw,56px);padding:clamp(24px,4vw,56px) clamp(16px,5vw,72px) clamp(24px,3vw,40px)}
 .apertura-listino .colonna{display:flex;flex-direction:column;gap:18px;align-self:center}
@@ -397,8 +590,7 @@ ul{margin:0;padding-left:1.1em}
 .percorso::before,.percorso::after{content:"";position:absolute;left:0;right:0;top:0;height:2px}
 .percorso::before{background:#DDD5C7}
 .percorso::after{background:var(--oro);transform-origin:left;transform:scaleX(var(--p,1))}
-/* le tappe sono accese da subito: fino al 25/09 si accendevano quando il film le raggiungeva, e al computer chi apriva il listino
-   vedeva quattro prezzi su cinque al 32 % finché non scorreva (revisione del sito, punto 2). La linea d'oro avanza con lo scroll */
+
 .tappa a{display:flex;flex-direction:column;gap:6px;height:100%;padding:16px 18px;border-radius:var(--raggio);text-decoration:none;
   background:var(--posa);border:1px solid #DDD5C7;color:var(--inchiostro)}
 .tappa small{font-family:var(--f-dati);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grafite)}
@@ -407,6 +599,8 @@ ul{margin:0;padding-left:1.1em}
 .tappa .nota{font-size:.8rem;color:var(--grafite);line-height:1.35}
 .tappa.soglia a{border-color:var(--oro)}
 .tappa.notte a{background:var(--nero);border-color:var(--filo-notte);color:var(--avorio-luce)}
+
+.giorno .tappa.notte{--anello:var(--inchiostro)}
 .tappa.notte small,.tappa.notte .nota,.tappa.notte .prezzo small{color:var(--acciaio)}
 .tappa.insieme a{background:linear-gradient(135deg,var(--nero) 52%,#2b2519)}
 .tappa a:hover{border-color:var(--oro)}
@@ -418,7 +612,7 @@ ul{margin:0;padding-left:1.1em}
   .tappa .nota{display:none}
 }
 
-/* canoni dell'Immagine */
+
 .canoni{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
 @media (max-width:960px){.canoni{grid-template-columns:minmax(0,1fr)}}
 .canone{display:flex;flex-direction:column;gap:18px;padding:clamp(22px,3vw,32px);border:1px solid #DDD5C7;border-radius:var(--raggio);background:var(--posa)}
@@ -430,10 +624,11 @@ ul{margin:0;padding-left:1.1em}
 .canone.consigliato{background:var(--inchiostro);border-color:var(--inchiostro);color:var(--avorio)}
 .canone.consigliato .prezzo small,.canone.consigliato .condizioni{color:#C9C2B4}
 .canone.consigliato .condizioni{border-color:#3a362e}
-.segno{align-self:flex-start;font-family:var(--f-dati);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);
+
+.segno{align-self:flex-start;font-family:var(--f-dati);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);
   border:1px solid var(--oro);border-radius:999px;padding:3px 10px}
 
-/* progetti: righe con il prezzo a destra */
+
 .voci{display:grid;border-top:2px solid var(--testo)}
 .voce{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 28px;align-items:center;padding:18px 0;border-bottom:1px solid var(--filo)}
 .voce h3{font-size:clamp(1.1rem,1.7vw,1.3rem);display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
@@ -450,7 +645,7 @@ ul{margin:0;padding-left:1.1em}
 .extra b{font-weight:640;margin-left:4px;font-variant-numeric:tabular-nums}
 .modelli{font-size:.95rem;color:var(--secondario)}
 
-/* la porta: l'Analisi AI */
+
 .porta{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px clamp(28px,5vw,64px);align-items:start;
   border:1px solid var(--oro);border-radius:var(--raggio);padding:clamp(22px,4vw,44px);background:rgba(244,236,222,.02)}
 @media (max-width:860px){.porta{grid-template-columns:minmax(0,1fr)}}
@@ -468,7 +663,7 @@ ul{margin:0;padding-left:1.1em}
 .giorni b{font-family:var(--f-dati);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--oro)}
 .giorni span{font-size:.95rem}
 
-/* i sistemi a pacchetto */
+
 .sistemi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 @media (max-width:960px){.sistemi{grid-template-columns:minmax(0,1fr)}}
 .sistema{display:flex;flex-direction:column;gap:16px;padding:clamp(20px,3vw,28px);border:1px solid var(--filo-notte);border-radius:var(--raggio);background:#0b0d10}
@@ -478,7 +673,7 @@ ul{margin:0;padding-left:1.1em}
 .sistema dt{font-family:var(--f-dati);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acciaio);margin-top:8px}
 .sistema dd{margin:0;font-size:.93rem}
 
-/* app e gestionali, con le particelle dietro */
+
 .gestionali{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr);gap:24px 48px;align-items:center;
   border:1px solid var(--filo-notte);border-radius:var(--raggio);padding:clamp(24px,4vw,48px);min-height:320px}
 .gestionali > :not(canvas){position:relative;z-index:1}
@@ -486,11 +681,11 @@ ul{margin:0;padding-left:1.1em}
 .gestionali-testo h3{font-size:clamp(1.5rem,2.8vw,2.2rem)}
 @media (max-width:860px){.gestionali{grid-template-columns:minmax(0,1fr)}}
 
-/* reparto AI: le due metà */
+
 .reparto h2{font-size:clamp(2.6rem,6vw,4.8rem)}
 .reparto .punti{max-width:44ch}
 
-/* come funziona */
+
 .passi{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 @media (max-width:960px){.passi{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.passi{grid-template-columns:minmax(0,1fr)}}
@@ -500,17 +695,17 @@ ul{margin:0;padding-left:1.1em}
 .passi h3{font-size:1.25rem}
 .passi p{font-size:.95rem;color:var(--grafite)}
 
-/* cosa resta vostro */
+
 .garanzie{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
 @media (max-width:760px){.garanzie{grid-template-columns:minmax(0,1fr)}}
 .garanzie li{display:flex;flex-direction:column;gap:6px;padding:16px 0;border-bottom:1px solid #DDD5C7}
 .garanzie h3{font-size:1.15rem}
 .garanzie p{font-size:.95rem;color:var(--grafite)}
 
-/* mercato */
+
 #mercato .tabella td:nth-child(4){font-size:.8rem;color:var(--acciaio)}
 .fonti{font-size:.82rem;color:var(--acciaio);max-width:78ch}
-/* telefono: la colonna «Avoria» è quella che conta, quindi ogni riga diventa una scheda invece di scorrere di lato */
+
 @media (max-width:640px){
   #mercato .tabella{overflow:visible}
   #mercato .tabella table{min-width:0}
@@ -524,7 +719,7 @@ ul{margin:0;padding-left:1.1em}
   #mercato .tabella td:nth-child(4)::before{content:"Fonte · "}
 }
 
-/* domande */
+
 .domande{display:grid;border-top:2px solid var(--inchiostro);max-width:820px}
 .domande details{border-bottom:1px solid #DDD5C7}
 .domande summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:16px 0;font-weight:620;font-size:1.05rem}
@@ -533,23 +728,23 @@ ul{margin:0;padding-left:1.1em}
 .domande details[open] summary::after{transform:rotate(45deg)}
 .domande details p{padding:0 0 18px;color:var(--grafite)}
 
-/* chiusura */
+
 .azioni{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
 .bottone-pieno{display:inline-block;background:var(--inchiostro);color:var(--avorio);text-decoration:none;border-radius:999px;padding:14px 24px;
   font-family:var(--f-dati);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
 .bottone-pieno:hover{background:#2a2720}
-/* il bottone vuoto passa qui dal sito (25/09): ora serve anche al listino, per «Scrivici in DM» nella chiusura */
+
 .bottone-vuoto{display:inline-block;border:1px solid var(--inchiostro);color:var(--inchiostro);text-decoration:none;border-radius:999px;padding:13px 23px;font-family:var(--f-dati);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
 .bottone-vuoto:hover{border-color:var(--oro)}
-.azioni .dati a{color:inherit}
+.azioni .dati a{display:inline-block;padding-block:.5em;color:inherit}   
 .azioni .dati{font-size:.66rem;color:var(--grafite)}
 
-/* telefono: la barra dell'indice occupa il fondo */
+
 @media (max-width:760px){
   .film .apertura-listino{padding-bottom:84px}
 }
 
-/* listino 2.1 (blocco 3B): due schede per riga, le schede di giorno, il tempo dei progetti, le combinazioni */
+
 .sistemi.due{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (max-width:960px){.sistemi.due{grid-template-columns:minmax(0,1fr)}}
 .giorno .sistema{background:var(--posa);border-color:#DDD5C7}
@@ -563,36 +758,33 @@ ul{margin:0;padding-left:1.1em}
 .combinazioni{display:flex;flex-direction:column;gap:12px}
 .reparto .spiega{max-width:44ch;font-size:1rem}
 
-/* le scritte piccole si leggono (revisione del sito, 25/09, punto 4): le etichette in maiuscolo arrivano a 12 px (erano fra 9,6 e
-   10,6), e sul fondo chiaro l'oro diventa quello scuro, #7A5C2E: 5,3 a 1 sull'avorio, dove l'oro chiaro stava a 2,5. Sul nero l'oro
-   resta com'è, a 7 a 1. Vale per il listino, la home e la pagina di Aura, che leggono tutti questo foglio */
+
 .giorno{--oro-etichetta:#7A5C2E}
 .notte{--oro-etichetta:var(--oro)}
 .occhiello,.stato-linea,.didascalia,.principio b,.tappa small,.voce .tempo,.coppia small,.sistema dt,.canone .condizioni,.azioni .dati{font-size:.75rem}
 .nuovo{font-size:.7rem}
 .stato-linea b,.nuovo,.giorni b{color:var(--oro-etichetta,var(--oro))}
-/* le tappe di notte: il nero sta nella scheda arrotondata, non nel riquadro quadrato dietro, che si vedeva agli angoli */
+
 .percorso .tappa.notte{background:none}
-/* Aperto (12/10): il blocco è di notte; le carte restano chiare, col testo e il grigio del giorno (l'acciaio della notte sul chiaro
-   non si legge), e quella consigliata prende il filo d'oro per staccarsi dal nero */
+
 .notte .canone{color:var(--inchiostro);--secondario:var(--grafite)}
 .notte .canone.consigliato{border-color:var(--oro);color:var(--avorio)}
 #aperto .insegna{margin-bottom:14px}
-/* «Con la vetrina» ha tre voci: senza questa riga la griglia le allargava fino all'altezza delle altre carte (13/10) */
+
 #aperto .canone .punti{align-content:start}
 #aperto .spiega a{color:inherit}
-/* I siti (13/10): sotto le tre carte, il canone e il su misura come voci, staccati dalle carte */
+
 #siti .voci{margin-top:clamp(24px,4vw,40px)}
-/* come per Aperto: le carte con meno punti non li allargano fino all'altezza della carta più lunga */
+
 #siti .canone .punti{align-content:start}
 </style>
-<style>/* FILE: src/sito.css — solo ciò che serve alla home del sito, sopra lo stile del kit */
+<style>
 .bottone-piccolo{padding:9px 14px;font-size:.68rem}
 .barra-nav nav a.bottone-pieno{color:var(--avorio)}
 .motto{font-family:var(--f-firma);font-style:italic;font-weight:500;font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--grafite)}
 .hero .azioni{margin-top:22px}
 
-/* le prove nel film */
+
 .prova-palco{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center}
 @media (max-width:900px){.prova-palco{grid-template-columns:minmax(0,1fr)}}
 .prova-palco .testo{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
@@ -604,15 +796,15 @@ ul{margin:0;padding-left:1.1em}
 .anteprima .tessere img{width:100%;height:100%;border-radius:3px}
 [data-entra]{opacity:1}
 .didascalia-anteprima{position:absolute;left:10px;bottom:10px;background:rgba(22,20,15,.72);color:#F4ECDE;font-family:var(--f-dati);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;border-radius:3px}
-.anteprima.griglia{aspect-ratio:6/5;max-width:620px}   /* 3×2 tessere da 4:5 esatti */
+.anteprima.griglia{aspect-ratio:6/5;max-width:620px}   
 
-/* i prezzi, di notte */
+
 .prezzi h3 small{display:block;font-family:var(--f-dati);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--oro);font-weight:500;margin-bottom:8px}
 .prezzi>div{border-top:1px solid var(--filo);padding-top:18px;display:flex;flex-direction:column;gap:10px}
 .prezzi p{font-size:1.15rem;color:var(--testo)}
 .nota-prezzi{font-size:.8rem;color:var(--secondario)}
 .bottone-pieno.chiaro{background:var(--avorio-luce);color:var(--nero)}
-/* sul telefono il palco si aggancia solo se testo e anteprima stanno in uno schermo: l'anteprima si misura sull'altezza */
+
 @media (max-width:900px){
   .prova-palco{gap:18px}
   .anteprima{height:40svh;height:40vh;height:40svh;width:auto;max-width:100%;max-height:none}
@@ -620,15 +812,15 @@ ul{margin:0;padding-left:1.1em}
   .anteprima.griglia{height:32svh}
 }
 
-/* ——— blocco 5B (24/09): la home che si capisce ——— */
-/* cosa facciamo: il percorso del listino senza prezzi, con la sua frase sempre leggibile */
+
+
 .percorso.cinque .tappa .nota{display:block}
 @media (max-width:860px){.percorso.cinque{grid-template-columns:minmax(0,1fr)}.percorso.cinque .tappa.insieme{grid-column:auto}}
-/* la sesta riga (12/10, specifica PIANO-APERTO §5.1): Aperto porta alla sua pagina e prende tutta la larghezza sotto le cinque */
+
 .percorso.cinque .tappa.aperto{grid-column:1 / -1}
 .tappa.aperto a{background:linear-gradient(135deg,#2b2519 0%,var(--nero) 60%)}
 
-/* i reel nel film: le quattro righe a sinistra, il telefono a destra */
+
 .reel-palco{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,5vw,80px);align-items:center;padding-block:clamp(12px,2vw,28px)}
 .reel-palco .testo{display:flex;flex-direction:column;gap:16px;max-width:560px}
 .telefono{position:relative;margin:0;justify-self:center;height:min(74svh,700px);aspect-ratio:9/16;max-width:100%;border-radius:32px;padding:9px;background:#16140F;box-shadow:0 30px 60px -32px rgba(22,20,15,.5)}
@@ -637,15 +829,13 @@ ul{margin:0;padding-left:1.1em}
 .telefono.piccolo{height:min(62svh,560px)}
 .telefono.alto{aspect-ratio:390/844}
 .righe{margin:0;display:grid;gap:10px}
-/* le quattro righe sono accese da subito e non aspettano il reel (Simone, 25/09: «chi non vede il video… non vede tutte le scritte») */
+
 .righe .riga{border-top:1px solid #DDD5C7;padding-top:10px}
 .notte .righe .riga{border-color:var(--filo-notte)}
 .righe dt{font-family:var(--f-dati);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--oro-etichetta,var(--oro))}
 .righe dd{margin:4px 0 0;font-size:1rem;line-height:1.42}
 .righe dd a{color:inherit;font-family:var(--f-dati);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-left:6px}
-/* i reel partono da soli quando li vedi (25/09). Sul telefono disegnato: in basso il bottone dell'audio e sotto la barra d'oro
-   per tornare indietro; in alto a destra il tutto schermo. Muto, il bottone è d'oro e dice «Attiva l'audio»; col suono resta
-   l'icona; alla fine dice «Rivedi» (video-reel-logica.mjs) */
+
 .telefono[data-reel]{--bordo:9px;--raggio:24px}
 .telefono[data-reel] video{cursor:pointer}
 .telefono .audio{position:absolute;right:calc(var(--bordo) + 12px);bottom:calc(var(--bordo) + 32px);z-index:2;display:inline-flex;align-items:center;gap:8px;min-height:36px;
@@ -659,7 +849,7 @@ ul{margin:0;padding-left:1.1em}
   border:0;border-radius:50%;padding:0;background:rgba(22,20,15,.6);color:#F4ECDE;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .telefono .schermo svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .telefono .audio:focus-visible,.telefono .schermo:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
-/* la barra: un filo d'oro su un filo grigio, col pallino da trascinare; tocchi dove vuoi e il reel va lì */
+
 .telefono .scorri{--fatto:0%;position:absolute;left:calc(var(--bordo) + 14px);right:calc(var(--bordo) + 14px);bottom:calc(var(--bordo) + 4px);z-index:2;height:24px;margin:0;padding:0;
   background:none;-webkit-appearance:none;appearance:none;cursor:pointer;touch-action:none}
 .telefono .scorri::-webkit-slider-runnable-track{height:3px;border-radius:3px;background:linear-gradient(var(--oro),var(--oro)) no-repeat 0 0 / var(--fatto) 100%,rgba(120,112,98,.5)}
@@ -681,14 +871,12 @@ ul{margin:0;padding-left:1.1em}
   .righe .riga{padding-top:6px}
   .righe dd{font-size:.84rem;line-height:1.35}
 }
-/* a tutto schermo il reel si vede intero: il video si portava dietro il «cover» e gli angoli del telefono disegnato, e sullo schermo
-   largo del computer ne restava un terzo, zoomato (Simone, 25/09). Due regole separate: un selettore che il browser non conosce
-   annulla tutta la riga */
+
 .telefono[data-reel] video:fullscreen{object-fit:contain;border-radius:0;background:#000;cursor:auto}
 .telefono[data-reel] video:-webkit-full-screen{object-fit:contain;border-radius:0;background:#000;cursor:auto}
 
 
-/* il caso Aura nella home: quattro strati nella stessa cornice */
+
 .anteprima>figure{position:absolute;inset:0;margin:0}
 .anteprima>figure img,.anteprima>figure video{width:100%;height:100%;object-fit:cover;display:block}
 .passaggi{margin:0;padding-left:1.2em;display:grid;gap:4px;color:var(--grafite)}
@@ -697,7 +885,7 @@ ul{margin:0;padding-left:1.1em}
 .scheda-lavoro .anteprima{justify-self:start;max-height:none}
 @media (max-width:900px){.scheda-lavoro .anteprima{height:auto;width:100%}}
 
-/* ——— la pagina di Aura (blocco 5B) ——— */
+
 .apertura-aura .dentro{gap:22px}
 .indice-aura{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--f-dati);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
 .indice-aura a{color:var(--grafite)}
@@ -735,24 +923,20 @@ ul{margin:0;padding-left:1.1em}
 .passi.tre{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:960px){.passi.tre{grid-template-columns:minmax(0,1fr)}}
 
-/* ——— 24/09, dalle schermate della sonda (blocco 5B, task 8) ——— */
-.apertura-aura h1{font-size:clamp(2rem,4.6vw,4rem);max-width:24ch}   /* al computer il titolo della pagina di Aura sembrava un sottotitolo */
+
+.apertura-aura h1{font-size:clamp(2rem,4.6vw,4rem);max-width:24ch}   
 @media (max-width:760px){
-  /* «QUANDO DORMI,» usciva dallo schermo col corpo minimo del kit (48 px), pensato per «SISTEMI»; a 10vw usciva ancora quando il titolo
-     respira al più largo (wdth 125: 419 px su 342 a 390, misurato il 25/09). Il corpo si calcola sul respiro largo, colonna ÷ 11 */
+  
   .hero .titolo-notte{font-size:calc((100vw - 48px) / 11)}
-  .hero-regia .fasi{display:none}       /* le tre fasi, più lunghe di Giorno/Soglia/Notte, si accavallavano a «Scorri · il film parte» */
-  .principio{grid-template-columns:minmax(0,1fr);gap:6px}   /* l'etichetta a sinistra schiacciava la frase in una colonna stretta */
+  .hero-regia .fasi{display:none}       
+  .principio{grid-template-columns:minmax(0,1fr);gap:6px}   
 }
 @media (max-width:900px){
-  .isola-palco{padding-bottom:64px}            /* la didascalia «in arrivo online» finiva sotto la barra dei capitoli del telefono */
+  .isola-palco{padding-bottom:64px}            
   .finestra .schermo{height:48svh}
 }
 
-/* ——— 25/09, le scene dei sistemi: le interfacce che il cliente conosce già, al posto dei pannelli scuri ———
-   Simone: «hanno dei pannelli molto AI slop… un'interfaccia di Instagram… una prova chiara». Un DM sul telefono disegnato dei reel,
-   il foglio della bozza nei colori di Avoria (il sistema che facciamo noi), il gestionale chiaro nella finestra del computer (sul
-   telefono, in un telefono). Le misure dentro gli schermi vanno in cqw: il telefono scala intero, come uno schermo vero */
+
 .scena-dm,.scena-app{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0}
 .scena-dm figcaption,.scena-app figcaption{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 14px;max-width:48ch;text-align:center;
   font-family:var(--f-dati);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;line-height:1.6;color:var(--acciaio)}
@@ -761,18 +945,19 @@ ul{margin:0;padding-left:1.1em}
 .rivedi[hidden]{display:none}
 .rivedi svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .rivedi:hover{border-color:var(--oro)}
-.rivedi:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.rivedi:focus-visible{outline:2px solid var(--anello,var(--oro));outline-offset:2px}
+
+.giorno .rivedi{border-color:var(--filo);color:var(--inchiostro)}
 .ico{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 
-/* i pezzi entrano quando è il loro momento: le bolle occupano posto solo da lì (la chat sale come una vera), le righe del foglio
-   tengono il loro (il foglio non cresce mentre si scrive) */
+
 .in-scena [data-da]:not(.presente):not(.tieni):not(.scivola){display:none}
 .in-scena .tieni[data-da]{transition:opacity .25s,visibility .25s}
 .in-scena .tieni[data-da]:not(.presente){opacity:0;visibility:hidden}
 .anima [data-da].presente:not(.tieni):not(.scivola){animation:scena-entra .34s cubic-bezier(.2,.8,.2,1) both}
 @keyframes scena-entra{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}
 
-/* il DM: lo schermo scuro dell'app di messaggi, a grandezza di telefono vero (15 px su 375 = 4cqw) */
+
 .telefono.dm{height:min(80svh,740px);container-type:inline-size;border-radius:40px;padding:8px}
 .dm .ig{position:relative;display:flex;flex-direction:column;height:100%;overflow:hidden;border-radius:33px;background:#000;color:#F5F5F5;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:4.2cqw;line-height:1.3;text-align:left}
@@ -816,7 +1001,7 @@ ul{margin:0;padding-left:1.1em}
 .ig-scrivi .ico{width:6cqw;height:6cqw;flex:none}
 .ig-camera{display:grid;place-items:center;flex:none;width:8.6cqw;height:8.6cqw;border-radius:50%;background:#3797F0}
 .ig-camera .ico{width:4.8cqw;height:4.8cqw}
-/* il foglio della bozza: il sistema nostro, sopra la chat; il cliente non lo vede */
+
 .bozza{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:2.6cqw 5.4cqw 6.4cqw;border-radius:6.4cqw 6.4cqw 0 0;background:var(--avorio-luce);
   color:var(--inchiostro);font-family:var(--f-titolo);box-shadow:0 -14px 34px rgba(0,0,0,.5)}
 .in-scena .bozza:not(.presente){transform:translateY(104%);visibility:hidden}
@@ -837,7 +1022,7 @@ ul{margin:0;padding-left:1.1em}
 .bozza-bottoni .approva{border-color:var(--oro);background:var(--oro);transition:transform .15s,box-shadow .25s}
 .bozza-bottoni .approva.toccato{transform:scale(.95);box-shadow:0 0 0 2.2cqw rgba(184,147,94,.35)}
 
-/* il gestionale: l'app chiara col nome del negozio, nella finestra del computer */
+
 .app-cornice{width:100%;max-width:640px;overflow:hidden;border:1px solid #2a2722;border-radius:12px;background:#FBFAF7;
   box-shadow:0 30px 60px -30px rgba(0,0,0,.7);container-type:inline-size}
 .app-barra{display:flex;align-items:center;gap:6px;height:28px;padding:0 12px;background:#1c1a16;color:#8A94A3;font-family:var(--f-dati);font-size:.58rem;letter-spacing:.08em}
@@ -894,7 +1079,7 @@ ul{margin:0;padding-left:1.1em}
 .app-proposta.inviata .domanda,.app-proposta.inviata .app-bottoni{display:none}
 .app-proposta.inviata .fatto{display:flex}
 @media (max-width:900px){
-  /* sul telefono: il DM a larghezza di telefono vero, e il gestionale nel telefono, com'è la stessa app in tasca */
+  
   .telefono.dm{height:auto;width:min(80vw,320px);border-radius:34px;padding:7px}
   .dm .ig{border-radius:28px}
   .app-cornice{width:min(80vw,320px);aspect-ratio:390/844;padding:7px;border:0;border-radius:34px;background:#16140F}
@@ -917,19 +1102,18 @@ ul{margin:0;padding-left:1.1em}
   .app-proposta .fatto .ico{width:4.6cqw;height:4.6cqw}
 }
 
-/* ——— 25/09, la revisione del sito: i dieci punti che Simone ha approvato («procedi con la correzione di tutti e 10 i punti») ——— */
-/* 1 · sul telefono il menu non c'è: nella barra in alto, accanto al logo, il bottone per scriverci in DM. Al computer resta la call */
+
+
 .scrivici{display:none}
 @media (max-width:760px){
-  /* 44 px da toccare, ma la barra non cresce: il margine negativo lo fa stare nei 12 px di bordo (una barra più alta copriva l'occhiello) */
+  
   .scrivici{display:inline-flex;align-items:center;gap:7px;min-height:44px;margin-block:-10px;padding:0 16px;border-radius:999px;background:var(--inchiostro);color:var(--avorio);
     font-family:var(--f-dati);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
   .scrivici .ico{width:16px;height:16px;flex:none}
-  .scrivici:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+  .scrivici:focus-visible{outline:2px solid var(--anello,var(--oro));outline-offset:2px}
 }
 
-/* 3 · l'apertura, di notte: le notifiche sul telefono bloccato del titolare, come nel reel delle 02:14 (le convenzioni che tutti
-   riconoscono, nessun glifo di sistema). Entrano quando la notte è tutta aperta; senza regia sono già lì */
+
 .notifiche{margin:0;display:grid;gap:8px;width:100%;max-width:390px}
 .notifica{display:flex;gap:11px;align-items:flex-start;padding:11px 13px;border-radius:20px;background:rgba(38,38,42,.8);color:#F4F4F6;
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -951,10 +1135,10 @@ ul{margin:0;padding-left:1.1em}
   .notifica-icona{width:32px;height:32px;border-radius:8px}
 }
 
-/* 5 · il Reparto AI con le quattro righe, come ogni servizio, nella metà di notte */
+
 .reparto .righe{max-width:54ch}
 
-/* 8 · gli altri lavori, su progetto: il Mondo accanto alla sua anteprima, e il sito film in una riga, ognuno col suo prezzo */
+
 .scheda-lavoro.mondo{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
 .scheda-testo{display:flex;flex-direction:column;gap:12px;align-items:flex-start;max-width:52ch}
 .prezzo-riga{margin:0;font-weight:600}
@@ -963,8 +1147,7 @@ ul{margin:0;padding-left:1.1em}
 .riga-sito b{font-weight:680}
 @media (max-width:900px){.scheda-lavoro.mondo{grid-template-columns:minmax(0,1fr)}}
 
-/* 9 · le foto del catalogo: la pagina del negozio dove aggiungi un prodotto, con le foto vere della prova del catalogo (la foto dal
-   telefono, poi quella che apre la pagina). Stessa finestra del gestionale; sul telefono, in un telefono */
+
 .app-logo .ico{width:62%;height:62%}
 .app-testa .salva{margin-left:auto;padding:.9cqw 2.6cqw;border-radius:99px;background:var(--inchiostro);color:var(--avorio-luce);font-family:var(--f-titolo);
   font-size:.9em;font-weight:600;letter-spacing:0;transition:transform .15s,box-shadow .25s}
@@ -1017,7 +1200,7 @@ ul{margin:0;padding-left:1.1em}
     </g>
     <line x1="44" y1="110" x2="116" y2="110" stroke-width="13" stroke-linecap="round" style="stroke:var(--bar,#B8935E)"/>
   </symbol>
-  <!-- le icone del DM d'esempio (scene dei sistemi, 25/09): tratto semplice, come quelle di un'app di messaggi -->
+  
   <symbol id="ico-indietro" viewBox="0 0 24 24"><path d="M15 4 7 12l8 8"/></symbol>
   <symbol id="ico-chiama" viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
   <symbol id="ico-video" viewBox="0 0 24 24"><rect x="2.5" y="6" width="13" height="12" rx="3"/><path d="m15.5 10.5 6-3.5v10l-6-3.5"/></symbol>
@@ -1026,7 +1209,7 @@ ul{margin:0;padding-left:1.1em}
   <symbol id="ico-immagine" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="1.8"/><path d="m21 15-5-5-9 11"/></symbol>
   <symbol id="ico-adesivo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0M9 9.5h.01M15 9.5h.01"/></symbol>
   <symbol id="ico-fatto" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
-  <!-- revisione del 25/09: il negozio della notifica, la chat del bottone «Scrivici», la freccia del caricamento -->
+  
   <symbol id="ico-negozio" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 8a3 3 0 0 1 6 0"/></symbol>
   <symbol id="ico-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
   <symbol id="ico-su" viewBox="0 0 24 24"><path d="M12 19V6M6 11l6-6 6 6"/></symbol>
@@ -1038,12 +1221,12 @@ ul{margin:0;padding-left:1.1em}
     <a href="#foto-video">Foto e video</a><a href="#social">Social</a><a href="#aura">Aura</a><a href="#clienti">Assistente</a><a href="aperto/">Bar e ristoranti</a><a href="listino/">Listino</a>
     <a class="bottone-pieno bottone-piccolo" href="#call">Prenota una call</a>
   </nav>
-  <!-- revisione del 25/09, punto 1: sul telefono il menu non c'è, e fino alla chiusura non c'era un modo per scriverci -->
+  
   <a class="scrivici" href="https://ig.me/m/avor.iastudio"><svg class="ico" aria-hidden="true"><use href="#ico-chat"/></svg>Scrivici</a>
 </header>
 
 <main>
-  <!-- l'apertura: un binario di quattro schermi; lo scroll apre l'Arco sull'assistente e riporta a foto e video (grafica del blocco 5) -->
+  
   <div class="binario" data-binario data-sempre style="--binario:400" data-capitoli="Apertura@0|Quando dormi@0.6">
   <section id="apertura" class="hero palco" data-soglia data-componente="soglia-hero"
     data-copione="0:2.2 0.1:4 0.34:5.8 0.74:12.2 0.92:13.8 1:13.9" aria-label="Foto, video e social; poi, di notte, l'assistente che risponde quando dormi">
@@ -1055,7 +1238,7 @@ ul{margin:0;padding-left:1.1em}
         <p class="lead">Ci mandi due foto dal telefono: ti tornano scatti e video pronti. Se vuoi, li pubblichiamo noi.</p>
         <div class="azioni"><a class="bottone-pieno" href="#call">Prenota una call</a><a class="bottone-vuoto" href="listino/">Il listino</a></div>
       </div>
-      <!-- la boccetta di Avoria: vetro, profumo e il marchio al centro (25/09, flacone.js); quella in ceramica resta ai reel -->
+      
       <div class="palco3d" data-componente="hero-flacone" data-copione="0:1.4 0.2:7.4 0.3:7.8 0.74:7.8 1:9">
         <svg viewBox="0 0 160 200" style="color:#16140F"><use href="#arco"/></svg>
       </div>
@@ -1069,7 +1252,7 @@ ul{margin:0;padding-left:1.1em}
           <div class="titolo-notte oro" data-respiro="3" data-componente="respiro-hero-2">RISPONDE L'AI.</div>
         </div>
         <p class="lead">Con le pagine <span class="firma">vere</span> del tuo negozio. Quello che non sa lo lascia a te.</p>
-        <!-- revisione del 25/09, punto 3: al posto del pannellino a colonne, le notifiche sul telefono bloccato, come nel reel delle 02:14 -->
+        
         <figure class="notifiche">
           <div class="notifica"><span class="notifica-icona" aria-hidden="true"><svg class="ico"><use href="#ico-negozio"/></svg></span>
             <span class="notifica-testo"><span class="notifica-testa"><b>Il tuo negozio</b><small>02:14</small></span>Giulia: Ciao! La collana è anallergica?</span></div>
@@ -1088,7 +1271,7 @@ ul{margin:0;padding-left:1.1em}
   </div>
   <div class="didascalia" aria-hidden="true"><span>Foto, video e social</span><span>L'assistente, quando dormi</span></div>
 
-  <!-- cosa facciamo: le cinque aperture dei blocchi del listino 2.1, senza prezzi -->
+  
   <section id="cosa" class="fascia giorno" data-capitoli="Cosa facciamo">
     <div class="dentro">
       <div>
@@ -1110,9 +1293,7 @@ ul{margin:0;padding-left:1.1em}
     </div>
   </section>
 
-  <!-- foto, video e social: due palchi, ognuno col suo reel che parte da solo quando lo vedi, uno alla volta (video-reel.js, 25/09).
-       Fino al 24/09 il reel avanzava con lo scroll su tre schermi e mezzo; Simone: «si perde troppo tempo… e la musica tiene l'attenzione».
-       Il palco resta agganciato per poco più di mezzo schermo: un filo di scroll non porta via il reel mentre parte -->
+  
   <section class="fascia giorno" aria-label="Foto, video e social">
     <div class="dentro">
       <div class="binario" data-binario style="--binario:160" data-capitoli="Foto e video">
@@ -1161,13 +1342,10 @@ ul{margin:0;padding-left:1.1em}
     </div>
   </section>
 
-  <!-- il caso Aura: quattro passaggi nella stessa cornice, poi la pagina sua; sotto, gli altri lavori. Dalla revisione del 25/09
-       (punto 6) viene subito dopo foto, video e social, che mostrano già Aura, e prima della notte: arrivava al quindicesimo
-       schermo, dopo tutti i sistemi. Prima dell'assistente e non dopo: Aura quell'assistente non ce l'ha acceso -->
+  
   <section id="aura" class="fascia giorno">
     <div class="dentro">
-      <!-- il capitolo sta sul binario, come per i reel: il salto arriva col palco agganciato e l'anteprima intera (col capitolo sulla
-           sezione, al computer il salto si fermava prima dell'aggancio e l'anteprima usciva di 24 px dal fondo; misurato il 25/09) -->
+      
       <div class="binario" data-binario style="--binario:260" data-capitoli="Caso Aura">
       <div class="palco">
       <article class="prova-palco quadro" aria-labelledby="t-aura">
@@ -1192,7 +1370,7 @@ ul{margin:0;padding-left:1.1em}
 
       <div class="altri" data-capitoli="Altri lavori">
         <span class="occhiello">Altri lavori, su progetto</span>
-        <!-- revisione del 25/09, punto 8: il Mondo dice cos'è e quanto costa; e questo stesso sito è un progetto che si compra -->
+        
         <article class="scheda-lavoro mondo">
             <div class="anteprima verticale" data-anteprima data-componente="prova-mondi" data-copione="0:0 1:6">
               <img data-src="prove/mondi/media/mondi-manifesto.jpg" alt="Il manifesto di Avoria Studio" width="1080" height="1920">
@@ -1215,7 +1393,7 @@ ul{margin:0;padding-left:1.1em}
     </div>
   </section>
 
-  <!-- l'assistente e i sistemi: la notte entra attraverso l'apertura dell'Arco -->
+  
   <section class="fascia notte" aria-label="L'assistente e i sistemi" data-soglia-ingresso>
     <div class="dentro">
       <div class="binario" data-binario style="--binario:160" data-capitoli="Assistente">
@@ -1240,10 +1418,7 @@ ul{margin:0;padding-left:1.1em}
       </div>
       <div class="separatore"></div>
 
-      <!-- il preventivo (25/09), subito sotto l'assistente dal 26/09: Simone, «è praticamente quasi la stessa cosa». Un cliente
-           scrive in DM, la bozza si scrive dal listino, tu approvi, parte nella stessa chat. Al posto dei pannelli scuri, che
-           Simone trovava «AI slop», l'interfaccia che il cliente conosce già. La scena parte da sola quando la vedi, una volta,
-           e si rivede col bottone (scene-sistemi.js); ogni pezzo dice quando entra (data-da) -->
+      
       <div class="binario" data-binario style="--binario:160">
       <div class="palco">
       <article class="servizio rovescio quadro" data-servizio="preventivo" aria-labelledby="s-preventivo">
@@ -1308,8 +1483,7 @@ ul{margin:0;padding-left:1.1em}
         <p class="lead">Le cose che fai ogni giorno a mano, fatte da un sistema che controlli tu. Se non sai da dove cominciare, c'è l'analisi: guardiamo come lavori e ti diciamo cosa conviene, in 10 giorni lavorativi, da €690.</p>
       </div>
 
-      <!-- le foto del catalogo (revisione del 25/09, punto 9): al posto dei vasi disegnati, la pagina del negozio dove aggiungi un
-           prodotto e le sue foto vere, dalla prova del catalogo: la foto dal telefono, poi quella che apre la pagina -->
+      
       <div class="binario" data-binario style="--binario:160">
       <div class="palco">
       <article class="servizio quadro" data-servizio="foto-catalogo" aria-labelledby="s-catalogo">
@@ -1368,7 +1542,7 @@ ul{margin:0;padding-left:1.1em}
 
       <div class="binario" data-binario style="--binario:160">
       <div class="palco">
-      <!-- il gestionale: lo stesso preventivo n. 118, accettato, arriva come ordine -->
+      
       <article class="servizio rovescio quadro" data-servizio="gestionale" aria-labelledby="s-gestionale">
         <div class="testo">
           <span class="stato-linea"><b>Il gestionale su misura</b> · dopo l'analisi</span>
@@ -1426,7 +1600,7 @@ ul{margin:0;padding-left:1.1em}
     </div>
   </section>
 
-  <!-- tutto insieme: il Reparto AI, avorio a schermo e poi il nero che entra da destra -->
+  
   <div class="binario" data-binario style="--binario:190" data-capitoli="Reparto AI@0.62">
   <div class="palco">
   <section id="reparto" class="reparto due-stati quadro" aria-labelledby="reparto-titolo" data-blocco="insieme">
@@ -1438,7 +1612,7 @@ ul{margin:0;padding-left:1.1em}
     </div>
     <div class="notte" data-tenda>
       <span class="occhiello">… e un sistema, sempre acceso</span>
-      <!-- revisione del 25/09, punto 5: l'offerta più cara era l'unica senza le quattro righe -->
+      
       <dl class="righe">
         <div class="riga" data-riga="mandi"><dt>Cosa mandi</dt><dd data-mandi>Due o tre foto dal telefono per ogni prodotto, l'accesso ai tuoi profili come collaboratore e, per il sistema, quello che chiede il suo avvio.</dd></div>
         <div class="riga" data-riga="ricevi"><dt>Cosa ricevi</dt><dd>Ogni mese 30 scatti, 3 reel e 3 brevi video nati dagli scatti; i tuoi social, pubblicati da noi; un sistema a scelta, con un miglioramento al mese e una call al mese per decidere cosa fare. Le tue richieste passano prima.</dd></div>
@@ -1485,7 +1659,6 @@ ul{margin:0;padding-left:1.1em}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>window.AV = window.AV || { componenti: [] };</script><script>(function(){
-// FILE: src/tempo.mjs — easing condiviso da tutti i componenti
 function morbido(x) {
   const v = Math.min(Math.max(x, 0), 1);
   return v < 0.5 ? 4 * v * v * v : 1 - Math.pow(-2 * v + 2, 3) / 2;
@@ -1494,7 +1667,6 @@ function morbido(x) {
 AV.morbido = morbido;
 })();</script>
 <script>(function(){
-// FILE: src/geometria-arco.mjs — contorni 2D dell'Arco, puri, senza Three.js
 const TRATTI = [
   { tipo: 'linea', punti: [[20, 180], [68, 30]], spessore: 15, ruolo: 'arco' },
   { tipo: 'linea', punti: [[140, 180], [92, 30]], spessore: 15, ruolo: 'arco' },
@@ -1551,7 +1723,6 @@ AV.contornoCapsula = contornoCapsula;
 AV.centraEScala = centraEScala;
 })();</script>
 <script>(function(){
-// FILE: src/solari-logica.mjs — il tabellone come funzione pura del tempo
 const ALFABETO = 'ABCDEFGHILMNOPQRSTUVZ0123456789';
 
 function centra(parola, n) {
@@ -1589,7 +1760,6 @@ AV.caso = caso;
 AV.statoCella = statoCella;
 })();</script>
 <script>(function(){
-// FILE: src/testo.mjs — testo che si scrive da solo, funzione pura del tempo
 function battuta(testo, t, inizio, cps = 30) {
   const car = Array.from(testo);
   const n = Math.floor((t - inizio) * cps + 1e-9);
@@ -1600,12 +1770,10 @@ function battuta(testo, t, inizio, cps = 30) {
 AV.battuta = battuta;
 })();</script>
 <script>(function(){
-// FILE: src/regia-logica.mjs — la matematica del film da scroll, senza DOM
 function limita(x, a = 0, b = 1) {
   return Math.min(Math.max(x, a), b);
 }
 
-// "p:t p:t …" → [[p, t], …] ordinati per p. p può essere negativo: il palco sta ancora entrando.
 function leggiCopione(testo) {
   const punti = String(testo || '').trim().split(/\s+/).filter(Boolean).map((coppia) => {
     const [p, t] = coppia.split(':').map(Number);
@@ -1616,7 +1784,6 @@ function leggiCopione(testo) {
   return punti.sort((a, b) => a[0] - b[0]);
 }
 
-// dal punto del film al tempo della scena: spezzata lineare, piatta prima del primo e dopo l'ultimo punto
 function tempoDa(p, punti) {
   if (p <= punti[0][0]) return punti[0][1];
   for (let i = 1; i < punti.length; i++) {
@@ -1629,24 +1796,20 @@ function tempoDa(p, punti) {
   return punti[punti.length - 1][1];
 }
 
-// palco agganciato: 0 quando si aggancia sotto la barra, 1 quando si sgancia, negativo mentre entra
 function avanzamentoBinario({ top, altezza, palco, barra }) {
   const corsa = altezza - palco;
   if (corsa <= 0) return top <= barra ? 1 : 0;
   return (barra - top) / corsa;
 }
 
-// elemento che scorre libero: 0 col bordo alto all'85% della vista, 1 col bordo basso al 45%
 function attraversamento({ top, altezza, vista }) {
   return limita((0.85 * vista - top) / (0.4 * vista + altezza));
 }
 
-// entrata: 0 col bordo alto sul fondo della vista, 1 quando il bordo alto arriva a `fino` della vista
 function ingresso({ top, vista, fino = 0.55 }) {
   return limita((vista - top) / (vista - fino * vista));   // (1 - fino) * vista arrotonda sotto l'1
 }
 
-// inseguimento morbido indipendente dal frame rate; al primo fotogramma salta sul bersaglio
 function insegui(attuale, bersaglio, dt, tau = 0.1) {
   if (attuale === null || attuale === undefined || !(tau > 0)) return bersaglio;
   const k = 1 - Math.exp(-Math.max(dt, 0) / tau);
@@ -1654,7 +1817,6 @@ function insegui(attuale, bersaglio, dt, tau = 0.1) {
   return Math.abs(bersaglio - v) < 1e-4 ? bersaglio : v;
 }
 
-// "Nome@0.6 | Altro" → [{ nome, sosta }]; sosta null = l'inizio della sezione
 function leggiCapitoli(testo) {
   return String(testo || '').split('|').map((s) => s.trim()).filter(Boolean).map((s) => {
     const at = s.lastIndexOf('@');
@@ -1665,14 +1827,12 @@ function leggiCapitoli(testo) {
   });
 }
 
-// dove portare lo scroll per fermarsi su un capitolo
 function scrollDiSosta({ inizio, altezza, palco, barra, sosta, fermo }) {
   const base = inizio - barra;
   if (!fermo || sosta === null || sosta === undefined) return Math.max(0, base);
   return Math.max(0, base + sosta * (altezza - palco));
 }
 
-// l'ultimo capitolo iniziato, contando un anticipo di un terzo abbondante di vista
 function capitoloCorrente(posizioni, scroll, vista) {
   let k = -1;
   for (let i = 0; i < posizioni.length; i++) {
@@ -1681,7 +1841,6 @@ function capitoloCorrente(posizioni, scroll, vista) {
   return posizioni.length ? Math.max(k, 0) : -1;
 }
 
-// la sosta più vicina, se sta dentro il raggio e non ci siete già sopra
 function calamita(scroll, soste, raggio) {
   let meglio = null, d = Infinity;
   for (const s of soste) {
@@ -1704,7 +1863,6 @@ AV.capitoloCorrente = capitoloCorrente;
 AV.calamita = calamita;
 })();</script>
 <script>(function(){
-// FILE: src/anteprime-logica.mjs — le immagini di un'anteprima entrano una dopo l'altra, e restano
 function ingressi(t, n, durata) {
   const tratto = (durata * 0.9) / Math.max(n, 1), entrata = tratto * 0.6;
   const out = [];
@@ -1719,10 +1877,8 @@ function ingressi(t, n, durata) {
 AV.ingressi = ingressi;
 })();</script>
 <script>(function(){
-// FILE: src/video-scorre-logica.mjs — la matematica del video che segue lo scroll, senza DOM (blocco 5B)
 const RIGHE = ['mandi', 'ricevi', 'tempo', 'prezzo'];
 
-// "mandi@0.15 ricevi@8.9 …" → [{ riga, da }] in ordine di tempo; una riga sconosciuta o un secondo illeggibile fermano tutto
 function leggiMomenti(testo) {
   return String(testo || '').trim().split(/\s+/).filter(Boolean).map((pezzo) => {
     const at = pezzo.indexOf('@');
@@ -1733,28 +1889,24 @@ function leggiMomenti(testo) {
   }).sort((a, b) => a.da - b.da);
 }
 
-// al secondo t ogni riga è accesa dal suo momento in poi (con 0,05 s d'anticipo, perché la frase del reel sale in dissolvenza)
 function righeAccese(t, momenti) {
   const out = {};
   for (const m of momenti) out[m.riga] = t >= m.da - 0.05;
   return out;
 }
 
-// il secondo da chiedere al video: dentro [0, durata − un fotogramma], mai NaN (un NaN in currentTime è una ricerca che non avviene)
 function bersaglio(t, durata) {
   if (!Number.isFinite(t)) return 0;
   const fine = Number.isFinite(durata) && durata > 0 ? durata - 1 / 30 : Infinity;
   return Math.min(Math.max(t, 0), fine);
 }
 
-// oltre `massimo` video scaricati si liberano i più lontani dalla vista; uno in vista (distanza 0) non si libera mai
 function daLiberare(caricati, massimo = 2) {
   if (caricati.length <= massimo) return [];
   return caricati.filter((c) => c.distanza > 0).sort((a, b) => b.distanza - a.distanza)
     .slice(0, caricati.length - massimo).map((c) => c.id);
 }
 
-// il risparmio dati del telefono, o una rete lenta: niente video che scorre, solo il fotogramma e il bottone
 function parsimonia({ saveData, effectiveType } = {}) {
   return !!saveData || /^(slow-)?2g$|^3g$/.test(effectiveType || '');
 }
@@ -1767,13 +1919,7 @@ AV.daLiberare = daLiberare;
 AV.parsimonia = parsimonia;
 })();</script>
 <script>(function(){
-// FILE: src/video-reel-logica.mjs — i reel della home che partono da soli quando li vedi (25/09), senza DOM
-// Simone: «ogni video parta in automatico ogni volta che ci scorri… con l'audio già attivo». Prima avanzavano con lo scroll
-// (video-scorre.js, che resta al film dell'isola nella pagina di Aura). Il browser concede il suono solo a una pagina che chi
-// guarda ha già toccato (un link, un bottone, un tasto; lo scroll non conta): qui le regole su chi va, da dove e con che suono.
 
-// ne va uno solo: quello già partito resta finché se ne vede almeno `esce`, così un filo di scroll non lo ferma; altrimenti
-// parte il più visibile fra quelli che superano `entra`. voci = [{ id, quota }], la quota è la frazione del telefono in vista
 function chiSuona(voci, attuale, { entra = 0.6, esce = 0.3 } = {}) {
   const di = (id) => { const x = voci.find((v) => v.id === id); return x ? x.quota : 0; };
   if (attuale !== null && attuale !== undefined && di(attuale) >= esce) return attuale;
@@ -1782,26 +1928,20 @@ function chiSuona(voci, attuale, { entra = 0.6, esce = 0.3 } = {}) {
   return scelto;
 }
 
-// un reel che torna in vista riprende da dov'era; finito (o a un soffio dalla fine), riparte da capo
 function ripartenza(t, durata) {
   if (!Number.isFinite(t) || t < 0) return 0;
   return Number.isFinite(durata) && durata > 0 && t >= durata - 0.25 ? 0 : t;
 }
 
-// parte col suono se chi guarda non l'ha tolto e se il browser lo concede: `attivato` è navigator.userActivation.hasBeenActive,
-// null dove il browser non lo dice (allora si prova, e se rifiuta il reel riparte muto)
 function colSuono({ voglia, attivato }) {
   return !!voglia && attivato !== false;
 }
 
-// la linea d'oro sotto il reel: quanto ne hai visto
 function avanzamento(t, durata) {
   if (!Number.isFinite(t) || !Number.isFinite(durata) || durata <= 0) return 0;
   return Math.min(Math.max(t / durata, 0), 1);
 }
 
-// il bottone dell'audio sul telefono, che dice cosa succede se lo tocchi. Muto si offre per intero; col suono resta l'icona sola,
-// perché si guarda il reel e non il bottone. `aMano`: col movimento ridotto o il risparmio dati il reel non parte da solo
 function bottone({ muto = true, finito = false, aMano = false } = {}) {
   if (finito) return { stato: 'rivedi', testo: 'Rivedi', etichetta: "Rivedi il reel dall'inizio" };
   if (aMano) return { stato: 'guarda', testo: "Guarda con l'audio", etichetta: "Guarda il reel con l'audio" };
@@ -1809,22 +1949,17 @@ function bottone({ muto = true, finito = false, aMano = false } = {}) {
   return { stato: 'suona', testo: '', etichetta: "Togli l'audio del reel" };
 }
 
-// Simone, 25/09 (seconda passata): «la possibilità di tornare indietro su ogni video». Sotto il reel c'è una barra: un tocco
-// o un trascinamento portano lì. La barra va da 0 a 1, il reel da 0 alla sua durata
 function secondoDa(frazione, durata) {
   if (!Number.isFinite(frazione) || !Number.isFinite(durata) || durata <= 0) return 0;
   return Math.min(Math.max(frazione, 0), 1) * durata;
 }
 
-// dalla tastiera: le frecce spostano di 2 secondi, Inizio e Fine vanno ai capi; un altro tasto non sposta niente (null)
 function passo(tasto, t, durata) {
   const d = Number.isFinite(durata) && durata > 0 ? durata : 0, ora = Number.isFinite(t) ? t : 0;
   const dove = { ArrowLeft: ora - 2, ArrowDown: ora - 2, ArrowRight: ora + 2, ArrowUp: ora + 2, Home: 0, End: d }[tasto];
   return dove === undefined ? null : Math.min(Math.max(dove, 0), d);
 }
 
-// «un tasto in alto a destra… per metterlo anche a tutto schermo»: lo standard dove il browser lo ha; sull'iPhone Safari lo
-// concede solo al video, col lettore del telefono (webkitEnterFullscreen); dove non c'è né l'uno né l'altro, il tasto non si mostra
 function modoSchermo({ standard, iphone }) {
   return standard ? 'standard' : iphone ? 'iphone' : null;
 }
@@ -1839,32 +1974,23 @@ AV.passo = passo;
 AV.modoSchermo = modoSchermo;
 })();</script>
 <script>(function(){
-// FILE: src/scene-sistemi-logica.mjs — le due scene dei sistemi che partono da sole quando le vedi (25/09), senza DOM
-// Simone: i pannelli di «Dal messaggio al preventivo» e del gestionale «molto AI slop»; serve «una prova chiara», per esempio
-// «un'interfaccia di Instagram». Al posto dei pannelli: un DM vero sul telefono disegnato, e il gestionale nella finestra del
-// computer (sul telefono, in un telefono). Ogni pezzo della scena dice nell'HTML quando entra (data-da) e quando esce (data-a).
 
-// un pezzo è in scena dal suo secondo d'entrata fino a quello d'uscita, se ce l'ha
 function inScena(t, da, a = null) {
   if (!Number.isFinite(t) || !Number.isFinite(da)) return false;
   return t >= da && !(Number.isFinite(a) && t >= a);
 }
 
-// una scritta che si batte da sola: quante lettere si vedono al secondo t (cps = lettere al secondo)
 function lettere(testo, t, da, cps = 40) {
   const n = String(testo).length;
   if (!Number.isFinite(t) || !Number.isFinite(da) || t < da) return 0;
   return Math.min(n, Math.floor((t - da) * cps));
 }
 
-// la scena dura fino all'ultimo pezzo che entra, più un respiro per leggerlo: prima di allora il bottone «Rivedi» non c'è
 function fineScena(momenti, respiro = 0.6) {
   const validi = momenti.filter(Number.isFinite);
   return validi.length ? Math.max(...validi) + respiro : 0;
 }
 
-// cosa fa la scena quando ne cambia la parte in vista: parte quando se ne vede più di metà, si ferma quando esce quasi tutta,
-// riprende da dov'era; finita resta finita (si rivede col bottone). stato: 'attesa' | 'va' | 'pausa' | 'finita'
 function azioneScena({ quota, stato }, { entra = 0.55, esce = 0.15 } = {}) {
   if (stato === 'finita') return null;
   if (stato === 'va') return quota < esce ? 'pausa' : null;
@@ -1877,12 +2003,8 @@ AV.fineScena = fineScena;
 AV.azioneScena = azioneScena;
 })();</script>
 <script>(function(){
-// FILE: src/flacone-logica.mjs — la boccetta di Avoria nell'apertura, senza Three.js (25/09)
-// Vetro, profumo color champagne e il marchio al centro: qui le misure e il movimento di camera, flacone.js le disegna.
-// Prende il posto della boccetta in ceramica (identita/src/scene/immagine.js), che resta ai reel e alla pagina dell'identità.
 var morbido = AV.morbido;
 
-// unità di scena; il vetro poggia a y = -1 come la boccetta di prima, così ombra e inquadratura non cambiano
 const FLACONE = {
   corpo: { larghezza: 1.36, altezza: 1.56, profondita: 0.72, raggio: 0.14, smusso: 0.08 },
   fondo: 0.26,                 // il vetro pieno sotto il profumo
@@ -1893,10 +2015,6 @@ const FLACONE = {
   marchio: { centro: -0.24, lato: 0.72 }   // il quadrato stampato sulla faccia davanti
 };
 
-// la camera gira intorno al vetro in un solo movimento e chiude sul marchio (la macro): ty e tz sono il punto guardato,
-// il centro del vetro per il giro e il marchio sulla faccia davanti per la macro. `tratto` è l'etichetta del tratto che parte lì.
-// Il riposo (t = 1,4, dove la home parte) è una tappa: lì la camera è ferma, e un filo di scroll non gira la boccetta.
-// La prima tappa è l'ultima (380° = 20°): se la scena gira da sola, il giro si chiude senza salti.
 const TAPPE_FLACONE = [
   { t: 0,   dist: 5.4, elev: 8,  az: 20,  ty: 0, tz: 0, tratto: 0 },
   { t: 1.4, dist: 5.4, elev: 9,  az: 12,  ty: 0, tz: 0, tratto: 0 },
@@ -1920,13 +2038,11 @@ function posaFlacone(t) {
   }
 }
 
-// dove sta la camera, nelle coordinate della boccetta: dist dal punto guardato, allungata di `fattore` (in verticale si allontana)
 function puntoCamera(p, fattore = 1) {
   const d = p.dist * fattore, el = p.elev * Math.PI / 180, az = p.az * Math.PI / 180;
   return { x: Math.sin(az) * Math.cos(el) * d, y: p.ty + Math.sin(el) * d, z: p.tz + Math.cos(az) * Math.cos(el) * d };
 }
 
-// un azimut in gradi, portato fra -180 e 180: 0 è la faccia davanti, quella col marchio
 function angolo(az) {
   const a = ((az % 360) + 360) % 360;
   return a > 180 ? a - 360 : a;
@@ -1949,15 +2065,12 @@ AV.puntoCamera = puntoCamera;
 AV.angolo = angolo;
 AV.marchioSulVetro = marchioSulVetro;
 })();</script>
-<script>// FILE: src/arco3d.js — l'Arco in ceramica 3D e lo studio di posa condiviso
-(function () {
+<script>(function () {
   var AV = window.AV;
   var ORO = 0xB8935E;
 
   var morbido = AV.morbido;
 
-  // r128 non gestisce il colore: un esadecimale va portato da sRGB a lineare a mano,
-  // altrimenti l'inchiostro esce grigio e l'oro esce crema (misurato il 17/09).
   AV.lineare = function (THREE, hex) { return new THREE.Color(hex).convertSRGBToLinear(); };
 
   AV.creaStudio = function (canvas, opzioni) {
@@ -2013,7 +2126,6 @@ AV.marchioSulVetro = marchioSulVetro;
       color: AV.lineare(THREE, opzioni.colore), roughness: 0.4, metalness: 0,
       clearcoat: 0.55, clearcoatRoughness: 0.3, transparent: true
     });
-    // di notte un metallo pieno riflette solo il buio ed esce bronzo: meno metallo, più luce propria
     var oro = new THREE.MeshStandardMaterial({
       color: AV.lineare(THREE, ORO),
       metalness: opzioni.notte ? 0.55 : 1,
@@ -2071,8 +2183,7 @@ AV.marchioSulVetro = marchioSulVetro;
   AV.componenti.push(componenteArco('arco-notte', true));
 })();
 </script>
-<script>// FILE: src/voce.js — la voce comune: tabellone e parole che respirano
-(function () {
+<script>(function () {
   var AV = window.AV;
 
   Array.prototype.forEach.call(document.querySelectorAll('[data-solari]'), function (el, k) {
@@ -2124,8 +2235,7 @@ AV.marchioSulVetro = marchioSulVetro;
   });
 })();
 </script>
-<script>// FILE: src/particelle.js — particelle della notte; con data-particelle="arco" formano l'Arco
-(function () {
+<script>(function () {
   var AV = window.AV;
 
   function bersagli() {
@@ -2182,7 +2292,6 @@ AV.marchioSulVetro = marchioSulVetro;
         if (w !== W || h !== H) { W = w; H = h; canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr); }
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.clearRect(0, 0, W, H);
-        // su schermo stretto il testo sta in alto: l'Arco va al centro, sotto il testo, come il flacone di giorno
         var stretto = W < 760;
         var cx = stretto ? W * 0.5 : W * (parseFloat(el.getAttribute('data-centro-x')) || 0.5);
         var cy = stretto ? H * (parseFloat(el.getAttribute('data-centro-y')) || 0.74) : H * 0.5;
@@ -2211,11 +2320,9 @@ AV.marchioSulVetro = marchioSulVetro;
   });
 })();
 </script>
-<script>// FILE: src/soglia.js — il passaggio dal giorno alla notte attraverso l'Arco
-(function () {
+<script>(function () {
   var AV = window.AV;
 
-  // l'apertura dell'Arco (fra le gambe, sotto la volta), coordinate del viewBox 160x200
   function apertura() {
     var pts = [[29, 186], [72.5, 40]];
     AV.campiona({ tipo: 'quad', punti: [[72.5, 40], [80, 29], [87.5, 40]] }, 16)
@@ -2255,10 +2362,7 @@ AV.marchioSulVetro = marchioSulVetro;
   });
 })();
 </script>
-<script>// FILE: src/flacone.js — la boccetta di Avoria nell'apertura (25/09): vetro spesso, profumo champagne, il marchio al centro.
-// Misure e camera in flacone-logica.mjs; lo studio di posa è quello dell'Arco (identita/src/arco3d.js).
-// La boccetta in ceramica di prima (identita/src/scene/immagine.js) resta ai reel e alla pagina dell'identità.
-(function () {
+<script>(function () {
   var AV = window.AV;
   var F = AV.FLACONE;
   var INCHIOSTRO = '#16140F', GRAFITE = '#5E5A52';
@@ -2273,7 +2377,6 @@ AV.marchioSulVetro = marchioSulVetro;
     return s;
   }
 
-  // l'estrusione ha le facce staccate, e un vetro a faccette tradisce il 3D: si cuciono i vertici uguali e le normali si ammorbidiscono
   function liscio(THREE, geo) {
     var p = geo.attributes.position, visti = {}, pos = [], indice = [];
     for (var i = 0; i < p.count; i++) {
@@ -2288,7 +2391,6 @@ AV.marchioSulVetro = marchioSulVetro;
     return g;
   }
 
-  // un blocco dagli spigoli morbidi, centrato: la sagoma davanti estrusa in profondità, lo smusso arrotonda ogni bordo
   function blocco(THREE, w, h, d, r, b) {
     var geo = new THREE.ExtrudeGeometry(rettangolo(THREE, w - 2 * b, h - 2 * b, Math.max(r - b, 0.01)),
       { depth: d - 2 * b, bevelEnabled: true, bevelThickness: b, bevelSize: b, bevelSegments: 8, curveSegments: 16 });
@@ -2296,7 +2398,6 @@ AV.marchioSulVetro = marchioSulVetro;
     return liscio(THREE, geo);
   }
 
-  // una parola spaziata lettera per lettera (letterSpacing del canvas non c'è ovunque)
   function spaziato(x, testo, cx, y, carattere, corpo, em, colore) {
     x.font = carattere.replace('%', corpo + 'px');
     x.fillStyle = colore;
@@ -2307,14 +2408,12 @@ AV.marchioSulVetro = marchioSulVetro;
     testo.split('').forEach(function (c, i) { x.fillText(c, px, y); px += larghe[i] + em * corpo; });
   }
 
-  // l'Arco del simbolo della pagina (viewBox 160 × 200): gambe e volta, poi la barra
   function arco(x, gambe, barra) {
     x.lineCap = 'round'; x.lineJoin = 'round';
     if (gambe) { x.strokeStyle = gambe; x.lineWidth = 15; x.beginPath(); x.moveTo(20, 180); x.lineTo(68, 30); x.quadraticCurveTo(80, 16, 92, 30); x.lineTo(140, 180); x.stroke(); }
     if (barra) { x.strokeStyle = barra; x.lineWidth = 13; x.beginPath(); x.moveTo(44, 110); x.lineTo(116, 110); x.stroke(); }
   }
 
-  // il marchio su due tele: inchiostro (l'Arco, AVORIA, STUDIO) e oro (la barra dell'Arco, che sul vetro è metallo vero)
   function disegnaMarchio(inchiostro, oro) {
     var N = inchiostro.width, s = N / 1024, k = 1.75 * s;
     var a = inchiostro.getContext('2d'), b = oro.getContext('2d');
@@ -2327,9 +2426,6 @@ AV.marchioSulVetro = marchioSulVetro;
     spaziato(a, 'STUDIO', N / 2, 787 * s, '400 % "Geist Mono", ui-monospace, monospace', Math.round(40 * s), 0.5, GRAFITE);
   }
 
-  // su fondo chiaro il vetro si riconosce dai bordi: dove la superficie gira via dall'occhio diventa più presente (radente),
-  // e un velo leggero dà corpo alle facce. Con un colore, il bordo tende a quel colore (il profumo, più denso ai lati).
-  // Tutti i parametri entrano nella chiave del programma, altrimenti vetro e profumo dividerebbero lo stesso shader.
   function bordi(m, forza, esponente, velo, colore) {
     var chiave = ['bordi', forza, esponente, velo, colore].join('|');
     m.customProgramCacheKey = function () { return chiave; };
@@ -2342,12 +2438,9 @@ AV.marchioSulVetro = marchioSulVetro;
     return m;
   }
 
-  // lo studio del vetro, come su un set vero: pannelli neri intorno e tre luci. Nello studio chiaro del sito il vetro
-  // rifletteva la stanza e usciva smerigliato; qui i bordi escono scuri e i riflessi delle luci netti (banco del 25/09)
   function studioVetro(THREE, renderer) {
     var set = new THREE.Scene();
     set.add(new THREE.Mesh(new THREE.BoxGeometry(24, 24, 24), new THREE.MeshBasicMaterial({ color: 0x2a2a2a, side: THREE.BackSide })));
-    // le tre luci del sito, più due strisce alte dietro la camera: sulla faccia davanti diventano i due riflessi verticali
     [[-6, 5, 7, 7, 5, 3.2], [7, 1, 4, 3, 8, 2.2], [0, 9, -3, 10, 3, 1.4], [-2.6, 0.5, 8, 0.9, 14, 7], [3.1, 0.5, 8, 0.4, 14, 4]].forEach(function (q) {
       var m = new THREE.Mesh(new THREE.PlaneGeometry(q[3], q[4]), new THREE.MeshBasicMaterial({ color: new THREE.Color(q[5], q[5], q[5]), side: THREE.DoubleSide }));
       m.position.set(q[0], q[1], q[2]); m.lookAt(0, 0, 0); set.add(m);
@@ -2357,8 +2450,6 @@ AV.marchioSulVetro = marchioSulVetro;
     return mappa;
   }
 
-  // il profumo: luce che lo attraversa, non una superficie illuminata. Champagne chiaro in basso, ambra verso il pelo e
-  // dove il liquido è più spesso (i lati visti di sbieco), una riga di luce sul fondo e una sul pelo. Colori esatti, senza tone mapping.
   function liquido(THREE, altezza) {
     var lin = function (h) { return AV.lineare(THREE, h); };
     return new THREE.ShaderMaterial({
@@ -2379,10 +2470,7 @@ AV.marchioSulVetro = marchioSulVetro;
     var g = new THREE.Group(), C = F.corpo, lin = function (h) { return AV.lineare(THREE, h); };
     var fondoY = -1, cimaY = fondoY + C.altezza;
 
-    // il vetro: due gusci, le facce di dietro prima e quelle davanti dopo, così i riflessi dei due lati si sommano
-    // il vetro non ha colore suo (nero = niente luce diffusa): si vede solo per quello che riflette
     var riflessi = studioVetro(THREE, renderer);
-    // il guscio davanti disegna il contorno; quello dietro solo un filo, sennò le pareti viste di taglio escono fumé
     function vetro(lato, forza) {
       return bordi(new THREE.MeshPhysicalMaterial({ color: 0x000000, metalness: 0, roughness: 0.02, transmission: 1, transparent: true,
         envMap: riflessi, side: lato, depthWrite: false }), forza, 4, 0.015);
@@ -2392,7 +2480,6 @@ AV.marchioSulVetro = marchioSulVetro;
     dietro.position.y = davanti.position.y = fondoY + C.altezza / 2;
     dietro.renderOrder = 1; davanti.renderOrder = 3;
 
-    // il profumo: dentro le pareti, sopra il fondo pieno, fino al livello
     var basso = fondoY + F.fondo, alto = F.livello;
     var profumo = new THREE.Mesh(blocco(THREE, C.larghezza - 2 * F.parete, alto - basso, C.profondita - 2 * F.parete, C.raggio * 0.6, 0.04),
       liquido(THREE, alto - basso));
@@ -2412,7 +2499,6 @@ AV.marchioSulVetro = marchioSulVetro;
     tappo.position.y = cimaY + F.collare.altezza + T.altezza / 2;
     g.add(dietro, profumo, davanti, collare, tappo);
 
-    // il marchio stampato al centro della faccia davanti: inchiostro, e la barra in oro
     var anis = renderer.capabilities.getMaxAnisotropy();
     function tela(n) { var c = document.createElement('canvas'); c.width = c.height = n; return c; }
     function trama(c) { var t = new THREE.CanvasTexture(c); t.anisotropy = anis; return t; }
@@ -2427,7 +2513,6 @@ AV.marchioSulVetro = marchioSulVetro;
     foglia.position.set(0, F.marchio.centro, C.profondita / 2 + 0.003);
     g.add(stampa, foglia);
 
-    // sul tappo, per chi guarda dall'alto, l'Arco in oro
     var telaTappo = tela(256), x = telaTappo.getContext('2d');
     x.fillStyle = '#000'; x.fillRect(0, 0, 256, 256);
     x.save(); x.translate(128 - 80 * 1.05, 128 - 100 * 1.05); x.scale(1.05, 1.05); arco(x, '#fff', '#fff'); x.restore();
@@ -2437,9 +2522,7 @@ AV.marchioSulVetro = marchioSulVetro;
     sigillo.renderOrder = 6;
     g.add(sigillo);
 
-    // l'ombra, e dentro l'ombra la luce che passa dal profumo
     var c = tela(256), o = c.getContext('2d');
-    // la tela copre 3 × 3 unità: 85 px per unità; la base del vetro è 1,36 × 0,72
     [[80, 0.22], [52, 0.26]].forEach(function (q) {
       o.save(); o.translate(128, 128); o.scale(1, 0.56);
       var gr = o.createRadialGradient(0, 0, 4, 0, 0, q[0]);
@@ -2460,7 +2543,6 @@ AV.marchioSulVetro = marchioSulVetro;
 
     return {
       gruppo: g,
-      // da dietro la stampa sta oltre il profumo: si disegna per prima, così il profumo la vela
       lato: function (camera) { var d = camera.position.z > 0; stampa.renderOrder = d ? 4 : 0; foglia.renderOrder = d ? 5 : 0.5; },
       ridisegna: function () { disegnaMarchio(telaInchiostro, telaOro); mappa.needsUpdate = mappaOro.needsUpdate = true; }
     };
@@ -2478,7 +2560,6 @@ AV.marchioSulVetro = marchioSulVetro;
         try { studio = AV.creaStudio(canvas, { notte: false }); } catch (e) { canvas.remove(); throw e; }
         boccetta = prodotto(studio.THREE, studio.renderer);
         studio.scena.add(boccetta.gruppo);
-        // il marchio si ridisegna quando arrivano i caratteri della casa
         if (document.fonts && document.fonts.load) {
           Promise.all([document.fonts.load('600 132px "Playfair Display"'), document.fonts.load('400 40px "Geist Mono"')]).then(function () {
             boccetta.ridisegna();
@@ -2520,11 +2601,7 @@ AV.marchioSulVetro = marchioSulVetro;
   AV.componenti.push(componenteFlacone('hero-flacone'));
 })();
 </script>
-<script>// FILE: src/scene-sistemi.js — le scene del preventivo e del gestionale (25/09): partono da sole quando le vedi, una volta, e
-// finite restano ferme sull'ultima immagine col bottone «Rivedi». Ogni pezzo dice nell'HTML quando entra (data-da) e quando
-// esce (data-a); data-batti batte la scritta dal momento del pezzo che la contiene; data-segna="t|classe" mette una classe da
-// quel secondo; data-poi="t|scritta" cambia la scritta. Il movimento ridotto e ?t= mostrano subito l'ultima immagine.
-(function () {
+<script>(function () {
   var AV = window.AV;
   var calmo = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   var fisso = new URLSearchParams(location.search).has('t');
@@ -2579,7 +2656,8 @@ AV.marchioSulVetro = marchioSulVetro;
     b.hidden = true;
     b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></svg><span>Rivedi</span>';
     b.setAttribute('aria-label', "Rivedi l'esempio dall'inizio");
-    b.addEventListener('click', function () { vai(s, 0); s.stato = 'va'; b.hidden = true; avvia(); });
+    s.el.tabIndex = -1;
+    b.addEventListener('click', function () { vai(s, 0); s.stato = 'va'; s.el.focus({ preventScroll: true }); b.hidden = true; avvia(); });
     var sotto = s.el.querySelector('figcaption') || s.el;
     sotto.appendChild(b);
     return b;
@@ -2634,12 +2712,7 @@ AV.marchioSulVetro = marchioSulVetro;
   AV.scene = { tutte: tutte, vai: vai };
 })();
 </script>
-<script>// FILE: src/anteprime.js — le anteprime: immagini che entrano con lo scroll, caricate solo quando servono
-// Dal 24/09 (blocco 5B) ogni [data-anteprima] è un componente col nome del suo data-componente: le prove della home e i capitoli di Aura.
-// Le foto arrivano a tempo: la prima 600 px prima; ognuna delle altre quando comincia a entrare la precedente. Con tutto a 600 px la
-// pagina di Aura, sei foto subito sotto l'apertura, pesava 1.209 KB alla prima schermata (tetto 500, misurato il 24/09); al computer
-// l'anteprima è già in vista all'avvio, quindi nemmeno «quando si vede» bastava. Col movimento ridotto non c'è tempo: arrivano in vista.
-(function () {
+<script>(function () {
   var AV = window.AV;
   var calmo = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   function prendi(el) {
@@ -2678,14 +2751,7 @@ AV.marchioSulVetro = marchioSulVetro;
   });
 })();
 </script>
-<script>// FILE: src/video-reel.js — i tre reel della home partono da soli quando li vedi, uno alla volta, col suono se il browser lo
-// concede (25/09). Prende il posto di video-scorre.js nella home: là il reel avanzava con lo scroll e servivano tre schermi
-// e mezzo per vederlo tutto. Sul telefono disegnato: il bottone dell'audio in basso, la barra d'oro per tornare indietro sotto,
-// il tutto schermo in alto a destra. Le quattro righe del blocco sono accese da subito e non aspettano il reel (seconda passata).
-// Il suono: un browser lo concede solo a una pagina già toccata (un link, un bottone, un tasto; lo scroll non conta). Chi arriva
-// e scorre e basta vede il reel muto col bottone «Attiva l'audio»; al primo tocco sulla pagina l'audio si accende, e da lì ogni
-// reel parte col suono, finché non lo togli tu.
-(function () {
+<script>(function () {
   var AV = window.AV;
   var calmo = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   var c = navigator.connection;
@@ -2696,15 +2762,13 @@ AV.marchioSulVetro = marchioSulVetro;
   var CHIAVE = 'avoria-reel-audio';
   var tutti = [], attuale = null, giro = 0, timer = 0, ultimoScroll = 0;
 
-  // sull'iPhone l'audio della pagina segue il tasto silenzioso (Safari 17 in poi; altrove la proprietà non c'è)
-  try { if (navigator.audioSession) navigator.audioSession.type = 'ambient'; } catch (e) { /* niente */ }
+  try { if (navigator.audioSession) navigator.audioSession.type = 'ambient'; } catch (e) {  }
 
-  // chi ha tolto l'audio lo ritrova tolto negli altri reel e ricaricando la pagina, finché non la chiude
   var voglia = true;
-  try { voglia = sessionStorage.getItem(CHIAVE) !== 'no'; } catch (e) { /* senza archivio: col suono */ }
+  try { voglia = sessionStorage.getItem(CHIAVE) !== 'no'; } catch (e) {  }
   function vuoi(si) {
     voglia = si;
-    try { sessionStorage.setItem(CHIAVE, si ? 'si' : 'no'); } catch (e) { /* niente */ }
+    try { sessionStorage.setItem(CHIAVE, si ? 'si' : 'no'); } catch (e) {  }
   }
   function attivato() { return ua ? ua.hasBeenActive : null; }
 
@@ -2729,7 +2793,6 @@ AV.marchioSulVetro = marchioSulVetro;
     s.bottone.innerHTML = svg(ICONA[b.stato]) + (b.testo ? '<span>' + b.testo + '</span>' : '');
   }
 
-  // la barra d'oro segue il reel; mentre la trascini la guida il dito
   function segui(s) {
     if (s.trascina) return;
     var d = durata(s), t = s.finito ? d : s.video.currentTime, x = AV.avanzamento(t, d);
@@ -2740,7 +2803,6 @@ AV.marchioSulVetro = marchioSulVetro;
     var d = durata(s), t = s.finito ? d : s.video.currentTime;
     s.barra.setAttribute('aria-valuetext', Math.round(t) + ' secondi di ' + Math.round(d));
   }
-  // un giro di fotogrammi solo mentre un reel va: la barra segue il video
   function batti() {
     giro = 0;
     if (!attuale || attuale.video.paused) return;
@@ -2759,8 +2821,6 @@ AV.marchioSulVetro = marchioSulVetro;
     s.video.src = scegli(s.video, 'data-src');
   }
 
-  // il browser rifiuta il suono a una pagina mai toccata: il reel riparte muto, col bottone per accenderlo. Se rifiuta anche
-  // il reel muto (l'iPhone col risparmio energetico), resta la copertina col bottone, e non si riprova a ogni scroll
   function suona(s, conSuono) {
     var v = s.video;
     v.muted = !conSuono;
@@ -2778,26 +2838,22 @@ AV.marchioSulVetro = marchioSulVetro;
     }
     ridisegna(s);
   }
-  // Safari dà il suono a un video solo dentro un gesto, video per video: al primo tocco si sbloccano anche gli altri reel,
-  // così il secondo parte col suono senza chiederlo di nuovo. play() e subito pause(): non si vede e non scarica niente in più
   function sblocca(tranne) {
     tutti.forEach(function (s) {
       var v = s.video;
       if (s === tranne || s.sbloccato || !v.paused || v.ended) return;
       s.sbloccato = true;
-      try { var p = v.play(); v.pause(); if (p && p.catch) p.catch(function () { /* interrotto apposta */ }); } catch (e) { /* niente */ }
+      try { var p = v.play(); v.pause(); if (p && p.catch) p.catch(function () {  }); } catch (e) {  }
     });
   }
   function avvia(s) {
     carica(s);
     var r = AV.ripartenza(s.video.currentTime, durata(s));
-    if (s.finito || r !== s.video.currentTime) { s.finito = false; try { s.video.currentTime = r; } catch (e) { /* ancora senza dati */ } }
+    if (s.finito || r !== s.video.currentTime) { s.finito = false; try { s.video.currentTime = r; } catch (e) {  } }
     s.partito = true;
     suona(s, AV.colSuono({ voglia: voglia, attivato: attivato() }));
   }
   function ferma(s) { if (!s.video.paused) s.video.pause(); }
-  // parte quando la pagina si ferma (200 ms senza scroll), o dopo 900 ms in vista anche se scorri piano: un capitolo o una tappa
-  // fanno scorrere la pagina sopra gli altri reel, e senza questa attesa ognuno darebbe un colpo di musica passando
   function parti(s) {
     var da = performance.now();
     clearTimeout(timer);
@@ -2814,9 +2870,6 @@ AV.marchioSulVetro = marchioSulVetro;
   function aspetta() { clearTimeout(timer); timer = 0; }
   function pieno() { return tutti.some(function (s) { return s.pieno; }); }
 
-  // quale reel va adesso: al più uno, quello che si vede (video-reel-logica.mjs). Uno fatto partire a mano (movimento ridotto,
-  // risparmio dati) va finché resta in vista, e uscito si ferma; quelli automatici ripartono da soli quando tornano.
-  // A tutto schermo non si decide niente: il reel è di chi lo guarda
   function decidi() {
     if (pieno()) return;
     if (document.hidden) { aspetta(); if (attuale) ferma(attuale); return; }
@@ -2836,7 +2889,6 @@ AV.marchioSulVetro = marchioSulVetro;
     if (attuale) parti(attuale); else aspetta();
   }
 
-  // dopo un gesto sul reel (la barra, il tutto schermo): diventa lui quello che va, e va, col suono se non l'hai tolto
   function prendi(s) {
     aspetta();
     if (attuale !== s) { if (attuale) ferma(attuale); attuale = s; }
@@ -2848,7 +2900,6 @@ AV.marchioSulVetro = marchioSulVetro;
     ridisegna(s);
   }
 
-  // il bottone, e il reel stesso: accendono o tolgono l'audio; alla fine, o se il reel non è ancora partito, lo fanno partire
   function tocca(s) {
     var v = s.video;
     aspetta();
@@ -2857,7 +2908,7 @@ AV.marchioSulVetro = marchioSulVetro;
     if (s.finito || s.bloccato || (s.aMano && !s.partito)) {
       vuoi(true);
       carica(s);
-      if (s.finito) { s.finito = false; try { v.currentTime = 0; } catch (e) { /* ancora senza dati */ } }
+      if (s.finito) { s.finito = false; try { v.currentTime = 0; } catch (e) {  } }
       s.partito = true;
       suona(s, true);
       return;
@@ -2867,17 +2918,15 @@ AV.marchioSulVetro = marchioSulVetro;
     ridisegna(s);
   }
 
-  // «tornare indietro su ogni video»: la barra porta il reel dove la tocchi o la lasci; se era finito, riparte da lì
   function vaiA(s, t) {
     s.finito = false;
-    try { s.video.currentTime = t; } catch (e) { /* ancora senza dati */ }
+    try { s.video.currentTime = t; } catch (e) {  }
     var x = AV.avanzamento(t, durata(s));
     s.barra.style.setProperty('--fatto', (x * 100).toFixed(2) + '%');
     dici(s);
     ridisegna(s);
   }
 
-  // il tutto schermo: il video da solo, coi comandi del browser (pausa, volume, la sua barra); uscito, il reel torna nel telefono
   var modo = AV.modoSchermo({
     standard: !!(document.fullscreenEnabled && HTMLVideoElement.prototype.requestFullscreen),
     iphone: typeof HTMLVideoElement.prototype.webkitEnterFullscreen === 'function'
@@ -2903,8 +2952,6 @@ AV.marchioSulVetro = marchioSulVetro;
     if (!document.fullscreenElement) tutti.forEach(esci);
   });
 
-  // al primo tocco sulla pagina (un link, un bottone, un tasto) il reel che sta andando muto prende il suono, se non l'hai tolto.
-  // Solo dentro il gesto: fuori, Chrome e Safari fermerebbero il video invece di dargli il suono. I tocchi sul reel li gestisce lui
   function primoTocco(ev) {
     if (ua && !ua.isActive) return;
     if (ev.target && ev.target.closest && ev.target.closest('[data-reel]')) return;
@@ -2973,7 +3020,6 @@ AV.marchioSulVetro = marchioSulVetro;
     video.addEventListener('ended', function () { s.finito = true; segui(s); dici(s); ridisegna(s); });
 
     if (s.aMano) {
-      // col movimento ridotto o il risparmio dati: la copertina, e il reel parte solo se lo chiedi tu
       segna(s, 'riposo');
       var p = scegli(video, 'data-poster');
       if (p) video.setAttribute('poster', p);
@@ -3006,12 +3052,9 @@ AV.marchioSulVetro = marchioSulVetro;
   AV.reel = { tutti: tutti, attuale: function () { return attuale; } };
 })();
 </script>
-<script>// FILE: src/video-vista.js — i video che girano da soli quando si vedono, muti e in loop (blocco 5B). Il lettore «Con l'audio»
-// se n'è andato il 25/09: i reel della home partono da soli col loro bottone dell'audio (video-reel.js)
-(function () {
+<script>(function () {
   var calmo = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
 
-  // sorgente e copertina solo quando il video si avvicina; play quando è in vista per un quarto, pausa quando esce
   var auto = Array.prototype.slice.call(document.querySelectorAll('video[data-auto]'));
   function prepara(v) {
     if (v.getAttribute('data-poster')) { v.setAttribute('poster', v.getAttribute('data-poster')); v.removeAttribute('data-poster'); }
@@ -3034,10 +3077,7 @@ AV.marchioSulVetro = marchioSulVetro;
   }
 })();
 </script>
-<script>// FILE: src/regia.js — il regista: lo scroll diventa il tempo delle scene
-// Binari ([data-binario]) con un .palco che si aggancia sotto la barra; copioni (data-copione) che
-// portano il punto del film al tempo di un componente; effetti di entrata guidati dallo scroll.
-(function () {
+<script>(function () {
   var AV = window.AV;
   var q = new URLSearchParams(location.search);
   var riduci = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -3046,7 +3086,6 @@ AV.marchioSulVetro = marchioSulVetro;
   var TAU = 0.1;
   var doc = document.documentElement;
   var barraEl = document.querySelector('.barra-nav');
-  // 100svh non cambia quando la barra del telefono va e viene: è la misura giusta per i palchi
   var sonda = document.createElement('div');
   sonda.setAttribute('aria-hidden', 'true');
   sonda.style.cssText = 'position:fixed;left:0;top:0;width:1px;height:100vh;height:100svh;visibility:hidden;pointer-events:none';
@@ -3077,8 +3116,6 @@ AV.marchioSulVetro = marchioSulVetro;
     return null;
   }
 
-  // un palco si aggancia solo se il suo quadro ci sta; agganciato, il quadro riempie il palco
-  // (flex: 1 0 auto), quindi «non ci sta più» vuol dire «è più alto del palco»
   function misura() {
     stato.barra = barraEl ? barraEl.offsetHeight : 0;
     doc.style.setProperty('--alto-nav', stato.barra + 'px');
@@ -3122,12 +3159,10 @@ AV.marchioSulVetro = marchioSulVetro;
     return AV.attraversamento({ top: e.rect.top, altezza: e.rect.height, vista: vista });
   }
 
-  // il blocco sale e prende corpo mentre entra; senza regista --e vale 1 e resta pieno
   effetto('[data-svela]',
     function (e, vista) { return AV.ingresso({ top: e.rect.top, vista: vista, fino: 0.72 }); },
     function (e) { e.el.style.setProperty('--e', AV.limita(e.f.liscio).toFixed(4)); });
 
-  // la larghezza di Archivo segue lo scroll: "da a" arriva a metà strada, "da a poi" va e torna
   effetto('[data-allarga]', attraversa, function (e) {
     if (e.el.hasAttribute('data-manuale')) return;   // il cursore l'avete toccato voi
     var v = e.el.getAttribute('data-allarga').split(/\s+/).map(Number);
@@ -3144,8 +3179,6 @@ AV.marchioSulVetro = marchioSulVetro;
     if (uscita) uscita.textContent = String(w);
   });
 
-  // la notte entra da destra: dentro un palco agganciato nella prima metà della corsa; a palco libero
-  // (telefono, le due metà una sotto l'altra) finisce presto, come le entrate, o alla sosta il testo resta tagliato
   effetto('[data-tenda]',
     function (e, vista) {
       if (e.bin && e.bin.fermo) return AV.limita(e.bin.p.grezzo / 0.45);
@@ -3157,7 +3190,6 @@ AV.marchioSulVetro = marchioSulVetro;
       if (cp !== e.cp) { e.cp = cp; e.el.style.clipPath = cp; }
     });
 
-  // la testina corre sulla linea del tempo della soglia (0–14 s, 48 px al secondo nel disegno)
   var FASI = [[4, 'GIORNO'], [5.8, 'SOGLIA'], [12.2, 'NOTTE'], [13.8, 'RITORNO'], [Infinity, 'GIORNO']];
   effetto('[data-testina]', attraversa, function (e) {
     var g = e.el.querySelector('.testina');
@@ -3170,7 +3202,6 @@ AV.marchioSulVetro = marchioSulVetro;
     etichetta.textContent = s.toFixed(1).replace('.', ',') + ' s · ' + fase;
   });
 
-  // una sezione della notte entra attraverso l'apertura dell'Arco, come la soglia dell'apertura
   effetto('[data-soglia-ingresso]',
     function (e, vista) { return AV.limita((vista - e.rect.top) / (0.85 * vista)); },
     function (e) {
@@ -3229,7 +3260,6 @@ AV.marchioSulVetro = marchioSulVetro;
 
   addEventListener('resize', function () { stato.rimisura = true; });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { stato.rimisura = true; });
-  // si misura al fotogramma dopo: misurare dentro l'osservatore farebbe un giro di notifiche a vuoto
   if ('ResizeObserver' in window) {
     var oss = new ResizeObserver(function () { stato.rimisura = true; });
     binari.forEach(function (b) { if (b.quadro) oss.observe(b.quadro); });
@@ -3244,9 +3274,7 @@ AV.marchioSulVetro = marchioSulVetro;
   };
 })();
 </script>
-<script>// FILE: src/indice.js — i capitoli del film: tacche a destra, barra in basso sul telefono,
-// calamita leggera verso la sosta vicina. Funziona anche a regista spento (salti senza agganci).
-(function () {
+<script>(function () {
   var AV = window.AV;
   var riduci = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   var doc = document.documentElement;
@@ -3272,7 +3300,6 @@ AV.marchioSulVetro = marchioSulVetro;
     });
   }
   function sostaDi(c) { return posizione(c, c.sosta); }
-  // un capitolo comincia all'aggancio del suo palco; il secondo capitolo di un palco, poco prima della sua sosta
   function inizioDi(c) { return posizione(c, c.primo || c.sosta === null ? 0 : Math.max(0, c.sosta - 0.25)); }
   function due(n) { return (n < 10 ? '0' : '') + n; }
 
@@ -3306,8 +3333,9 @@ AV.marchioSulVetro = marchioSulVetro;
     '<p class="dove"><b></b><span></span></p>' +
     '<button type="button" class="succ" aria-label="Capitolo successivo"><span aria-hidden="true">→</span></button>' +
     '<i class="avanza" aria-hidden="true"></i>';
-  document.body.appendChild(nav);
-  document.body.appendChild(corto);
+  var barra = document.querySelector('.barra-nav');
+  if (barra) barra.after(nav, corto);
+  else { document.body.appendChild(nav); document.body.appendChild(corto); }
   var doveNum = corto.querySelector('.dove b');
   var doveNome = corto.querySelector('.dove span');
 
@@ -3328,7 +3356,6 @@ AV.marchioSulVetro = marchioSulVetro;
   corto.querySelector('.prec').addEventListener('click', function () { salta(-1); });
   corto.querySelector('.succ').addEventListener('click', function () { salta(1); });
 
-  // i link della barra (e quelli marcati data-salta) portano alla sosta del capitolo, non all'inizio del binario
   Array.prototype.forEach.call(document.querySelectorAll('.barra-nav a[href^="#"], a[data-salta][href^="#"]'), function (a) {
     a.addEventListener('click', function (ev) {
       var dest = document.getElementById(a.getAttribute('href').slice(1));
@@ -3362,7 +3389,6 @@ AV.marchioSulVetro = marchioSulVetro;
       attivo = k;
       var b = capitoli[k].bottone;
       b.setAttribute('aria-current', 'step');
-      // il nome del capitolo appare per un attimo e se ne va: fisso, coprirebbe il testo a destra
       b.classList.add('annuncia');
       clearTimeout(annuncio);
       annuncio = setTimeout(function () { b.classList.remove('annuncia'); }, 1600);
@@ -3382,8 +3408,6 @@ AV.marchioSulVetro = marchioSulVetro;
     requestAnimationFrame(aggiorna);
   }
 
-  // calamita: fermi a un passo da una sosta di un palco agganciato, vi ci porta; mai col dito appoggiato,
-  // mai verso l'inizio della pagina, e non di nuovo finché restate vicino all'ultima sosta raggiunta
   var film = doc.classList.contains('film');
   var giu = false, timer = 0;
   function fermo() {
@@ -3420,8 +3444,7 @@ AV.marchioSulVetro = marchioSulVetro;
   AV.indice = { capitoli: capitoli, vai: vai, sostaDi: sostaDi };
 })();
 </script>
-<script>// FILE: src/player.js — l'orologio unico: tempo reale, tempo dello scroll (regista), oppure ?t= congelato
-(function () {
+<script>(function () {
   var AV = window.AV;
   var q = new URLSearchParams(location.search);
   var fisso = q.has('t') ? Math.max(parseFloat(q.get('t')) || 0, 0) : null;
@@ -3446,7 +3469,6 @@ AV.marchioSulVetro = marchioSulVetro;
     catch (e) { segnaErrore(radice, c.nome, e); }
   });
 
-  // con il regista, un componente che ha un copione prende il tempo dallo scroll
   if (regia) {
     attivi.forEach(function (v) {
       try { v.guida = regia.guida(v.radice); } catch (e) { segnaErrore(v.radice, v.c.nome, e); }
