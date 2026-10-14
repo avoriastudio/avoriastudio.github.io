@@ -767,8 +767,13 @@ ul{margin:0;padding-left:1.1em}
 
 .percorso .tappa.notte{background:none}
 
-.notte .canone{color:var(--inchiostro);--secondario:var(--grafite)}
-.notte .canone.consigliato{border-color:var(--oro);color:var(--avorio)}
+.notte .canone{background:var(--inchiostro);border-color:var(--filo-notte);color:var(--avorio);--secondario:#C9C2B4}
+.notte .canone .ruolo,.notte .canone .prezzo small,.notte .canone .condizioni{color:#C9C2B4}
+.notte .canone .condizioni{border-color:#3a362e}
+.notte .canone.consigliato{background:var(--posa);border:2px solid var(--oro);color:var(--inchiostro);--secondario:var(--grafite)}
+.notte .canone.consigliato .ruolo,.notte .canone.consigliato .prezzo small,.notte .canone.consigliato .condizioni{color:var(--grafite)}
+.notte .canone.consigliato .condizioni{border-color:#DDD5C7}
+.notte .canone.consigliato .segno{color:#7A5C2E;border-color:#7A5C2E}
 #aperto .insegna{margin-bottom:14px}
 
 #aperto .canone .punti{align-content:start}
@@ -2611,7 +2616,8 @@ AV.marchioSulVetro = marchioSulVetro;
   function coppia(v) { var i = v.indexOf('|'); return { t: parseFloat(v.slice(0, i)), v: v.slice(i + 1) }; }
 
   function prepara(el) {
-    var s = { el: el, nome: el.getAttribute('data-scena'), t: 0, stato: 'attesa', quota: 0, pezzi: [], batti: [], segni: [], cambi: [], bottone: null };
+    var s = { el: el, nome: el.getAttribute('data-scena'), t: 0, stato: 'attesa', quota: 0, pezzi: [], batti: [], segni: [], cambi: [], bottone: null,
+      cps: numero(el.getAttribute('data-battitura')) || 38 };
     Array.prototype.forEach.call(el.querySelectorAll('[data-da]'), function (p) {
       s.pezzi.push({ el: p, da: numero(p.getAttribute('data-da')), a: numero(p.getAttribute('data-a')), presente: null });
     });
@@ -2642,7 +2648,7 @@ AV.marchioSulVetro = marchioSulVetro;
       if (d !== p.presente) { p.presente = d; p.el.classList.toggle('presente', d); }
     });
     s.batti.forEach(function (b) {
-      var n = AV.lettere(b.testo, t, b.da, 38);
+      var n = AV.lettere(b.testo, t, b.da, s.cps);
       if (n !== b.n) { b.n = n; b.el.textContent = b.testo.slice(0, n); }
     });
     s.segni.forEach(function (x) { x.el.classList.toggle(x.classe, t >= x.t); });

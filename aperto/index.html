@@ -681,8 +681,13 @@ ul{margin:0;padding-left:1.1em}
 
 .percorso .tappa.notte{background:none}
 
-.notte .canone{color:var(--inchiostro);--secondario:var(--grafite)}
-.notte .canone.consigliato{border-color:var(--oro);color:var(--avorio)}
+.notte .canone{background:var(--inchiostro);border-color:var(--filo-notte);color:var(--avorio);--secondario:#C9C2B4}
+.notte .canone .ruolo,.notte .canone .prezzo small,.notte .canone .condizioni{color:#C9C2B4}
+.notte .canone .condizioni{border-color:#3a362e}
+.notte .canone.consigliato{background:var(--posa);border:2px solid var(--oro);color:var(--inchiostro);--secondario:var(--grafite)}
+.notte .canone.consigliato .ruolo,.notte .canone.consigliato .prezzo small,.notte .canone.consigliato .condizioni{color:var(--grafite)}
+.notte .canone.consigliato .condizioni{border-color:#DDD5C7}
+.notte .canone.consigliato .segno{color:#7A5C2E;border-color:#7A5C2E}
 #aperto .insegna{margin-bottom:14px}
 
 #aperto .canone .punti{align-content:start}
@@ -1126,7 +1131,15 @@ ul{margin:0;padding-left:1.1em}
 .aperto-apertura .dentro{align-items:flex-start;gap:clamp(18px,2.6vw,30px)}
 .aperto-apertura h1{margin:0;max-width:14ch;font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.02;letter-spacing:-.02em}
 .aperto-apertura .lead{margin:0;max-width:46ch}
-.sottotitolo-aperto{margin:0;font-family:var(--f-dati);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--secondario)}
+
+.sottotitolo-aperto{margin:0;font-size:1.05rem;font-weight:500;line-height:1.4;color:var(--inchiostro);
+  color:color-mix(in srgb,var(--inchiostro) 74%,transparent)}
+
+@media (min-width:861px){
+  .aperto-apertura .dentro{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:clamp(40px,6vw,96px);row-gap:clamp(18px,2.6vw,30px);align-items:start}
+  .aperto-apertura .dentro > *{grid-column:1}
+  .aperto-apertura .insegna{grid-column:2;grid-row:1 / span 4;align-self:center;font-size:clamp(2.6rem,5.2vw,5.2rem)}
+}
 
 
 .aperto-chiusura .dentro{align-items:flex-start}
@@ -1157,6 +1170,9 @@ ul{margin:0;padding-left:1.1em}
   .momento{grid-template-columns:minmax(0,1fr)}
   
   .momento .telefono.dm{width:min(86vw,340px);height:auto}
+  
+  .momento .telefono.dm{aspect-ratio:9/13}
+  .momento [data-scena="social"] .telefono.dm{aspect-ratio:9/16}
 }
 
 
@@ -1170,6 +1186,8 @@ ul{margin:0;padding-left:1.1em}
 .menu-voci em{font-style:normal;font-family:var(--f-dati);font-size:3.6cqw}
 .menu-voci .allergeni{grid-column:1 / -1;display:none;padding:1.6cqw 2.4cqw;border-radius:2cqw;background:rgba(184,147,94,.16);color:#5E4422;font-size:3.4cqw}
 .menu-voci .mostra .allergeni{display:block}
+
+.menu-voci .in-italiano{grid-column:1 / -1;margin-top:-1cqw;color:var(--grafite);font-size:3.2cqw}
 
 
 .dm .ig.chat-wa{background:#0B141A}
@@ -1201,6 +1219,8 @@ ul{margin:0;padding-left:1.1em}
 .fc-righe dt{color:var(--grafite)}
 .fc-righe dd{margin:0;font-family:var(--f-dati);font-weight:500}
 .fc-righe .cambiato{color:#7A5C2E}
+
+.fc-righe .prima{margin-right:.7em;font-size:.85em;font-weight:400;color:var(--grafite)}
 .fc-avviso{margin:0;padding:14px 16px;border-radius:10px;background:rgba(184,147,94,.16);color:#4A3818;font-size:.95rem;line-height:1.4}
 
 
@@ -1275,7 +1295,7 @@ ul{margin:0;padding-left:1.1em}
 .scena-aperto .ig-bolla{font-size:max(13px,4cqw)}
 .scena-aperto .ig-chi b{font-size:max(13px,4cqw)}
 .scena-aperto .ig-chi small,.scena-aperto .ig-ora,.scena-aperto .lingua,.scena-aperto .chiamata small,.scena-aperto .conferma b,
-.scena-aperto .carta-timbri small,.scena-aperto .vocale small{font-size:max(12px,3.2cqw)}
+.scena-aperto .carta-timbri small,.scena-aperto .vocale small,.scena-aperto .in-italiano{font-size:max(12px,3.2cqw)}
 .scena-aperto .schermo-menu{font-size:max(13px,4.2cqw)}
 .scena-aperto .menu-voci em,.scena-aperto .menu-voci .allergeni,.scena-aperto .conferma,.scena-aperto .avviso-bando,
 .scena-aperto .bozza-recensione,.scena-aperto .ig-post-testo,.scena-aperto .ig-post-cuori{font-size:max(12.5px,3.7cqw)}
@@ -1345,10 +1365,10 @@ ul{margin:0;padding-left:1.1em}
           <div class="schermo-menu">
             <p class="menu-testa tieni" data-da="0.3"><b>Il tuo bar</b><span class="lingua" data-poi="2.8|EN">IT</span></p>
             <ul class="menu-voci">
-              <li class="tieni" data-da="0.6"><span data-poi="2.8|Cream croissant">Cornetto alla crema</span><em>€1,50</em></li>
+              <li class="tieni" data-da="0.6"><span data-poi="2.8|Cream croissant">Cornetto alla crema</span><em>€1,50</em><small class="in-italiano" data-da="2.8">Cornetto alla crema</small></li>
               <li class="tieni" data-da="0.9" data-segna="1.7|mostra"><span data-poi="2.8|Cappuccino">Cappuccino</span><em>€1,60</em><small class="allergeni" data-poi="2.8|Allergens: milk">Allergeni: latte</small></li>
-              <li class="tieni" data-da="1.2"><span data-poi="2.8|Ham and cheese toast">Toast prosciutto e formaggio</span><em>€3,50</em></li>
-              <li class="tieni" data-da="1.5"><span data-poi="2.8|Fresh orange juice">Spremuta d'arancia</span><em>€3,00</em></li>
+              <li class="tieni" data-da="1.2"><span data-poi="2.8|Ham and cheese toast">Toast prosciutto e formaggio</span><em>€3,50</em><small class="in-italiano" data-da="2.8">Toast prosciutto e formaggio</small></li>
+              <li class="tieni" data-da="1.5"><span data-poi="2.8|Fresh orange juice">Spremuta d'arancia</span><em>€3,00</em><small class="in-italiano" data-da="2.8">Spremuta d'arancia</small></li>
             </ul>
           </div>
         </div>
@@ -1368,17 +1388,17 @@ ul{margin:0;padding-left:1.1em}
         <p>Risponde l'AI, e dice che è un'AI. Prenota, sposta, prende l'ordine d'asporto, chiede la caparra se la vuoi. Gruppi, allergie e reclami li passa a te.</p>
         <span class="livello">Nel livello Risponde</span>
       </div>
-      <figure class="scena-aperto" data-scena="telefono">
+      <figure class="scena-aperto" data-scena="telefono" data-battitura="60">
         <div class="telefono dm" aria-hidden="true">
           <div class="ig chat-wa">
-            <p class="chiamata tieni" data-da="0.2"><span class="chiamata-icona" aria-hidden="true"><svg class="ico"><use href="#ico-chiama"/></svg></span><span><b>Chiamata in corso</b><small>risponde l'assistente AI · <span data-poi="8.9|01:12">00:04</span></small></span></p>
+            <p class="chiamata tieni" data-da="0.2"><span class="chiamata-icona" aria-hidden="true"><svg class="ico"><use href="#ico-chiama"/></svg></span><span><b>Chiamata in corso</b><small>risponde l'assistente AI · <span data-poi="5.3|01:12">00:04</span></small></span></p>
             <div class="ig-chat">
-              <p class="ig-bolla io" data-da="0.8"><span data-batti>Buongiorno, sono l'assistente AI della pizzeria. Come posso aiutarla?</span></p>
-              <p class="ig-bolla lui" data-da="3.0">Vorrei prenotare per quattro stasera, alle otto e mezza.</p>
-              <p class="ig-bolla io" data-da="4.2"><span data-batti>Alle 20:30 per quattro c'è posto. A che nome?</span></p>
-              <p class="ig-bolla lui" data-da="5.8">Esposito.</p>
-              <p class="ig-bolla io" data-da="6.6"><span data-batti>Fatto: quattro persone alle 20:30, a nome Esposito. Le mando la conferma su WhatsApp.</span></p>
-              <p class="conferma" data-da="9.4"><b>WhatsApp · conferma inviata</b>Tavolo per 4 · stasera alle 20:30 · Esposito</p>
+              <p class="ig-bolla io" data-da="0.4"><span data-batti>Buongiorno, sono l'assistente AI della pizzeria. Come posso aiutarla?</span></p>
+              <p class="ig-bolla lui" data-da="1.8">Vorrei prenotare per quattro stasera, alle otto e mezza.</p>
+              <p class="ig-bolla io" data-da="2.5"><span data-batti>Alle 20:30 per quattro c'è posto. A che nome?</span></p>
+              <p class="ig-bolla lui" data-da="3.5">Esposito.</p>
+              <p class="ig-bolla io" data-da="3.8"><span data-batti>Fatto: quattro persone alle 20:30, a nome Esposito. Le mando la conferma su WhatsApp.</span></p>
+              <p class="conferma" data-da="5.4"><b>WhatsApp · conferma inviata</b>Tavolo per 4 · stasera alle 20:30 · Esposito</p>
             </div>
           </div>
         </div>
@@ -1402,9 +1422,9 @@ ul{margin:0;padding-left:1.1em}
         <div class="foglio-conti" aria-hidden="true">
           <p class="fc-arriva tieni" data-da="0.3"><span class="dati">Fattura elettronica · arrivata alle 15:28</span><b>Caseificio · mozzarella fior di latte, 12 kg</b></p>
           <dl class="fc-righe">
-            <div class="tieni" data-da="1.0"><dt>Mozzarella al kg</dt><dd><span data-poi="2.0|€8,40" data-segna="2.0|cambiato">€7,50</span></dd></div>
-            <div class="tieni" data-da="1.4"><dt>Margherita, costo del piatto</dt><dd><span data-poi="2.6|€2,34" data-segna="2.6|cambiato">€2,16</span></dd></div>
-            <div class="tieni" data-da="1.8"><dt>Margherita, margine</dt><dd><span data-poi="2.6|69%" data-segna="2.6|cambiato">71%</span></dd></div>
+            <div class="tieni" data-da="1.0"><dt>Mozzarella al kg</dt><dd><s class="prima tieni" data-da="2.0">€7,50</s><span data-poi="2.0|€8,40" data-segna="2.0|cambiato">€7,50</span></dd></div>
+            <div class="tieni" data-da="1.4"><dt>Margherita, costo del piatto</dt><dd><s class="prima tieni" data-da="2.6">€2,16</s><span data-poi="2.6|€2,34" data-segna="2.6|cambiato">€2,16</span></dd></div>
+            <div class="tieni" data-da="1.8"><dt>Margherita, margine</dt><dd><s class="prima tieni" data-da="2.6">71%</s><span data-poi="2.6|69%" data-segna="2.6|cambiato">71%</span></dd></div>
           </dl>
           <p class="fc-avviso tieni" data-da="3.4"><b>La mozzarella è salita del 12%.</b> Tocca sei piatti del tuo menu: vuoi vederli?</p>
         </div>
@@ -1424,15 +1444,15 @@ ul{margin:0;padding-left:1.1em}
         <p>Lo sportello risponde col contratto dei pubblici esercizi e gli sgravi in vigore, con la fonte e la data. Quando esce un bando per la tua regione, ti avvisa. Non sostituisce il commercialista: ci arrivi preparato.</p>
         <span class="livello">Nel livello Tutto il locale</span>
       </div>
-      <figure class="scena-aperto" data-scena="sportello">
+      <figure class="scena-aperto" data-scena="sportello" data-battitura="60">
         <div class="telefono dm" aria-hidden="true">
           <div class="ig chat-wa">
             <div class="ig-testa"><span class="ig-avatar" aria-hidden="true">AI</span><span class="ig-chi"><b>Lo sportello</b><small>l'assistente del tuo locale</small></span></div>
             <div class="ig-chat">
               <p class="ig-bolla io" data-da="0.4">Quanto mi costa un cameriere part-time a 24 ore?</p>
-              <p class="ig-bolla lui" data-da="1.6"><span data-batti>Te lo calcolo sul contratto dei pubblici esercizi: paga, contributi, TFR e tredicesima, mese per mese.</span></p>
-              <p class="ig-bolla lui coda" data-da="4.6"><span data-batti>Controllo anche se ti spetta uno sgravio. Sotto ogni cifra trovi la fonte e la data delle tabelle.</span></p>
-              <p class="avviso-bando" data-da="7.6"><b>Nuovo bando della tua regione</b>Per i pubblici esercizi. Ti ho preparato cosa chiede e la scadenza.</p>
+              <p class="ig-bolla lui" data-da="1.2"><span data-batti>Te lo calcolo sul contratto dei pubblici esercizi: paga, contributi, TFR e tredicesima, mese per mese.</span></p>
+              <p class="ig-bolla lui coda" data-da="3.2"><span data-batti>Controllo anche se ti spetta uno sgravio. Sotto ogni cifra trovi la fonte e la data delle tabelle.</span></p>
+              <p class="avviso-bando" data-da="5.2"><b>Nuovo bando della tua regione</b>Per i pubblici esercizi. Ti ho preparato cosa chiede e la scadenza.</p>
             </div>
           </div>
         </div>
@@ -1557,9 +1577,9 @@ ul{margin:0;padding-left:1.1em}
             <div class="ig-chat">
               <p class="ig-ora" data-da="0.2">23:41</p>
               <p class="ig-bolla lui" data-da="0.5">Nuova prenotazione da WhatsApp: 2 persone domani alle 13:00, a nome Marco. L'ho confermata.</p>
-              <p class="ig-bolla io vocale" data-da="2.2"><span class="onda" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><small>0:04 · «domani la genovese a 14 euro»</small></p>
-              <p class="ig-bolla lui" data-da="3.6"><span data-batti>Fatto: sul menu la genovese ora costa €14.</span></p>
-              <div class="bozza-recensione" data-da="5.2"><b>Nuova recensione · 5 stelle</b><span>La risposta è pronta: «Grazie Lucia, la genovese la rifacciamo giovedì. Ti aspettiamo.»</span><span class="pubblica" data-segna="6.6|toccato">Pubblica la risposta</span></div>
+              <p class="ig-bolla io vocale" data-da="1.6"><span class="onda" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><small>0:04 · «domani la genovese a 14 euro»</small></p>
+              <p class="ig-bolla lui" data-da="2.4"><span data-batti>Fatto: sul menu la genovese ora costa €14.</span></p>
+              <div class="bozza-recensione" data-da="3.9"><b>Nuova recensione · 5 stelle</b><span>La risposta è pronta: «Grazie Lucia, la genovese la rifacciamo giovedì. Ti aspettiamo.»</span><span class="pubblica" data-segna="5.2|toccato">Pubblica la risposta</span></div>
             </div>
           </div>
         </div>
@@ -1584,24 +1604,21 @@ ul{margin:0;padding-left:1.1em}
           <header><h3>Risponde</h3><span class="ruolo">Il telefono, le prenotazioni e i messaggi</span></header>
           <p class="prezzo">€149<small>/mese</small></p>
           <ul class="punti"><li>Il telefono: quando sei occupato o non rispondi, risponde l'AI. Il numero resta il tuo</li><li>Prenota, sposta, cancella, prende l'asporto. Gruppi, allergie e reclami li passa a te</li><li>Prenotazioni online, con la caparra se la vuoi e il promemoria il giorno prima</li><li>WhatsApp, col collegamento ufficiale</li><li>Le recensioni Google: le chiede ai clienti contenti e ti prepara la risposta</li><li>Il menu dal QR, con gli allergeni di ogni piatto</li><li>L'assistente su WhatsApp o Telegram: un vocale e il menu cambia</li></ul>
-          <p class="condizioni">Fino a 300 minuti di telefono al mese</p>
         </article>
         <article class="canone consigliato" data-livello="tutto-il-locale">
           <header><h3>Tutto il locale</h3><span class="segno">Consigliato</span><span class="ruolo">Anche le comande, i clienti che tornano, i conti, il personale e lo sportello</span></header>
           <p class="prezzo">€249<small>/mese</small></p>
-          <ul class="punti"><li>Tutto Risponde</li><li>Le comande: dal telefono del cameriere al tablet in cucina, con l'asporto e WhatsApp sullo stesso schermo</li><li>La scheda di ogni cliente, gli auguri, «non ti vediamo da un po'», la tessera fedeltà</li><li>Le fatture dei fornitori che arrivano da sole, il costo e il margine di ogni piatto</li><li>Turni, checklist di apertura e chiusura, registri HACCP</li><li>Lo sportello: quanto costa un dipendente, gli sgravi, i bandi della tua regione, le scadenze. Ogni risposta con fonte e data</li></ul>
-          <p class="condizioni">Fino a 300 minuti di telefono al mese</p>
+          <ul class="punti"><li>Tutto quello che c'è in Risponde</li><li>Le comande: dal telefono del cameriere al tablet in cucina, con l'asporto e WhatsApp sullo stesso schermo</li><li>La scheda di ogni cliente, gli auguri, «non ti vediamo da un po'», la tessera fedeltà</li><li>Le fatture dei fornitori che arrivano da sole, il costo e il margine di ogni piatto</li><li>Turni, checklist di apertura e chiusura, registri HACCP</li><li>Lo sportello: quanto costa un dipendente, gli sgravi, i bandi della tua regione, le scadenze. Ogni risposta con fonte e data</li></ul>
         </article>
         <article class="canone" data-livello="con-la-vetrina">
           <header><h3>Con la vetrina</h3><span class="ruolo">Anche le foto dei piatti e i tuoi social</span></header>
           <p class="prezzo">€490<small>/mese</small></p>
-          <ul class="punti"><li>Tutto il locale</li><li>8 foto dei piatti al mese, dalle foto che fai col telefono</li><li>I tuoi social: fino a 12 pubblicazioni al mese, su un massimo di tre canali</li></ul>
-          <p class="condizioni">Fino a 300 minuti di telefono al mese</p>
+          <ul class="punti"><li>Tutto quello che c'è in Tutto il locale</li><li>8 foto dei piatti al mese, dalle foto che fai col telefono</li><li>I tuoi social: fino a 12 pubblicazioni al mese, su un massimo di tre canali</li></ul>
         </article>
       </div>
       <dl class="righe aperto-condizioni" data-svela>
         <div class="riga"><dt>L'avvio</dt><dd>€390, una volta: carichiamo menu e allergeni, colleghiamo WhatsApp, attiviamo la deviazione del telefono, istruiamo l'assistente sul tuo locale e lo proviamo con 30 chiamate. Con Tutto il locale prepariamo anche i tavoli e le postazioni delle comande (forno, cucina, bar). Gratis per i primi tre locali.</dd></div>
-        <div class="riga"><dt>Oltre i 300 minuti</dt><dd>Li paghi al costo, senza ricarico.</dd></div>
+        <div class="riga"><dt>Il telefono</dt><dd>Fino a 300 minuti al mese, in tutti e tre i livelli. Oltre, li paghi al costo, senza ricarico.</dd></div>
         <div class="riga"><dt>Come si paga</dt><dd>Il canone ogni mese, in anticipo. Disdetta con 30 giorni di preavviso, senza penali. I dati restano tuoi.</dd></div>
       </dl>
     </div>
@@ -1884,7 +1901,8 @@ AV.insegnaAccesa = insegnaAccesa;
   function coppia(v) { var i = v.indexOf('|'); return { t: parseFloat(v.slice(0, i)), v: v.slice(i + 1) }; }
 
   function prepara(el) {
-    var s = { el: el, nome: el.getAttribute('data-scena'), t: 0, stato: 'attesa', quota: 0, pezzi: [], batti: [], segni: [], cambi: [], bottone: null };
+    var s = { el: el, nome: el.getAttribute('data-scena'), t: 0, stato: 'attesa', quota: 0, pezzi: [], batti: [], segni: [], cambi: [], bottone: null,
+      cps: numero(el.getAttribute('data-battitura')) || 38 };
     Array.prototype.forEach.call(el.querySelectorAll('[data-da]'), function (p) {
       s.pezzi.push({ el: p, da: numero(p.getAttribute('data-da')), a: numero(p.getAttribute('data-a')), presente: null });
     });
@@ -1915,7 +1933,7 @@ AV.insegnaAccesa = insegnaAccesa;
       if (d !== p.presente) { p.presente = d; p.el.classList.toggle('presente', d); }
     });
     s.batti.forEach(function (b) {
-      var n = AV.lettere(b.testo, t, b.da, 38);
+      var n = AV.lettere(b.testo, t, b.da, s.cps);
       if (n !== b.n) { b.n = n; b.el.textContent = b.testo.slice(0, n); }
     });
     s.segni.forEach(function (x) { x.el.classList.toggle(x.classe, t >= x.t); });
